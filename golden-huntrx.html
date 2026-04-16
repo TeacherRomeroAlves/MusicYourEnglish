@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Golden | English With Songs</title>
+    <title>Golden | Music Your English</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,7 +18,7 @@
 
       <section class="hero">
         <p class="eyebrow">Song Lesson</p>
-        <h1>English With Songs</h1>
+        <h1>Music Your English</h1>
         <p class="hero-text">
           Song: <strong>"Golden"</strong> by Huntr/x
         </p>
@@ -260,37 +260,37 @@
           <p class="section-kicker">Step 6</p>
           <h2>Chorus</h2>
           <p class="section-note">
-            Drag the lines into the correct order while you listen.
+            Click the lines in the correct order while you listen.
           </p>
         </div>
 
         <div class="order-layout">
           <div class="order-bank" id="order-bank" aria-label="Chorus sentence bank">
-            <button class="order-card" draggable="true" data-line="line-1" type="button">
+            <button class="order-card" data-line="line-1" type="button">
               We're going up, up, up, it's our moment
             </button>
-            <button class="order-card" draggable="true" data-line="line-2" type="button">
+            <button class="order-card" data-line="line-2" type="button">
               You know together we're glowin'
             </button>
-            <button class="order-card" draggable="true" data-line="line-3a" type="button">
+            <button class="order-card" data-line="line-3a" type="button">
               Gonna be, gonna be golden
             </button>
-            <button class="order-card" draggable="true" data-line="line-4" type="button">
+            <button class="order-card" data-line="line-4" type="button">
               Oh-oh-oh, up, up, up with our voices
             </button>
-            <button class="order-card" draggable="true" data-line="line-5" type="button">
+            <button class="order-card" data-line="line-5" type="button">
               &#50689;&#50896;&#55176; &#44648;&#51656; &#49688; &#50630;&#45716;
             </button>
-            <button class="order-card" draggable="true" data-line="line-3b" type="button">
+            <button class="order-card" data-line="line-3b" type="button">
               Gonna be, gonna be golden
             </button>
-            <button class="order-card" draggable="true" data-line="line-7" type="button">
+            <button class="order-card" data-line="line-7" type="button">
               Oh-oh-oh, I'm done hidin', now I'm shinin' like I'm born to be
             </button>
-            <button class="order-card" draggable="true" data-line="line-8" type="button">
+            <button class="order-card" data-line="line-8" type="button">
               Oh, our time, no fears, no lies
             </button>
-            <button class="order-card" draggable="true" data-line="line-9" type="button">
+            <button class="order-card" data-line="line-9" type="button">
               That's who we're born to be
             </button>
           </div>
@@ -418,6 +418,63 @@
           <article class="question-box">
             <span class="question-number">4</span>
             <p>Can fears make us stronger? Why or why not?</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card report-section" data-song-title="Golden">
+        <div class="section-heading">
+          <p class="section-kicker">Homework</p>
+          <h2>Writing And Student Report</h2>
+          <p class="section-note">
+            Write your homework answer, then save or share your report.
+          </p>
+        </div>
+
+        <div class="prompt-box">
+          <p class="prompt-label">Writing prompt</p>
+          <p class="prompt-text">
+            Write about a time you felt stronger or more confident. Explain what happened and how you felt.
+          </p>
+        </div>
+
+        <div class="report-grid">
+          <div class="report-form">
+            <label class="field-label" for="student-name">Student name</label>
+            <input class="field-input" id="student-name" type="text" />
+
+            <label class="field-label" for="student-class">Class</label>
+            <input class="field-input" id="student-class" type="text" />
+
+            <label class="field-label" for="student-writing">Homework answer</label>
+            <textarea
+              class="writing-box"
+              id="student-writing"
+              rows="8"
+              data-prompt="Write about a time you felt stronger or more confident. Explain what happened and how you felt."
+            ></textarea>
+            <p class="word-count">Word count: <span id="word-count-value">0</span></p>
+
+            <div class="actions">
+              <button id="save-report-btn" class="action-btn" type="button">Save As PDF</button>
+              <button id="share-report-btn" class="action-btn secondary" type="button">Share</button>
+            </div>
+          </div>
+
+          <article class="report-card" id="student-report">
+            <p class="report-kicker">Student Report</p>
+            <h3 id="report-song-title">Golden</h3>
+            <p class="report-meta"><strong>Name:</strong> <span id="report-student-name">Not added yet</span></p>
+            <p class="report-meta"><strong>Class:</strong> <span id="report-student-class">Not added yet</span></p>
+            <p class="report-meta"><strong>Date:</strong> <span id="report-date"></span></p>
+            <p class="report-meta"><strong>Song score:</strong> <span id="report-score">Not checked yet</span></p>
+            <div class="report-divider"></div>
+            <p class="report-meta"><strong>Homework prompt:</strong></p>
+            <p class="report-text" id="report-prompt">
+              Write about a time you felt stronger or more confident. Explain what happened and how you felt.
+            </p>
+            <p class="report-meta"><strong>Student answer:</strong></p>
+            <p class="report-text" id="report-writing">No answer yet.</p>
           </article>
         </div>
       </section>

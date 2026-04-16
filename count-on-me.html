@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Count on Me | English With Songs</title>
+    <title>Count on Me | Music Your English</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,7 +20,7 @@
         <div class="hero-layout">
           <div>
             <p class="eyebrow">Song Lesson</p>
-            <h1>English With Songs</h1>
+            <h1>Music Your English</h1>
             <p class="hero-text">
               Song: <strong>"Count on Me"</strong> by Bruno Mars
             </p>
@@ -373,6 +373,63 @@
           <article class="question-box">
             <span class="question-number">4</span>
             <p>Have you ever helped a friend, or has a friend helped you?</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card report-section" data-song-title="Count on Me">
+        <div class="section-heading">
+          <p class="section-kicker">Homework</p>
+          <h2>Writing And Student Report</h2>
+          <p class="section-note">
+            Write your homework answer, then save or share your report.
+          </p>
+        </div>
+
+        <div class="prompt-box">
+          <p class="prompt-label">Writing prompt</p>
+          <p class="prompt-text">
+            Write about an important person in your life. Explain why this person is important and how they help you.
+          </p>
+        </div>
+
+        <div class="report-grid">
+          <div class="report-form">
+            <label class="field-label" for="student-name">Student name</label>
+            <input class="field-input" id="student-name" type="text" />
+
+            <label class="field-label" for="student-class">Class</label>
+            <input class="field-input" id="student-class" type="text" />
+
+            <label class="field-label" for="student-writing">Homework answer</label>
+            <textarea
+              class="writing-box"
+              id="student-writing"
+              rows="8"
+              data-prompt="Write about an important person in your life. Explain why this person is important and how they help you."
+            ></textarea>
+            <p class="word-count">Word count: <span id="word-count-value">0</span></p>
+
+            <div class="actions">
+              <button id="save-report-btn" class="action-btn" type="button">Save As PDF</button>
+              <button id="share-report-btn" class="action-btn secondary" type="button">Share</button>
+            </div>
+          </div>
+
+          <article class="report-card" id="student-report">
+            <p class="report-kicker">Student Report</p>
+            <h3 id="report-song-title">Count on Me</h3>
+            <p class="report-meta"><strong>Name:</strong> <span id="report-student-name">Not added yet</span></p>
+            <p class="report-meta"><strong>Class:</strong> <span id="report-student-class">Not added yet</span></p>
+            <p class="report-meta"><strong>Date:</strong> <span id="report-date"></span></p>
+            <p class="report-meta"><strong>Song score:</strong> <span id="report-score">Not checked yet</span></p>
+            <div class="report-divider"></div>
+            <p class="report-meta"><strong>Homework prompt:</strong></p>
+            <p class="report-text" id="report-prompt">
+              Write about an important person in your life. Explain why this person is important and how they help you.
+            </p>
+            <p class="report-meta"><strong>Student answer:</strong></p>
+            <p class="report-text" id="report-writing">No answer yet.</p>
           </article>
         </div>
       </section>

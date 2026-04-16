@@ -18,11 +18,24 @@ const orderDropZones = document.querySelectorAll(".order-drop-zone");
 const resetOrderBtn = document.getElementById("reset-order-btn");
 const lyricInputs = document.querySelectorAll(".lyric-input");
 const resetInputsBtn = document.getElementById("reset-inputs-btn");
+const studentNameInput = document.getElementById("student-name");
+const studentClassInput = document.getElementById("student-class");
+const studentWritingInput = document.getElementById("student-writing");
+const wordCountValue = document.getElementById("word-count-value");
+const reportSection = document.querySelector(".report-section");
+const reportSongTitle = document.getElementById("report-song-title");
+const reportStudentName = document.getElementById("report-student-name");
+const reportStudentClass = document.getElementById("report-student-class");
+const reportDate = document.getElementById("report-date");
+const reportScore = document.getElementById("report-score");
+const reportPrompt = document.getElementById("report-prompt");
+const reportWriting = document.getElementById("report-writing");
+const saveReportBtn = document.getElementById("save-report-btn");
+const shareReportBtn = document.getElementById("share-report-btn");
 
 let draggedCard = null;
 let draggedIcon = null;
 let draggedLyricWord = null;
-let draggedOrderCard = null;
 
 function shuffleArray(items) {
   const copy = [...items];
@@ -73,19 +86,6 @@ function attachLyricWordEvents(word) {
 }
 
 document.querySelectorAll(".lyric-word-card").forEach(attachLyricWordEvents);
-
-function attachOrderCardEvents(card) {
-  card.addEventListener("dragstart", () => {
-    draggedOrderCard = card;
-    card.classList.add("dragging");
-  });
-
-  card.addEventListener("dragend", () => {
-    card.classList.remove("dragging");
-  });
-}
-
-document.querySelectorAll(".order-card").forEach(attachOrderCardEvents);
 
 function findEmptyWordSlot() {
   if (!wordBank) {
@@ -320,10 +320,17 @@ function placeOrderCard(zone, card) {
   const existingCard = zone.querySelector(".order-card");
 
   if (existingCard) {
+    existingCard.classList.remove("used");
     orderBank.appendChild(existingCard);
   }
 
   zone.appendChild(card);
+  card.classList.add("used");
+}
+
+function returnOrderCard(card) {
+  card.classList.remove("used");
+  orderBank.appendChild(card);
 }
 
 if (lyricWordBank) {
@@ -418,41 +425,28 @@ if (resetChoiceBtn) {
   });
 }
 
+function findNextEmptyOrderZone() {
+  return Array.from(orderDropZones).find(
+    (zone) => !zone.querySelector(".order-card")
+  );
+}
+
 if (orderBank) {
-  orderDropZones.forEach((zone) => {
-    zone.addEventListener("dragover", (event) => {
-      event.preventDefault();
-      zone.classList.add("drag-over");
-    });
-
-    zone.addEventListener("dragleave", () => {
-      zone.classList.remove("drag-over");
-    });
-
-    zone.addEventListener("drop", (event) => {
-      event.preventDefault();
-      zone.classList.remove("drag-over");
-
-      if (!draggedOrderCard) {
+  document.querySelectorAll(".order-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      if (card.classList.contains("used")) {
+        returnOrderCard(card);
         return;
       }
 
-      placeOrderCard(zone, draggedOrderCard);
+      const nextZone = findNextEmptyOrderZone();
+
+      if (!nextZone) {
+        return;
+      }
+
+      placeOrderCard(nextZone, card);
     });
-  });
-
-  orderBank.addEventListener("dragover", (event) => {
-    event.preventDefault();
-  });
-
-  orderBank.addEventListener("drop", (event) => {
-    event.preventDefault();
-
-    if (!draggedOrderCard) {
-      return;
-    }
-
-    orderBank.appendChild(draggedOrderCard);
   });
 }
 
@@ -460,6 +454,7 @@ if (resetOrderBtn) {
   resetOrderBtn.addEventListener("click", () => {
     const cards = document.querySelectorAll(".order-card");
     cards.forEach((card) => {
+      card.classList.remove("used");
       orderBank.appendChild(card);
     });
 
@@ -579,46 +574,176 @@ function getInputResults() {
   };
 }
 
+function collectSongResults() {
+  const resultGroups = [];
+
+  if (inlineDropZones.length > 0) {
+    resultGroups.push(getDropZoneResults(inlineDropZones, ".icon-card"));
+  }
+
+  if (wordDropZones.length > 0) {
+    resultGroups.push(getDropZoneResults(wordDropZones, ".lyric-word-card"));
+  }
+
+  if (choiceSlots.length > 0) {
+    resultGroups.push(getChoiceResults());
+  }
+
+  if (orderDropZones.length > 0) {
+    resultGroups.push(getOrderResults());
+  }
+
+  if (lyricInputs.length > 0) {
+    resultGroups.push(getInputResults());
+  }
+
+  return resultGroups.reduce(
+    (summary, result) => ({
+      correct: summary.correct + result.correct,
+      placed: summary.placed + result.placed,
+      total: summary.total + result.total,
+    }),
+    { correct: 0, placed: 0, total: 0 }
+  );
+}
+
+function getWordCount(text) {
+  const trimmed = text.trim();
+
+  if (!trimmed) {
+    return 0;
+  }
+
+  return trimmed.split(/\s+/).length;
+}
+
+function updateReport() {
+  if (!reportSection) {
+    return;
+  }
+
+  const songTitle = reportSection.dataset.songTitle || "Song lesson";
+  const studentName = studentNameInput?.value.trim() || "Not added yet";
+  const studentClass = studentClassInput?.value.trim() || "Not added yet";
+  const writing = studentWritingInput?.value.trim() || "No answer yet.";
+  const prompt = studentWritingInput?.dataset.prompt || "";
+  const wordCount = getWordCount(studentWritingInput?.value || "");
+  const dateText = new Date().toLocaleDateString();
+  const results = collectSongResults();
+
+  if (reportSongTitle) {
+    reportSongTitle.textContent = songTitle;
+  }
+
+  if (reportStudentName) {
+    reportStudentName.textContent = studentName;
+  }
+
+  if (reportStudentClass) {
+    reportStudentClass.textContent = studentClass;
+  }
+
+  if (reportDate) {
+    reportDate.textContent = dateText;
+  }
+
+  if (reportPrompt) {
+    reportPrompt.textContent = prompt;
+  }
+
+  if (reportWriting) {
+    reportWriting.textContent = writing;
+  }
+
+  if (wordCountValue) {
+    wordCountValue.textContent = String(wordCount);
+  }
+
+  if (reportScore) {
+    reportScore.textContent =
+      results.total > 0 && results.placed === results.total
+        ? `${results.correct} / ${results.total}`
+        : "Not checked yet";
+  }
+}
+
 if (checkAllBtn) {
   checkAllBtn.addEventListener("click", () => {
-    const stanzaResults = getDropZoneResults(inlineDropZones, ".icon-card");
-    const chorusResults = getDropZoneResults(wordDropZones, ".lyric-word-card");
-    const choiceResults = getChoiceResults();
-    const orderResults = getOrderResults();
-    const inputResults = getInputResults();
-
-    const totalCorrect =
-      stanzaResults.correct +
-      chorusResults.correct +
-      choiceResults.correct +
-      orderResults.correct +
-      inputResults.correct;
-    const totalAnswered =
-      stanzaResults.placed +
-      chorusResults.placed +
-      choiceResults.placed +
-      orderResults.placed +
-      inputResults.placed;
-    const totalItems =
-      stanzaResults.total +
-      chorusResults.total +
-      choiceResults.total +
-      orderResults.total +
-      inputResults.total;
+    const results = collectSongResults();
+    const totalCorrect = results.correct;
+    const totalAnswered = results.placed;
+    const totalItems = results.total;
 
     if (totalAnswered < totalItems) {
       finalFeedback.textContent = `You got ${totalCorrect} of ${totalItems} correct so far. Some answers are still missing, so finish the whole song and check again.`;
       finalFeedback.className = "feedback warning";
+      updateReport();
       return;
     }
 
     if (totalCorrect === totalItems) {
       finalFeedback.textContent = `Excellent. All ${totalItems} answers are correct.`;
       finalFeedback.className = "feedback success";
+      updateReport();
       return;
     }
 
     finalFeedback.textContent = `Nice work. You got ${totalCorrect} of ${totalItems} correct. Listen again and try adjusting the answers that are not right yet.`;
     finalFeedback.className = "feedback warning";
+    updateReport();
   });
 }
+
+[studentNameInput, studentClassInput, studentWritingInput].forEach((field) => {
+  field?.addEventListener("input", updateReport);
+});
+
+if (saveReportBtn) {
+  saveReportBtn.addEventListener("click", () => {
+    updateReport();
+    document.body.classList.add("print-report-mode");
+    window.print();
+    setTimeout(() => {
+      document.body.classList.remove("print-report-mode");
+    }, 300);
+  });
+}
+
+if (shareReportBtn) {
+  shareReportBtn.addEventListener("click", async () => {
+    updateReport();
+
+    const shareText = [
+      `Music Your English`,
+      `Song: ${reportSongTitle?.textContent || ""}`,
+      `Student: ${reportStudentName?.textContent || ""}`,
+      `Class: ${reportStudentClass?.textContent || ""}`,
+      `Score: ${reportScore?.textContent || ""}`,
+      `Prompt: ${reportPrompt?.textContent || ""}`,
+      `Answer: ${reportWriting?.textContent || ""}`,
+    ].join("\n");
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: reportSongTitle?.textContent || "Music Your English",
+          text: shareText,
+        });
+        return;
+      } catch (error) {
+        if (error?.name === "AbortError") {
+          return;
+        }
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(shareText);
+      alert("Report copied. You can now paste it into WhatsApp, email, or another app.");
+    } catch (error) {
+      alert("Sharing is not available in this browser.");
+    }
+  });
+}
+
+updateReport();
