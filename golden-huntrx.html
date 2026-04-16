@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Golden | English With Songs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <a class="back-link" href="index.html">Back to song menu</a>
+
+      <section class="hero">
+        <p class="eyebrow">Song Lesson</p>
+        <h1>English With Songs</h1>
+        <p class="hero-text">
+          Song: <strong>"Golden"</strong> by Huntr/x
+        </p>
+        <p class="hero-text hero-subtle">
+          A new lesson focused on confidence, feelings, and expressive
+          vocabulary.
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 1</p>
+          <h2>Warm-up Questions</h2>
+        </div>
+
+        <div class="questions">
+          <article class="question-box">
+            <span class="question-number">1</span>
+            <p>When do you feel strong and confident?</p>
+          </article>
+
+          <article class="question-box">
+            <span class="question-number">2</span>
+            <p>What helps you when you feel nervous or afraid?</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 2</p>
+          <h2>Match The Words To Their Meanings</h2>
+          <p class="section-note">
+            Drag each word into the correct meaning box. Use the speaker button
+            to hear the pronunciation.
+          </p>
+        </div>
+
+        <div class="activity-layout">
+          <div class="word-bank" id="word-bank" aria-label="Word bank">
+            <div class="word-slot">
+              <div class="word-card" draggable="true" data-word="golden">
+                <span>golden</span>
+                <button class="speak-btn" type="button" data-speak="golden">
+                  Listen
+                </button>
+              </div>
+            </div>
+
+            <div class="word-slot">
+              <div class="word-card" draggable="true" data-word="alone">
+                <span>alone</span>
+                <button class="speak-btn" type="button" data-speak="alone">
+                  Listen
+                </button>
+              </div>
+            </div>
+
+            <div class="word-slot">
+              <div class="word-card" draggable="true" data-word="fears">
+                <span>fears</span>
+                <button class="speak-btn" type="button" data-speak="fears">
+                  Listen
+                </button>
+              </div>
+            </div>
+
+            <div class="word-slot">
+              <div class="word-card" draggable="true" data-word="wild">
+                <span>wild</span>
+                <button class="speak-btn" type="button" data-speak="wild">
+                  Listen
+                </button>
+              </div>
+            </div>
+
+            <div class="word-slot">
+              <div class="word-card" draggable="true" data-word="patterns">
+                <span>patterns</span>
+                <button class="speak-btn" type="button" data-speak="patterns">
+                  Listen
+                </button>
+              </div>
+            </div>
+
+            <div class="word-slot">
+              <div class="word-card" draggable="true" data-word="shining">
+                <span>shining</span>
+                <button class="speak-btn" type="button" data-speak="shining">
+                  Listen
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="meanings" aria-label="Meaning targets">
+            <div class="drop-zone" data-match="patterns">
+              <p class="meaning-text">things that happen again and again</p>
+            </div>
+
+            <div class="drop-zone" data-match="wild">
+              <p class="meaning-text">free and hard to control</p>
+            </div>
+
+            <div class="drop-zone" data-match="alone">
+              <p class="meaning-text">without other people around you</p>
+            </div>
+
+            <div class="drop-zone" data-match="shining">
+              <p class="meaning-text">bright and full of light</p>
+            </div>
+
+            <div class="drop-zone" data-match="golden">
+              <p class="meaning-text">very special and beautiful</p>
+            </div>
+
+            <div class="drop-zone" data-match="fears">
+              <p class="meaning-text">things that make you feel scared</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="check-btn" class="action-btn" type="button">Check Answers</button>
+          <button id="reset-btn" class="action-btn secondary" type="button">Reset</button>
+        </div>
+
+        <p id="feedback" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 3</p>
+          <h2>Listen To The Song</h2>
+          <p class="section-note">
+            Listen to the song before moving on to the next activity.
+          </p>
+        </div>
+
+        <div class="video-frame spotify-frame">
+          <iframe
+            src="https://open.spotify.com/embed/track/1CPZ5BxNNd0n0nF4Orb9JS?utm_source=generator"
+            title="Golden on Spotify"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 4</p>
+          <h2>First Stanza</h2>
+          <p class="section-note">
+            Drag each icon into the correct space while you listen.
+          </p>
+        </div>
+
+        <div class="icon-bank" id="icon-bank" aria-label="Icon bank">
+          <button class="icon-card" draggable="true" data-word="ghost" type="button" aria-label="ghost">
+            <span class="icon-symbol">&#128123;</span>
+          </button>
+          <button class="icon-card" draggable="true" data-word="queen" type="button" aria-label="queen">
+            <span class="icon-symbol">&#128120;</span>
+          </button>
+          <button class="icon-card" draggable="true" data-word="place" type="button" aria-label="place">
+            <span class="icon-symbol">&#128205;</span>
+          </button>
+          <button class="icon-card" draggable="true" data-word="child" type="button" aria-label="child">
+            <span class="icon-symbol">&#128118;</span>
+          </button>
+        </div>
+
+        <div class="lyrics-card" aria-label="First stanza lyrics">
+          <p class="lyric-line">
+            I was a
+            <span class="inline-drop-zone" data-match="ghost"></span>
+            , I was alone
+          </p>
+          <p class="lyric-line">&#50612;&#46160;&#50892;&#51652; &#50526;&#44600; &#49549;&#50640; ha-ah-ah</p>
+          <p class="lyric-line">
+            Given the throne, I didn't know how to believe
+          </p>
+          <p class="lyric-line">
+            I was the
+            <span class="inline-drop-zone" data-match="queen"></span>
+            that I'm meant to be
+          </p>
+          <p class="lyric-line">I lived two lives, tried to play both sides</p>
+          <p class="lyric-line">
+            But I couldn't find my own
+            <span class="inline-drop-zone" data-match="place"></span>
+          </p>
+          <p class="lyric-line">
+            Called a problem
+            <span class="inline-drop-zone" data-match="child"></span>
+            'cause I got too wild
+          </p>
+          <p class="lyric-line">But now that's how I'm getting paid &#45149;&#50630;&#51060; on stage</p>
+        </div>
+
+        <div class="actions">
+          <button id="reset-stanza-btn" class="action-btn secondary" type="button">Reset Stanza</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 5</p>
+          <h2>Pre-Chorus</h2>
+          <p class="section-note">
+            Listen carefully and click the correct option in each line.
+          </p>
+        </div>
+
+        <div class="lyrics-card choice-lyrics" aria-label="Pre-chorus multiple choice">
+          <p class="lyric-line">
+            I'm done
+            <span class="choice-slot" data-answer="hiding" data-options='["hiding","riding"]'></span>
+            , now I'm
+            <span class="choice-slot" data-answer="shining" data-options='["shining","flying"]'></span>
+            like I'm born to be
+          </p>
+          <p class="lyric-line">
+            We
+            <span class="choice-slot" data-answer="dreaming" data-options='["dreaming","sleeping"]'></span>
+            hard, we came so far, now I believe
+          </p>
+        </div>
+
+        <div class="actions">
+          <button id="reset-choice-btn" class="action-btn secondary" type="button">Reset Section</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 6</p>
+          <h2>Chorus</h2>
+          <p class="section-note">
+            Drag the lines into the correct order while you listen.
+          </p>
+        </div>
+
+        <div class="order-layout">
+          <div class="order-bank" id="order-bank" aria-label="Chorus sentence bank">
+            <button class="order-card" draggable="true" data-line="line-1" type="button">
+              We're going up, up, up, it's our moment
+            </button>
+            <button class="order-card" draggable="true" data-line="line-2" type="button">
+              You know together we're glowin'
+            </button>
+            <button class="order-card" draggable="true" data-line="line-3a" type="button">
+              Gonna be, gonna be golden
+            </button>
+            <button class="order-card" draggable="true" data-line="line-4" type="button">
+              Oh-oh-oh, up, up, up with our voices
+            </button>
+            <button class="order-card" draggable="true" data-line="line-5" type="button">
+              &#50689;&#50896;&#55176; &#44648;&#51656; &#49688; &#50630;&#45716;
+            </button>
+            <button class="order-card" draggable="true" data-line="line-3b" type="button">
+              Gonna be, gonna be golden
+            </button>
+            <button class="order-card" draggable="true" data-line="line-7" type="button">
+              Oh-oh-oh, I'm done hidin', now I'm shinin' like I'm born to be
+            </button>
+            <button class="order-card" draggable="true" data-line="line-8" type="button">
+              Oh, our time, no fears, no lies
+            </button>
+            <button class="order-card" draggable="true" data-line="line-9" type="button">
+              That's who we're born to be
+            </button>
+          </div>
+
+          <div class="order-list" aria-label="Chorus order targets">
+            <div class="order-drop-zone" data-match="line-1">
+              <span class="order-number">1</span>
+            </div>
+            <div class="order-drop-zone" data-match="line-2">
+              <span class="order-number">2</span>
+            </div>
+            <div class="order-drop-zone" data-match="line-3a">
+              <span class="order-number">3</span>
+            </div>
+            <div class="order-drop-zone" data-match="line-4">
+              <span class="order-number">4</span>
+            </div>
+            <div class="order-drop-zone" data-match="line-5">
+              <span class="order-number">5</span>
+            </div>
+            <div class="order-drop-zone" data-match="line-3b">
+              <span class="order-number">6</span>
+            </div>
+            <div class="order-drop-zone" data-match="line-7">
+              <span class="order-number">7</span>
+            </div>
+            <div class="order-drop-zone" data-match="line-8">
+              <span class="order-number">8</span>
+            </div>
+            <div class="order-drop-zone" data-match="line-9">
+              <span class="order-number">9</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="reset-order-btn" class="action-btn secondary" type="button">Reset Section</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 7</p>
+          <h2>Final Stanza</h2>
+          <p class="section-note">
+            Listen and type the missing words. Tip: every answer has 2 letters.
+          </p>
+        </div>
+
+        <div class="lyrics-card" aria-label="Final stanza typing activity">
+          <p class="lyric-line">
+            Waited
+            <input class="lyric-input" type="text" maxlength="2" data-answer="so" aria-label="Blank 1" />
+            long to break these walls down
+          </p>
+          <p class="lyric-line">
+            To wake
+            <input class="lyric-input" type="text" maxlength="2" data-answer="up" aria-label="Blank 2" />
+            and feel like me
+          </p>
+          <p class="lyric-line">
+            Put these patterns all
+            <input class="lyric-input" type="text" maxlength="2" data-answer="in" aria-label="Blank 3" />
+            the past now
+          </p>
+          <p class="lyric-line">And finally live like the girl they all see</p>
+          <p class="lyric-line">
+            <input class="lyric-input" type="text" maxlength="2" data-answer="no" aria-label="Blank 4" />
+            more hiding, I'll be shining like I'm born to be
+          </p>
+          <p class="lyric-line">
+            'Cause
+            <input class="lyric-input" type="text" maxlength="2" data-answer="we" aria-label="Blank 5" />
+            are hunters, voices strong, and I know I believe
+          </p>
+        </div>
+
+        <div class="actions">
+          <button id="reset-inputs-btn" class="action-btn secondary" type="button">Reset Section</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Final Step</p>
+          <h2>Check All Answers</h2>
+          <p class="section-note">
+            When students finish the whole song, click below to check every
+            activity at once.
+          </p>
+        </div>
+
+        <div class="actions">
+          <button id="check-all-btn" class="action-btn" type="button">Check All Answers</button>
+        </div>
+
+        <p id="final-feedback" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Wrap-Up</p>
+          <h2>Talk About The Song</h2>
+          <p class="section-note">
+            Use these questions to finish the lesson with speaking practice.
+          </p>
+        </div>
+
+        <div class="questions">
+          <article class="question-box">
+            <span class="question-number">1</span>
+            <p>What does this song say about confidence?</p>
+          </article>
+
+          <article class="question-box">
+            <span class="question-number">2</span>
+            <p>Why do people sometimes hide who they really are?</p>
+          </article>
+
+          <article class="question-box">
+            <span class="question-number">3</span>
+            <p>What helps a person feel stronger?</p>
+          </article>
+
+          <article class="question-box">
+            <span class="question-number">4</span>
+            <p>Can fears make us stronger? Why or why not?</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

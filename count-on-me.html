@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Count on Me | English With Songs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <a class="back-link" href="index.html">Back to song menu</a>
+
+      <section class="hero">
+        <div class="hero-layout">
+          <div>
+            <p class="eyebrow">Song Lesson</p>
+            <h1>English With Songs</h1>
+            <p class="hero-text">
+              Song: <strong>"Count on Me"</strong> by Bruno Mars
+            </p>
+            <p class="hero-text hero-subtle">
+              A lesson page with warm-up speaking, listening, vocabulary, and
+              discussion practice.
+            </p>
+          </div>
+
+          <img
+            class="hero-artist-image"
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b1/BrunoMars.jpg"
+            alt="Bruno Mars"
+          />
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 1</p>
+          <h2>Warm-up Questions</h2>
+        </div>
+
+        <div class="questions">
+          <article class="question-box">
+            <span class="question-number">1</span>
+            <p>Who do you ask for help when you have a problem?</p>
+          </article>
+
+          <article class="question-box">
+            <span class="question-number">2</span>
+            <p>What makes someone a good friend?</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 2</p>
+          <h2>Match The Words To Their Meanings</h2>
+          <p class="section-note">
+            Drag each word into the correct meaning box. Use the speaker button
+            to hear the pronunciation.
+          </p>
+        </div>
+
+        <div class="activity-layout">
+          <div class="word-bank" id="word-bank" aria-label="Word bank">
+            <div class="word-slot">
+              <div class="word-card" draggable="true" data-word="count on">
+                <span>count on</span>
+                <button class="speak-btn" type="button" data-speak="count on">
+                  Listen
+                </button>
+              </div>
+            </div>
+
+            <div class="word-slot">
+              <div class="word-card" draggable="true" data-word="friendship">
+                <span>friendship</span>
+                <button class="speak-btn" type="button" data-speak="friendship">
+                  Listen
+                </button>
+              </div>
+            </div>
+
+            <div class="word-slot">
+              <div class="word-card" draggable="true" data-word="sail">
+                <span>sail</span>
+                <button class="speak-btn" type="button" data-speak="sail">
+                  Listen
+                </button>
+              </div>
+            </div>
+
+            <div class="word-slot">
+              <div class="word-card" draggable="true" data-word="guide">
+                <span>guide</span>
+                <button class="speak-btn" type="button" data-speak="guide">
+                  Listen
+                </button>
+              </div>
+            </div>
+
+            <div class="word-slot">
+              <div class="word-card" draggable="true" data-word="find out">
+                <span>find out</span>
+                <button class="speak-btn" type="button" data-speak="find out">
+                  Listen
+                </button>
+              </div>
+            </div>
+
+            <div class="word-slot">
+              <div class="word-card" draggable="true" data-word="beside">
+                <span>beside</span>
+                <button class="speak-btn" type="button" data-speak="beside">
+                  Listen
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="meanings" aria-label="Meaning targets">
+            <div class="drop-zone" data-match="guide">
+              <p class="meaning-text">to show the way</p>
+            </div>
+
+            <div class="drop-zone" data-match="beside">
+              <p class="meaning-text">next to</p>
+            </div>
+
+            <div class="drop-zone" data-match="count on">
+              <p class="meaning-text">to trust and depend on someone</p>
+            </div>
+
+            <div class="drop-zone" data-match="find out">
+              <p class="meaning-text">to learn or discover</p>
+            </div>
+
+            <div class="drop-zone" data-match="friendship">
+              <p class="meaning-text">being friends with someone</p>
+            </div>
+
+            <div class="drop-zone" data-match="sail">
+              <p class="meaning-text">to travel on water</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="check-btn" class="action-btn" type="button">Check Answers</button>
+          <button id="reset-btn" class="action-btn secondary" type="button">Reset</button>
+        </div>
+
+        <p id="feedback" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 3</p>
+          <h2>Listen To The Song</h2>
+          <p class="section-note">
+            Listen to the song before moving on to the next activity.
+          </p>
+        </div>
+
+        <div class="video-frame spotify-frame">
+          <iframe
+            src="https://open.spotify.com/embed/track/2FGSEdBi3a8Q3hzpuZ8VKT?utm_source=generator"
+            title="Count on Me on Spotify"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 4</p>
+          <h2>First Stanza</h2>
+          <p class="section-note">
+            Drag each icon into the correct space while you listen.
+          </p>
+        </div>
+
+        <div class="icon-bank" id="icon-bank" aria-label="Icon bank">
+          <button class="icon-card" draggable="true" data-word="sea" type="button" aria-label="sea">
+            <span class="icon-symbol">&#127754;</span>
+          </button>
+          <button class="icon-card" draggable="true" data-word="world" type="button" aria-label="world">
+            <span class="icon-symbol">&#127757;</span>
+          </button>
+          <button class="icon-card" draggable="true" data-word="dark" type="button" aria-label="dark">
+            <span class="icon-symbol dark-icon">&#127769;</span>
+          </button>
+          <button class="icon-card" draggable="true" data-word="light" type="button" aria-label="light">
+            <span class="icon-symbol">&#128161;</span>
+          </button>
+        </div>
+
+        <div class="lyrics-card" aria-label="First stanza lyrics">
+          <p class="lyric-line">
+            If you ever find yourself stuck in the middle of the
+            <span class="inline-drop-zone" data-match="sea"></span>
+          </p>
+          <p class="lyric-line">
+            I'll sail the
+            <span class="inline-drop-zone" data-match="world"></span>
+            to find you
+          </p>
+          <p class="lyric-line">
+            If you ever find yourself lost in the
+            <span class="inline-drop-zone" data-match="dark"></span>
+            and you can't see
+          </p>
+          <p class="lyric-line">
+            I'll be the
+            <span class="inline-drop-zone" data-match="light"></span>
+            to guide you
+          </p>
+        </div>
+
+        <div class="actions">
+          <button id="reset-stanza-btn" class="action-btn secondary" type="button">Reset Stanza</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 5</p>
+          <h2>Pre-Chorus And Chorus</h2>
+          <p class="section-note">
+            Drag the correct words into the lyrics while you listen. Some extra
+            words are there to make it more challenging.
+          </p>
+        </div>
+
+        <div class="lyric-word-bank" id="lyric-word-bank" aria-label="Pre-chorus and chorus word bank">
+          <button class="lyric-word-card" draggable="true" data-word="hour" type="button">hour</button>
+          <button class="lyric-word-card" draggable="true" data-word="friends" type="button">friends</button>
+          <button class="lyric-word-card" draggable="true" data-word="1,2,3,4" type="button">1,2,3,4</button>
+          <button class="lyric-word-card" draggable="true" data-word="our" type="button">our</button>
+          <button class="lyric-word-card" draggable="true" data-word="no" type="button">no</button>
+          <button class="lyric-word-card" draggable="true" data-word="4,3,2" type="button">4,3,2</button>
+          <button class="lyric-word-card" draggable="true" data-word="where" type="button">where</button>
+          <button class="lyric-word-card" draggable="true" data-word="we're" type="button">we're</button>
+          <button class="lyric-word-card" draggable="true" data-word="know" type="button">know</button>
+          <button class="lyric-word-card" draggable="true" data-word="1,2,3" type="button">1,2,3</button>
+        </div>
+
+        <div class="lyrics-card" aria-label="Pre-chorus and chorus lyrics">
+          <p class="lyric-line">
+            We find out what
+            <span class="word-drop-zone" data-match="we're"></span>
+            made of
+          </p>
+          <p class="lyric-line">
+            When we are called to help
+            <span class="word-drop-zone" data-match="our"></span>
+            friends in need
+          </p>
+          <p class="lyric-line">
+            You can count on me like
+            <span class="word-drop-zone" data-match="1,2,3"></span>
+            , I'll be there
+          </p>
+          <p class="lyric-line">
+            And I
+            <span class="word-drop-zone" data-match="know"></span>
+            when I need it
+          </p>
+          <p class="lyric-line">
+            I can count on you like
+            <span class="word-drop-zone" data-match="4,3,2"></span>
+            and you'll be there
+          </p>
+          <p class="lyric-line">
+            'Cause that's what
+            <span class="word-drop-zone" data-match="friends"></span>
+            are supposed to do, oh, yeah
+          </p>
+        </div>
+
+        <div class="actions">
+          <button id="reset-chorus-btn" class="action-btn secondary" type="button">Reset Section</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Step 6</p>
+          <h2>Next Stanza</h2>
+          <p class="section-note">
+            Listen carefully and click the correct option in each line.
+          </p>
+        </div>
+
+        <div class="lyrics-card choice-lyrics" aria-label="Multiple choice stanza">
+          <p class="lyric-line">
+            If you're tossing and you're turning and you just
+            <span class="choice-slot" data-answer="can't" data-options='["cannot","can&apos;t"]'></span>
+            fall asleep
+          </p>
+          <p class="lyric-line">
+            I'll
+            <span class="choice-slot" data-answer="sing" data-options='["sang","sing"]'></span>
+            a song beside you
+          </p>
+          <p class="lyric-line">
+            And if you ever
+            <span class="choice-slot" data-answer="forget" data-options='["get","forget"]'></span>
+            how much you really mean to me
+          </p>
+          <p class="lyric-line">
+            Every day, I will
+            <span class="choice-slot" data-answer="remind" data-options='["remember","remind"]'></span>
+            you, oh
+          </p>
+        </div>
+
+        <div class="actions">
+          <button id="reset-choice-btn" class="action-btn secondary" type="button">Reset Section</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Final Step</p>
+          <h2>Check All Answers</h2>
+          <p class="section-note">
+            When students finish the whole song, click below to check every
+            activity at once.
+          </p>
+        </div>
+
+        <div class="actions">
+          <button id="check-all-btn" class="action-btn" type="button">Check All Answers</button>
+        </div>
+
+        <p id="final-feedback" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <p class="section-kicker">Wrap-Up</p>
+          <h2>Talk About The Song</h2>
+          <p class="section-note">
+            Use these questions to finish the lesson with speaking practice.
+          </p>
+        </div>
+
+        <div class="questions">
+          <article class="question-box">
+            <span class="question-number">1</span>
+            <p>What makes someone a really good friend?</p>
+          </article>
+
+          <article class="question-box">
+            <span class="question-number">2</span>
+            <p>Who is an important person in your life? Why?</p>
+          </article>
+
+          <article class="question-box">
+            <span class="question-number">3</span>
+            <p>Is friendship more about helping, listening, or spending time together? Why?</p>
+          </article>
+
+          <article class="question-box">
+            <span class="question-number">4</span>
+            <p>Have you ever helped a friend, or has a friend helped you?</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
