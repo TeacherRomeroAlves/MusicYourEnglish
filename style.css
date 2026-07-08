@@ -184,6 +184,15 @@ h2 {
   box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.14);
 }
 
+.song-card-art--monsters {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(252, 90, 90, 0.36), transparent 16%),
+    radial-gradient(circle at 82% 24%, rgba(122, 96, 255, 0.34), transparent 18%),
+    radial-gradient(circle at 50% 72%, rgba(255, 255, 255, 0.1), transparent 14%),
+    linear-gradient(135deg, #120c1e 0%, #201337 42%, #3d1635 72%, #6f1e28 100%);
+  box-shadow: inset 0 0 46px rgba(255, 255, 255, 0.08);
+}
+
 .song-link-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 18px 32px rgba(0, 0, 0, 0.28);
@@ -561,6 +570,10 @@ h2 {
   margin-bottom: 0;
 }
 
+.lyric-divider-space {
+  min-height: 6px;
+}
+
 .choice-lyrics .lyric-line {
   display: flex;
   flex-wrap: wrap;
@@ -701,6 +714,26 @@ h2 {
   line-height: 1.6;
 }
 
+.pronoun-chart {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.pronoun-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(30, 215, 96, 0.12);
+  color: #b7f8cd;
+  font-weight: 700;
+}
+
 .report-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.95fr);
@@ -755,6 +788,10 @@ h2 {
 .report-card h3 {
   font-size: 1.5rem;
   margin-bottom: 12px;
+}
+
+.report-export {
+  display: none;
 }
 
 .report-meta + .report-meta {
@@ -842,6 +879,10 @@ h2 {
   body.print-report-mode .section-note,
   body.print-report-mode .actions {
     display: none !important;
+  }
+
+  body.print-report-mode .report-export {
+    display: block !important;
   }
 
   body.print-report-mode .report-grid {
