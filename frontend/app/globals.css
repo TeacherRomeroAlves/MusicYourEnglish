@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@import "../styles/variables.css";
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-outfit);
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(30, 215, 96, 0.16), transparent 24%),
+        radial-gradient(circle at 85% 12%, rgba(255, 210, 92, 0.16), transparent 18%),
+        radial-gradient(circle at bottom right, rgba(15, 96, 54, 0.22), transparent 26%),
+        linear-gradient(145deg, #07110d 0%, #081712 45%, #0c1f18 100%);
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--font-space-grotesk);
+  font-weight: 700;
+}
+
+h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    letter-spacing: -0.03em;
+}

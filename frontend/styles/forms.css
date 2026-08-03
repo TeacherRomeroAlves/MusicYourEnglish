@@ -1,0 +1,61 @@
+.lyric-input {
+    width: 3.2rem;
+    min-height: 2.8rem;
+    padding: 6px 8px;
+    border-radius: 14px;
+    border: 2px dashed rgba(30, 215, 96, 0.35);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    text-transform: lowercase;
+}
+  
+.lyric-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(30, 215, 96, 0.14);
+}
+
+.word-count {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.report-form {
+    display: grid;
+    gap: 10px;
+}
+  
+.field-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+}
+  
+.field-input, .writing-box {
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    font: inherit;
+    padding: 14px 16px;
+}
+  
+.field-input:focus, .writing-box:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(30, 215, 96, 0.14);
+}
+  
+.writing-box {
+    resize: vertical;
+    min-height: 210px;
+}
+  
+.word-count {
+    color: var(--muted);
+    font-size: 0.95rem;
+}

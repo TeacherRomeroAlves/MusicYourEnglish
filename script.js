@@ -1,6 +1,6 @@
 const wordBank = document.getElementById("word-bank");
 const dropZones = document.querySelectorAll(".drop-zone");
-const checkBtn = document.getElementById("check-btn");
+const checkBtn = document.getElementById("check-btn");  
 const resetBtn = document.getElementById("reset-btn");
 const feedback = document.getElementById("feedback");
 const iconBank = document.getElementById("icon-bank");
