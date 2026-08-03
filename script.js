@@ -18,6 +18,7 @@ const orderDropZones = document.querySelectorAll(".order-drop-zone");
 const resetOrderBtn = document.getElementById("reset-order-btn");
 const lyricInputs = document.querySelectorAll(".lyric-input");
 const resetInputsBtn = document.getElementById("reset-inputs-btn");
+const resetStanzaTypingBtn = document.getElementById("reset-stanza-typing-btn");
 const studentNameInput = document.getElementById("student-name");
 const studentClassInput = document.getElementById("student-class");
 const studentWritingInput = document.getElementById("student-writing");
@@ -32,6 +33,7 @@ const reportPrompt = document.getElementById("report-prompt");
 const reportWriting = document.getElementById("report-writing");
 const saveReportBtn = document.getElementById("save-report-btn");
 const shareReportBtn = document.getElementById("share-report-btn");
+let reportExportCard = document.querySelector(".report-export");
 
 let draggedCard = null;
 let draggedIcon = null;
@@ -464,7 +466,20 @@ if (resetOrderBtn) {
 
 lyricInputs.forEach((input) => {
   input.addEventListener("input", () => {
-    input.value = input.value.slice(0, 2);
+    const maxLength = Number(input.getAttribute("maxlength")) || 2;
+    input.value = input.value.slice(0, maxLength);
+
+    const syncKey = input.dataset.syncKey;
+
+    if (syncKey) {
+      document
+        .querySelectorAll(`.lyric-input[data-sync-key="${syncKey}"]`)
+        .forEach((linkedInput) => {
+          if (linkedInput !== input) {
+            linkedInput.value = input.value;
+          }
+        });
+    }
   });
 });
 
@@ -472,6 +487,16 @@ if (resetInputsBtn) {
   resetInputsBtn.addEventListener("click", () => {
     lyricInputs.forEach((input) => {
       input.value = "";
+    });
+  });
+}
+
+if (resetStanzaTypingBtn) {
+  resetStanzaTypingBtn.addEventListener("click", () => {
+    lyricInputs.forEach((input) => {
+      if (input.classList.contains("sync-input")) {
+        input.value = "";
+      }
     });
   });
 }
@@ -617,12 +642,8 @@ function getWordCount(text) {
   return trimmed.split(/\s+/).length;
 }
 
-function updateReport() {
-  if (!reportSection) {
-    return;
-  }
-
-  const songTitle = reportSection.dataset.songTitle || "Song lesson";
+function getReportData() {
+  const songTitle = reportSection?.dataset.songTitle || "Song lesson";
   const studentName = studentNameInput?.value.trim() || "Not added yet";
   const studentClass = studentClassInput?.value.trim() || "Not added yet";
   const writing = studentWritingInput?.value.trim() || "No answer yet.";
@@ -630,6 +651,58 @@ function updateReport() {
   const wordCount = getWordCount(studentWritingInput?.value || "");
   const dateText = new Date().toLocaleDateString();
   const results = collectSongResults();
+  const scoreText =
+    results.total > 0 && results.placed === results.total
+      ? `${results.correct} / ${results.total}`
+      : "Not checked yet";
+
+  return {
+    songTitle,
+    studentName,
+    studentClass,
+    writing,
+    prompt,
+    wordCount,
+    dateText,
+    scoreText,
+  };
+}
+
+function ensureReportExportCard() {
+  if (!reportSection) {
+    return null;
+  }
+
+  // If the page already has a visible report card, use that and skip
+  // creating a second hidden copy for printing.
+  if (document.getElementById("student-report")) {
+    return null;
+  }
+
+  if (!reportExportCard) {
+    reportExportCard = document.createElement("article");
+    reportExportCard.className = "report-card report-export";
+    reportSection.appendChild(reportExportCard);
+  }
+
+  return reportExportCard;
+}
+
+function updateReport() {
+  if (!reportSection) {
+    return;
+  }
+
+  const {
+    songTitle,
+    studentName,
+    studentClass,
+    writing,
+    prompt,
+    wordCount,
+    dateText,
+    scoreText,
+  } = getReportData();
 
   if (reportSongTitle) {
     reportSongTitle.textContent = songTitle;
@@ -660,10 +733,26 @@ function updateReport() {
   }
 
   if (reportScore) {
-    reportScore.textContent =
-      results.total > 0 && results.placed === results.total
-        ? `${results.correct} / ${results.total}`
-        : "Not checked yet";
+    reportScore.textContent = scoreText;
+  }
+
+  const exportCard = ensureReportExportCard();
+
+  if (exportCard) {
+    exportCard.innerHTML = `
+      <p class="report-kicker">Student Report</p>
+      <h3>${songTitle}</h3>
+      <p class="report-meta"><strong>Name:</strong> ${studentName}</p>
+      <p class="report-meta"><strong>Class:</strong> ${studentClass}</p>
+      <p class="report-meta"><strong>Date:</strong> ${dateText}</p>
+      <p class="report-meta"><strong>Song score:</strong> ${scoreText}</p>
+      <p class="report-meta"><strong>Word count:</strong> ${wordCount}</p>
+      <div class="report-divider"></div>
+      <p class="report-meta"><strong>Homework prompt:</strong></p>
+      <p class="report-text">${prompt}</p>
+      <p class="report-meta"><strong>Student answer:</strong></p>
+      <p class="report-text">${writing}</p>
+    `;
   }
 }
 
@@ -712,21 +801,24 @@ if (saveReportBtn) {
 if (shareReportBtn) {
   shareReportBtn.addEventListener("click", async () => {
     updateReport();
+    const reportData = getReportData();
 
     const shareText = [
       `Music Your English`,
-      `Song: ${reportSongTitle?.textContent || ""}`,
-      `Student: ${reportStudentName?.textContent || ""}`,
-      `Class: ${reportStudentClass?.textContent || ""}`,
-      `Score: ${reportScore?.textContent || ""}`,
-      `Prompt: ${reportPrompt?.textContent || ""}`,
-      `Answer: ${reportWriting?.textContent || ""}`,
+      `Song: ${reportData.songTitle}`,
+      `Student: ${reportData.studentName}`,
+      `Class: ${reportData.studentClass}`,
+      `Date: ${reportData.dateText}`,
+      `Score: ${reportData.scoreText}`,
+      `Word count: ${reportData.wordCount}`,
+      `Prompt: ${reportData.prompt}`,
+      `Answer: ${reportData.writing}`,
     ].join("\n");
 
     if (navigator.share) {
       try {
         await navigator.share({
-          title: reportSongTitle?.textContent || "Music Your English",
+          title: reportData.songTitle || "Music Your English",
           text: shareText,
         });
         return;
