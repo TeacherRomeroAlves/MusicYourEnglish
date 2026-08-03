@@ -25,13 +25,17 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
 
             <div className="lyrics-card" aria-label={title}>
                 {lyrics.map((line, index) => (
-                <p key={index} className="lyric-line">
-                    {line.before}
-                    {line.match && 
-                        <InlineDropZone match={line.match}/>
-                    }
-                    {line.after}
-                </p>
+                    <p key={index} className="lyric-line">
+                    {line.parts.map((part, i) => (
+                        <span key={i}>
+                        {part.before}
+                        {part.match && (
+                            <InlineDropZone match={part.match} />
+                        )}
+                        {part.after}
+                        </span>
+                    ))}
+                    </p>
                 ))}
             </div>
 

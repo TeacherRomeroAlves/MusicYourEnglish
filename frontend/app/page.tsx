@@ -65,6 +65,23 @@ export default function Home() {
 
             <span className="song-link-label">Open lesson</span>
           </a>
+          
+          <a className="song-link-card" href="/songs/monsters">
+            <div
+              className="song-card-art song-card-art--monsters"
+              aria-hidden="true"
+            />
+
+            <p className="song-tag">All Time Low</p>
+
+            <h3>Monsters</h3>
+
+            <p className="song-description">
+              Feelings, fear, and the struggles we keep inside.
+            </p>
+
+            <span className="song-link-label">Open lesson</span>
+          </a>
 
           <article
             className="song-link-card song-link-card--placeholder"

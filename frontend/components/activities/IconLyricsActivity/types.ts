@@ -5,10 +5,14 @@ export interface IconItem {
     dark?: boolean;
 }
   
-export interface LyricLine {
+export interface LyricPart {
     before: string;
-    match: string;
-    after?: string;
+    match?: string;
+    after: string;
+}
+
+export interface LyricLine {
+    parts: LyricPart[];
 }
 
 export interface IconLyricsActivityProps {

@@ -64,46 +64,78 @@ export const goldenFirstStanza = {
     ],
 
     lyrics: [
-        {
-            before: "I was a",
-            match: "ghost",
-            after: ", I was alone"
-        },
-        {
-            before: "어두워진 앞길 속에 ha-ah-ah",
-            match: "",
-            after: ""
-        },
-        {
-            before: "Given the throne, I didn't know how to believe",
-            match: "",
-            after: ""
-        },
-        {
-            before: "I was the",
-            match: "queen",
-            after: "that I'm meant to be"
-        },
-        {
-            before: "I lived two lives, tried to play both sides",
-            match: "",
-            after: ""
-        },
-        {
-            before: "But I couldn't find my own",
-            match: "place",
-            after: ""
-        },
-        {
-            before: "Called a problem",
-            match: "child",
-            after: "'cause I got too wild"
-        },
-        {
-            before: "But now that's how I'm getting paid 끝없이 on stage",
-            match: "",
-            after: ""
-        }
+      {
+        parts: [
+          {
+              before: "I was a",
+              match: "ghost",
+              after: ", I was alone"
+          },
+        ]
+      },
+      {
+        parts: [
+          {
+              before: "어두워진 앞길 속에 ha-ah-ah",
+              match: "",
+              after: ""
+          },
+        ]
+      },
+      {
+        parts: [
+          {
+              before: "Given the throne, I didn't know how to believe",
+              match: "",
+              after: ""
+          },
+        ]
+      },
+      {
+        parts: [
+          {
+              before: "I was the",
+              match: "queen",
+              after: "that I'm meant to be"
+          },
+        ]
+      },
+      {
+        parts: [
+          {
+              before: "I lived two lives, tried to play both sides",
+              match: "",
+              after: ""
+          },
+        ]
+      },
+      {
+        parts: [
+          {
+              before: "But I couldn't find my own",
+              match: "place",
+              after: ""
+          },
+        ]
+      },
+      {
+        parts: [
+          {
+              before: "Called a problem",
+              match: "child",
+              after: "'cause I got too wild"
+          },
+        ]
+      },
+      {
+        parts: [
+          {
+              before: "But now that's how I'm getting paid 끝없이 on stage",
+              match: "",
+              after: ""
+          }
+        ]
+      },
     ]
 }
 

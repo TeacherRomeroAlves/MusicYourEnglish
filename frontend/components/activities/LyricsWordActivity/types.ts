@@ -1,18 +1,22 @@
-export interface LyricWord {
-    word: string;
-}
-
-export interface LyricLine {
+export interface LyricWordPart {
     before: string;
-    answer: string;
+    answer?: string;
     after: string;
 }
 
+export interface LyricWordLine {
+    parts: LyricWordPart[];
+    dividerAfter?: boolean;
+}
+  
 export interface LyricsWordActivityProps {
     step: string;
     title: string;
     description?: string;
 
-    words: LyricWord[];
-    lyrics: LyricLine[];
+    words: {
+    word: string;
+    }[];
+
+    lyrics: LyricWordLine[];
 }

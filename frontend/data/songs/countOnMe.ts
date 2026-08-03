@@ -61,24 +61,40 @@ export const countOnMeFirstStanza = {
 
     lyrics: [
         {
-            before: "If you ever find yourself stuck in the middle of the",
-            match: "sea",
-            after: "",
+          parts: [
+            {
+                before: "If you ever find yourself stuck in the middle of the",
+                match: "sea",
+                after: "",
+            },
+          ]
         },
         {
-            before: "I'll sail the",
-            match: "world",
-            after: "to find you",
+          parts: [
+            {
+                before: "I'll sail the",
+                match: "world",
+                after: "to find you",
+            },
+          ]
         },
         {
-            before: "If you ever find yourself lost in the",
-            match: "dark",
-            after: "and you can't see",
+          parts: [
+            {
+                before: "If you ever find yourself lost in the",
+                match: "dark",
+                after: "and you can't see",
+            },
+          ]
         },
         {
-            before: "I'll be the",
-            match: "light",
-            after: "to guide you",
+          parts: [
+            {
+                before: "I'll be the",
+                match: "light",
+                after: "to guide you",
+            },
+          ]
         },
     ],
 };
@@ -99,34 +115,58 @@ export const countOnMeChorus = {
   
     lyrics: [
       {
-        before: "We find out what",
-        answer: "we're",
-        after: "made of",
+        parts: [
+          {
+            before: "We find out what ",
+            answer: "we're",
+            after: " made of",
+          },
+        ],
       },
       {
-        before: "When we are called to help",
-        answer: "our",
-        after: "friends in need",
+        parts: [
+          {
+            before: "When we are called to help ",
+            answer: "our",
+            after: " friends in need",
+          },
+        ],
       },
       {
-        before: "You can count on me like",
-        answer: "1,2,3",
-        after: ", I'll be there",
+        parts: [
+          {
+            before: "You can count on me like ",
+            answer: "1,2,3",
+            after: ", I'll be there",
+          },
+        ],
       },
       {
-        before: "And I",
-        answer: "know",
-        after: "when I need it",
+        parts: [
+          {
+            before: "And I ",
+            answer: "know",
+            after: " when I need it",
+          },
+        ],
       },
       {
-        before: "I can count on you like",
-        answer: "4,3,2",
-        after: "and you'll be there",
+        parts: [
+          {
+            before: "I can count on you like ",
+            answer: "4,3,2",
+            after: " and you'll be there",
+          },
+        ],
       },
       {
-        before: "'Cause that's what",
-        answer: "friends",
-        after: "are supposed to do, oh, yeah",
+        parts: [
+          {
+            before: "'Cause that's what ",
+            answer: "friends",
+            after: " are supposed to do, oh, yeah",
+          },
+        ],
       },
     ],
 };

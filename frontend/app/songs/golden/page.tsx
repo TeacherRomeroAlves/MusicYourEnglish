@@ -8,7 +8,6 @@ import ChoiceLyricsActivity from "@/components/activities/ChoiceLyricsActivity/C
 import OrderLyricsActivity from "@/components/activities/OrderLyricsActivity/OrderLyricsActivity";
 import TypingLyricsActivity from "@/components/activities/TypingLyricsActivity/TypingLyricsActivity";
 import CheckAllActivity from "@/components/activities/CheckAllActivity/CheckAllActivity";
-import LyricsWordActivity from "@/components/activities/LyricsWordActivity/LyricsWordActivity";
 import HomeworkActivity from "@/components/activities/Homework/HomeworkActivity";
 import { golden, goldenFirstStanza, goldenChorus, goldenOrder, goldenFinalStanza } from "@/data/songs/golden";
 import "../../../styles/layout.css";

@@ -178,7 +178,6 @@
     font-weight: 700;
 }
 
-
 .feedback {
     min-height: 28px;
     font-weight: 600;
@@ -241,8 +240,8 @@
     line-height: 1.8;
 }
 
-.no-break {
-    white-space: nowrap;
+.lyric-divider-space {
+    min-height: 6px;
 }
 
 .lyric-line:last-child {
@@ -321,3 +320,22 @@
     line-height: 1.6;
 }
 
+.pronoun-chart {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.pronoun-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 52px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(30, 215, 96, 0.12);
+    color: #b7f8cd;
+    font-weight: 700;
+}

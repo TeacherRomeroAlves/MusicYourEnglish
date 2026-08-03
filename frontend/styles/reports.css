@@ -61,7 +61,11 @@
     body.print-report-mode .actions {
       display: none !important;
     }
-  
+    
+    body.print-report-mode .report-export {
+      display: block !important;
+    }
+
     body.print-report-mode .report-grid {
       grid-template-columns: 1fr;
     }

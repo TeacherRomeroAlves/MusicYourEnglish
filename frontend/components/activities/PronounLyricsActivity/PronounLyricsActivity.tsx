@@ -1,9 +1,9 @@
-import LyricWordCard from "./LyricWordCard";
-import WordDropZone from "./WordDropZone";
-import { Fragment } from "react/jsx-runtime";
-import type { LyricsWordActivityProps } from "./types";
+import PronounChart from "./PronounChart";
+import LyricInput from "./LyricInput";
+import { Fragment } from "react";
+import type { PronounLyricsActivityProps } from "./types";
 
-export default function LyricsWordActivity({ step, title, description, words, lyrics, }: LyricsWordActivityProps) {
+export default function PronounLyricsActivity({ step, title, description, pronouns, lyrics, }: PronounLyricsActivityProps) {
   return (
     <section className="card">
       <div className="section-heading">
@@ -18,17 +18,7 @@ export default function LyricsWordActivity({ step, title, description, words, ly
         )}
       </div>
 
-      <div
-        className="lyric-word-bank"
-        aria-label={title}
-      >
-        {words.map((item) => (
-          <LyricWordCard
-            key={item.word}
-            word={item.word}
-          />
-        ))}
-      </div>
+      <PronounChart pronouns={pronouns} />
 
       <div className="lyrics-card" aria-label={title}>
         {lyrics.map((line, index) => (
@@ -39,7 +29,11 @@ export default function LyricsWordActivity({ step, title, description, words, ly
                   {part.before}
 
                   {part.answer && (
-                    <WordDropZone match={part.answer} />
+                    <LyricInput
+                      answer={part.answer}
+                      maxLength={part.maxLength}
+                      syncKey={part.syncKey}
+                    />
                   )}
 
                   {part.after}

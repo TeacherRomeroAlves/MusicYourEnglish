@@ -27,6 +27,10 @@
     display: grid;
     gap: 10px;
 }
+
+.report-export {
+    display: none;
+}
   
 .field-label {
     font-size: 0.95rem;
