@@ -1,5 +1,8 @@
+"use client";
+
 import HomeworkForm from "./HomeworkForm";
 import ReportCard from "./ReportCard";
+import { useHomework } from "@/hooks/useHomework";
 
 interface HomeworkActivityProps {
   step: string;
@@ -10,6 +13,7 @@ interface HomeworkActivityProps {
 }
 
 export default function HomeworkActivity({ step, title, description, prompt, songTitle, }: HomeworkActivityProps) {
+  const homework = useHomework(songTitle, prompt);
   return (
     <section className="card report-section">
       <div className="section-heading">
@@ -35,11 +39,25 @@ export default function HomeworkActivity({ step, title, description, prompt, son
       </div>
 
       <div className="report-grid">
-        <HomeworkForm prompt={prompt} />
+        <HomeworkForm
+          prompt={prompt}
+          studentName={homework.studentName}
+          studentClass={homework.studentClass}
+          writing={homework.writing}
+          wordCount={homework.wordCount}
+          onFieldChange={homework.updateField}
+          onSavePdf={homework.handleSavePdf}
+          onShare={homework.handleShare}
+        />
 
         <ReportCard
           songTitle={songTitle}
           prompt={prompt}
+          studentName={homework.studentName}
+          studentClass={homework.studentClass}
+          writing={homework.writing}
+          date={homework.date}
+          score={homework.score}
         />
       </div>
     </section>

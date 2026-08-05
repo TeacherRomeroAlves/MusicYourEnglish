@@ -1,7 +1,20 @@
+"use client";
+
 import ChoiceSlot from "./ChoiceSlot";
 import type { ChoiceLyricsActivityProps } from "./types";
+import { useChoiceLyrics } from "@/hooks/useChoiceLyrics";
+import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 
 export default function ChoiceLyricsActivity({ step, title, description, lyrics, }: ChoiceLyricsActivityProps) {
+  const { optionsBySlot, selections, handleSelect, handleReset } = useChoiceLyrics(lyrics);
+  const answers = lyrics.flatMap((line, lineIndex) =>
+    line.items.map((item, itemIndex) => ({ slotId: `${lineIndex}-${itemIndex}`, answer: item.answer })),
+  );
+  useRegisterActivityResult(`${step}:${title}`, {
+    correct: answers.filter(({ slotId, answer }) => selections[slotId] === answer).length,
+    answered: answers.filter(({ slotId }) => Boolean(selections[slotId])).length,
+    total: answers.length,
+  });
   return (
     <section className="card">
       <div className="section-heading">
@@ -19,13 +32,18 @@ export default function ChoiceLyricsActivity({ step, title, description, lyrics,
       <div className="lyrics-card choice-lyrics">
         {lyrics.map((line, index) => (
           <p key={index} className="lyric-line">
-            {line.items.map((item, itemIndex) => (
-              <span key={itemIndex}>
+            {line.items.map((item, itemIndex) => {
+              const slotId = `${index}-${itemIndex}`;
+              return <span key={slotId}>
                 {item.before}{" "}
-                <ChoiceSlot options={item.options} />{" "}
+                <ChoiceSlot
+                  options={optionsBySlot[slotId] ?? item.options}
+                  selectedOption={selections[slotId]}
+                  onSelect={(option) => handleSelect(slotId, option)}
+                />{" "}
                 {item.after}{" "}
-              </span>
-            ))}
+              </span>;
+            })}
           </p>
         ))}
       </div>
@@ -34,6 +52,7 @@ export default function ChoiceLyricsActivity({ step, title, description, lyrics,
         <button
           className="action-btn secondary"
           type="button"
+          onClick={handleReset}
         >
           Reset Section
         </button>

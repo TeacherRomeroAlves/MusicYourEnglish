@@ -1,8 +1,38 @@
+"use client";
+
+import { useIconLyrics } from "@/hooks/useIconLyrics";
+import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 import IconCard from "./IconCard";
 import InlineDropZone from "./InlineDropZone";
-import { IconItem, LyricLine, IconLyricsActivityProps } from "./types";
+import type { IconLyricsActivityProps } from "./types";
 
 export default function IconLyricsActivity({ step, title, description, icons, lyrics }: IconLyricsActivityProps) {
+    const {
+      bankIcons,
+      draggedIconId,
+      activeSlotId,
+      placements,
+      buildSlotId,
+      getPlacedIcon,
+      handleDragStart,
+      handleDragEnd,
+      handleSlotDragOver,
+      handleSlotDragLeave,
+      handleDropOnSlot,
+      handleDropOnBank,
+      handleReset,
+  } = useIconLyrics(icons, lyrics);
+  const expectedSlots = lyrics.flatMap((line, lineIndex) =>
+    line.parts.flatMap((part, partIndex) =>
+      part.match ? [{ slotId: buildSlotId(lineIndex, partIndex), answer: part.match }] : [],
+    ),
+  );
+  useRegisterActivityResult(`${step}:${title}`, {
+    correct: expectedSlots.filter(({ slotId, answer }) => placements[slotId] === answer).length,
+    answered: expectedSlots.filter(({ slotId }) => Boolean(placements[slotId])).length,
+    total: expectedSlots.length,
+  });
+
     return (
         <section className="card">
             <div className="section-heading">
@@ -17,9 +47,25 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
                 )}
             </div>
 
-            <div className="icon-bank" aria-label="Icon bank">
-                {icons.map((icon) => (
-                <IconCard key={icon.id} icon={icon}/>
+            <div
+              className="icon-bank"
+              aria-label="Icon bank"
+              onDragOver={(event) => {
+                event.preventDefault();
+              }}
+              onDrop={(event) => {
+                event.preventDefault();
+                handleDropOnBank();
+              }}
+            >
+                {bankIcons.map((icon) => (
+                <IconCard
+                  key={icon.id}
+                  icon={icon}
+                  isDragging={draggedIconId === icon.id}
+                  onDragStart={handleDragStart}
+                  onDragEnd={handleDragEnd}
+                />
                 ))}
             </div>
 
@@ -30,7 +76,18 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
                         <span key={i}>
                         {part.before}
                         {part.match && (
-                            <InlineDropZone match={part.match} />
+                            <InlineDropZone
+                              slotId={buildSlotId(index, i)}
+                              match={part.match}
+                              placedIcon={getPlacedIcon(buildSlotId(index, i))}
+                              isDragOver={activeSlotId === buildSlotId(index, i)}
+                              isDraggingIcon={(iconId) => draggedIconId === iconId}
+                              onDragStart={handleDragStart}
+                              onDragEnd={handleDragEnd}
+                              onDragOver={() => handleSlotDragOver(buildSlotId(index, i))}
+                              onDragLeave={() => handleSlotDragLeave(buildSlotId(index, i))}
+                              onDrop={() => handleDropOnSlot(buildSlotId(index, i))}
+                            />
                         )}
                         {part.after}
                         </span>
@@ -40,7 +97,7 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
             </div>
 
             <div className="actions">
-                <button className="action-btn secondary" type="button">
+                <button className="action-btn secondary" type="button" onClick={handleReset}>
                 Reset Stanza
                 </button>
             </div>

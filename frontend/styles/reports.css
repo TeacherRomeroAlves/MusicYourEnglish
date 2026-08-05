@@ -40,40 +40,39 @@
 }
 
 @media print {
-    body.print-report-mode {
+    body {
       background: white;
       color: #111111;
     }
   
-    body.print-report-mode main > *:not(.report-section) {
+    body main > *:not(.report-section) {
       display: none !important;
     }
   
-    body.print-report-mode .report-section,
-    body.print-report-mode .report-section * {
+    body .report-section,
+    body .report-section * {
       color: #111111 !important;
       background: white !important;
       box-shadow: none !important;
     }
   
-    body.print-report-mode .report-form,
-    body.print-report-mode .section-note,
-    body.print-report-mode .actions {
+    body .report-form,
+    body .section-note,
+    body .actions {
       display: none !important;
     }
     
-    body.print-report-mode .report-export {
+    body .report-export {
       display: block !important;
     }
 
-    body.print-report-mode .report-grid {
+    body .report-grid {
       grid-template-columns: 1fr;
     }
   
-    body.print-report-mode .report-card,
-    body.print-report-mode .prompt-box,
-    body.print-report-mode .report-section {
+    body .report-card,
+    body .prompt-box,
+    body .report-section {
       border: 1px solid #cccccc !important;
     }
 }
-  

@@ -1,9 +1,39 @@
+"use client";
+
+import { useLyricsWord } from "@/hooks/useLyricsWord";
+import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 import LyricWordCard from "./LyricWordCard";
 import WordDropZone from "./WordDropZone";
 import { Fragment } from "react/jsx-runtime";
 import type { LyricsWordActivityProps } from "./types";
 
 export default function LyricsWordActivity({ step, title, description, words, lyrics, }: LyricsWordActivityProps) {
+  const {
+    bankWords,
+    draggedWord,
+    activeSlotId,
+    placements,
+    buildSlotId,
+    getPlacedWord,
+    handleDragStart,
+    handleDragEnd,
+    handleSlotDragOver,
+    handleSlotDragLeave,
+    handleDropOnSlot,
+    handleDropOnBank,
+    handleReset,
+  } = useLyricsWord(words, lyrics);
+  const expectedSlots = lyrics.flatMap((line, lineIndex) =>
+    line.parts.flatMap((part, partIndex) =>
+      part.answer ? [{ slotId: buildSlotId(lineIndex, partIndex), answer: part.answer }] : [],
+    ),
+  );
+  useRegisterActivityResult(`${step}:${title}`, {
+    correct: expectedSlots.filter(({ slotId, answer }) => placements[slotId] === answer).length,
+    answered: expectedSlots.filter(({ slotId }) => Boolean(placements[slotId])).length,
+    total: expectedSlots.length,
+  });
+
   return (
     <section className="card">
       <div className="section-heading">
@@ -21,11 +51,21 @@ export default function LyricsWordActivity({ step, title, description, words, ly
       <div
         className="lyric-word-bank"
         aria-label={title}
+        onDragOver={(event) => {
+          event.preventDefault();
+        }}
+        onDrop={(event) => {
+          event.preventDefault();
+          handleDropOnBank();
+        }}
       >
-        {words.map((item) => (
+        {bankWords.map((word) => (
           <LyricWordCard
-            key={item.word}
-            word={item.word}
+            key={word}
+            word={word}
+            isDragging={draggedWord === word}
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
           />
         ))}
       </div>
@@ -39,7 +79,18 @@ export default function LyricsWordActivity({ step, title, description, words, ly
                   {part.before}
 
                   {part.answer && (
-                    <WordDropZone match={part.answer} />
+                    <WordDropZone
+                      slotId={buildSlotId(index, i)}
+                      match={part.answer}
+                      placedWord={getPlacedWord(buildSlotId(index, i))}
+                      isDragOver={activeSlotId === buildSlotId(index, i)}
+                      isDraggingWord={(word) => draggedWord === word}
+                      onDragStart={handleDragStart}
+                      onDragEnd={handleDragEnd}
+                      onDragOver={() => handleSlotDragOver(buildSlotId(index, i))}
+                      onDragLeave={() => handleSlotDragLeave(buildSlotId(index, i))}
+                      onDrop={() => handleDropOnSlot(buildSlotId(index, i))}
+                    />
                   )}
 
                   {part.after}
@@ -58,6 +109,7 @@ export default function LyricsWordActivity({ step, title, description, words, ly
         <button
           className="action-btn secondary"
           type="button"
+          onClick={handleReset}
         >
           Reset Section
         </button>

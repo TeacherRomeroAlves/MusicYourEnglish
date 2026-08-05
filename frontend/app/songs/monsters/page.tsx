@@ -108,7 +108,7 @@ export default function monsterPage() {
                 title="Writing And Student Report"
                 description="Write your homework answer, then save or share your report."
                 prompt="Write about a time when your feelings were very strong. Explain what happened and how you felt."
-                songTitle="Count on Me"
+                songTitle="Monsters"
             />
         </main>
     );

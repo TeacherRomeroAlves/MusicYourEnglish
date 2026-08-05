@@ -1,9 +1,16 @@
 interface ReportCardProps {
     songTitle: string;
     prompt: string;
+    studentName: string;
+    studentClass: string;
+    writing: string;
+    date: string;
+    score: string;
 }
   
-export default function ReportCard({ songTitle, prompt, }: ReportCardProps) {
+export default function ReportCard({
+  songTitle, prompt, studentName, studentClass, writing, date, score,
+}: ReportCardProps) {
     return (
         <article className="report-card">
         <p className="report-kicker">
@@ -13,19 +20,19 @@ export default function ReportCard({ songTitle, prompt, }: ReportCardProps) {
         <h3>{songTitle}</h3>
 
         <p className="report-meta">
-            <strong>Name:</strong> Not added yet
+            <strong>Name:</strong> {studentName || "Not added yet"}
         </p>
 
         <p className="report-meta">
-            <strong>Class:</strong> Not added yet
+            <strong>Class:</strong> {studentClass || "Not added yet"}
         </p>
 
         <p className="report-meta">
-            <strong>Date:</strong>
+            <strong>Date:</strong> {date}
         </p>
 
         <p className="report-meta">
-            <strong>Song Score:</strong> Not checked yet
+            <strong>Song Score:</strong> {score}
         </p>
 
         <div className="report-divider" />
@@ -43,7 +50,7 @@ export default function ReportCard({ songTitle, prompt, }: ReportCardProps) {
         </p>
 
         <p className="report-text">
-            No answer yet.
+            {writing || "No answer yet."}
         </p>
         </article>
     );

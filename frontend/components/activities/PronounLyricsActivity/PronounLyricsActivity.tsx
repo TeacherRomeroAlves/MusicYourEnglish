@@ -1,9 +1,15 @@
+"use client";
+
 import PronounChart from "./PronounChart";
 import LyricInput from "./LyricInput";
 import { Fragment } from "react";
 import type { PronounLyricsActivityProps } from "./types";
+import { buildPronounInputId, usePronounLyrics } from "@/hooks/usePronounLyrics";
+import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 
 export default function PronounLyricsActivity({ step, title, description, pronouns, lyrics, }: PronounLyricsActivityProps) {
+  const { getValue, results, handleChange, handleReset } = usePronounLyrics(lyrics);
+  useRegisterActivityResult(`${step}:${title}`, results);
   return (
     <section className="card">
       <div className="section-heading">
@@ -24,8 +30,9 @@ export default function PronounLyricsActivity({ step, title, description, pronou
         {lyrics.map((line, index) => (
           <Fragment key={index}>
             <p className="lyric-line">
-              {line.parts.map((part, i) => (
-                <span key={i}>
+              {line.parts.map((part, i) => {
+                const inputId = buildPronounInputId(index, i);
+                return <span key={inputId}>
                   {part.before}
 
                   {part.answer && (
@@ -33,12 +40,19 @@ export default function PronounLyricsActivity({ step, title, description, pronou
                       answer={part.answer}
                       maxLength={part.maxLength}
                       syncKey={part.syncKey}
+                      value={getValue(inputId, part.syncKey)}
+                      onChange={(value) => handleChange(
+                        inputId,
+                        value,
+                        part.maxLength ?? part.answer!.length,
+                        part.syncKey,
+                      )}
                     />
                   )}
 
                   {part.after}
-                </span>
-              ))}
+                </span>;
+              })}
             </p>
 
             {line.dividerAfter && (
@@ -52,6 +66,7 @@ export default function PronounLyricsActivity({ step, title, description, pronou
         <button
           className="action-btn secondary"
           type="button"
+          onClick={handleReset}
         >
           Reset Section
         </button>

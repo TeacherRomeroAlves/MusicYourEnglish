@@ -1,3 +1,7 @@
+"use client";
+
+import { useCheckAllAnswers } from "@/hooks/useActivityResults";
+
 interface CheckAllActivityProps {
     title: string;
     description?: string;
@@ -5,6 +9,7 @@ interface CheckAllActivityProps {
 }
 
 export default function CheckAllActivity({ title, description, buttonText = "Check All Answers", }: CheckAllActivityProps) {
+    const { feedback, handleCheck } = useCheckAllAnswers();
     return (
         <section className="card">
         <div className="section-heading">
@@ -23,6 +28,7 @@ export default function CheckAllActivity({ title, description, buttonText = "Che
             <button
             className="action-btn"
             type="button"
+            onClick={handleCheck}
             >
             {buttonText}
             </button>
@@ -31,7 +37,8 @@ export default function CheckAllActivity({ title, description, buttonText = "Che
         <p
             className="feedback"
             aria-live="polite"
-        />
+        >{feedback}</p>
         </section>
     );
 }
+"use client";

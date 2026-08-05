@@ -3,6 +3,8 @@ interface LyricInputProps {
     maxLength?: number;
     syncKey?: string;
     ariaLabel?: string;
+    value: string;
+    onChange: (value: string) => void;
 }
 
 export default function LyricInput({
@@ -10,6 +12,8 @@ export default function LyricInput({
     maxLength,
     syncKey,
     ariaLabel,
+    value,
+    onChange,
 }: LyricInputProps) {
     return (
     <input
@@ -19,6 +23,8 @@ export default function LyricInput({
         data-answer={answer}
         data-sync-key={syncKey}
         aria-label={ariaLabel}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
     />
     );
 }

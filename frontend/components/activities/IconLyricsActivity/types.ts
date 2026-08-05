@@ -16,10 +16,9 @@ export interface LyricLine {
 }
 
 export interface IconLyricsActivityProps {
-    step: string;
-    title: string;
-    description?: string;
-  
-    icons: IconItem[];
-    lyrics: LyricLine[];
+  step: string;
+  title: string;
+  description?: string;
+  icons: IconItem[];
+  lyrics: LyricLine[];
 }
