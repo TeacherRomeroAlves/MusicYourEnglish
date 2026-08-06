@@ -6,9 +6,11 @@ export interface MatchingActivityState {
   answers: Record<string, string | null>;
 }
 
-export function createMatchingState(words: MatchingWord[]): MatchingActivityState {
+export function createMatchingState( words: MatchingWord[], shuffle = true,): MatchingActivityState {
   return {
-    bankSlots: shuffleArray(words.map((item) => item.word)),
+    bankSlots: shuffle
+      ? shuffleArray(words.map((item) => item.word))
+      : words.map((item) => item.word),
     answers: Object.fromEntries(words.map((item) => [item.word, null])),
   };
 }

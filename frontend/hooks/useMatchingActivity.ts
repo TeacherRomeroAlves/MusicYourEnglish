@@ -20,7 +20,7 @@ const defaultFeedback: MatchingFeedback = {
 };
 
 export function useMatchingActivity(words: MatchingWord[]) {
-  const [state, setState] = useState(() => createMatchingState(words));
+  const [state, setState] = useState(() => createMatchingState(words, false));
   const [draggedWord, setDraggedWord] = useState<string | null>(null);
   const [activeDropZone, setActiveDropZone] = useState<string | null>(null);
   const [isBankDragOver, setIsBankDragOver] = useState(false);
@@ -28,7 +28,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   const { speak } = useSpeech();
 
   useEffect(() => {
-    setState(createMatchingState(words));
+    setState(createMatchingState(words, true));
     setDraggedWord(null);
     setActiveDropZone(null);
     setIsBankDragOver(false);
@@ -135,7 +135,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   };
 
   const handleReset = () => {
-    setState(createMatchingState(words));
+    setState(createMatchingState(words, true));
     setDraggedWord(null);
     setActiveDropZone(null);
     setIsBankDragOver(false);

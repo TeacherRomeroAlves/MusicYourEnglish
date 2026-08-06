@@ -4,14 +4,22 @@ import { useEffect, useState } from "react";
 import type { OrderItem } from "@/components/activities/OrderLyricsActivity/types";
 import { shuffleArray } from "@/lib/shuffleArray";
 
-function createOrderState(items: OrderItem[]) {
-  return { bankIds: shuffleArray(items.map((item) => item.id)), orderedIds: [] as string[] };
+function createOrderState(
+  items: OrderItem[],
+  shuffle = true,
+) {
+  return {
+    bankIds: shuffle
+      ? shuffleArray(items.map((item) => item.id))
+      : items.map((item) => item.id),
+    orderedIds: [] as string[],
+  };
 }
 
 export function useOrderLyrics(items: OrderItem[]) {
-  const [state, setState] = useState(() => createOrderState(items));
+  const [state, setState] = useState(() => createOrderState(items, false));
 
-  useEffect(() => setState(createOrderState(items)), [items]);
+  useEffect(() => setState(createOrderState(items, true)), [items]);
 
   const handleSelect = (itemId: string) => {
     setState((current) => {
@@ -35,6 +43,6 @@ export function useOrderLyrics(items: OrderItem[]) {
     bankItems: state.bankIds.map((id) => itemMap[id]).filter(Boolean),
     orderedItems: state.orderedIds.map((id) => itemMap[id]).filter(Boolean),
     handleSelect,
-    handleReset: () => setState(createOrderState(items)),
+    handleReset: () => setState(createOrderState(items, true)),
   };
 }

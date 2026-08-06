@@ -6,20 +6,28 @@ import { shuffleArray } from "@/lib/shuffleArray";
 import type { LyricWordLine, LyricWordOption } from "@/components/activities/LyricsWordActivity/types";
 import { buildLyricsWordSlotId, getLyricsWordSlotIds } from "@/components/activities/LyricsWordActivity/utils";
 
-function createInitialState(words: LyricWordOption[], lyrics: LyricWordLine[]) {
+function createInitialState(
+  words: LyricWordOption[],
+  lyrics: LyricWordLine[],
+  shuffle = true,
+) {
   return {
-    bankWords: shuffleArray(words.map((item) => item.word)),
-    placements: Object.fromEntries(getLyricsWordSlotIds(lyrics).map((slotId) => [slotId, null])),
+    bankWords: shuffle
+      ? shuffleArray(words.map((item) => item.word))
+      : words.map((item) => item.word),
+    placements: Object.fromEntries(
+      getLyricsWordSlotIds(lyrics).map((slotId) => [slotId, null]),
+    ),
   };
 }
 
 export function useLyricsWord(words: LyricWordOption[], lyrics: LyricWordLine[]) {
-  const [state, setState] = useState(() => createInitialState(words, lyrics));
+  const [state, setState] = useState(() => createInitialState(words, lyrics, false));
   const [draggedWord, setDraggedWord] = useState<string | null>(null);
   const [activeSlotId, setActiveSlotId] = useState<string | null>(null);
 
   useEffect(() => {
-    setState(createInitialState(words, lyrics));
+    setState(createInitialState(words, lyrics, true));
     setDraggedWord(null);
     setActiveSlotId(null);
   }, [words, lyrics]);
@@ -88,7 +96,7 @@ export function useLyricsWord(words: LyricWordOption[], lyrics: LyricWordLine[])
   };
 
   const handleReset = () => {
-    setState(createInitialState(words, lyrics));
+    setState(createInitialState(words, lyrics, true));
     setDraggedWord(null);
     setActiveSlotId(null);
   };

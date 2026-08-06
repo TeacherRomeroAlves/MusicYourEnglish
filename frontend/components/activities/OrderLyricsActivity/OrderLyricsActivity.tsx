@@ -1,3 +1,4 @@
+"use client";
 import OrderCard from "./OrderCard";
 import OrderDropZone from "./OrderDropZone";
 import type { OrderLyricsActivityProps } from "./types";
@@ -63,4 +64,3 @@ export default function OrderLyricsActivity({ step, title, description, items, }
     </section>
   );
 }
-"use client";

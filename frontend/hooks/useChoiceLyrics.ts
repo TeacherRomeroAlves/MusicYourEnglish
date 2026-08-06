@@ -4,23 +4,26 @@ import { useEffect, useState } from "react";
 import type { ChoiceLine } from "@/components/activities/ChoiceLyricsActivity/types";
 import { shuffleArray } from "@/lib/shuffleArray";
 
-function createOptions(lyrics: ChoiceLine[]) {
+function createOptions(
+  lyrics: ChoiceLine[],
+  shuffle = true,
+) {
   return Object.fromEntries(
     lyrics.flatMap((line, lineIndex) =>
       line.items.map((item, itemIndex) => [
         `${lineIndex}-${itemIndex}`,
-        shuffleArray(item.options),
+        shuffle ? shuffleArray(item.options) : item.options,
       ]),
     ),
   );
 }
 
 export function useChoiceLyrics(lyrics: ChoiceLine[]) {
-  const [optionsBySlot, setOptionsBySlot] = useState(() => createOptions(lyrics));
+  const [optionsBySlot, setOptionsBySlot] = useState(() => createOptions(lyrics, false));
   const [selections, setSelections] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    setOptionsBySlot(createOptions(lyrics));
+    setOptionsBySlot(createOptions(lyrics, true));
     setSelections({});
   }, [lyrics]);
 
@@ -29,7 +32,7 @@ export function useChoiceLyrics(lyrics: ChoiceLine[]) {
   };
 
   const handleReset = () => {
-    setOptionsBySlot(createOptions(lyrics));
+    setOptionsBySlot(createOptions(lyrics, true));
     setSelections({});
   };
 

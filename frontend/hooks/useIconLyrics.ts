@@ -6,20 +6,28 @@ import { shuffleArray } from "@/lib/shuffleArray";
 import type { IconItem, LyricLine } from "@/components/activities/IconLyricsActivity/types";
 import { buildIconSlotId, getIconSlotIds } from "@/components/activities/IconLyricsActivity/utils";
 
-function createInitialState(icons: IconItem[], lyrics: LyricLine[]) {
+function createInitialState(
+  icons: IconItem[],
+  lyrics: LyricLine[],
+  shuffle = true,
+) {
   return {
-    bankIconIds: shuffleArray(icons.map((icon) => icon.id)),
-    placements: Object.fromEntries(getIconSlotIds(lyrics).map((slotId) => [slotId, null])),
+    bankIconIds: shuffle
+      ? shuffleArray(icons.map((icon) => icon.id))
+      : icons.map((icon) => icon.id),
+    placements: Object.fromEntries(
+      getIconSlotIds(lyrics).map((slotId) => [slotId, null]),
+    ),
   };
 }
 
 export function useIconLyrics(icons: IconItem[], lyrics: LyricLine[]) {
-  const [state, setState] = useState(() => createInitialState(icons, lyrics));
+  const [state, setState] = useState(() => createInitialState(icons, lyrics, false));
   const [draggedIconId, setDraggedIconId] = useState<string | null>(null);
   const [activeSlotId, setActiveSlotId] = useState<string | null>(null);
 
   useEffect(() => {
-    setState(createInitialState(icons, lyrics));
+    setState(createInitialState(icons, lyrics, true));
     setDraggedIconId(null);
     setActiveSlotId(null);
   }, [icons, lyrics]);
@@ -88,7 +96,7 @@ export function useIconLyrics(icons: IconItem[], lyrics: LyricLine[]) {
   };
 
   const handleReset = () => {
-    setState(createInitialState(icons, lyrics));
+    setState(createInitialState(icons, lyrics, true));
     setDraggedIconId(null);
     setActiveSlotId(null);
   };
