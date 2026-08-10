@@ -6,7 +6,7 @@ import { useTypingLyrics } from "@/hooks/useTypingLyrics";
 import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 
 export default function TypingLyricsActivity({ step, title, description, lyrics, }: TypingLyricsActivityProps) {
-  const { values, handleChange, handleReset } = useTypingLyrics(lyrics);
+  const { values, handleChange, handleReset } = useTypingLyrics();
   const answerLines = lyrics.map((line, index) => ({ ...line, index })).filter((line) => line.answer);
   useRegisterActivityResult(`${step}:${title}`, {
     correct: answerLines.filter(({ answer, index }) => (values[index] ?? "").trim().toLowerCase() === answer.toLowerCase()).length,

@@ -11,6 +11,7 @@ interface WordDropZoneProps {
   onDragOver: () => void;
   onDragLeave: () => void;
   onDrop: () => void;
+  onSelectWord: (word: string) => void;
 }
 
 export default function WordDropZone({
@@ -24,6 +25,7 @@ export default function WordDropZone({
   onDragOver,
   onDragLeave,
   onDrop,
+  onSelectWord,
 }: WordDropZoneProps) {
   const className = ["word-drop-zone", isDragOver ? "drag-over" : ""]
     .filter(Boolean)
@@ -34,6 +36,16 @@ export default function WordDropZone({
       className={className}
       data-match={match}
       data-slot-id={slotId}
+      role="button"
+      tabIndex={0}
+      aria-label={`Place the selected word in the ${match} blank`}
+      onClick={onDrop}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onDrop();
+        }
+      }}
       onDragOver={(event) => {
         event.preventDefault();
         onDragOver();
@@ -50,6 +62,7 @@ export default function WordDropZone({
           isDragging={isDraggingWord(placedWord)}
           onDragStart={onDragStart}
           onDragEnd={onDragEnd}
+          onSelect={onSelectWord}
         />
       ) : null}
     </span>

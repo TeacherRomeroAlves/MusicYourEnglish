@@ -9,96 +9,55 @@ import OrderLyricsActivity from "@/components/activities/OrderLyricsActivity/Ord
 import TypingLyricsActivity from "@/components/activities/TypingLyricsActivity/TypingLyricsActivity";
 import CheckAllActivity from "@/components/activities/CheckAllActivity/CheckAllActivity";
 import HomeworkActivity from "@/components/activities/Homework/HomeworkActivity";
+import LessonProgress from "@/components/LessonProgress";
+import LessonSections from "@/components/LessonSections";
+import { getSongMeta } from "@/data/songCatalog";
 import { golden, goldenFirstStanza, goldenChorus, goldenOrder, goldenFinalStanza } from "@/data/songs/golden";
-import "../../../styles/layout.css";
-import "../../../styles/navigation.css";
-import "../../../styles/cards.css";
-import "../../../styles/activities.css";
-import "../../../styles/responsive.css";
-import "../../../styles/variables.css";
-import "../../../styles/lesson.css";
-import "../../../styles/buttons.css";
-import "../../../styles/reports.css";
-import "../../../styles/forms.css";
-import "../../globals.css";
 
 export default function goldenPage() {
+    const song = getSongMeta("golden");
     return (
-        <main className="page-shell">
+        <main className="page-shell lesson-page">
           <BackLink />
             <LessonHero
-            title="Golden"
-            artist="Huntr/x"
-            description="A new lesson focused on confidence, feelings, and expressive vocabulary."
-            imageUrl=""
+            title={song.title}
+            artist={song.artist}
+            description={song.description}
+            level={song.level}
+            topic={song.topic}
+            coverImage={song.coverImage}
+            coverClass={song.coverClass}
             />
-            <WarmUpQuestions
-            step="Step 1"
-            title="Warm-up Questions"
-            questions={[
-              "When do you feel strong and condident?",
-              "What helps you when you feel nervous or afraid?",
-            ]}
-            />
-            <MatchingActivity
-            step="Step 2"
-            title="Match The Words To Their Meanings"
-            description="Drag each word into the correct meaning box. Use the speaker button to hear the pronunciation."
-            words={golden.vocabulary}
-            />
-            <ListeningActivity
-            step="Step 3"
-            title="Listen To The Song"
-            description="Listen to the song before moving on to the next activity."
-            embedUrl={golden.spotify.embedUrl}
-            embedTitle={golden.spotify.title}
-            />
-            <IconLyricsActivity
-            step="Step 4"
-            title="First Stanza"
-            description="Drag each icon into the correct space while you listen."
-            icons={goldenFirstStanza.icons}
-            lyrics={goldenFirstStanza.lyrics}
-            />
-            <ChoiceLyricsActivity
-            step="Step 5"
-            title="Pre-Chorus"
-            description="Listen carefully and click the correct option in each line."
-            lyrics={goldenChorus.lyrics}
-            />
-            <OrderLyricsActivity
-            step="Step 6"
-            title="Chorus"
-            description="Click the lines in the correct order while you listen."
-            items={goldenOrder.items}
-            />
-            <TypingLyricsActivity
-            step="Step 7"
-            title="Final Stanza"
-            description="Listen and type the missing words. Tip: every answer has 2 letters."
-            lyrics={goldenFinalStanza.lyrics}
-            />
-            <CheckAllActivity
-            title="Check All Answers"
-            description="When students finish the whole song, click below to check every activity at once."
-            />
-            <WarmUpQuestions
-            step="Wrap-up"
-            title="Talk About The Song"
-            description="Use these questions to finish the lesson with speaking practice."
-            questions={[
-              "What does this song say about confidence?",
-              "Why do people sometimes hide who they really are?",
-              "What helps a person feel stronger?",
-              "Can fears make us stronger? Why or why not?"
-            ]}
-            />
-            <HomeworkActivity
-            step="Homework"
-            title="Writing And Student Report"
-            description="Write your homework answer, then save or share your report."
-            prompt="Write about a time you felt stronger or more confident. Explain what happened and how you felt."
-            songTitle="Golden"
+            <LessonProgress />
+            <LessonSections
+              beforeSong={<>
+                <WarmUpQuestions step="Warm-up" title="Warm-up Questions" questions={["When do you feel strong and confident?", "What helps you when you feel nervous or afraid?"]} />
+                <MatchingActivity step="Vocabulary" title="Match The Words To Their Meanings" description="Drag each word into the correct meaning box. Use the speaker button to hear the pronunciation." words={golden.vocabulary} />
+                <WarmUpQuestions
+                  step="Vocabulary practice"
+                  title="Use The New Words"
+                  description="Discuss the questions and try to use the vocabulary from the matching activity."
+                  layout="two-column"
+                  questions={[
+                    "Can you name one wild animal?",
+                    "What are some fears you have?",
+                    "Do you like golden things? Why or why not?",
+                    "Do you sometimes feel alone?",
+                  ]}
+                />
+              </>}
+              listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before moving on to the next activity." embedUrl={golden.spotify.embedUrl} embedTitle={golden.spotify.title} />}
+              listeningActivities={[
+                { label: "First Stanza", content: <IconLyricsActivity step="Stanza 1" title="First Stanza" description="Drag each icon into the correct space while you listen." icons={goldenFirstStanza.icons} lyrics={goldenFirstStanza.lyrics} /> },
+                { label: "Pre-Chorus", content: <ChoiceLyricsActivity step="Stanza 2" title="Pre-Chorus" description="Listen carefully and click the correct option in each line." lyrics={goldenChorus.lyrics} /> },
+                { label: "Chorus", content: <OrderLyricsActivity step="Stanza 3" title="Chorus" description="Click the lines in the correct order while you listen." items={goldenOrder.items} /> },
+                { label: "Final Stanza", content: <TypingLyricsActivity step="Stanza 4" title="Final Stanza" description="Listen and type the missing words. Tip: every answer has 2 letters." lyrics={goldenFinalStanza.lyrics} /> },
+              ]}
+              checkAnswers={<CheckAllActivity title="Check All Answers" description="When students finish the whole song, click below to check every activity at once." />}
+              afterSong={<>
+                <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Use these questions to finish the lesson with speaking practice." questions={["What does this song say about confidence?", "Why do people sometimes hide who they really are?", "What helps a person feel stronger?", "Can fears make us stronger? Why or why not?"]} />
+                <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write your homework answer, then save or share your report." prompt="Write about a time you felt stronger or more confident. Explain what happened and how you felt." songTitle="Golden" />
+              </>}
             />
         </main>
     );

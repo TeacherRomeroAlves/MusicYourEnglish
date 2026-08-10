@@ -1,35 +1,30 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { appendItemToBank, removeItemFromBank, removeItemFromPlacements } from "@/lib/dragDropBank";
+import { appendItemToBank, findFirstEmptySlot, removeItemFromBank, removeItemFromPlacements } from "@/lib/dragDropBank";
 import { shuffleArray } from "@/lib/shuffleArray";
 import type { LyricWordLine, LyricWordOption } from "@/components/activities/LyricsWordActivity/types";
 import { buildLyricsWordSlotId, getLyricsWordSlotIds } from "@/components/activities/LyricsWordActivity/utils";
 
-function createInitialState(
-  words: LyricWordOption[],
-  lyrics: LyricWordLine[],
-  shuffle = true,
-) {
+function createInitialState(words: LyricWordOption[], lyrics: LyricWordLine[], shouldShuffle = true) {
+  const bankWords = words.map((item) => item.word);
   return {
-    bankWords: shuffle
-      ? shuffleArray(words.map((item) => item.word))
-      : words.map((item) => item.word),
+    bankWords: shouldShuffle ? shuffleArray(bankWords) : bankWords,
     placements: Object.fromEntries(
       getLyricsWordSlotIds(lyrics).map((slotId) => [slotId, null]),
-    ),
+    ) as Record<string, string | null>,
   };
 }
 
 export function useLyricsWord(words: LyricWordOption[], lyrics: LyricWordLine[]) {
+  const orderedSlotIds = getLyricsWordSlotIds(lyrics);
   const [state, setState] = useState(() => createInitialState(words, lyrics, false));
   const [draggedWord, setDraggedWord] = useState<string | null>(null);
   const [activeSlotId, setActiveSlotId] = useState<string | null>(null);
 
   useEffect(() => {
-    setState(createInitialState(words, lyrics, true));
-    setDraggedWord(null);
-    setActiveSlotId(null);
+    const timeout = window.setTimeout(() => setState(createInitialState(words, lyrics)), 0);
+    return () => window.clearTimeout(timeout);
   }, [words, lyrics]);
 
   const handleDragStart = (word: string) => {
@@ -79,6 +74,23 @@ export function useLyricsWord(words: LyricWordOption[], lyrics: LyricWordLine[])
     handleDragEnd();
   };
 
+  const handleAutoPlace = (word: string) => {
+    setState((previousState) => {
+      const nextSlotId = findFirstEmptySlot(previousState.placements, orderedSlotIds);
+      if (!nextSlotId) return previousState;
+
+      return {
+        bankWords: removeItemFromBank(previousState.bankWords, word),
+        placements: {
+          ...removeItemFromPlacements(previousState.placements, word),
+          [nextSlotId]: word,
+        },
+      };
+    });
+    setDraggedWord(null);
+    setActiveSlotId(null);
+  };
+
   const handleDropOnBank = () => {
     if (!draggedWord) {
       return;
@@ -93,6 +105,18 @@ export function useLyricsWord(words: LyricWordOption[], lyrics: LyricWordLine[])
     }));
 
     handleDragEnd();
+  };
+
+  const handleReturnToBank = (word: string) => {
+    setState((previousState) => ({
+      bankWords: appendItemToBank(
+        removeItemFromBank(previousState.bankWords, word),
+        word,
+      ),
+      placements: removeItemFromPlacements(previousState.placements, word),
+    }));
+    setDraggedWord(null);
+    setActiveSlotId(null);
   };
 
   const handleReset = () => {
@@ -113,7 +137,9 @@ export function useLyricsWord(words: LyricWordOption[], lyrics: LyricWordLine[])
     handleSlotDragOver,
     handleSlotDragLeave,
     handleDropOnSlot,
+    handleAutoPlace,
     handleDropOnBank,
+    handleReturnToBank,
     handleReset,
   };
 }

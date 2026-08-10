@@ -1,52 +1,27 @@
-.card {
-    padding: 30px;
-    margin-bottom: 24px;
-}
-
-.question-box {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 18px;
-    background: linear-gradient(180deg, rgba(25, 49, 38, 0.92), rgba(20, 37, 29, 0.92));
-    border: 1px solid var(--line);
-    border-radius: 20px;
-  }
-  
-.question-box p {
-    margin: 0;
-    line-height: 1.5;
-}
-
-.word-card, .drop-zone, .lyric-word-card, .order-card, .order-drop-zone {
-  border-radius: 20px;
-  border: 1px solid var(--line);
-  background: var(--card-strong);
-}
-
-.lyrics-card {
-    margin-top: 22px;
-    padding: 22px;
-    border-radius: 24px;
-    border: 1px solid var(--line);
-    background: linear-gradient(
-      180deg,
-      rgba(20, 37, 29, 0.96),
-      rgba(16, 28, 22, 0.96)
-    );
-}
-
-.prompt-box, .report-card {
-  border-radius: 24px;
-  border: 1px solid var(--line);
-  background: linear-gradient(
-    180deg,
-    rgba(20, 37, 29, 0.96),
-    rgba(16, 28, 22, 0.96)
-  );
-}
-
-.prompt-box {
-    margin-top: 22px;
-    padding: 18px 20px;
-}
+.song-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(160deg, #1b1622, #100e14); box-shadow: var(--shadow-soft); transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease; }
+.song-card:hover { transform: translateY(-7px); border-color: rgba(224,154,198,.34); box-shadow: 0 30px 70px rgba(0,0,0,.4); }
+.song-art { aspect-ratio: 1; position: relative; overflow: hidden; isolation: isolate; background: #120f16; }
+.song-art img { object-fit: cover; transition: transform 450ms cubic-bezier(.2,.8,.2,1), filter 300ms ease; }
+.song-card:hover .song-art img { transform: scale(1.035); filter: saturate(1.08); }
+.song-art::after { display: none; }
+.song-art--count-on-me { background: radial-gradient(circle at 78% 18%, #ed8ebc, transparent 18%), linear-gradient(145deg, #541241, #9d365e 52%, #e09673); }
+.song-art--golden { background: radial-gradient(circle at 75% 20%, #f5e6b0, transparent 16%), linear-gradient(145deg, #31200b, #a66d14 55%, #e0b740); }
+.song-art--monsters { background: radial-gradient(circle at 22% 15%, #9a3d72, transparent 16%), linear-gradient(145deg, #100a1a, #30134b 55%, #771d4b); }
+.song-art__eyebrow, .song-art__title, .song-art__artist { position: relative; z-index: 2; }
+.song-art__eyebrow { margin-bottom: auto; color: rgba(255,255,255,.72); font-size: .68rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+.song-art__title { max-width: 90%; color: white; font-family: var(--font-space-grotesk); font-size: clamp(1.8rem, 3vw, 2.65rem); font-weight: 750; letter-spacing: -.05em; line-height: .95; }
+.song-art__artist { margin-top: 8px; color: rgba(255,255,255,.76); font-size: .82rem; text-transform: uppercase; letter-spacing: .12em; }
+.song-art__wave { position: absolute; left: 48%; right: 22px; bottom: 35px; height: 38px; z-index: 2; opacity: .4; background: repeating-linear-gradient(90deg, white 0 2px, transparent 2px 7px); mask-image: radial-gradient(ellipse, black, transparent 72%); }
+.song-card__body { padding: 24px; }
+.song-card__meta { color: #d293b9; font-size: .76rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+.song-card h3 { margin-top: 18px; font-size: 1.75rem; }
+.song-card__artist { margin: 5px 0 0 !important; color: #ede9ef !important; font-weight: 650; }
+.song-card__body > p { margin: 12px 0 0; color: var(--muted); line-height: 1.55; }
+.activity-badges { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
+.activity-badges span { padding: 6px 9px; border: 1px solid var(--line); border-radius: 7px; color: #aaa4b0; background: rgba(255,255,255,.025); font-size: .73rem; }
+.question-box { padding: 20px; display: flex; align-items: flex-start; gap: 14px; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255,255,255,.035); }
+.question-box p { margin: 0; line-height: 1.55; }
+.word-card, .drop-zone, .lyric-word-card, .order-card, .order-drop-zone { border: 1px solid var(--line); border-radius: 15px; background: var(--card-strong); }
+.lyrics-card, .prompt-box, .report-card { border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(8,7,11,.42); }
+.lyrics-card { margin-top: 24px; padding: clamp(20px, 3vw, 28px); }
+.prompt-box { margin-top: 22px; padding: 20px 22px; }

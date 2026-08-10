@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 import type { PronounLyricLine } from "@/components/activities/PronounLyricsActivity/types";
 import {
   clearSynchronizedInputs,
@@ -20,8 +20,6 @@ export function usePronounLyrics(lyrics: PronounLyricLine[]) {
     getSynchronizedInputs,
     () => emptySynchronizedInputs,
   );
-
-  useEffect(() => setLocalValues({}), [lyrics]);
 
   const handleChange = (inputId: string, value: string, maxLength: number, syncKey?: string) => {
     const nextValue = value.slice(0, maxLength);

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSpeech } from "@/hooks/useSpeech";
+import { findFirstEmptySlot } from "@/lib/dragDropBank";
 import {
   createMatchingState,
   getMatchingResults,
@@ -28,11 +29,8 @@ export function useMatchingActivity(words: MatchingWord[]) {
   const { speak } = useSpeech();
 
   useEffect(() => {
-    setState(createMatchingState(words, true));
-    setDraggedWord(null);
-    setActiveDropZone(null);
-    setIsBankDragOver(false);
-    setFeedback(defaultFeedback);
+    const timeout = window.setTimeout(() => setState(createMatchingState(words)), 0);
+    return () => window.clearTimeout(timeout);
   }, [words]);
 
   const handleDragStart = (word: string) => {
@@ -109,6 +107,38 @@ export function useMatchingActivity(words: MatchingWord[]) {
     handleDragEnd();
   };
 
+  const handleReturnToBank = (word: string) => {
+    setState((previousState) => ({
+      bankSlots: placeWordInFirstEmptySlot(
+        removeWordFromBank(previousState.bankSlots, word),
+        word,
+      ),
+      answers: removeWordFromAnswers(previousState.answers, word),
+    }));
+    setDraggedWord(null);
+    setActiveDropZone(null);
+    setFeedback(defaultFeedback);
+  };
+
+  const handleAutoPlace = (word: string) => {
+    setState((previousState) => {
+      const orderedSlots = words.map((item) => item.word);
+      const nextSlot = findFirstEmptySlot(previousState.answers, orderedSlots);
+      if (!nextSlot) return previousState;
+
+      return {
+        bankSlots: removeWordFromBank(previousState.bankSlots, word),
+        answers: {
+          ...removeWordFromAnswers(previousState.answers, word),
+          [nextSlot]: word,
+        },
+      };
+    });
+    setDraggedWord(null);
+    setActiveDropZone(null);
+    setFeedback(defaultFeedback);
+  };
+
   const handleCheck = () => {
     const results = getMatchingResults(words, state.answers);
 
@@ -171,7 +201,9 @@ export function useMatchingActivity(words: MatchingWord[]) {
     handleBankDragOver,
     handleBankDragLeave,
     handleDropOnZone,
+    handleAutoPlace,
     handleDropOnBank,
+    handleReturnToBank,
     handleCheck,
     handleReset,
     handleSpeak,

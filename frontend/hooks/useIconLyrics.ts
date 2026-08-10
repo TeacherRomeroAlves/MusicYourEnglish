@@ -1,35 +1,30 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { appendItemToBank, removeItemFromBank, removeItemFromPlacements } from "@/lib/dragDropBank";
+import { appendItemToBank, findFirstEmptySlot, removeItemFromBank, removeItemFromPlacements } from "@/lib/dragDropBank";
 import { shuffleArray } from "@/lib/shuffleArray";
 import type { IconItem, LyricLine } from "@/components/activities/IconLyricsActivity/types";
 import { buildIconSlotId, getIconSlotIds } from "@/components/activities/IconLyricsActivity/utils";
 
-function createInitialState(
-  icons: IconItem[],
-  lyrics: LyricLine[],
-  shuffle = true,
-) {
+function createInitialState(icons: IconItem[], lyrics: LyricLine[], shouldShuffle = true) {
+  const iconIds = icons.map((icon) => icon.id);
   return {
-    bankIconIds: shuffle
-      ? shuffleArray(icons.map((icon) => icon.id))
-      : icons.map((icon) => icon.id),
+    bankIconIds: shouldShuffle ? shuffleArray(iconIds) : iconIds,
     placements: Object.fromEntries(
       getIconSlotIds(lyrics).map((slotId) => [slotId, null]),
-    ),
+    ) as Record<string, string | null>,
   };
 }
 
 export function useIconLyrics(icons: IconItem[], lyrics: LyricLine[]) {
+  const orderedSlotIds = getIconSlotIds(lyrics);
   const [state, setState] = useState(() => createInitialState(icons, lyrics, false));
   const [draggedIconId, setDraggedIconId] = useState<string | null>(null);
   const [activeSlotId, setActiveSlotId] = useState<string | null>(null);
 
   useEffect(() => {
-    setState(createInitialState(icons, lyrics, true));
-    setDraggedIconId(null);
-    setActiveSlotId(null);
+    const timeout = window.setTimeout(() => setState(createInitialState(icons, lyrics)), 0);
+    return () => window.clearTimeout(timeout);
   }, [icons, lyrics]);
 
   const handleDragStart = (iconId: string) => {
@@ -79,6 +74,23 @@ export function useIconLyrics(icons: IconItem[], lyrics: LyricLine[]) {
     handleDragEnd();
   };
 
+  const handleAutoPlace = (iconId: string) => {
+    setState((previousState) => {
+      const nextSlotId = findFirstEmptySlot(previousState.placements, orderedSlotIds);
+      if (!nextSlotId) return previousState;
+
+      return {
+        bankIconIds: removeItemFromBank(previousState.bankIconIds, iconId),
+        placements: {
+          ...removeItemFromPlacements(previousState.placements, iconId),
+          [nextSlotId]: iconId,
+        },
+      };
+    });
+    setDraggedIconId(null);
+    setActiveSlotId(null);
+  };
+
   const handleDropOnBank = () => {
     if (!draggedIconId) {
       return;
@@ -93,6 +105,18 @@ export function useIconLyrics(icons: IconItem[], lyrics: LyricLine[]) {
     }));
 
     handleDragEnd();
+  };
+
+  const handleReturnToBank = (iconId: string) => {
+    setState((previousState) => ({
+      bankIconIds: appendItemToBank(
+        removeItemFromBank(previousState.bankIconIds, iconId),
+        iconId,
+      ),
+      placements: removeItemFromPlacements(previousState.placements, iconId),
+    }));
+    setDraggedIconId(null);
+    setActiveSlotId(null);
   };
 
   const handleReset = () => {
@@ -118,7 +142,9 @@ export function useIconLyrics(icons: IconItem[], lyrics: LyricLine[]) {
     handleSlotDragOver,
     handleSlotDragLeave,
     handleDropOnSlot,
+    handleAutoPlace,
     handleDropOnBank,
+    handleReturnToBank,
     handleReset,
   };
 }

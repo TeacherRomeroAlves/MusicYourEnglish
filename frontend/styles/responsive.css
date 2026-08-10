@@ -1,32 +1,68 @@
+@media (max-width: 1040px) {
+  .nav-shell { width: min(100% - 28px, var(--container)); }
+  .main-nav { gap: 16px; }
+  .main-nav a { font-size: .86rem; }
+  .home-hero { grid-template-columns: 1fr 420px; gap: 45px; }
+}
 @media (max-width: 820px) {
-    .hero-layout {
-      grid-template-columns: 1fr;
-    }
-  
-    .hero-artist-image {
-      width: min(100%, 280px);
-      height: 320px;
-      justify-self: start;
-    }
-  
-    .activity-layout {
-      grid-template-columns: 1fr;
-    }
-  
-    .order-layout {
-      grid-template-columns: 1fr;
-    }
-  
-    .report-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .drop-zone {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .placed-card {
-      margin-left: 0;
-    }
+  .menu-toggle { display: block; }
+  .nav-panel { position: absolute; top: 68px; left: 14px; right: 14px; padding: 20px; display: none; align-items: stretch; border: 1px solid var(--line); border-radius: 18px; background: rgba(17,16,22,.98); box-shadow: var(--shadow); }
+  .nav-panel.is-open { display: grid; }
+  .main-nav, .nav-actions { align-items: stretch; flex-direction: column; gap: 6px; }
+  .main-nav a, .nav-login { padding: 12px 10px; text-align: left; }
+  .nav-actions { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px; }
+  .home-hero { min-height: auto; padding: 78px 0 100px; grid-template-columns: 1fr; }
+  .home-hero h1 { max-width: 700px; }
+  .learning-player { width: min(100%, 560px); justify-self: center; transform: none; }
+  .library-preview { grid-template-columns: 1fr; }
+  .process-card:nth-child(n) { grid-column: span 6; }
+  .process-card:last-child { grid-column: 1 / -1; }
+  .paths-section, .music-benefits { grid-template-columns: 1fr; gap: 18px; }
+  .benefit-heading { position: static; margin-bottom: 34px; }
+  .lesson-hero { grid-template-columns: 190px 1fr; gap: 28px; }
+  .lesson-cover { min-height: 240px; }
+  .lesson-progress ol { display: none; }
+  .lesson-progress__mobile { display: flex; justify-content: space-between; align-items: center; }
+  .lesson-progress__mobile::after { content: ""; position: absolute; left: 22px; right: 22px; bottom: 10px; height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--brand) 35%, rgba(255,255,255,.08) 35%); }
+  .lesson-progress { position: relative; padding-bottom: 20px; }
+  .activity-layout, .order-layout, .report-grid { grid-template-columns: 1fr; }
+  .drop-zone { flex-direction: column; align-items: flex-start; }
+  .placed-card { margin-left: 0; }
+  .footer-shell { grid-template-columns: minmax(0, 1fr); }
+  .footer-nav { width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 580px) {
+  .nav-shell, .home-hero, .home-section, .final-cta, .footer-shell, .footer-bottom, .page-shell { width: min(100% - 24px, var(--container)); }
+  .nav-shell { min-height: 68px; }
+  .brand-mark { font-size: .92rem; }
+  h1 { font-size: clamp(2.7rem, 13vw, 4.2rem); }
+  h2 { font-size: clamp(2rem, 10vw, 3rem); }
+  .home-section { padding: 86px 0; }
+  .home-hero { padding: 62px 0 78px; }
+  .trust-line { display: block; line-height: 1.8; }
+  .trust-line i { display: inline-block; margin: 0 6px; }
+  .learning-player { padding: 18px; border-radius: 24px; }
+  .learning-player::after { display: none; }
+  .preview-vocab { grid-template-columns: 1fr; }
+  .preview-vocab span { grid-column: auto; }
+  .preview-vocab p { margin-top: 4px; }
+  .library-preview__visual { min-height: 330px; padding: 22px; border-radius: 24px; }
+  .process-grid { grid-template-columns: 1fr; }
+  .process-card:nth-child(n) { grid-column: auto; min-height: 220px; }
+  .paths-section { padding-inline: 0; }
+  .path-panel { border-radius: 24px; }
+  .final-cta { margin-top: 40px; padding: 58px 22px; border-radius: 25px; }
+  .footer-bottom { padding: 22px 0; align-items: flex-start; flex-direction: column; }
+  .lesson-page { padding-top: 22px; }
+  .back-link { top: 78px; }
+  .lesson-hero { padding: 16px; grid-template-columns: 1fr; gap: 24px; }
+  .lesson-cover { min-height: 150px; }
+  .lesson-hero__content { padding: 0 4px 8px; }
+  .lesson-meta { gap: 12px 22px; }
+  .card { padding: 22px 18px; border-radius: 22px; }
+  .spotify-frame iframe { height: 160px; }
+  .lyric-line { font-size: 1rem; line-height: 2; }
+  .inline-drop-zone, .word-drop-zone { min-height: 50px; margin-block: 3px; }
+  .icon-card { width: 68px; height: 68px; }
+  .actions .action-btn, .report-form .action-btn { width: 100%; }
 }

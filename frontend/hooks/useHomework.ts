@@ -22,13 +22,16 @@ export function useHomework(songTitle: string, prompt: string) {
   const storageKey = `music-you-english:homework:${songTitle}`;
 
   useEffect(() => {
-    try {
-      const savedDraft = window.localStorage.getItem(storageKey);
-      setDraft(savedDraft ? JSON.parse(savedDraft) : emptyDraft);
-    } catch {
-      setDraft(emptyDraft);
-    }
-    setIsReady(true);
+    const timeout = window.setTimeout(() => {
+      try {
+        const savedDraft = window.localStorage.getItem(storageKey);
+        setDraft(savedDraft ? JSON.parse(savedDraft) : emptyDraft);
+      } catch {
+        setDraft(emptyDraft);
+      }
+      setIsReady(true);
+    }, 0);
+    return () => window.clearTimeout(timeout);
   }, [storageKey]);
 
   useEffect(() => {
@@ -41,15 +44,20 @@ export function useHomework(songTitle: string, prompt: string) {
   };
 
   const score = totals.total ? `${totals.correct} / ${totals.total}` : "Not checked yet";
-  const shareText = `${songTitle}\n${prompt}\n\n${draft.writing}\n\nSong score: ${score}`;
+  const shareText = `${songTitle} student report\nName: ${draft.studentName || "Not added"}\nClass: ${draft.studentClass || "Not added"}\nSong score: ${score}\n\n${prompt}\n\n${draft.writing}`;
 
   const handleSavePdf = () => window.print();
   const handleShare = async () => {
-    if (navigator.share) {
-      await navigator.share({ title: `${songTitle} student report`, text: shareText });
-      return;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: `${songTitle} student report`, text: shareText });
+        return;
+      }
+      await navigator.clipboard.writeText(shareText);
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      throw error;
     }
-    await navigator.clipboard.writeText(shareText);
   };
 
   return {

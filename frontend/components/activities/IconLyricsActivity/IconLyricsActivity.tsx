@@ -19,7 +19,9 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
       handleSlotDragOver,
       handleSlotDragLeave,
       handleDropOnSlot,
+      handleAutoPlace,
       handleDropOnBank,
+      handleReturnToBank,
       handleReset,
   } = useIconLyrics(icons, lyrics);
   const expectedSlots = lyrics.flatMap((line, lineIndex) =>
@@ -57,6 +59,7 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
                 event.preventDefault();
                 handleDropOnBank();
               }}
+              onClick={handleDropOnBank}
             >
                 {bankIcons.map((icon) => (
                 <IconCard
@@ -65,6 +68,7 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
                   isDragging={draggedIconId === icon.id}
                   onDragStart={handleDragStart}
                   onDragEnd={handleDragEnd}
+                  onSelect={handleAutoPlace}
                 />
                 ))}
             </div>
@@ -87,6 +91,7 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
                               onDragOver={() => handleSlotDragOver(buildSlotId(index, i))}
                               onDragLeave={() => handleSlotDragLeave(buildSlotId(index, i))}
                               onDrop={() => handleDropOnSlot(buildSlotId(index, i))}
+                              onSelectIcon={handleReturnToBank}
                             />
                         )}
                         {part.after}

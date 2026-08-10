@@ -11,10 +11,11 @@ import {
 } from "@/lib/activityResultsStore";
 
 export function useRegisterActivityResult(id: string, result: ActivityResult) {
+  const { correct, answered, total } = result;
   useEffect(() => {
-    setActivityResult(id, result);
+    setActivityResult(id, { correct, answered, total });
     return () => removeActivityResult(id);
-  }, [id, result.correct, result.answered, result.total]);
+  }, [id, correct, answered, total]);
 }
 
 export function useActivityResults() {

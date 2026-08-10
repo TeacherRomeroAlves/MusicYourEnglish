@@ -113,7 +113,7 @@ export const monstersSecondStanza = {
       {
         id: "day",
         word: "day",
-        symbol: "☀",
+        symbol: "🌞",
         ariaLabel: "day",
       },
       {
@@ -131,7 +131,7 @@ export const monstersSecondStanza = {
       {
         id: "one",
         word: "one",
-        symbol: "1",
+        symbol: "1️⃣",
         ariaLabel: "one",
       },
       {

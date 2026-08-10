@@ -9,106 +9,57 @@ import LyricsWordActivity from "@/components/activities/LyricsWordActivity/Lyric
 import ChoiceLyricsActivity from "@/components/activities/ChoiceLyricsActivity/ChoiceLyricsActivity";
 import CheckAllActivity from "@/components/activities/CheckAllActivity/CheckAllActivity";
 import HomeworkActivity from "@/components/activities/Homework/HomeworkActivity";
+import LessonProgress from "@/components/LessonProgress";
+import LessonSections from "@/components/LessonSections";
+import { getSongMeta } from "@/data/songCatalog";
 
 import { monsters, monstersPronouns, monstersSecondStanza, monstersThirdStanza, monstersFourthStanza, monstersFifthStanza } from "@/data/songs/monsters";
-import "../../../styles/layout.css";
-import "../../../styles/navigation.css";
-import "../../../styles/cards.css";
-import "../../../styles/activities.css";
-import "../../../styles/responsive.css";
-import "../../../styles/variables.css";
-import "../../../styles/lesson.css";
-import "../../../styles/buttons.css";
-import "../../../styles/reports.css";
-import "../../../styles/forms.css";
-import "../../globals.css";
 
 export default function monsterPage() {
+    const song = getSongMeta("monsters");
     return (
-        <main className="page-shell">
+        <main className="page-shell lesson-page">
             <BackLink />
             <LessonHero
-                title="Monsters"
-                artist="All Time Low"
-                description="A lesson about strong feelings, fear, and personal struggles."
-                imageUrl=""
+                title={song.title}
+                artist={song.artist}
+                description={song.description}
+                level={song.level}
+                topic={song.topic}
+                coverImage={song.coverImage}
+                coverClass={song.coverClass}
             />
-            <WarmUpQuestions
-                step="Step 1"
-                title="Warm-up Questions"
-                questions={[
-                    "What do people do when they feel stressed or worried?",
-                    "Why do people sometimes hide their feelings?",
-                ]}
-            />
-            <MatchingActivity
-                step="Step 2"
-                title="Match The Words To Their Meanings"
-                description="Drag each word into the correct meaning box. Use the speaker button to hear the pronunciation."
-                words={monsters.vocabulary}
-            />
-            <ListeningActivity
-                step="Step 3"
-                title="Listen To The Song"
-                description="Listen to the song before moving on to the next activity."
-                embedUrl={monsters.spotify.embedUrl}
-                embedTitle={monsters.spotify.title}
-            />
-            <PronounLyricsActivity
-                step="Step 4"
-                title="First Stanza"
-                description="Complete the gaps using a pronoun. Use the chart to help you."
-                pronouns={monstersPronouns.pronouns}
-                lyrics={monstersPronouns.lyrics}
-            />
-            <IconLyricsActivity
-                step="Step 5"
-                title="Second Stanza"
-                description="Drag each emoji into the correct space while you listen."
-                icons={monstersSecondStanza.icons}
-                lyrics={monstersSecondStanza.lyrics}
-            />
-            <PronounLyricsActivity
-                step="Step 6"
-                title="Third Stanza"
-                description="Complete the gaps using pronouns. Matching blanks fill together."
-                pronouns={monstersThirdStanza.pronouns}
-                lyrics={monstersThirdStanza.lyrics}
-            />
-            <LyricsWordActivity
-                step="Step 7"
-                title="Fourth Stanza"
-                description="Complete the sentences with the verbs in the present continuous form."
-                words={monstersFourthStanza.words}
-                lyrics={monstersFourthStanza.lyrics}
-            />
-            <ChoiceLyricsActivity
-                step="Step 8"
-                title="Fifth Stanza"
-                description="Listen carefully and click the correct option in each line."
-                lyrics={monstersFifthStanza.lyrics}
-            />
-            <CheckAllActivity
-                title="Check All Answers"
-                description="When students finish the whole song, click below to check every activity at once."
-            />
-            <WarmUpQuestions
-                step="Wrap-Up"
-                title="Talk About The Song"
-                description="Use these questions to finish the lesson with speaking practice."
-                questions={[
-                    "What feelings do you think the singer has in this song?",
-                    "Why do people sometimes go back to someone who hurts them?",
-                    "What can a person do when their thoughts feel too strong?",
-                    "Do you think this song is more about love, pain, or fear? Why?"
-                ]}
-            />
-            <HomeworkActivity
-                step="Homework"
-                title="Writing And Student Report"
-                description="Write your homework answer, then save or share your report."
-                prompt="Write about a time when your feelings were very strong. Explain what happened and how you felt."
-                songTitle="Monsters"
+            <LessonProgress />
+            <LessonSections
+              beforeSong={<>
+                <WarmUpQuestions step="Warm-up" title="Warm-up Questions" questions={["What do people do when they feel stressed or worried?", "Why do people sometimes hide their feelings?"]} />
+                <MatchingActivity step="Vocabulary" title="Match The Words To Their Meanings" description="Drag each word into the correct meaning box. Use the speaker button to hear the pronunciation." words={monsters.vocabulary} />
+                <WarmUpQuestions
+                  step="Vocabulary practice"
+                  title="Use The New Words"
+                  description="Discuss the questions and try to use the vocabulary from the matching activity."
+                  layout="two-column"
+                  questions={[
+                    "Can you name any famous monsters?",
+                    "Do you fear anything?",
+                    "Do you have any scars? Do you try to hide them?",
+                    "How can people deal with tunnel vision? Can it be a problem?",
+                  ]}
+                />
+              </>}
+              listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before moving on to the next activity." embedUrl={monsters.spotify.embedUrl} embedTitle={monsters.spotify.title} />}
+              listeningActivities={[
+                { label: "First Stanza", content: <PronounLyricsActivity step="Stanza 1" title="First Stanza" description="Complete the gaps using a pronoun. Use the chart to help you." pronouns={monstersPronouns.pronouns} lyrics={monstersPronouns.lyrics} /> },
+                { label: "Second Stanza", content: <IconLyricsActivity step="Stanza 2" title="Second Stanza" description="Drag each emoji into the correct space while you listen." icons={monstersSecondStanza.icons} lyrics={monstersSecondStanza.lyrics} /> },
+                { label: "Third Stanza", content: <PronounLyricsActivity step="Stanza 3" title="Third Stanza" description="Complete the gaps using pronouns. Matching blanks fill together." pronouns={monstersThirdStanza.pronouns} lyrics={monstersThirdStanza.lyrics} /> },
+                { label: "Fourth Stanza", content: <LyricsWordActivity step="Stanza 4" title="Fourth Stanza" description="Complete the sentences with the verbs in the present continuous form." words={monstersFourthStanza.words} lyrics={monstersFourthStanza.lyrics} /> },
+                { label: "Fifth Stanza", content: <ChoiceLyricsActivity step="Stanza 5" title="Fifth Stanza" description="Listen carefully and click the correct option in each line." lyrics={monstersFifthStanza.lyrics} /> },
+              ]}
+              checkAnswers={<CheckAllActivity title="Check All Answers" description="When students finish the whole song, click below to check every activity at once." />}
+              afterSong={<>
+                <WarmUpQuestions step="Wrap-Up" title="Talk About The Song" description="Use these questions to finish the lesson with speaking practice." questions={["What feelings do you think the singer has in this song?", "Why do people sometimes go back to someone who hurts them?", "What can a person do when their thoughts feel too strong?", "Do you think this song is more about love, pain, or fear? Why?"]} />
+                <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write your homework answer, then save or share your report." prompt="Write about a time when your feelings were very strong. Explain what happened and how you felt." songTitle="Monsters" />
+              </>}
             />
         </main>
     );

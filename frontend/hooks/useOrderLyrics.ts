@@ -4,22 +4,18 @@ import { useEffect, useState } from "react";
 import type { OrderItem } from "@/components/activities/OrderLyricsActivity/types";
 import { shuffleArray } from "@/lib/shuffleArray";
 
-function createOrderState(
-  items: OrderItem[],
-  shuffle = true,
-) {
-  return {
-    bankIds: shuffle
-      ? shuffleArray(items.map((item) => item.id))
-      : items.map((item) => item.id),
-    orderedIds: [] as string[],
-  };
+function createOrderState(items: OrderItem[], shouldShuffle = true) {
+  const itemIds = items.map((item) => item.id);
+  return { bankIds: shouldShuffle ? shuffleArray(itemIds) : itemIds, orderedIds: [] as string[] };
 }
 
 export function useOrderLyrics(items: OrderItem[]) {
   const [state, setState] = useState(() => createOrderState(items, false));
 
-  useEffect(() => setState(createOrderState(items, true)), [items]);
+  useEffect(() => {
+    const timeout = window.setTimeout(() => setState(createOrderState(items)), 0);
+    return () => window.clearTimeout(timeout);
+  }, [items]);
 
   const handleSelect = (itemId: string) => {
     setState((current) => {

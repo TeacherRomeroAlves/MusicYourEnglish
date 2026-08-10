@@ -5,10 +5,11 @@ interface IconCardProps {
   isDragging: boolean;
   onDragStart: (iconId: string) => void;
   onDragEnd: () => void;
+  onSelect: (iconId: string) => void;
 }
 
-export default function IconCard({ icon, isDragging, onDragStart, onDragEnd }: IconCardProps) {
-  const className = ["icon-card", isDragging ? "dragging" : ""]
+export default function IconCard({ icon, isDragging, onDragStart, onDragEnd, onSelect }: IconCardProps) {
+  const className = ["icon-card", isDragging ? "dragging is-selected" : ""]
     .filter(Boolean)
     .join(" ");
 
@@ -18,8 +19,13 @@ export default function IconCard({ icon, isDragging, onDragStart, onDragEnd }: I
       draggable
       type="button"
       aria-label={icon.ariaLabel}
+      aria-pressed={isDragging}
       onDragStart={() => onDragStart(icon.id)}
       onDragEnd={onDragEnd}
+      onClick={(event) => {
+        event.stopPropagation();
+        onSelect(icon.id);
+      }}
     >
       {icon.dark ? (
         <span className="dark-icon">

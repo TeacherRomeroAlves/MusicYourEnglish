@@ -1,36 +1,39 @@
+import Image from "next/image";
+
 interface LessonHeroProps {
     title: string;
     artist: string;
     description: string;
-    imageUrl?: string;
+    level: string;
+    topic: string;
+    coverImage: string;
+    coverClass: string;
 }
   
-export default function LessonHero({title, artist, description, imageUrl, }: LessonHeroProps) {
+export default function LessonHero({ title, artist, description, level, topic, coverImage, coverClass }: LessonHeroProps) {
     return (
-        <section className="hero">
-            <div className="hero-layout">
-                <div>
-                <p className="eyebrow">Song Lesson</p>
-                
-                <h1>Music Your English</h1>
-
-                <p className="hero-text">
-                Song: <strong>"{title}"</strong> by {artist}
-                </p>
-
-                <p className="hero-text hero-subtle">
-                    {description}
-                </p>
-                </div>
-
-                {imageUrl && (
-                    <img
-                        className="hero-artist-image"
-                        src={imageUrl}
-                        alt={artist}
-                    />
-                )}
-            </div>
+        <section className="lesson-hero">
+          <div className={`lesson-cover ${coverClass}`}>
+            <Image
+              className="lesson-cover__image"
+              src={coverImage}
+              alt={`${title} by ${artist} cover artwork`}
+              fill
+              sizes="(max-width: 580px) 100vw, (max-width: 820px) 190px, 250px"
+              priority
+            />
+            <span className="lesson-cover__badge">Song lesson</span>
+          </div>
+          <div className="lesson-hero__content">
+            <p className="eyebrow">Interactive song lesson</p>
+            <h1>{title}</h1>
+            <p className="lesson-artist">{artist}</p>
+            <p className="lesson-description">{description}</p>
+            <dl className="lesson-meta">
+              <div><dt>Level</dt><dd>{level}</dd></div>
+              <div><dt>Topic</dt><dd>{topic}</dd></div>
+            </dl>
+          </div>
         </section>
     );
 }

@@ -1,12 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import type { TypingBlank } from "@/components/activities/TypingLyricsActivity/types";
+import { useState } from "react";
 
-export function useTypingLyrics(lyrics: TypingBlank[]) {
+export function useTypingLyrics() {
   const [values, setValues] = useState<Record<number, string>>({});
-
-  useEffect(() => setValues({}), [lyrics]);
 
   const handleChange = (index: number, value: string, maxLength: number) => {
     setValues((current) => ({ ...current, [index]: value.slice(0, maxLength) }));

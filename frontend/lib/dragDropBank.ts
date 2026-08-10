@@ -20,3 +20,10 @@ export function appendItemToBank(
 ): string[] {
   return [...bankItems, itemId];
 }
+
+export function findFirstEmptySlot(
+  placements: Record<string, string | null>,
+  orderedSlotIds: string[],
+): string | null {
+  return orderedSlotIds.find((slotId) => !placements[slotId]) ?? null;
+}

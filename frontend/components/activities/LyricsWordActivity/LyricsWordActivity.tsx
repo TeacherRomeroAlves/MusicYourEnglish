@@ -20,7 +20,9 @@ export default function LyricsWordActivity({ step, title, description, words, ly
     handleSlotDragOver,
     handleSlotDragLeave,
     handleDropOnSlot,
+    handleAutoPlace,
     handleDropOnBank,
+    handleReturnToBank,
     handleReset,
   } = useLyricsWord(words, lyrics);
   const expectedSlots = lyrics.flatMap((line, lineIndex) =>
@@ -58,6 +60,7 @@ export default function LyricsWordActivity({ step, title, description, words, ly
           event.preventDefault();
           handleDropOnBank();
         }}
+        onClick={handleDropOnBank}
       >
         {bankWords.map((word) => (
           <LyricWordCard
@@ -66,6 +69,7 @@ export default function LyricsWordActivity({ step, title, description, words, ly
             isDragging={draggedWord === word}
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
+            onSelect={handleAutoPlace}
           />
         ))}
       </div>
@@ -90,6 +94,7 @@ export default function LyricsWordActivity({ step, title, description, words, ly
                       onDragOver={() => handleSlotDragOver(buildSlotId(index, i))}
                       onDragLeave={() => handleSlotDragLeave(buildSlotId(index, i))}
                       onDrop={() => handleDropOnSlot(buildSlotId(index, i))}
+                      onSelectWord={handleReturnToBank}
                     />
                   )}
 

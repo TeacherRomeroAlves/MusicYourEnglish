@@ -19,7 +19,9 @@ export default function MatchingActivity({ step, title, description, words, }: M
       handleBankDragOver,
       handleBankDragLeave,
       handleDropOnZone,
+      handleAutoPlace,
       handleDropOnBank,
+      handleReturnToBank,
       handleCheck,
       handleReset,
       handleSpeak,
@@ -55,6 +57,7 @@ export default function MatchingActivity({ step, title, description, words, }: M
               event.preventDefault();
               handleDropOnBank();
             }}
+            onClick={handleDropOnBank}
           >
             {bankSlots.map((word, index) => (
               <div
@@ -67,6 +70,7 @@ export default function MatchingActivity({ step, title, description, words, }: M
                     isDragging={draggedWord === word}
                     onDragStart={handleDragStart}
                     onDragEnd={handleDragEnd}
+                    onSelect={handleAutoPlace}
                     onSpeak={handleSpeak}
                   />
                 ) : null}
@@ -88,6 +92,7 @@ export default function MatchingActivity({ step, title, description, words, }: M
                 onDragOver={() => handleZoneDragOver(item.word)}
                 onDragLeave={() => handleZoneDragLeave(item.word)}
                 onDrop={() => handleDropOnZone(item.word)}
+                onSelectWord={handleReturnToBank}
               />
             ))}
           </div>

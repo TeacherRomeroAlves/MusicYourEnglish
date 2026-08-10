@@ -41,4 +41,3 @@ export default function CheckAllActivity({ title, description, buttonText = "Che
         </section>
     );
 }
-

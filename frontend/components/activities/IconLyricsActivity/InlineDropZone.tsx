@@ -12,6 +12,7 @@ interface InlineDropZoneProps {
   onDragOver: () => void;
   onDragLeave: () => void;
   onDrop: () => void;
+  onSelectIcon: (iconId: string) => void;
 }
 
 export default function InlineDropZone({
@@ -25,6 +26,7 @@ export default function InlineDropZone({
   onDragOver,
   onDragLeave,
   onDrop,
+  onSelectIcon,
 }: InlineDropZoneProps) {
   const className = ["inline-drop-zone", isDragOver ? "drag-over" : ""]
     .filter(Boolean)
@@ -35,6 +37,16 @@ export default function InlineDropZone({
       className={className}
       data-match={match}
       data-slot-id={slotId}
+      role="button"
+      tabIndex={0}
+      aria-label={`Place the selected icon in the ${match} blank`}
+      onClick={onDrop}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onDrop();
+        }
+      }}
       onDragOver={(event) => {
         event.preventDefault();
         onDragOver();
@@ -51,6 +63,7 @@ export default function InlineDropZone({
           isDragging={isDraggingIcon(placedIcon.id)}
           onDragStart={onDragStart}
           onDragEnd={onDragEnd}
+          onSelect={onSelectIcon}
         />
       ) : null}
     </span>
