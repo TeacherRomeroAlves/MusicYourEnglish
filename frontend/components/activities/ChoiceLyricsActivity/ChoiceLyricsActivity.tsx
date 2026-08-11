@@ -8,7 +8,9 @@ import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 export default function ChoiceLyricsActivity({ step, title, description, lyrics, }: ChoiceLyricsActivityProps) {
   const { optionsBySlot, selections, handleSelect, handleReset } = useChoiceLyrics(lyrics);
   const answers = lyrics.flatMap((line, lineIndex) =>
-    line.items.map((item, itemIndex) => ({ slotId: `${lineIndex}-${itemIndex}`, answer: item.answer })),
+    line.items
+      .map((item, itemIndex) => ({ slotId: `${lineIndex}-${itemIndex}`, answer: item.answer }))
+      .filter((item) => item.answer),
   );
   useRegisterActivityResult(`${step}:${title}`, {
     correct: answers.filter(({ slotId, answer }) => selections[slotId] === answer).length,
@@ -36,11 +38,13 @@ export default function ChoiceLyricsActivity({ step, title, description, lyrics,
               const slotId = `${index}-${itemIndex}`;
               return <span key={slotId}>
                 {item.before}{" "}
-                <ChoiceSlot
-                  options={optionsBySlot[slotId] ?? item.options}
-                  selectedOption={selections[slotId]}
-                  onSelect={(option) => handleSelect(slotId, option)}
-                />{" "}
+                {item.answer && <>
+                  <ChoiceSlot
+                    options={optionsBySlot[slotId] ?? item.options}
+                    selectedOption={selections[slotId]}
+                    onSelect={(option) => handleSelect(slotId, option)}
+                  />{" "}
+                </>}
                 {item.after}{" "}
               </span>;
             })}

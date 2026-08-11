@@ -27,7 +27,7 @@ const sectionDetails = {
   listening: {
     number: "02",
     title: "Listening to the song",
-    summary: "Spotify, lyrics activities and answers",
+    summary: "Song player, lyrics activities and answers",
   },
   after: {
     number: "03",

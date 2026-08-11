@@ -1,5 +1,5 @@
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia";
   title: string;
   artist: string;
   level: string;
@@ -51,6 +51,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Pronouns", "Present continuous", "Word choice"],
     coverImage: "/images/songs/monsters/cover.jpg",
     coverClass: "song-art--monsters",
+  },
+  {
+    slug: "the-fate-of-ophelia",
+    title: "The Fate of Ophelia",
+    artist: "Taylor Swift",
+    level: "B1+",
+    duration: "45 min",
+    topic: "Love and fate",
+    genre: "Pop",
+    description: "Explore how the song connects love, destiny, loyalty, and the power to change another person's life.",
+    activities: ["Prepositions", "Verb forms", "Word order"],
+    coverImage: "/images/songs/the-fate-of-ophelia/cover.jpg",
+    coverClass: "song-art--the-fate-of-ophelia",
   },
 ];
 
