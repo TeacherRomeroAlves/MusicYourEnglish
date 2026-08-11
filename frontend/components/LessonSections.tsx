@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { useSwipeNavigation } from "@/hooks/useSwipeNavigation";
 
 interface ActivitySlide {
   label: string;
@@ -56,12 +55,6 @@ export default function LessonSections({
     ) % listeningActivities.length);
   };
 
-  const swipeNavigation = useSwipeNavigation({
-    onSwipeLeft: () => moveActivity(1),
-    onSwipeRight: () => moveActivity(-1),
-    enabledQuery: "(max-width: 960px)",
-  });
-
   const renderHeader = (section: SectionId) => {
     const details = sectionDetails[section];
     const isOpen = openSection === section;
@@ -104,17 +97,14 @@ export default function LessonSections({
                   <span>Lyrics practice</span>
                   <strong>{listeningActivities[activityIndex]?.label}</strong>
                 </div>
-                <div className="activity-carousel__position" aria-live="polite">
-                  <span className="activity-carousel__count">{activityIndex + 1} / {listeningActivities.length}</span>
-                  <small className="activity-carousel__swipe-hint">Swipe to change activity</small>
-                </div>
+                <span className="activity-carousel__count" aria-live="polite">{activityIndex + 1} / {listeningActivities.length}</span>
               </div>
               <div className="activity-carousel__stage">
                 <button className="activity-carousel__side activity-carousel__side--previous" type="button" onClick={() => moveActivity(-1)} aria-label="Previous activity">
                   <span aria-hidden="true">&larr;</span>
                   <small>Previous</small>
                 </button>
-                <div className="activity-carousel__slides" {...swipeNavigation}>
+                <div className="activity-carousel__slides">
                   {listeningActivities.map((activity, index) => (
                     <div
                       className="activity-carousel__slide"
