@@ -62,7 +62,7 @@ export const songCatalog: SongMeta[] = [
     genre: "Pop",
     description: "Explore how the song connects love, destiny, loyalty, and the power to change another person's life.",
     activities: ["Prepositions", "Verb forms", "Word order"],
-    coverImage: "/images/songs/the-fate-of-ophelia/cover.jpg",
+    coverImage: "/images/songs/the-fate-of-ophelia/cover.webp",
     coverClass: "song-art--the-fate-of-ophelia",
   },
 ];

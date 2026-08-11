@@ -60,10 +60,10 @@ export default function TheFateOfOpheliaPage() {
               description="Discuss the questions and try to use the new vocabulary."
               layout="two-column"
               questions={[
-                "Do you believe fate can change a person's life?",
+                "Can you name a venomous animal?",
                 "What skill would you like to hone?",
                 "Why might someone pledge allegiance to a country or a team?",
-                "What is venom? Why can a memory linger for a long time?",
+                "Why can a memory linger for a long time?",
               ]}
             />
           </>
