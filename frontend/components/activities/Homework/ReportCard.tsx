@@ -1,3 +1,9 @@
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+
 interface ReportCardProps {
     songTitle: string;
     prompt: string;
@@ -11,13 +17,31 @@ interface ReportCardProps {
 export default function ReportCard({
   songTitle, prompt, studentName, teacherName, writing, date, score,
 }: ReportCardProps) {
-    return (
+    const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
+
+    useEffect(() => {
+      const timeout = window.setTimeout(() => setPortalTarget(document.body), 0);
+      return () => window.clearTimeout(timeout);
+    }, []);
+
+    if (!portalTarget) return null;
+
+    return createPortal(
         <article className="report-card report-export">
         <header className="report-card__header">
-          <div>
-            <p className="report-kicker">Music Your English</p>
-            <h3>Student Report</h3>
-            <p>{songTitle}</p>
+          <div className="report-title">
+            <Image
+              className="report-logo"
+              src="/brand/music-your-english-logo.png"
+              alt="Music Your English"
+              width={58}
+              height={58}
+            />
+            <div>
+              <p className="report-kicker">Music Your English</p>
+              <h3>Student Report</h3>
+              <p>{songTitle}</p>
+            </div>
           </div>
           <div className="report-score">
             <span>Song score</span>
@@ -48,6 +72,7 @@ export default function ReportCard({
             <span>Music Your English</span>
           </footer>
         </div>
-        </article>
+        </article>,
+        portalTarget,
     );
 }
