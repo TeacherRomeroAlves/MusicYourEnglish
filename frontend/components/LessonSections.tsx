@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { useSwipeNavigation } from "@/hooks/useSwipeNavigation";
 
 interface ActivitySlide {
   label: string;
@@ -67,6 +68,12 @@ export default function LessonSections({
     </div>
   );
 
+  const swipeNavigation = useSwipeNavigation({
+    onSlideRight: () => moveActivity(1),
+    onSlideLeft: () => moveActivity(-1),
+    enabledQuery: "(max-width: 960px)",
+  });
+
   const renderHeader = (section: SectionId) => {
     const details = sectionDetails[section];
     const isOpen = openSection === section;
@@ -117,7 +124,7 @@ export default function LessonSections({
                   <span aria-hidden="true">&larr;</span>
                   <small>Previous</small>
                 </button>
-                <div className="activity-carousel__slides">
+                <div className="activity-carousel__slides" {...swipeNavigation}>
                   {listeningActivities.map((activity, index) => (
                     <div
                       className="activity-carousel__slide"
