@@ -1,5 +1,7 @@
-<<<<<<< HEAD
 ./.vscode
+
+# root dependencies
+node_modules/
 
 # =========================
 # Next.js (frontend)
