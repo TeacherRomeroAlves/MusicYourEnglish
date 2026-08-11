@@ -13,6 +13,7 @@ import "../styles/lesson.css";
 import "../styles/forms.css";
 import "../styles/reports.css";
 import "../styles/library.css";
+import "../styles/home.css";
 import "../styles/responsive.css";
 
 const outfit = Outfit({

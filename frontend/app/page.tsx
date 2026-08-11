@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { songCatalog } from "@/data/songCatalog";
-import "../styles/home.css";
 
 const processSteps = [
   ["Choose a song", "Pick a lesson based on your level, interests, or favorite artist."],
