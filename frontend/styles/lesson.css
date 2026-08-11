@@ -60,6 +60,8 @@
 .activity-carousel__toolbar > div:first-child span { color: #c97dab; font-size: .68rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
 .activity-carousel__toolbar strong { color: #2a1826; font-family: var(--font-space-grotesk); font-size: 1.08rem; }
 .activity-carousel__count { color: #685c68; font-size: .82rem; font-weight: 800; }
+.activity-carousel__position { display: grid; justify-items: end; gap: 3px; }
+.activity-carousel__swipe-hint { display: none; color: #7b6877; font-size: .7rem; font-weight: 650; }
 .activity-carousel__stage { display: grid; grid-template-columns: 64px minmax(0, 1fr) 64px; align-items: stretch; }
 .activity-carousel__slides { min-width: 0; }
 .activity-carousel__side { min-height: 100%; padding: 14px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 0; background: linear-gradient(180deg, #f4ddea, #ead1e3); color: #6b164f; cursor: pointer; transition: background 180ms ease, color 180ms ease; }
@@ -80,9 +82,10 @@
   .lesson-group__heading small { font-size: .78rem; }
   .lesson-group__scroll { padding: 14px; }
   .activity-carousel__toolbar { padding: 14px; align-items: flex-end; }
-  .activity-carousel__stage { grid-template-columns: 48px minmax(0, 1fr) 48px; }
-  .activity-carousel__side { padding-inline: 4px; }
-  .activity-carousel__side small { display: none; }
+  .activity-carousel__stage { display: block; }
+  .activity-carousel__side { display: none; }
+  .activity-carousel__slides { width: 100%; touch-action: pan-y; }
+  .activity-carousel__swipe-hint { display: block; }
   .activity-carousel__slide { padding: 8px; }
   .activity-carousel__slide > .card { padding-inline: 14px; }
   .lesson-group:last-child .lesson-group__scroll > .card:first-child .questions { grid-template-columns: 1fr; }
