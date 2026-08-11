@@ -4,7 +4,7 @@ import type { SongMeta } from "@/data/songCatalog";
 
 export default function SongCard({ song }: { song: SongMeta }) {
   return (
-    <article className="song-card">
+    <article className={`song-card song-card--${song.slug}`}>
       <div className="song-art">
         <Image
           src={song.coverImage}

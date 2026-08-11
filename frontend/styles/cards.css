@@ -2,6 +2,7 @@
 .song-card:hover { transform: translateY(-7px); border-color: rgba(224,154,198,.34); box-shadow: 0 30px 70px rgba(0,0,0,.4); }
 .song-art { aspect-ratio: 1; position: relative; overflow: hidden; isolation: isolate; background: #120f16; }
 .song-art img { object-fit: cover; transition: transform 450ms cubic-bezier(.2,.8,.2,1), filter 300ms ease; }
+.song-card--monsters .song-art img { object-fit: contain; }
 .song-card:hover .song-art img { transform: scale(1.035); filter: saturate(1.08); }
 .song-art::after { display: none; }
 .song-art--count-on-me { background: radial-gradient(circle at 78% 18%, #ed8ebc, transparent 18%), linear-gradient(145deg, #541241, #9d365e 52%, #e09673); }
