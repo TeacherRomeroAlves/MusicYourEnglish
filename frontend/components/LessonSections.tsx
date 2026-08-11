@@ -59,7 +59,7 @@ export default function LessonSections({
   const swipeNavigation = useSwipeNavigation({
     onSwipeLeft: () => moveActivity(1),
     onSwipeRight: () => moveActivity(-1),
-    enabledQuery: "(max-width: 580px)",
+    enabledQuery: "(max-width: 960px)",
   });
 
   const renderHeader = (section: SectionId) => {
