@@ -55,6 +55,18 @@ export default function LessonSections({
     ) % listeningActivities.length);
   };
 
+  const renderMobileNavigation = (position: "top" | "bottom") => (
+    <div className={`activity-carousel__mobile-nav activity-carousel__mobile-nav--${position}`} aria-label={`${position} activity navigation`}>
+      <button type="button" onClick={() => moveActivity(-1)} aria-label="Previous activity">
+        <span aria-hidden="true">&larr;</span> Previous
+      </button>
+      <span aria-live="polite">{activityIndex + 1} / {listeningActivities.length}</span>
+      <button type="button" onClick={() => moveActivity(1)} aria-label="Next activity">
+        Next <span aria-hidden="true">&rarr;</span>
+      </button>
+    </div>
+  );
+
   const renderHeader = (section: SectionId) => {
     const details = sectionDetails[section];
     const isOpen = openSection === section;
@@ -99,6 +111,7 @@ export default function LessonSections({
                 </div>
                 <span className="activity-carousel__count" aria-live="polite">{activityIndex + 1} / {listeningActivities.length}</span>
               </div>
+              {renderMobileNavigation("top")}
               <div className="activity-carousel__stage">
                 <button className="activity-carousel__side activity-carousel__side--previous" type="button" onClick={() => moveActivity(-1)} aria-label="Previous activity">
                   <span aria-hidden="true">&larr;</span>
@@ -121,15 +134,7 @@ export default function LessonSections({
                   <small>Next</small>
                 </button>
               </div>
-              <div className="activity-carousel__mobile-nav" aria-label="Activity navigation">
-                <button type="button" onClick={() => moveActivity(-1)} aria-label="Previous activity">
-                  <span aria-hidden="true">&larr;</span> Previous
-                </button>
-                <span aria-live="polite">{activityIndex + 1} / {listeningActivities.length}</span>
-                <button type="button" onClick={() => moveActivity(1)} aria-label="Next activity">
-                  Next <span aria-hidden="true">&rarr;</span>
-                </button>
-              </div>
+              {renderMobileNavigation("bottom")}
             </div>
             <div className="lesson-group__check">{checkAnswers}</div>
           </div>

@@ -81,6 +81,7 @@
   .activity-carousel__stage { display: block; }
   .activity-carousel__side { display: none; }
   .activity-carousel__mobile-nav { padding: 10px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; border-top: 1px solid rgba(76,35,67,.14); background: #f8f1f6; }
+  .activity-carousel__mobile-nav--top { border-top: 0; border-bottom: 1px solid rgba(76,35,67,.14); }
   .activity-carousel__mobile-nav button { min-height: 44px; padding: 0 10px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid rgba(76,35,67,.2); border-radius: 11px; background: #fff; color: #6b164f; font-size: .78rem; font-weight: 800; cursor: pointer; }
   .activity-carousel__mobile-nav > span { min-width: 42px; color: #685c68; text-align: center; font-size: .76rem; font-weight: 800; }
 }
