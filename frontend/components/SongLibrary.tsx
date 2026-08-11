@@ -2,14 +2,13 @@
 
 import { useDeferredValue, useState } from "react";
 import SongCard from "./SongCard";
-import type { SongMeta } from "@/data/songCatalog";
+import { USER_LEVELS, type SongMeta } from "@/data/songCatalog";
 
 export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
   const [query, setQuery] = useState("");
   const [level, setLevel] = useState("all");
   const [genre, setGenre] = useState("all");
   const deferredQuery = useDeferredValue(query.trim().toLowerCase());
-  const levels = [...new Set(songs.map((song) => song.level))];
   const genres = [...new Set(songs.map((song) => song.genre))];
 
   const filteredSongs = songs.filter((song) => {
@@ -43,7 +42,7 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
           <label htmlFor="level-filter">Level</label>
           <select id="level-filter" value={level} onChange={(event) => setLevel(event.target.value)}>
             <option value="all">All levels</option>
-            {levels.map((option) => <option key={option} value={option}>{option}</option>)}
+            {USER_LEVELS.map((option) => <option key={option} value={option}>{option}</option>)}
           </select>
         </div>
         <div className="filter-field">

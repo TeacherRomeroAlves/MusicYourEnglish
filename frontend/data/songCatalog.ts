@@ -1,8 +1,17 @@
+export const USER_LEVELS = [
+  "Beginner",
+  "Elementary",
+  "Pre-intermediate",
+  "Intermediate+",
+] as const;
+
+export type UserLevel = (typeof USER_LEVELS)[number];
+
 export interface SongMeta {
   slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia";
   title: string;
   artist: string;
-  level: string;
+  level: UserLevel;
   duration: string;
   topic: string;
   genre: string;
@@ -17,7 +26,7 @@ export const songCatalog: SongMeta[] = [
     slug: "count-on-me",
     title: "Count on Me",
     artist: "Bruno Mars",
-    level: "A2–B1",
+    level: "Beginner",
     duration: "35 min",
     topic: "Friendship and support",
     genre: "Pop",
@@ -30,7 +39,7 @@ export const songCatalog: SongMeta[] = [
     slug: "golden",
     title: "Golden",
     artist: "HUNTR/X",
-    level: "A2–B1",
+    level: "Elementary",
     duration: "40 min",
     topic: "Confidence and inner strength",
     genre: "K-pop",
@@ -43,7 +52,7 @@ export const songCatalog: SongMeta[] = [
     slug: "monsters",
     title: "Monsters",
     artist: "All Time Low",
-    level: "B1–B2",
+    level: "Pre-intermediate",
     duration: "45 min",
     topic: "Fear and difficult emotions",
     genre: "Pop punk",
@@ -56,7 +65,7 @@ export const songCatalog: SongMeta[] = [
     slug: "the-fate-of-ophelia",
     title: "The Fate of Ophelia",
     artist: "Taylor Swift",
-    level: "B1+",
+    level: "Pre-intermediate",
     duration: "45 min",
     topic: "Love and fate",
     genre: "Pop",
