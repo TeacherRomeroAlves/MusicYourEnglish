@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type TouchEventHandler } from "react";
+import { useRef, type PointerEventHandler } from "react";
 
 interface SwipeNavigationOptions {
   onSwipeLeft: () => void;
@@ -12,30 +12,34 @@ interface SwipeNavigationOptions {
 export function useSwipeNavigation({
   onSwipeLeft,
   onSwipeRight,
-  minimumDistance = 52,
+  minimumDistance = 42,
   enabledQuery,
 }: SwipeNavigationOptions) {
-  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const pointerStart = useRef<{ id: number; x: number; y: number } | null>(null);
 
-  const handleTouchStart: TouchEventHandler<HTMLElement> = (event) => {
+  const handlePointerDown: PointerEventHandler<HTMLElement> = (event) => {
     if (enabledQuery && !window.matchMedia(enabledQuery).matches) return;
-    const touch = event.touches[0];
-    if (!touch) return;
-    touchStart.current = { x: touch.clientX, y: touch.clientY };
+    if (!event.isPrimary || event.pointerType === "mouse") return;
+
+    pointerStart.current = {
+      id: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
   };
 
-  const handleTouchEnd: TouchEventHandler<HTMLElement> = (event) => {
+  const handlePointerUp: PointerEventHandler<HTMLElement> = (event) => {
     if (enabledQuery && !window.matchMedia(enabledQuery).matches) {
-      touchStart.current = null;
+      pointerStart.current = null;
       return;
     }
-    const start = touchStart.current;
-    const touch = event.changedTouches[0];
-    touchStart.current = null;
-    if (!start || !touch) return;
+    const start = pointerStart.current;
+    pointerStart.current = null;
+    if (!start || start.id !== event.pointerId) return;
 
-    const distanceX = touch.clientX - start.x;
-    const distanceY = touch.clientY - start.y;
+    const distanceX = event.clientX - start.x;
+    const distanceY = event.clientY - start.y;
     const isHorizontalSwipe = Math.abs(distanceX) >= minimumDistance
       && Math.abs(distanceX) > Math.abs(distanceY) * 1.25;
 
@@ -44,9 +48,9 @@ export function useSwipeNavigation({
     else onSwipeRight();
   };
 
-  const handleTouchCancel: TouchEventHandler<HTMLElement> = () => {
-    touchStart.current = null;
+  const handlePointerCancel: PointerEventHandler<HTMLElement> = () => {
+    pointerStart.current = null;
   };
 
-  return { handleTouchStart, handleTouchEnd, handleTouchCancel };
+  return { handlePointerDown, handlePointerUp, handlePointerCancel };
 }
