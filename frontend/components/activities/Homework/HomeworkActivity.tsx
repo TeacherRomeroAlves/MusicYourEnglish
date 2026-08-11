@@ -42,7 +42,7 @@ export default function HomeworkActivity({ step, title, description, prompt, son
         <HomeworkForm
           prompt={prompt}
           studentName={homework.studentName}
-          studentClass={homework.studentClass}
+          teacherName={homework.teacherName}
           writing={homework.writing}
           wordCount={homework.wordCount}
           onFieldChange={homework.updateField}
@@ -54,7 +54,7 @@ export default function HomeworkActivity({ step, title, description, prompt, son
           songTitle={songTitle}
           prompt={prompt}
           studentName={homework.studentName}
-          studentClass={homework.studentClass}
+          teacherName={homework.teacherName}
           writing={homework.writing}
           date={homework.date}
           score={homework.score}

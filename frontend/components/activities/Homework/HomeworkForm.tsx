@@ -1,16 +1,16 @@
 interface HomeworkFormProps {
     prompt: string;
     studentName: string;
-    studentClass: string;
+    teacherName: string;
     writing: string;
     wordCount: number;
-    onFieldChange: (field: "studentName" | "studentClass" | "writing", value: string) => void;
+    onFieldChange: (field: "studentName" | "teacherName" | "writing", value: string) => void;
     onSavePdf: () => void;
     onShare: () => void;
 }
   
 export default function HomeworkForm({
-    prompt, studentName, studentClass, writing, wordCount,
+    prompt, studentName, teacherName, writing, wordCount,
     onFieldChange, onSavePdf, onShare,
 }: HomeworkFormProps) {
     return (
@@ -27,14 +27,14 @@ export default function HomeworkForm({
         />
 
         <label className="field-label">
-            Class
+            Teacher Name
         </label>
 
         <input
             className="field-input"
             type="text"
-            value={studentClass}
-            onChange={(event) => onFieldChange("studentClass", event.target.value)}
+            value={teacherName}
+            onChange={(event) => onFieldChange("teacherName", event.target.value)}
         />
 
         <label className="field-label">

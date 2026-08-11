@@ -5,11 +5,11 @@ import { useActivityResults } from "@/hooks/useActivityResults";
 
 interface HomeworkDraft {
   studentName: string;
-  studentClass: string;
+  teacherName: string;
   writing: string;
 }
 
-const emptyDraft: HomeworkDraft = { studentName: "", studentClass: "", writing: "" };
+const emptyDraft: HomeworkDraft = { studentName: "", teacherName: "", writing: "" };
 
 export function countWords(value: string) {
   return value.trim() ? value.trim().split(/\s+/).length : 0;
@@ -25,7 +25,12 @@ export function useHomework(songTitle: string, prompt: string) {
     const timeout = window.setTimeout(() => {
       try {
         const savedDraft = window.localStorage.getItem(storageKey);
-        setDraft(savedDraft ? JSON.parse(savedDraft) : emptyDraft);
+        const parsedDraft = savedDraft ? JSON.parse(savedDraft) : emptyDraft;
+        setDraft({
+          studentName: parsedDraft.studentName ?? "",
+          teacherName: parsedDraft.teacherName ?? parsedDraft.studentClass ?? "",
+          writing: parsedDraft.writing ?? "",
+        });
       } catch {
         setDraft(emptyDraft);
       }
@@ -44,7 +49,7 @@ export function useHomework(songTitle: string, prompt: string) {
   };
 
   const score = totals.total ? `${totals.correct} / ${totals.total}` : "Not checked yet";
-  const shareText = `${songTitle} student report\nName: ${draft.studentName || "Not added"}\nClass: ${draft.studentClass || "Not added"}\nSong score: ${score}\n\n${prompt}\n\n${draft.writing}`;
+  const shareText = `${songTitle} student report\nName: ${draft.studentName || "Not added"}\nTeacher Name: ${draft.teacherName || "Not added"}\nSong score: ${score}\n\n${prompt}\n\n${draft.writing}`;
 
   const handleSavePdf = () => window.print();
   const handleShare = async () => {
