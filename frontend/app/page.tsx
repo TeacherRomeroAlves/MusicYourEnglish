@@ -42,7 +42,11 @@ export default function Home() {
             <Link className="button button--primary" href="/songs">Explore Songs</Link>
             <Link className="button button--secondary" href="#how-it-works">See How It Works</Link>
           </div>
-          <p className="trust-line">Interactive listening <i /> Vocabulary in context <i /> Speaking and writing practice</p>
+          <div className="trust-line" aria-label="Learning features">
+            <span>Interactive listening</span>
+            <span>Vocabulary in context</span>
+            <span>Speaking and writing practice</span>
+          </div>
         </div>
 
         <div className="learning-player" aria-label="Preview of an interactive music lesson">

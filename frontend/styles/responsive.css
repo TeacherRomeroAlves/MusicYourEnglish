@@ -34,24 +34,56 @@
 @media (max-width: 580px) {
   .nav-shell, .home-hero, .home-section, .final-cta, .footer-shell, .footer-bottom, .page-shell { width: min(100% - 24px, var(--container)); }
   .nav-shell { min-height: 68px; }
-  .brand-mark { font-size: .92rem; }
-  h1 { font-size: clamp(2.7rem, 13vw, 4.2rem); }
-  h2 { font-size: clamp(2rem, 10vw, 3rem); }
-  .home-section { padding: 86px 0; }
-  .home-hero { padding: 62px 0 78px; }
-  .trust-line { display: block; line-height: 1.8; }
-  .trust-line i { display: inline-block; margin: 0 6px; }
-  .learning-player { padding: 18px; border-radius: 24px; }
+  .brand-mark { gap: 8px; font-size: .88rem; }
+  .brand-logo { width: 34px; height: 34px; border-radius: 9px; }
+  .nav-panel { top: 68px; left: 12px; right: 12px; max-height: calc(100vh - 82px); overflow-y: auto; }
+  h1 { font-size: clamp(2.45rem, 12.5vw, 3.45rem); line-height: .98; }
+  h2 { font-size: clamp(2rem, 9.5vw, 2.75rem); line-height: 1.04; }
+  .home-section { padding: 72px 0; }
+  .home-hero { padding: 50px 0 64px; gap: 38px; }
+  .home-hero__lead { margin-top: 20px; font-size: 1rem; line-height: 1.58; }
+  .hero-actions { display: grid; grid-template-columns: 1fr; margin-top: 26px; }
+  .hero-actions .button, .library-preview__content .button { width: 100%; }
+  .trust-line { display: grid; gap: 8px; margin-top: 22px; line-height: 1.45; }
+  .trust-line span:not(:first-child)::before { width: 5px; height: 5px; }
+  .trust-line span:first-child::before { content: ""; width: 5px; height: 5px; flex: none; border-radius: 50%; background: #d68ac7; }
+  .learning-player { width: 100%; padding: 18px; border-radius: 24px; box-sizing: border-box; }
   .learning-player::after { display: none; }
+  .learning-player__topline { gap: 8px; font-size: .67rem; letter-spacing: .08em; }
+  .learning-player__track { margin-top: 17px; gap: 10px; }
+  .learning-player__track button { width: 42px; height: 42px; }
+  .mini-cover { width: 50px; height: 50px; border-radius: 12px; }
+  .equalizer { height: 52px; margin: 17px 0 14px; gap: 2px; }
+  .equalizer i { height: calc(var(--bar) * 5px); }
+  .preview-lyric { padding: 14px; }
   .preview-vocab { grid-template-columns: 1fr; }
   .preview-vocab span { grid-column: auto; }
   .preview-vocab p { margin-top: 4px; }
-  .library-preview__visual { min-height: 330px; padding: 22px; border-radius: 24px; }
+  .player-progress { grid-template-columns: 1fr; gap: 8px; }
+  .player-progress small { text-align: right; }
+  .library-preview { gap: 38px; }
+  .library-preview__content > p:not(.eyebrow) { margin: 18px 0 26px; font-size: 1rem; }
+  .library-preview__visual { min-height: 0; padding: 22px; border-radius: 24px; }
+  .library-cover-stack { height: 210px; }
+  .library-cover { width: min(56%, 180px); left: calc(var(--cover-index) * 18%); border-radius: 14px; }
   .process-grid { grid-template-columns: 1fr; }
-  .process-card:nth-child(n) { grid-column: auto; min-height: 220px; }
+  .process-grid { margin-top: 34px; gap: 10px; }
+  .process-card:nth-child(n) { grid-column: auto; min-height: 0; padding: 24px; }
+  .process-card h3 { margin-top: 24px; }
   .paths-section { padding-inline: 0; }
-  .path-panel { border-radius: 24px; }
+  .path-panel { padding: 30px 24px; border-radius: 24px; }
+  .path-panel h2 { font-size: clamp(1.9rem, 9vw, 2.5rem); }
+  .path-panel ul { margin: 24px 0 28px; }
+  .path-panel .button { width: 100%; padding-inline: 14px; }
+  .music-benefits { gap: 0; }
+  .benefit-heading { margin-bottom: 26px; }
+  .benefit-list article { grid-template-columns: 36px 1fr; gap: 12px; padding: 24px 0; }
   .final-cta { margin-top: 40px; padding: 58px 22px; border-radius: 25px; }
+  .final-cta .button { width: 100%; }
+  .teacher-link { width: 100%; line-height: 1.5; }
+  .site-footer { margin-top: 56px; }
+  .footer-shell { padding: 48px 0 38px; gap: 34px; }
+  .footer-nav { gap: 14px 20px; }
   .footer-bottom { padding: 22px 0; align-items: flex-start; flex-direction: column; }
   .lesson-page { padding-top: 22px; }
   .back-link { top: 78px; }
@@ -65,4 +97,13 @@
   .inline-drop-zone, .word-drop-zone { min-height: 50px; margin-block: 3px; }
   .icon-card { width: 68px; height: 68px; }
   .actions .action-btn, .report-form .action-btn { width: 100%; }
+}
+@media (max-width: 360px) {
+  .brand-mark { font-size: .8rem; }
+  .brand-logo { width: 32px; height: 32px; }
+  .menu-toggle { width: 42px; height: 42px; }
+  .learning-player__topline { align-items: flex-start; flex-direction: column; }
+  .learning-player__track strong { font-size: 1rem; }
+  .library-cover-stack { height: 185px; }
+  .path-panel { padding-inline: 20px; }
 }
