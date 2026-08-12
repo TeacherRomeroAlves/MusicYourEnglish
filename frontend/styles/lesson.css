@@ -21,6 +21,8 @@
 .video-frame iframe { display: block; width: 100%; border: 0; }
 .spotify-frame { padding: 8px; background: linear-gradient(145deg, rgba(130,13,75,.18), #09080c 38%); }
 .spotify-frame iframe { height: 352px; border-radius: 13px; }
+.youtube-frame { aspect-ratio: 16 / 9; background: linear-gradient(145deg, rgba(130,13,75,.2), #08070b 42%); }
+.youtube-frame iframe { height: 100%; }
 .lesson-groups { display: grid; gap: 14px; margin-top: 22px; }
 .lesson-group { overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: #17131f; box-shadow: var(--shadow-soft); transition: border-color 220ms ease, box-shadow 220ms ease; }
 .lesson-group.is-open { border-color: rgba(224,154,198,.32); box-shadow: 0 24px 65px rgba(0,0,0,.34), 0 0 55px rgba(130,13,75,.08); }

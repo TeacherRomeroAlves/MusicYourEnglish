@@ -1,6 +1,8 @@
 import { ListeningActivityProps } from "./types";
 
 export default function ListeningActivity({ step, title, description, embedUrl, embedTitle, }: ListeningActivityProps) {
+  const isYouTube = embedUrl.includes("youtube.com/embed/");
+
   return (
     <section className="card">
       <div className="section-heading">
@@ -15,7 +17,7 @@ export default function ListeningActivity({ step, title, description, embedUrl, 
         )}
       </div>
 
-      <div className="video-frame spotify-frame">
+      <div className={`video-frame ${isYouTube ? "youtube-frame" : "spotify-frame"}`}>
         <iframe
           src={embedUrl}
           title={embedTitle}
