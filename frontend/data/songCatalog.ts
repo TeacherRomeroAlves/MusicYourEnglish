@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall";
   title: string;
   artist: string;
   level: UserLevel;
@@ -73,6 +73,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Prepositions", "Verb forms", "Word order"],
     coverImage: "/images/songs/the-fate-of-ophelia/cover.webp",
     coverClass: "song-art--the-fate-of-ophelia",
+  },
+  {
+    slug: "wonderwall",
+    title: "Wonderwall",
+    artist: "Oasis",
+    level: "Beginner",
+    duration: "35 min",
+    topic: "Hope and relationships",
+    genre: "Rock",
+    description: "Practice everyday words while exploring hope, uncertainty, and an important relationship.",
+    activities: ["Vocabulary", "Word order", "Listening"],
+    coverImage: "/images/songs/wonderwall/cover.jpg",
+    coverClass: "song-art--wonderwall",
   },
 ];
 

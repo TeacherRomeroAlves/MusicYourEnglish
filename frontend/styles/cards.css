@@ -9,6 +9,7 @@
 .song-art--golden { background: radial-gradient(circle at 75% 20%, #f5e6b0, transparent 16%), linear-gradient(145deg, #31200b, #a66d14 55%, #e0b740); }
 .song-art--monsters { background: radial-gradient(circle at 22% 15%, #9a3d72, transparent 16%), linear-gradient(145deg, #100a1a, #30134b 55%, #771d4b); }
 .song-art--the-fate-of-ophelia { background: radial-gradient(circle at 78% 18%, #ffd1b3, transparent 18%), linear-gradient(145deg, #421423, #a43e35 55%, #e98f5f); }
+.song-art--wonderwall { background: radial-gradient(circle at 72% 20%, #d9d9d9, transparent 17%), linear-gradient(145deg, #171717, #555 55%, #aaa); }
 .song-art__eyebrow, .song-art__title, .song-art__artist { position: relative; z-index: 2; }
 .song-art__eyebrow { margin-bottom: auto; color: rgba(255,255,255,.72); font-size: .68rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
 .song-art__title { max-width: 90%; color: white; font-family: var(--font-space-grotesk); font-size: clamp(1.8rem, 3vw, 2.65rem); font-weight: 750; letter-spacing: -.05em; line-height: .95; }
