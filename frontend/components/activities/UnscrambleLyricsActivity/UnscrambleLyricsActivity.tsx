@@ -14,9 +14,9 @@ export default function UnscrambleLyricsActivity({
 
   useRegisterActivityResult(`${step}:${title}`, {
     correct: lyrics.filter((line, index) => (
-      (values[index] ?? "").trim().toLowerCase() === line.answer.toLowerCase()
+      (values[line.syncKey ?? String(index)] ?? "").trim().toLowerCase() === line.answer.toLowerCase()
     )).length,
-    answered: lyrics.filter((_, index) => Boolean((values[index] ?? "").trim())).length,
+    answered: lyrics.filter((line, index) => Boolean((values[line.syncKey ?? String(index)] ?? "").trim())).length,
     total: lyrics.length,
   });
 
@@ -38,8 +38,8 @@ export default function UnscrambleLyricsActivity({
               maxLength={line.answer.length}
               placeholder={line.scrambled}
               aria-label={`Unscramble ${line.scrambled}`}
-              value={values[index] ?? ""}
-              onChange={(event) => handleChange(index, event.target.value, line.answer.length)}
+              value={values[line.syncKey ?? String(index)] ?? ""}
+              onChange={(event) => handleChange(line.syncKey ?? String(index), event.target.value, line.answer.length)}
               autoComplete="off"
               spellCheck={false}
             />{" "}

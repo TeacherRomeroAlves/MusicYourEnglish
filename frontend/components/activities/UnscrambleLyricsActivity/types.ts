@@ -3,6 +3,7 @@ export interface UnscrambleLyricsLine {
   answer: string;
   scrambled: string;
   after: string;
+  syncKey?: string;
 }
 
 export interface UnscrambleLyricsActivityProps {

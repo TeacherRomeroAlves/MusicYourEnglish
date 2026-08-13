@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild";
   title: string;
   artist: string;
   level: UserLevel;
@@ -86,6 +86,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Vocabulary", "Word order", "Listening"],
     coverImage: "/images/songs/wonderwall/cover.jpg",
     coverClass: "song-art--wonderwall",
+  },
+  {
+    slug: "manchild",
+    title: "Manchild",
+    artist: "Sabrina Carpenter",
+    level: "Elementary",
+    duration: "40 min",
+    topic: "Dating and maturity",
+    genre: "Pop",
+    description: "Practice verb tenses and everyday vocabulary while discussing dating, maturity, and responsibility.",
+    activities: ["Verb tenses", "Unscramble", "Word recognition"],
+    coverImage: "/images/songs/manchild/cover.jpg",
+    coverClass: "song-art--manchild",
   },
 ];
 

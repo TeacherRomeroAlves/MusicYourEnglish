@@ -47,3 +47,10 @@
 .lyric-input:focus { outline: 2px solid #d68ac7; outline-offset: 2px; border-color: transparent; }
 .unscramble-input { width: 7rem; min-width: 6rem; }
 .unscramble-input::placeholder { color: #d09abb; opacity: 1; letter-spacing: .08em; }
+.missing-word-options { margin-top: 24px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.missing-word-option { min-height: 54px; padding: 12px; border: 1px solid rgba(130,13,75,.24); border-radius: 14px; background: #fff; color: #3b2333; font: inherit; font-weight: 750; cursor: pointer; transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease; }
+.missing-word-option:hover { transform: translateY(-2px); border-color: #820d4b; }
+.missing-word-option:focus-visible { outline: 3px solid rgba(126,13,130,.32); outline-offset: 3px; }
+.missing-word-option.is-selected { border-color: #3b0764; background: linear-gradient(135deg, #820d4b, #3b0764); color: #fff; }
+.selection-count { margin: 14px 0 0; color: #5e4355; font-weight: 700; }
+@media (max-width: 700px) { .missing-word-options { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
