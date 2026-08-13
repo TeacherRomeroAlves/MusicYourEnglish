@@ -41,14 +41,22 @@ export const manchildChorus = {
 };
 
 export const manchildMissingWords = {
-  options: [
-    { word: "like", isMissing: false },
-    { word: "too", isMissing: true },
-    { word: "don't", isMissing: true },
-    { word: "all", isMissing: false },
-    { word: "they", isMissing: false },
-    { word: "definitely", isMissing: true },
-    { word: "them", isMissing: false },
-    { word: "God", isMissing: true },
+  lyrics: [
+    { parts: [
+      { before: "Oh, I", option: { word: "like", isMissing: false }, after: "my boys playing" },
+      { before: "", option: { word: "too", isMissing: true }, after: "hard to get" },
+    ] },
+    { parts: [
+      { before: "And I", option: { word: "don't", isMissing: true }, after: "like my men" },
+      { before: "", option: { word: "all", isMissing: false }, after: "incompetent" },
+    ] },
+    { parts: [
+      { before: "And I swear", option: { word: "they", isMissing: false }, after: "choose me, I'm" },
+      { before: "", option: { word: "definitely", isMissing: true }, after: "not choosing" },
+      { before: "", option: { word: "them", isMissing: false }, after: "" },
+    ] },
+    { parts: [
+      { before: "Amen,", option: { word: "God", isMissing: true }, after: "! hey, men" },
+    ] },
   ],
 };

@@ -96,7 +96,7 @@ export default function ManchildPage() {
                 step="Stanza 3"
                 title="Which Word Is NOT In The Song?"
                 description="There are 8 words. Select the 4 words that are NOT part of the lyrics."
-                options={manchildMissingWords.options}
+                lyrics={manchildMissingWords.lyrics}
                 maximumSelections={4}
               />
             ),

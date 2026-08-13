@@ -8,10 +8,11 @@ export default function MissingWordsActivity({
   step,
   title,
   description,
-  options,
+  lyrics,
   maximumSelections,
 }: MissingWordsActivityProps) {
-  const { shuffledOptions, selectedWords, handleToggle, handleReset } = useMissingWords(options, maximumSelections);
+  const { selectedWords, handleToggle, handleReset } = useMissingWords(maximumSelections);
+  const options = lyrics.flatMap((line) => line.parts.map((part) => part.option));
   const correctSelections = options.filter((option) => option.isMissing && selectedWords.includes(option.word)).length;
 
   useRegisterActivityResult(`${step}:${title}`, {
@@ -28,21 +29,28 @@ export default function MissingWordsActivity({
         <p className="section-note">{description}</p>
       </div>
 
-      <div className="missing-word-options" aria-label="Words to check">
-        {shuffledOptions.map((option) => {
-          const isSelected = selectedWords.includes(option.word);
-          return (
-            <button
-              className={`missing-word-option${isSelected ? " is-selected" : ""}`}
-              key={option.word}
-              type="button"
-              aria-pressed={isSelected}
-              onClick={() => handleToggle(option.word)}
-            >
-              {option.word}
-            </button>
-          );
-        })}
+      <div className="lyrics-card missing-word-lyrics" aria-label={title}>
+        {lyrics.map((line, lineIndex) => (
+          <p className="lyric-line" key={lineIndex}>
+            {line.parts.map((part, partIndex) => {
+              const isSelected = selectedWords.includes(part.option.word);
+              return (
+                <span key={`${part.option.word}-${partIndex}`}>
+                  {part.before}{" "}
+                  <button
+                    className={`missing-word-option${isSelected ? " is-selected" : ""}`}
+                    type="button"
+                    aria-pressed={isSelected}
+                    onClick={() => handleToggle(part.option.word)}
+                  >
+                    {part.option.word}
+                  </button>{" "}
+                  {part.after}{" "}
+                </span>
+              );
+            })}
+          </p>
+        ))}
       </div>
       <p className="selection-count" aria-live="polite">
         Selected: {selectedWords.length} of {maximumSelections}
