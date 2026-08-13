@@ -60,7 +60,10 @@ export default function Home() {
                 priority
               />
             </div>
-            <div><strong>Count on Me</strong><span>Bruno Mars</span></div>
+            <div className="learning-player__track-info">
+              <strong>Count on Me</strong>
+              <span>Bruno Mars</span>
+            </div>
             <button type="button" aria-label="Play lesson preview" disabled><span aria-hidden="true">▶</span></button>
           </div>
           <div className="equalizer" aria-hidden="true">
