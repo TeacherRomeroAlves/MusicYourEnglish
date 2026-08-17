@@ -25,8 +25,8 @@
 .song-card__body > p { margin: 12px 0 0; color: var(--muted); line-height: 1.55; }
 .activity-badges { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
 .activity-badges span { padding: 6px 9px; border: 1px solid var(--line); border-radius: 7px; color: #aaa4b0; background: rgba(255,255,255,.025); font-size: .73rem; }
-.question-box { padding: 20px; display: flex; align-items: flex-start; gap: 14px; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255,255,255,.035); }
-.question-box p { margin: 0; line-height: 1.55; }
+.question-box { padding: 20px; display: flex; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255,255,255,.035); }
+.question-box p { min-width: 0; margin: 0; flex: 1; line-height: 1.55; }
 .word-card, .drop-zone, .lyric-word-card, .order-card, .order-drop-zone { border: 1px solid var(--line); border-radius: 15px; background: var(--card-strong); }
 .lyrics-card, .prompt-box, .report-card { border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(8,7,11,.42); }
 .lyrics-card { margin-top: 24px; padding: clamp(20px, 3vw, 28px); }
