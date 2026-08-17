@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { songCatalog } from "@/data/songCatalog";
+import LibraryPreviewVisual from "@/components/LibraryPreviewVisual";
 
 const processSteps = [
   ["Choose a song", "Pick a lesson based on your level, interests, or favorite artist."],
@@ -88,23 +89,7 @@ export default function Home() {
           <p>Browse every available lesson in one place, then filter by English level or musical genre to find the right fit.</p>
           <Link className="button button--primary" href="/songs">Explore the song library</Link>
         </div>
-        <div className="library-preview__visual">
-          <span className="library-preview__label">Now in the library</span>
-          <div className="library-cover-stack">
-            {songCatalog.slice(0, 3).map((song, index) => (
-              <Link
-                href={`/songs/${song.slug}`}
-                className="library-cover"
-                key={song.slug}
-                aria-label={`Open the ${song.title} lesson`}
-                style={{ "--cover-index": index } as CSSProperties}
-              >
-                <Image src={song.coverImage} alt="" fill sizes="220px" />
-              </Link>
-            ))}
-          </div>
-          <p><strong>3 interactive lessons</strong><span>More songs coming as the library grows.</span></p>
-        </div>
+        <LibraryPreviewVisual songs={songCatalog} />
       </section>
 
       <section className="home-section process-section" id="how-it-works" aria-labelledby="process-title">
