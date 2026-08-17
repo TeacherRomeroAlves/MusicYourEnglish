@@ -32,7 +32,7 @@ export default function monsterPage() {
             <LessonProgress />
             <LessonSections
               beforeSong={<>
-                <WarmUpQuestions step="Warm-up" title="Warm-up Questions" questions={["What do people do when they feel stressed or worried?", "Why do people sometimes hide their feelings?"]} />
+                <WarmUpQuestions step="Warm-up" title="Warm-up Questions" questions={["Do you know All Time Low or Demi Lovato?", "Do you believe in monsters?"]} />
                 <MatchingActivity step="Vocabulary" title="Match The Words To Their Meanings" description="Drag each word into the correct meaning box. Use the speaker button to hear the pronunciation." words={monsters.vocabulary} />
                 <WarmUpQuestions
                   step="Vocabulary practice"

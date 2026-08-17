@@ -31,7 +31,7 @@ export default function goldenPage() {
             <LessonProgress />
             <LessonSections
               beforeSong={<>
-                <WarmUpQuestions step="Warm-up" title="Warm-up Questions" questions={["When do you feel strong and confident?", "What helps you when you feel nervous or afraid?"]} />
+                <WarmUpQuestions step="Warm-up" title="Warm-up Questions" questions={["Do you like K-pop?", "Did you watch the movie KPop Demon Hunters?"]} />
                 <MatchingActivity step="Vocabulary" title="Match The Words To Their Meanings" description="Drag each word into the correct meaning box. Use the speaker button to hear the pronunciation." words={golden.vocabulary} />
                 <WarmUpQuestions
                   step="Vocabulary practice"

@@ -44,8 +44,8 @@ export default function TheFateOfOpheliaPage() {
               step="Warm-up"
               title="Warm-up Questions"
               questions={[
-                "Do you believe in destiny?",
-                "How can we change our lives?",
+                "Is Taylor Swift famous?",
+                "What is her best song?",
               ]}
             />
             <MatchingActivity

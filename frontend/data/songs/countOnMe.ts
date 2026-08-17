@@ -9,23 +9,23 @@ export const countOnMe = {
     vocabulary: [
         {
             word: "count on",
-            meaning: "to trust and depend on someone",
+            meaning: "to trust someone to help you",
         },
         {
             word: "friendship",
-            meaning: "being friends with someone",
+            meaning: "when people are friends",
         },
         {
             word: "sail",
-            meaning: "to travel on water",
+            meaning: "to travel in a boat",
         },
         {
             word: "guide",
-            meaning: "to show the way",
+            meaning: "to show someone where to go",
         },
         {
             word: "find out",
-            meaning: "to learn or discover",
+            meaning: "to learn something new",
         },
         {
             word: "beside",

@@ -5,14 +5,18 @@ import type { SongMeta } from "@/data/songCatalog";
 export default function SongCard({ song }: { song: SongMeta }) {
   return (
     <article className={`song-card song-card--${song.slug}`}>
-      <div className="song-art">
+      <Link
+        className="song-art"
+        href={`/songs/${song.slug}`}
+        aria-label={`Open the ${song.title} lesson`}
+      >
         <Image
           src={song.coverImage}
           alt={`${song.title} by ${song.artist} cover artwork`}
           fill
           sizes="(max-width: 620px) 100vw, (max-width: 900px) 50vw, 33vw"
         />
-      </div>
+      </Link>
       <div className="song-card__body">
         <div className="song-card__meta"><span>{song.level} · {song.genre}</span></div>
         <h3>{song.title}</h3>

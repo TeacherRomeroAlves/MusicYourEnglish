@@ -30,7 +30,7 @@ export default function CountOnMePage() {
       <LessonProgress />
       <LessonSections
         beforeSong={<>
-          <WarmUpQuestions step="Warm-up" title="Warm-up Questions" questions={["Who do you ask for help when you have a problem?", "What makes someone a good friend?"]} />
+          <WarmUpQuestions step="Warm-up" title="Warm-up Questions" questions={["Do you like Bruno Mars?", "Do you like acoustic songs?"]} />
           <MatchingActivity step="Vocabulary" title="Match The Words To Their Meanings" description="Drag each word into the correct meaning box. Use the speaker button to hear the pronunciation." words={countOnMe.vocabulary} />
           <WarmUpQuestions
             step="Vocabulary practice"
@@ -38,10 +38,10 @@ export default function CountOnMePage() {
             description="Discuss the questions and try to use the vocabulary from the matching activity."
             layout="two-column"
             questions={[
-              "What's beside your TV at home?",
-              "Can you count on your best friend for anything?",
-              "Do you like sailing? How can you guide yourself across the ocean?",
-              "Is it easy for other people to find out things about you?",
+              "What is beside your TV?",
+              "Who can you count on?",
+              "Would you like to sail? Who can guide a boat?",
+              "How do you find out new information?",
             ]}
           />
         </>}

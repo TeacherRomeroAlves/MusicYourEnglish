@@ -5,7 +5,7 @@ import { MatchingActivityProps } from "./types";
 import MatchingWordCard from "./MatchingWordCard";
 import MeaningDropZone from "./MeaningDropZone";
 
-export default function MatchingActivity({ step, title, description, words, }: MatchingActivityProps) {
+export default function MatchingActivity({ step, title, words, }: MatchingActivityProps) {
     const {
       bankSlots,
       answers,
@@ -38,11 +38,9 @@ export default function MatchingActivity({ step, title, description, words, }: M
   
           <h2>{title}</h2>
   
-          {description && (
-            <p className="section-note">
-              {description}
-            </p>
-          )}
+          <p className="section-note">
+            Click a word to place it in the next available meaning box, or drag it to the correct box. Use the speaker button to hear the word. Click a placed word to return it.
+          </p>
         </div>
   
         <div className="activity-layout">

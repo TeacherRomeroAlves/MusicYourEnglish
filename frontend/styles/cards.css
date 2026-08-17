@@ -1,6 +1,7 @@
 .song-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(160deg, #1b1622, #100e14); box-shadow: var(--shadow-soft); transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease; }
 .song-card:hover { transform: translateY(-7px); border-color: rgba(224,154,198,.34); box-shadow: 0 30px 70px rgba(0,0,0,.4); }
-.song-art { aspect-ratio: 1; position: relative; overflow: hidden; isolation: isolate; background: #120f16; }
+.song-art { aspect-ratio: 1; display: block; position: relative; overflow: hidden; isolation: isolate; background: #120f16; }
+.song-art:focus-visible { outline: 3px solid #e09ac6; outline-offset: -5px; }
 .song-art img { object-fit: cover; transition: transform 450ms cubic-bezier(.2,.8,.2,1), filter 300ms ease; }
 .song-card--monsters .song-art img { object-fit: contain; }
 .song-card:hover .song-art img { transform: scale(1.035); filter: saturate(1.08); }
