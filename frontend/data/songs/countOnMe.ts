@@ -2,7 +2,7 @@ export const countOnMe = {
     
     spotify: {
         embedUrl:
-            "https://open.spotify.com/embed/track/2FGSEdBi3a8Q3hzpuZ8VKT?utm_source=generator",
+            "https://open.spotify.com/embed/track/7l1qvxWjxcKpB9PCtBuTbU?utm_source=generator",
         title: "Count on Me on Spotify",
     },
 
