@@ -21,7 +21,7 @@
 .button--compact { min-height: 42px; padding: 0 16px; border-radius: 11px; font-size: 0.9rem; }
 .button--card { width: 100%; margin-top: 24px; color: white; background: var(--brand); }
 .speak-btn { min-height: 38px; padding: 0 13px; border-color: rgba(224, 154, 198, 0.25); color: #f2c4e0; background: rgba(130, 13, 75, 0.18); font-size: 0.86rem; }
-.choice-btn { min-height: 42px; padding: 0 15px; border: 1px solid var(--line); border-radius: 11px; background: var(--card-strong); color: var(--text); font-weight: 700; cursor: pointer; transition: all 180ms ease; }
+.choice-btn { min-height: 38px; padding: 0 13px; border: 1px solid var(--line); border-radius: 10px; background: var(--card-strong); color: var(--text); font-weight: 700; cursor: pointer; transition: all 180ms ease; }
 .choice-btn:hover { transform: translateY(-1px); border-color: rgba(224, 154, 198, 0.45); }
 .choice-btn.selected { border-color: #d77eb6; background: rgba(130, 13, 75, 0.3); color: white; box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }

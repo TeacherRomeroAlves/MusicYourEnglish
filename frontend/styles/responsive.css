@@ -94,8 +94,8 @@
   .card { padding: 22px 18px; border-radius: 22px; }
   .spotify-frame iframe { height: 160px; }
   .lyric-line { font-size: 1rem; line-height: 2; }
-  .inline-drop-zone, .word-drop-zone { min-height: 50px; margin-block: 3px; }
-  .icon-card { width: 68px; height: 68px; }
+  .inline-drop-zone, .word-drop-zone { min-height: 43px; margin-block: 3px; }
+  .icon-card { width: 58px; height: 58px; }
   .actions .action-btn, .report-form .action-btn { width: 100%; }
 }
 @media (max-width: 360px) {
