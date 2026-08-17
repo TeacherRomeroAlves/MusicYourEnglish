@@ -84,7 +84,7 @@ export default function ManchildPage() {
               <UnscrambleLyricsActivity
                 step="Stanza 2"
                 title="Chorus"
-                description="Listen, unscramble the letters, and type the correct word. The two COME spaces are connected."
+                description="Listen, unscramble the letters, and type the correct word."
                 lyrics={manchildChorus.lyrics}
               />
             ),
