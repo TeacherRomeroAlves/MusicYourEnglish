@@ -11,13 +11,14 @@ export default function UnscrambleLyricsActivity({
   lyrics,
 }: UnscrambleLyricsActivityProps) {
   const { values, handleChange, handleReset } = useUnscrambleLyrics();
+  const answerLines = lyrics.filter((line) => line.answer);
 
   useRegisterActivityResult(`${step}:${title}`, {
-    correct: lyrics.filter((line, index) => (
+    correct: lyrics.filter((line, index) => line.answer && (
       (values[line.syncKey ?? String(index)] ?? "").trim().toLowerCase() === line.answer.toLowerCase()
     )).length,
-    answered: lyrics.filter((line, index) => Boolean((values[line.syncKey ?? String(index)] ?? "").trim())).length,
-    total: lyrics.length,
+    answered: lyrics.filter((line, index) => line.answer && Boolean((values[line.syncKey ?? String(index)] ?? "").trim())).length,
+    total: answerLines.length,
   });
 
   return (
@@ -32,7 +33,7 @@ export default function UnscrambleLyricsActivity({
         {lyrics.map((line, index) => (
           <p className="lyric-line" key={`${line.answer}-${index}`}>
             {line.before}{" "}
-            <input
+            {line.answer && <input
               className="lyric-input unscramble-input"
               type="text"
               maxLength={line.answer.length}
@@ -42,7 +43,7 @@ export default function UnscrambleLyricsActivity({
               onChange={(event) => handleChange(line.syncKey ?? String(index), event.target.value, line.answer.length)}
               autoComplete="off"
               spellCheck={false}
-            />{" "}
+            />}{" "}
             {line.after}
           </p>
         ))}

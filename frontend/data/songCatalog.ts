@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life";
   title: string;
   artist: string;
   level: UserLevel;
@@ -99,6 +99,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Verb tenses", "Unscramble", "Word recognition"],
     coverImage: "/images/songs/manchild/cover.jpg",
     coverClass: "song-art--manchild",
+  },
+  {
+    slug: "bad-life",
+    title: "Bad Life",
+    artist: "Bring Me the Horizon and Sigrid",
+    level: "Intermediate+",
+    duration: "50 min",
+    topic: "Mental health and resilience",
+    genre: "Alternative rock",
+    description: "Explore language about difficult emotions, resilience, and remembering that a bad day is not a bad life.",
+    activities: ["Phrasal verbs", "Word order", "Adjectives"],
+    coverImage: "/images/songs/bad-life/cover.jpg",
+    coverClass: "song-art--bad-life",
   },
 ];
 

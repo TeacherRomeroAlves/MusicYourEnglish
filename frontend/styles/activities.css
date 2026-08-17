@@ -53,3 +53,10 @@
 .missing-word-option:focus-visible { outline: 3px solid rgba(126,13,130,.32); outline-offset: 3px; }
 .missing-word-option.is-selected { border-color: #3b0764; background: linear-gradient(135deg, #820d4b, #3b0764); color: #fff; }
 .selection-count { margin: 14px 0 0; color: #5e4355; font-weight: 700; }
+.inline-order-lyrics .lyric-line { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.inline-order-sequence { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.inline-order-word { padding: 7px 10px; border: 1px solid rgba(130,13,75,.28); border-radius: 10px; background: #fff; color: #3b2333; font: inherit; font-weight: 750; line-height: 1.15; cursor: grab; transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease; }
+.inline-order-word:hover { transform: translateY(-2px); border-color: #820d4b; }
+.inline-order-word:focus-visible { outline: 3px solid rgba(126,13,130,.32); outline-offset: 2px; }
+.inline-order-word.is-selected { border-color: #3b0764; background: #f3dce9; color: #590a3b; box-shadow: 0 0 0 2px rgba(130,13,75,.12); }
+.inline-order-word.is-dragging { opacity: .45; }
