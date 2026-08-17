@@ -12,7 +12,7 @@ export default function MissingWordsActivity({
   maximumSelections,
 }: MissingWordsActivityProps) {
   const { selectedWords, handleToggle, handleReset } = useMissingWords(maximumSelections);
-  const options = lyrics.flatMap((line) => line.parts.map((part) => part.option));
+  const options = lyrics.flatMap((line) => line.parts.map((part) => part.option)).filter((option) => option.word);
   const correctSelections = options.filter((option) => option.isMissing && selectedWords.includes(option.word)).length;
 
   useRegisterActivityResult(`${step}:${title}`, {
@@ -33,18 +33,18 @@ export default function MissingWordsActivity({
         {lyrics.map((line, lineIndex) => (
           <p className="lyric-line" key={lineIndex}>
             {line.parts.map((part, partIndex) => {
-              const isSelected = selectedWords.includes(part.option.word);
+              const isSelected = Boolean(part.option.word) && selectedWords.includes(part.option.word);
               return (
                 <span key={`${part.option.word}-${partIndex}`}>
                   {part.before}{" "}
-                  <button
+                  {part.option.word && <button
                     className={`missing-word-option${isSelected ? " is-selected" : ""}`}
                     type="button"
                     aria-pressed={isSelected}
                     onClick={() => handleToggle(part.option.word)}
                   >
                     {part.option.word}
-                  </button>{" "}
+                  </button>}{" "}
                   {part.after}{" "}
                 </span>
               );

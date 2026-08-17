@@ -19,6 +19,9 @@
 .lesson-progress__mobile { display: none; }
 .video-frame { margin-top: 24px; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 20px; background: #08070b; box-shadow: 0 24px 50px rgba(0,0,0,.34); }
 .video-frame iframe { display: block; width: 100%; border: 0; }
+.cultural-note { margin-bottom: 18px; padding: clamp(24px, 4vw, 34px); border: 1px solid rgba(76,35,67,.16); border-radius: var(--radius-md); background: linear-gradient(135deg, #f4faf7, #f8f0e4); color: #211721; box-shadow: var(--shadow-soft); }
+.cultural-note h2 { margin-top: 8px; color: #214b46; font-size: clamp(1.55rem, 3vw, 2.15rem); }
+.cultural-note > p:last-child { max-width: 850px; margin: 14px 0 0; color: #4f4a45; line-height: 1.65; }
 .spotify-frame { padding: 8px; background: linear-gradient(145deg, rgba(130,13,75,.18), #09080c 38%); }
 .spotify-frame iframe { height: 352px; border-radius: 13px; }
 .youtube-frame { aspect-ratio: 16 / 9; background: linear-gradient(145deg, rgba(130,13,75,.2), #08070b 42%); }

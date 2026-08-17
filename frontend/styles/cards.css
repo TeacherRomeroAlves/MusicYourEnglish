@@ -13,6 +13,7 @@
 .song-art--wonderwall { background: radial-gradient(circle at 72% 20%, #d9d9d9, transparent 17%), linear-gradient(145deg, #171717, #555 55%, #aaa); }
 .song-art--manchild { background: radial-gradient(circle at 72% 18%, #f0c26d, transparent 17%), linear-gradient(145deg, #514a66, #9b785c 58%, #d7a750); }
 .song-art--bad-life { background: radial-gradient(circle at 76% 20%, #58a9cf, transparent 18%), linear-gradient(145deg, #12161d, #314f62 58%, #8a3b78); }
+.song-art--hills-of-st-ann { background: radial-gradient(circle at 74% 18%, #dcebe6, transparent 18%), linear-gradient(145deg, #1e4f50, #4f8c85 58%, #d8e3c9); }
 .song-art__eyebrow, .song-art__title, .song-art__artist { position: relative; z-index: 2; }
 .song-art__eyebrow { margin-bottom: auto; color: rgba(255,255,255,.72); font-size: .68rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
 .song-art__title { max-width: 90%; color: white; font-family: var(--font-space-grotesk); font-size: clamp(1.8rem, 3vw, 2.65rem); font-weight: 750; letter-spacing: -.05em; line-height: .95; }

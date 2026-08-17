@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann";
   title: string;
   artist: string;
   level: UserLevel;
@@ -112,6 +112,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Phrasal verbs", "Word order", "Adjectives"],
     coverImage: "/images/songs/bad-life/cover.jpg",
     coverClass: "song-art--bad-life",
+  },
+  {
+    slug: "hills-of-st-ann",
+    title: "Hills of St. Ann",
+    artist: "Stephen Marley",
+    level: "Elementary",
+    duration: "40 min",
+    topic: "Home, culture, and spirituality",
+    genre: "Reggae",
+    description: "Explore simple language about nature, home, faith, and Jamaican identity through reggae.",
+    activities: ["Nature words", "Word choice", "Culture"],
+    coverImage: "/images/songs/hills-of-st-ann/cover.png",
+    coverClass: "song-art--hills-of-st-ann",
   },
 ];
 
