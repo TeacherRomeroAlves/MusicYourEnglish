@@ -61,10 +61,6 @@ const laterStanzaSource = [
   { id: "later-worst", text: "'Cause I'm my own worst enemy and I don't wanna fight anymore", before: "'Cause I'm my own", answer: "worst", scrambled: "tsorw", after: "enemy and I don't wanna fight anymore" },
 ] as const;
 
-export const badLifeLaterWordOrder = {
-  lines: laterStanzaSource.map((line) => ({ id: line.id, before: "", answer: line.text, after: "" })),
-};
-
 export const badLifeLaterUnscramble = {
   lyrics: laterStanzaSource.map((line) => ({
     before: "before" in line ? line.before : line.text,

@@ -16,7 +16,6 @@ import {
   badLifeFirstChorus,
   badLifeFullChorus,
   badLifeLaterUnscramble,
-  badLifeLaterWordOrder,
   badLifeOpeningStanzas,
 } from "@/data/songs/badLife";
 import { InlineWordOrderProvider } from "@/hooks/useInlineWordOrder";
@@ -102,21 +101,10 @@ export default function BadLifePage() {
               ),
             },
             {
-              label: "Fourth And Fifth Stanza: Word Order",
-              content: (
-                <InlineWordOrderActivity
-                  step="Stanza 3"
-                  title="Fourth And Fifth Stanza"
-                  description="Each sentence is scrambled. Reorder the words on the same line by dragging, or click two words to swap them."
-                  lines={badLifeLaterWordOrder.lines}
-                />
-              ),
-            },
-            {
-              label: "Fourth And Fifth Stanza: Unscramble",
+              label: "Fourth And Fifth Stanza",
               content: (
                 <UnscrambleLyricsActivity
-                  step="Stanza 4"
+                  step="Stanza 3"
                   title="Fourth And Fifth Stanza"
                   description="Unscramble the letters and type the correct adjective or adverb in each gap."
                   lyrics={badLifeLaterUnscramble.lyrics}
@@ -127,7 +115,7 @@ export default function BadLifePage() {
               label: "Full Chorus",
               content: (
                 <InlineWordOrderActivity
-                  step="Stanza 5"
+                  step="Stanza 4"
                   title="Full Chorus"
                   description="Reorder the scrambled parts. Your answers from the first chorus are already synchronized here."
                   lines={badLifeFullChorus.lines}
