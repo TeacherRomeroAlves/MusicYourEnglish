@@ -143,6 +143,11 @@ export default function TheFateOfOpheliaPage() {
         )}
         afterSong={(
           <>
+            <aside className="cultural-note" aria-labelledby="ophelia-cultural-note">
+              <p className="section-kicker">Cultural note</p>
+              <h2 id="ophelia-cultural-note">Ophelia in Shakespeare&apos;s Hamlet</h2>
+              <p>Ophelia is a young woman in William Shakespeare&apos;s play Hamlet. She is Polonius&apos;s daughter and has a difficult relationship with Prince Hamlet. Her story ends tragically when she drowns, so she is often connected with love, sadness, and loss.</p>
+            </aside>
             <WarmUpQuestions
               step="Wrap-up"
               title="Talk About The Song"

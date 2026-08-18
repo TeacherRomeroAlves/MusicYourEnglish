@@ -58,10 +58,10 @@ export default function HillsOfStAnnPage() {
               description="Discuss the questions and try to use the new vocabulary."
               layout="two-column"
               questions={[
-                "Do you prefer hills or mountains? Why?",
-                "How does a cool breeze make you feel?",
-                "Which instruments, such as drums, do you like?",
-                "Why are roots and birthplace important to people?",
+                "Do you like hiking in hills or mountains?",
+                "Which city are your family's roots in?",
+                "Do you know anything about Rastafari culture? Are Jah and Zion new words for you?",
+                "Is there sometimes mist or a cool breeze in your city?",
               ]}
             />
           </>
