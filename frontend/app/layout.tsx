@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Space_Grotesk } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import "./globals.css";
@@ -46,6 +47,7 @@ export default function RootLayout({
         <SiteHeader />
         <div id="main-content">{children}</div>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );
