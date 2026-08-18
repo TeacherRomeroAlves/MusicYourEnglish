@@ -45,7 +45,7 @@
 .pronoun-chip { min-width: 44px; padding: 8px 11px; display: inline-flex; justify-content: center; border: 1px solid rgba(224,154,198,.22); border-radius: 9px; background: rgba(130,13,75,.14); color: #ebbcda; font-weight: 750; }
 .lyric-input { width: 3rem; min-height: 2.4rem; padding: 5px 7px; border: 1px dashed rgba(224,154,198,.5); border-radius: 9px; background: rgba(255,255,255,.055); color: white; font-weight: 750; text-align: center; text-transform: lowercase; }
 .lyric-input:focus { outline: 2px solid #d68ac7; outline-offset: 2px; border-color: transparent; }
-.unscramble-input { width: 6rem; min-width: 5.1rem; }
+.unscramble-input { width: 6rem; min-width: 5.1rem; max-width: 100%; }
 .unscramble-input::placeholder { color: #d09abb; opacity: 1; letter-spacing: .08em; }
 .missing-word-lyrics .lyric-line { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
 .missing-word-option { min-height: 38px; padding: 6px 10px; border: 1px solid rgba(130,13,75,.24); border-radius: 10px; background: #fff; color: #3b2333; font: inherit; font-weight: 750; cursor: pointer; transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease; }

@@ -37,6 +37,7 @@ export default function UnscrambleLyricsActivity({
               className="lyric-input unscramble-input"
               type="text"
               maxLength={line.answer.length}
+              style={{ width: `${Math.max(8, line.scrambled.length + 3)}ch` }}
               placeholder={line.scrambled}
               aria-label={`Unscramble ${line.scrambled}`}
               value={values[line.syncKey ?? String(index)] ?? ""}
