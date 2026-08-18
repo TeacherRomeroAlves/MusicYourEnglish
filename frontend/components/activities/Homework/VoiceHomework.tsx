@@ -56,22 +56,14 @@ export default function VoiceHomework({ songTitle, studentName }: VoiceHomeworkP
             </button>
           )}
           {recorder.audioUrl && !isRecording && (
-            <>
-              <a className="action-btn voice-recorder__download" href={recorder.audioUrl} download={`${fileName}.${extension}`}>
-                Download Audio
-              </a>
-              <button className="action-btn secondary" type="button" onClick={() => recorder.shareRecording(fileName)}>
-                Share Audio
-              </button>
-              <button className="voice-recorder__reset" type="button" onClick={recorder.resetRecording}>
-                Delete recording
-              </button>
-            </>
+            <a className="action-btn voice-recorder__download" href={recorder.audioUrl} download={`${fileName}.${extension}`}>
+              Download Audio
+            </a>
           )}
         </div>
 
         {recorder.message && <p className={`voice-recorder__message ${recorder.status === "error" ? "is-error" : ""}`} role="status">{recorder.message}</p>}
-        <p className="voice-recorder__privacy">Your recording stays on this device unless you download or share it.</p>
+        <p className="voice-recorder__privacy">Download the recording to save it and send it to your teacher.</p>
       </div>
     </div>
   );

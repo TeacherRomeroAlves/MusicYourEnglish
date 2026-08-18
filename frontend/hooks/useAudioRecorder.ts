@@ -113,34 +113,6 @@ export function useAudioRecorder() {
     if (recorderRef.current?.state === "recording") recorderRef.current.stop();
   };
 
-  const resetRecording = () => {
-    if (recorderRef.current?.state === "recording") recorderRef.current.stop();
-    stopStream(streamRef.current);
-    streamRef.current = null;
-    clearAudio();
-    setSeconds(0);
-    setStatus("idle");
-    setMessage("");
-  };
-
-  const shareRecording = async (fileName: string) => {
-    if (!audioBlob) return;
-    const extension = audioBlob.type.includes("mp4") ? "m4a" : "webm";
-    const file = new File([audioBlob], `${fileName}.${extension}`, { type: audioBlob.type });
-
-    try {
-      if (navigator.share && navigator.canShare?.({ files: [file] })) {
-        await navigator.share({ title: "Music Your English homework", files: [file] });
-        setMessage("Recording shared successfully.");
-        return;
-      }
-      setMessage("Audio sharing is not available here. Download the recording and attach it to a message for your teacher.");
-    } catch (error) {
-      if (error instanceof DOMException && error.name === "AbortError") return;
-      setMessage("The recording could not be shared. Download it and attach it to a message instead.");
-    }
-  };
-
   return {
     status,
     audioBlob,
@@ -149,7 +121,5 @@ export function useAudioRecorder() {
     message,
     startRecording,
     stopRecording,
-    resetRecording,
-    shareRecording,
   };
 }

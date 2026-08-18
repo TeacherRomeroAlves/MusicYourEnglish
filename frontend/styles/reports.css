@@ -14,7 +14,6 @@
 .voice-recorder__actions { align-items: center; }
 .voice-recorder__download { color: white; text-decoration: none; background: linear-gradient(135deg, #9a165e, #820d4b); box-shadow: 0 12px 34px rgba(130,13,75,.24); }
 .voice-recorder__stop { background: linear-gradient(135deg, #dc354d, #a71931); }
-.voice-recorder__reset { min-height: 42px; padding: 0 8px; border: 0; background: transparent; color: #755e6f; font-weight: 750; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .voice-recorder__message { margin: 20px 0 0; padding: 12px 14px; border-radius: 10px; background: #f3e4ee; color: #5f2349; line-height: 1.45; }
 .voice-recorder__message.is-error { background: #fff0f0; color: #8a1d2e; }
 .voice-recorder__privacy { margin: 18px 0 0; color: #786a75; font-size: .86rem; }
