@@ -39,6 +39,8 @@ export default function ReportCard({
                 alt="Music Your English"
                 width={52}
                 height={52}
+                priority
+                unoptimized
               />
               {coverImage && (
                 <Image
@@ -47,6 +49,8 @@ export default function ReportCard({
                   alt={`${songTitle}${artist ? ` by ${artist}` : ""} cover`}
                   width={72}
                   height={72}
+                  priority
+                  unoptimized
                 />
               )}
             </div>
