@@ -40,13 +40,6 @@ p { text-wrap: pretty; }
 :focus-visible { outline: 3px solid #d68ac7; outline-offset: 4px; }
 ::selection { background: #a42b76; color: white; }
 .text-highlight { color: var(--vivid-pink); }
-.text-highlight--on-brand {
-  padding: 0 .13em;
-  border-radius: .12em;
-  background: rgba(8, 7, 11, .88);
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
 .skip-link {
   position: fixed;
   left: 18px;

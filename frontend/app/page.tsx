@@ -110,7 +110,7 @@ export default function Home() {
       <section className="home-section paths-section" aria-label="Learning paths">
         <article className="path-panel path-panel--student">
           <p className="eyebrow">For students</p>
-          <h2>Learn with <span className="text-highlight text-highlight--on-brand">music you actually enjoy.</span></h2>
+          <h2>Learn with music you actually enjoy.</h2>
           <p>Practice at your own pace, understand real English, and turn every song into a memorable learning experience.</p>
           <ul>{studentBenefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul>
           <Link className="button button--light" href="/songs">Start Learning</Link>
@@ -139,7 +139,7 @@ export default function Home() {
       <section className="final-cta" aria-labelledby="cta-title">
         <div className="final-cta__wave" aria-hidden="true" />
         <p className="eyebrow">Press play on progress</p>
-        <h2 id="cta-title">Your <span className="text-highlight text-highlight--on-brand">next English lesson</span> is already playing.</h2>
+        <h2 id="cta-title">Your next English lesson is already playing.</h2>
         <p>Choose a song and discover how much English you can learn from the music you love.</p>
         <Link className="button button--light" href="/songs">Explore Songs</Link>
         <a className="teacher-link" href="#for-teachers">Are you a teacher? Discover classroom-ready lessons.</a>
