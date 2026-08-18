@@ -59,7 +59,7 @@ export default function BadLifePage() {
                 description="Discuss the questions and try to use the new vocabulary."
                 layout="two-column"
                 questions={[
-                  "What helps you hang on when life is difficult?",
+                  "What makes someone be considered a loser in life?",
                   "Have you ever felt numb or on the edge?",
                   "How do you keep your head above water when things fall apart?",
                   "What responsibilities do you bear on your shoulders?",
