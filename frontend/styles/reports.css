@@ -1,4 +1,24 @@
 .report-grid { max-width: 760px; margin-top: 22px; display: grid; grid-template-columns: minmax(0, 1fr); }
+.homework-mode { max-width: 760px; margin-top: 18px; padding: 7px; display: flex; gap: 7px; border: 1px solid rgba(130,13,75,.16); border-radius: 15px; background: #f8f1f6; }
+.homework-mode button { min-height: 44px; padding: 0 18px; flex: 1; border: 0; border-radius: 10px; background: transparent; color: #654f60; font-weight: 800; cursor: pointer; transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease; }
+.homework-mode button:hover { color: #820d4b; background: rgba(130,13,75,.07); }
+.homework-mode button.is-active { color: white; background: linear-gradient(135deg, #9a165e, #7e0d82); box-shadow: 0 8px 22px rgba(130,13,75,.22); }
+.voice-homework { color: #281d26; }
+.voice-recorder { padding: clamp(20px, 4vw, 32px); border: 1px solid #ded3dc; border-radius: 20px; background: linear-gradient(145deg, #fff, #fbf5f9); }
+.voice-recorder__status { display: flex; align-items: center; gap: 14px; }
+.voice-recorder__indicator { width: 14px; height: 14px; flex: none; border: 3px solid #edd7e5; border-radius: 50%; background: #820d4b; box-shadow: 0 0 0 5px rgba(130,13,75,.08); }
+.voice-recorder.is-recording .voice-recorder__indicator { background: #d52f47; box-shadow: 0 0 0 6px rgba(213,47,71,.14); animation: recording-pulse 1.2s ease-in-out infinite; }
+.voice-recorder__status strong { display: block; color: #291824; font-size: 1.05rem; }
+.voice-recorder__status p { margin: 4px 0 0; color: #766573; }
+.voice-recorder__audio { width: 100%; margin-top: 24px; accent-color: #820d4b; }
+.voice-recorder__actions { align-items: center; }
+.voice-recorder__download { color: white; text-decoration: none; background: linear-gradient(135deg, #9a165e, #820d4b); box-shadow: 0 12px 34px rgba(130,13,75,.24); }
+.voice-recorder__stop { background: linear-gradient(135deg, #dc354d, #a71931); }
+.voice-recorder__reset { min-height: 42px; padding: 0 8px; border: 0; background: transparent; color: #755e6f; font-weight: 750; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.voice-recorder__message { margin: 20px 0 0; padding: 12px 14px; border-radius: 10px; background: #f3e4ee; color: #5f2349; line-height: 1.45; }
+.voice-recorder__message.is-error { background: #fff0f0; color: #8a1d2e; }
+.voice-recorder__privacy { margin: 18px 0 0; color: #786a75; font-size: .86rem; }
+@keyframes recording-pulse { 50% { transform: scale(.78); opacity: .65; } }
 .report-export { display: none; }
 .report-card { overflow: hidden; border: 1px solid #ded3dc; border-radius: 24px; background: white; color: #211721; }
 .report-card__header { min-height: 210px; padding: 42px; display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; color: white; background: linear-gradient(135deg, #820d4b 0%, #7e0d82 55%, #3b0764 100%); }

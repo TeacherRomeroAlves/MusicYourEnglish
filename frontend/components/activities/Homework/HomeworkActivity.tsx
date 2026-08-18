@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import HomeworkForm from "./HomeworkForm";
 import ReportCard from "./ReportCard";
+import VoiceHomework from "./VoiceHomework";
 import { useHomework } from "@/hooks/useHomework";
 
 interface HomeworkActivityProps {
@@ -14,6 +16,7 @@ interface HomeworkActivityProps {
 
 export default function HomeworkActivity({ step, title, description, prompt, songTitle, }: HomeworkActivityProps) {
   const homework = useHomework(songTitle, prompt);
+  const [mode, setMode] = useState<"write" | "speak">("write");
   return (
     <section className="card report-section">
       <div className="section-heading">
@@ -30,7 +33,7 @@ export default function HomeworkActivity({ step, title, description, prompt, son
 
       <div className="prompt-box">
         <p className="prompt-label">
-          Writing Prompt
+          Homework Prompt
         </p>
 
         <p className="prompt-text">
@@ -38,17 +41,42 @@ export default function HomeworkActivity({ step, title, description, prompt, son
         </p>
       </div>
 
+      <div className="homework-mode" role="tablist" aria-label="Choose how to answer the homework">
+        <button
+          className={mode === "write" ? "is-active" : ""}
+          type="button"
+          role="tab"
+          aria-selected={mode === "write"}
+          onClick={() => setMode("write")}
+        >
+          Time to Write
+        </button>
+        <button
+          className={mode === "speak" ? "is-active" : ""}
+          type="button"
+          role="tab"
+          aria-selected={mode === "speak"}
+          onClick={() => setMode("speak")}
+        >
+          Time to Speak
+        </button>
+      </div>
+
       <div className="report-grid">
-        <HomeworkForm
-          prompt={prompt}
-          studentName={homework.studentName}
-          teacherName={homework.teacherName}
-          writing={homework.writing}
-          wordCount={homework.wordCount}
-          onFieldChange={homework.updateField}
-          onSavePdf={homework.handleSavePdf}
-          onShare={homework.handleShare}
-        />
+        {mode === "write" ? (
+          <HomeworkForm
+            prompt={prompt}
+            studentName={homework.studentName}
+            teacherName={homework.teacherName}
+            writing={homework.writing}
+            wordCount={homework.wordCount}
+            onFieldChange={homework.updateField}
+            onSavePdf={homework.handleSavePdf}
+            onShare={homework.handleShare}
+          />
+        ) : (
+          <VoiceHomework songTitle={songTitle} studentName={homework.studentName} />
+        )}
 
         <ReportCard
           songTitle={songTitle}
