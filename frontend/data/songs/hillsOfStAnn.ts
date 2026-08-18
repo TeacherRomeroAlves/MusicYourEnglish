@@ -1,7 +1,7 @@
 export const hillsOfStAnn = {
-  youtube: {
-    embedUrl: "https://www.youtube.com/embed/SGl73tdfrdE",
-    title: "Hills of St. Ann by Stephen Marley on YouTube",
+  spotify: {
+    embedUrl: "https://open.spotify.com/embed/track/57obfhezEGTT4Ra1CDGKpK?utm_source=generator",
+    title: "Hills of St. Ann by Stephen Marley on Spotify",
   },
   vocabulary: [
     { word: "mist", meaning: "small drops of water in the air" },

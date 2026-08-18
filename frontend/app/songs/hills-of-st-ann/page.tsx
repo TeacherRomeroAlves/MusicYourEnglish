@@ -71,8 +71,8 @@ export default function HillsOfStAnnPage() {
             step="Listen"
             title="Listen To The Song"
             description="Listen to the song before starting the lyrics activities."
-            embedUrl={hillsOfStAnn.youtube.embedUrl}
-            embedTitle={hillsOfStAnn.youtube.title}
+            embedUrl={hillsOfStAnn.spotify.embedUrl}
+            embedTitle={hillsOfStAnn.spotify.title}
           />
         )}
         listeningActivities={[
