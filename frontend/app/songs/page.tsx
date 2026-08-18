@@ -12,7 +12,7 @@ export default function SongsPage() {
       <section className="library-hero" aria-labelledby="library-title">
         <div>
           <p className="eyebrow">Song library</p>
-          <h1 id="library-title">Find the right song for your next English lesson.</h1>
+          <h1 id="library-title">Find the right song for your <span className="text-highlight">next English lesson.</span></h1>
           <p>Explore interactive lessons by level, genre, artist, or topic. Every song combines listening with English you can use.</p>
         </div>
         <div className="library-wave" aria-hidden="true">

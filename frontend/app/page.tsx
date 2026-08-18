@@ -34,7 +34,7 @@ export default function Home() {
       <section className="home-hero" aria-labelledby="hero-title">
         <div className="home-hero__content">
           <p className="eyebrow">Learn English through music</p>
-          <h1 id="hero-title">Turn the songs you love into real English practice.</h1>
+          <h1 id="hero-title">Turn the <span className="text-highlight">songs you love</span> into real English practice.</h1>
           <p className="home-hero__lead">
             Improve your listening, learn vocabulary in context, and speak with confidence through interactive music lessons.
           </p>
@@ -85,7 +85,7 @@ export default function Home() {
       <section className="home-section library-preview" aria-labelledby="library-preview-title">
         <div className="library-preview__content">
           <p className="eyebrow">Find your next lesson</p>
-          <h2 id="library-preview-title">A song library built for real English practice.</h2>
+          <h2 id="library-preview-title">A song library built for <span className="text-highlight">real English practice.</span></h2>
           <p>Browse every available lesson in one place, then filter by English level or musical genre to find the right fit.</p>
           <Link className="button button--primary" href="/songs">Explore the song library</Link>
         </div>
@@ -95,7 +95,7 @@ export default function Home() {
       <section className="home-section process-section" id="how-it-works" aria-labelledby="process-title">
         <div className="section-intro section-intro--wide">
           <p className="eyebrow">How it works</p>
-          <h2 id="process-title">More than just filling in the lyrics.</h2>
+          <h2 id="process-title">More than just <span className="text-highlight">filling in the lyrics.</span></h2>
         </div>
         <div className="process-grid">
           {processSteps.map(([title, text], index) => (
@@ -110,14 +110,14 @@ export default function Home() {
       <section className="home-section paths-section" aria-label="Learning paths">
         <article className="path-panel path-panel--student">
           <p className="eyebrow">For students</p>
-          <h2>Learn with music you actually enjoy.</h2>
+          <h2>Learn with <span className="text-highlight">music you actually enjoy.</span></h2>
           <p>Practice at your own pace, understand real English, and turn every song into a memorable learning experience.</p>
           <ul>{studentBenefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul>
           <Link className="button button--light" href="/songs">Start Learning</Link>
         </article>
         <article className="path-panel path-panel--teacher" id="for-teachers">
           <p className="eyebrow">For teachers</p>
-          <h2>Bring ready-made music lessons to your classroom.</h2>
+          <h2>Bring ready-made <span className="text-highlight">music lessons</span> to your classroom.</h2>
           <p>Save preparation time with structured lessons from warm-up discussion to listening, vocabulary, speaking, and writing.</p>
           <ul>{teacherBenefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul>
           <Link className="button button--secondary" href="/songs">Explore Teacher Resources</Link>
@@ -127,7 +127,7 @@ export default function Home() {
       <section className="home-section music-benefits" aria-labelledby="music-title">
         <div className="benefit-heading">
           <p className="eyebrow">Why music?</p>
-          <h2 id="music-title">English is easier to remember when you can feel it.</h2>
+          <h2 id="music-title">English is easier to remember <span className="text-highlight">when you can feel it.</span></h2>
         </div>
         <div className="benefit-list">
           <article><span>01</span><div><h3>Train your ears</h3><p>Hear natural pronunciation, rhythm, connected speech, and real vocabulary.</p></div></article>
@@ -139,7 +139,7 @@ export default function Home() {
       <section className="final-cta" aria-labelledby="cta-title">
         <div className="final-cta__wave" aria-hidden="true" />
         <p className="eyebrow">Press play on progress</p>
-        <h2 id="cta-title">Your next English lesson is already playing.</h2>
+        <h2 id="cta-title">Your <span className="text-highlight">next English lesson</span> is already playing.</h2>
         <p>Choose a song and discover how much English you can learn from the music you love.</p>
         <Link className="button button--light" href="/songs">Explore Songs</Link>
         <a className="teacher-link" href="#for-teachers">Are you a teacher? Discover classroom-ready lessons.</a>
