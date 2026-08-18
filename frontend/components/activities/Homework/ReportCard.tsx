@@ -12,10 +12,12 @@ interface ReportCardProps {
     writing: string;
     date: string;
     score: string;
+    coverImage?: string;
+    artist?: string;
 }
   
 export default function ReportCard({
-  songTitle, prompt, studentName, teacherName, writing, date, score,
+  songTitle, prompt, studentName, teacherName, writing, date, score, coverImage, artist,
 }: ReportCardProps) {
     const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
 
@@ -30,13 +32,24 @@ export default function ReportCard({
         <article className="report-card report-export">
         <header className="report-card__header">
           <div className="report-title">
-            <Image
-              className="report-logo"
-              src="/brand/music-your-english-logo.png"
-              alt="Music Your English"
-              width={58}
-              height={58}
-            />
+            <div className="report-brand-images">
+              <Image
+                className="report-logo"
+                src="/brand/music-your-english-logo.png"
+                alt="Music Your English"
+                width={52}
+                height={52}
+              />
+              {coverImage && (
+                <Image
+                  className="report-cover"
+                  src={coverImage}
+                  alt={`${songTitle}${artist ? ` by ${artist}` : ""} cover`}
+                  width={72}
+                  height={72}
+                />
+              )}
+            </div>
             <div>
               <p className="report-kicker">Music Your English</p>
               <h3>Student Report</h3>

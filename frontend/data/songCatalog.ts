@@ -133,3 +133,7 @@ export function getSongMeta(slug: SongMeta["slug"]) {
   if (!song) throw new Error(`Unknown song: ${slug}`);
   return song;
 }
+
+export function getSongMetaByTitle(title: string) {
+  return songCatalog.find((song) => song.title === title);
+}

@@ -15,6 +15,9 @@ export default function SiteFooter() {
           <Link href="/songs">Explore Songs</Link>
           <Link href="/#how-it-works">How It Works</Link>
           <Link href="/#for-teachers">For Teachers</Link>
+          <a href="https://www.instagram.com/music.yourenglish/" target="_blank" rel="noreferrer">
+            Instagram
+          </a>
         </nav>
       </div>
       <div className="footer-bottom">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Space_Grotesk } from "next/font/google";
+import { League_Spartan } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import "./globals.css";
@@ -16,14 +16,9 @@ import "../styles/library.css";
 import "../styles/home.css";
 import "../styles/responsive.css";
 
-const outfit = Outfit({
+const leagueSpartan = League_Spartan({
   subsets: ["latin"],
-  variable: "--font-outfit",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-league-spartan",
 });
 
 export const metadata: Metadata = {
@@ -39,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${spaceGrotesk.variable}`}
+      className={leagueSpartan.variable}
     >
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>

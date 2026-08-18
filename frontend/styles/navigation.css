@@ -15,13 +15,13 @@
   justify-content: space-between;
   gap: 36px;
 }
-.brand-mark { display: inline-flex; align-items: center; gap: 11px; color: white; text-decoration: none; font-family: var(--font-space-grotesk); font-weight: 500; letter-spacing: -0.03em; white-space: nowrap; }
+.brand-mark { display: inline-flex; align-items: center; gap: 11px; color: white; text-decoration: none; font-family: var(--font-league-spartan); font-weight: 500; letter-spacing: -0.03em; white-space: nowrap; }
 .brand-mark strong { font-weight: 750; }
 .brand-logo { width: 38px; height: 38px; flex: none; object-fit: cover; border: 1px solid rgba(255, 255, 255, 0.13); border-radius: 11px; box-shadow: 0 7px 24px rgba(130, 13, 75, 0.38); }
 .nav-panel { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
 .main-nav, .nav-actions { display: flex; align-items: center; gap: 26px; }
 .main-nav a { color: var(--muted); text-decoration: none; font-size: 0.93rem; font-weight: 600; transition: color 180ms ease; }
-.main-nav a:hover { color: white; }
+.main-nav a:hover { color: var(--vivid-pink); }
 .nav-login { border: 0; background: transparent; color: var(--muted); font-weight: 700; }
 .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
 .menu-toggle span { display: block; width: 18px; height: 2px; margin: 5px auto; background: white; }
@@ -33,5 +33,5 @@
 .footer-brand > span { color: #8c8694; font-size: 0.9rem; }
 .footer-nav { display: grid; grid-template-columns: repeat(2, minmax(130px, 1fr)); gap: 16px 44px; align-content: start; }
 .footer-nav a { color: var(--muted); text-decoration: none; }
-.footer-nav a:hover { color: white; }
+.footer-nav a:hover { color: var(--vivid-pink); }
 .footer-bottom { min-height: 72px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 20px; color: #817b89; font-size: 0.88rem; }

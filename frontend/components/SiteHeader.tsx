@@ -35,6 +35,14 @@ export default function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <a
+              href="https://www.instagram.com/music.yourenglish/"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setIsOpen(false)}
+            >
+              Instagram
+            </a>
           </nav>
           <div className="nav-actions">
             <button className="nav-login" type="button" disabled title="Log in is coming soon">

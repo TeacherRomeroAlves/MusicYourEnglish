@@ -5,6 +5,7 @@ import HomeworkForm from "./HomeworkForm";
 import ReportCard from "./ReportCard";
 import VoiceHomework from "./VoiceHomework";
 import { useHomework } from "@/hooks/useHomework";
+import { getSongMetaByTitle } from "@/data/songCatalog";
 
 interface HomeworkActivityProps {
   step: string;
@@ -16,6 +17,7 @@ interface HomeworkActivityProps {
 
 export default function HomeworkActivity({ step, title, description, prompt, songTitle, }: HomeworkActivityProps) {
   const homework = useHomework(songTitle, prompt);
+  const song = getSongMetaByTitle(songTitle);
   const [mode, setMode] = useState<"write" | "speak">("write");
   return (
     <section className="card report-section">
@@ -86,6 +88,8 @@ export default function HomeworkActivity({ step, title, description, prompt, son
           writing={homework.writing}
           date={homework.date}
           score={homework.score}
+          coverImage={song?.coverImage}
+          artist={song?.artist}
         />
       </div>
     </section>
