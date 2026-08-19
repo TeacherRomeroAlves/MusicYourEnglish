@@ -10,6 +10,7 @@ export const hillsOfStAnn = {
     { word: "roots", meaning: "the parts of a plant under the ground" },
     { word: "Jah", meaning: "a name for God in Rastafari culture" },
     { word: "Zion", meaning: "a peaceful and spiritual promised place" },
+    { word: "Inna", meaning: "in or inside, in Jamaican English" },
     { word: "drum", meaning: "a musical instrument you hit with your hands or sticks" },
     { word: "mountain span", meaning: "a long area covered by mountains" },
   ],
