@@ -12,7 +12,7 @@ export default function BrandMark() {
         height={42}
         priority
       />
-      <span>Music <strong>Your English</strong></span>
+      <span><strong>Music</strong> Your English</span>
     </Link>
   );
 }

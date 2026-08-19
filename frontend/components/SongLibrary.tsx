@@ -1,17 +1,24 @@
 "use client";
 
-import { useDeferredValue, useState } from "react";
+import { useDeferredValue, useEffect, useState } from "react";
 import SongCard from "./SongCard";
 import { USER_LEVELS, type SongMeta } from "@/data/songCatalog";
+import { shuffleArray } from "@/lib/shuffleArray";
 
 export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
   const [query, setQuery] = useState("");
   const [level, setLevel] = useState("all");
   const [genre, setGenre] = useState("all");
+  const [orderedSongs, setOrderedSongs] = useState(() => songs);
   const deferredQuery = useDeferredValue(query.trim().toLowerCase());
   const genres = [...new Set(songs.map((song) => song.genre))];
 
-  const filteredSongs = songs.filter((song) => {
+  useEffect(() => {
+    const timeout = window.setTimeout(() => setOrderedSongs(shuffleArray(songs)), 0);
+    return () => window.clearTimeout(timeout);
+  }, [songs]);
+
+  const filteredSongs = orderedSongs.filter((song) => {
     const matchesQuery = !deferredQuery || [song.title, song.artist, song.topic]
       .some((value) => value.toLowerCase().includes(deferredQuery));
     const matchesLevel = level === "all" || song.level === level;
