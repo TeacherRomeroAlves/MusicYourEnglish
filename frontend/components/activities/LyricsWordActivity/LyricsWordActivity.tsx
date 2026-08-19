@@ -9,12 +9,12 @@ import type { LyricsWordActivityProps } from "./types";
 
 export default function LyricsWordActivity({ step, title, description, words, lyrics, }: LyricsWordActivityProps) {
   const {
-    bankWords,
-    draggedWord,
+    bankItems,
+    draggedTokenId,
     activeSlotId,
     placements,
     buildSlotId,
-    getPlacedWord,
+    getPlacedItem,
     handleDragStart,
     handleDragEnd,
     handleSlotDragOver,
@@ -31,7 +31,7 @@ export default function LyricsWordActivity({ step, title, description, words, ly
     ),
   );
   useRegisterActivityResult(`${step}:${title}`, {
-    correct: expectedSlots.filter(({ slotId, answer }) => placements[slotId] === answer).length,
+    correct: expectedSlots.filter(({ slotId, answer }) => getPlacedItem(slotId)?.word === answer).length,
     answered: expectedSlots.filter(({ slotId }) => Boolean(placements[slotId])).length,
     total: expectedSlots.length,
   });
@@ -62,11 +62,12 @@ export default function LyricsWordActivity({ step, title, description, words, ly
         }}
         onClick={handleDropOnBank}
       >
-        {bankWords.map((word) => (
+        {bankItems.map((item) => (
           <LyricWordCard
-            key={word}
-            word={word}
-            isDragging={draggedWord === word}
+            key={item.id}
+            itemId={item.id}
+            word={item.word}
+            isDragging={draggedTokenId === item.id}
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
             onSelect={handleAutoPlace}
@@ -86,9 +87,10 @@ export default function LyricsWordActivity({ step, title, description, words, ly
                     <WordDropZone
                       slotId={buildSlotId(index, i)}
                       match={part.answer}
-                      placedWord={getPlacedWord(buildSlotId(index, i))}
+                      placedWordId={getPlacedItem(buildSlotId(index, i))?.id ?? null}
+                      placedWord={getPlacedItem(buildSlotId(index, i))?.word ?? null}
                       isDragOver={activeSlotId === buildSlotId(index, i)}
-                      isDraggingWord={(word) => draggedWord === word}
+                      isDraggingWord={(tokenId) => draggedTokenId === tokenId}
                       onDragStart={handleDragStart}
                       onDragEnd={handleDragEnd}
                       onDragOver={() => handleSlotDragOver(buildSlotId(index, i))}

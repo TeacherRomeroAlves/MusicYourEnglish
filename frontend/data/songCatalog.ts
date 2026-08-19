@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love";
   title: string;
   artist: string;
   level: UserLevel;
@@ -138,6 +138,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Vocabulary", "Sentence order", "Relative clauses"],
     coverImage: "/images/songs/happy/cover.png",
     coverClass: "song-art--happy",
+  },
+  {
+    slug: "friday-im-in-love",
+    title: "Friday I'm in Love",
+    artist: "The Cure",
+    level: "Beginner",
+    duration: "40 min",
+    topic: "Days of the week and positive feelings",
+    genre: "Alternative rock",
+    description: "Practice days, colors, and simple descriptive words through an upbeat song about Friday.",
+    activities: ["Days of the week", "Adjectives", "Colors"],
+    coverImage: "/images/songs/friday-im-in-love/cover.jpg",
+    coverClass: "song-art--friday-im-in-love",
   },
 ];
 

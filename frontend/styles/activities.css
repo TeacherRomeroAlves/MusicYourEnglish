@@ -49,6 +49,7 @@
 .unscramble-input::placeholder { color: #d09abb; opacity: 1; letter-spacing: .08em; }
 .missing-word-lyrics .lyric-line { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
 .missing-word-option { min-height: 38px; padding: 6px 10px; border: 1px solid rgba(130,13,75,.24); border-radius: 10px; background: #fff; color: #3b2333; font: inherit; font-weight: 750; cursor: pointer; transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease; }
+.lyrics-divider { height: 1px; margin: 22px 0; background: rgba(76,35,67,.16); }
 .missing-word-option:hover { transform: translateY(-2px); border-color: #820d4b; }
 .missing-word-option:focus-visible { outline: 3px solid rgba(126,13,130,.32); outline-offset: 3px; }
 .missing-word-option.is-selected { border-color: #3b0764; background: linear-gradient(135deg, #820d4b, #3b0764); color: #fff; }

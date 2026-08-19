@@ -15,6 +15,7 @@
 .song-art--bad-life { background: radial-gradient(circle at 76% 20%, #58a9cf, transparent 18%), linear-gradient(145deg, #12161d, #314f62 58%, #8a3b78); }
 .song-art--hills-of-st-ann { background: radial-gradient(circle at 74% 18%, #dcebe6, transparent 18%), linear-gradient(145deg, #1e4f50, #4f8c85 58%, #d8e3c9); }
 .song-art--happy { background: radial-gradient(circle at 74% 18%, #a7b4b4, transparent 18%), linear-gradient(145deg, #081113, #263536 58%, #5f6f70); }
+.song-art--friday-im-in-love { background: radial-gradient(circle at 72% 18%, #3244d8, transparent 18%), linear-gradient(145deg, #3b0714, #bc151f 58%, #f23a23); }
 .song-art__eyebrow, .song-art__title, .song-art__artist { position: relative; z-index: 2; }
 .song-art__eyebrow { margin-bottom: auto; color: rgba(255,255,255,.72); font-size: .68rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
 .song-art__title { max-width: 90%; color: white; font-family: var(--font-league-spartan); font-size: clamp(1.8rem, 3vw, 2.65rem); font-weight: 750; letter-spacing: -.05em; line-height: .95; }

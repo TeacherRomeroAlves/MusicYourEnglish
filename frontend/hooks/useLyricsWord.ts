@@ -7,9 +7,10 @@ import type { LyricWordLine, LyricWordOption } from "@/components/activities/Lyr
 import { buildLyricsWordSlotId, getLyricsWordSlotIds } from "@/components/activities/LyricsWordActivity/utils";
 
 function createInitialState(words: LyricWordOption[], lyrics: LyricWordLine[], shouldShuffle = true) {
-  const bankWords = words.map((item) => item.word);
+  const tokens = words.map((item, index) => ({ id: `word-${index}`, word: item.word }));
+  const bankTokenIds = tokens.map((token) => token.id);
   return {
-    bankWords: shouldShuffle ? shuffleArray(bankWords) : bankWords,
+    bankTokenIds: shouldShuffle ? shuffleArray(bankTokenIds) : bankTokenIds,
     placements: Object.fromEntries(
       getLyricsWordSlotIds(lyrics).map((slotId) => [slotId, null]),
     ) as Record<string, string | null>,
@@ -17,9 +18,11 @@ function createInitialState(words: LyricWordOption[], lyrics: LyricWordLine[], s
 }
 
 export function useLyricsWord(words: LyricWordOption[], lyrics: LyricWordLine[]) {
+  const tokens = words.map((item, index) => ({ id: `word-${index}`, word: item.word }));
+  const tokenMap = Object.fromEntries(tokens.map((token) => [token.id, token]));
   const orderedSlotIds = getLyricsWordSlotIds(lyrics);
   const [state, setState] = useState(() => createInitialState(words, lyrics, false));
-  const [draggedWord, setDraggedWord] = useState<string | null>(null);
+  const [draggedTokenId, setDraggedTokenId] = useState<string | null>(null);
   const [activeSlotId, setActiveSlotId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -27,12 +30,12 @@ export function useLyricsWord(words: LyricWordOption[], lyrics: LyricWordLine[])
     return () => window.clearTimeout(timeout);
   }, [words, lyrics]);
 
-  const handleDragStart = (word: string) => {
-    setDraggedWord(word);
+  const handleDragStart = (tokenId: string) => {
+    setDraggedTokenId(tokenId);
   };
 
   const handleDragEnd = () => {
-    setDraggedWord(null);
+    setDraggedTokenId(null);
     setActiveSlotId(null);
   };
 
@@ -47,26 +50,26 @@ export function useLyricsWord(words: LyricWordOption[], lyrics: LyricWordLine[])
   };
 
   const handleDropOnSlot = (slotId: string) => {
-    if (!draggedWord) {
+    if (!draggedTokenId) {
       return;
     }
 
     setState((previousState) => {
-      let nextBankWords = removeItemFromBank(previousState.bankWords, draggedWord);
-      let nextPlacements = removeItemFromPlacements(previousState.placements, draggedWord);
-      const replacedWord = nextPlacements[slotId];
+      let nextBankTokenIds = removeItemFromBank(previousState.bankTokenIds, draggedTokenId);
+      let nextPlacements = removeItemFromPlacements(previousState.placements, draggedTokenId);
+      const replacedTokenId = nextPlacements[slotId];
 
-      if (replacedWord && replacedWord !== draggedWord) {
-        nextBankWords = appendItemToBank(nextBankWords, replacedWord);
+      if (replacedTokenId && replacedTokenId !== draggedTokenId) {
+        nextBankTokenIds = appendItemToBank(nextBankTokenIds, replacedTokenId);
       }
 
       nextPlacements = {
         ...nextPlacements,
-        [slotId]: draggedWord,
+        [slotId]: draggedTokenId,
       };
 
       return {
-        bankWords: nextBankWords,
+        bankTokenIds: nextBankTokenIds,
         placements: nextPlacements,
       };
     });
@@ -74,64 +77,67 @@ export function useLyricsWord(words: LyricWordOption[], lyrics: LyricWordLine[])
     handleDragEnd();
   };
 
-  const handleAutoPlace = (word: string) => {
+  const handleAutoPlace = (tokenId: string) => {
     setState((previousState) => {
       const nextSlotId = findFirstEmptySlot(previousState.placements, orderedSlotIds);
       if (!nextSlotId) return previousState;
 
       return {
-        bankWords: removeItemFromBank(previousState.bankWords, word),
+        bankTokenIds: removeItemFromBank(previousState.bankTokenIds, tokenId),
         placements: {
-          ...removeItemFromPlacements(previousState.placements, word),
-          [nextSlotId]: word,
+          ...removeItemFromPlacements(previousState.placements, tokenId),
+          [nextSlotId]: tokenId,
         },
       };
     });
-    setDraggedWord(null);
+    setDraggedTokenId(null);
     setActiveSlotId(null);
   };
 
   const handleDropOnBank = () => {
-    if (!draggedWord) {
+    if (!draggedTokenId) {
       return;
     }
 
     setState((previousState) => ({
-      bankWords: appendItemToBank(
-        removeItemFromBank(previousState.bankWords, draggedWord),
-        draggedWord,
+      bankTokenIds: appendItemToBank(
+        removeItemFromBank(previousState.bankTokenIds, draggedTokenId),
+        draggedTokenId,
       ),
-      placements: removeItemFromPlacements(previousState.placements, draggedWord),
+      placements: removeItemFromPlacements(previousState.placements, draggedTokenId),
     }));
 
     handleDragEnd();
   };
 
-  const handleReturnToBank = (word: string) => {
+  const handleReturnToBank = (tokenId: string) => {
     setState((previousState) => ({
-      bankWords: appendItemToBank(
-        removeItemFromBank(previousState.bankWords, word),
-        word,
+      bankTokenIds: appendItemToBank(
+        removeItemFromBank(previousState.bankTokenIds, tokenId),
+        tokenId,
       ),
-      placements: removeItemFromPlacements(previousState.placements, word),
+      placements: removeItemFromPlacements(previousState.placements, tokenId),
     }));
-    setDraggedWord(null);
+    setDraggedTokenId(null);
     setActiveSlotId(null);
   };
 
   const handleReset = () => {
     setState(createInitialState(words, lyrics, true));
-    setDraggedWord(null);
+    setDraggedTokenId(null);
     setActiveSlotId(null);
   };
 
   return {
-    bankWords: state.bankWords,
+    bankItems: state.bankTokenIds.map((tokenId) => tokenMap[tokenId]).filter(Boolean),
     placements: state.placements,
-    draggedWord,
+    draggedTokenId,
     activeSlotId,
     buildSlotId: buildLyricsWordSlotId,
-    getPlacedWord: (slotId: string) => state.placements[slotId],
+    getPlacedItem: (slotId: string) => {
+      const tokenId = state.placements[slotId];
+      return tokenId ? tokenMap[tokenId] : null;
+    },
     handleDragStart,
     handleDragEnd,
     handleSlotDragOver,

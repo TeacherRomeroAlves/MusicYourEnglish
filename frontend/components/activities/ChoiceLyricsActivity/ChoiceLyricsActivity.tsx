@@ -6,15 +6,15 @@ import { useChoiceLyrics } from "@/hooks/useChoiceLyrics";
 import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 
 export default function ChoiceLyricsActivity({ step, title, description, lyrics, }: ChoiceLyricsActivityProps) {
-  const { optionsBySlot, selections, handleSelect, handleReset } = useChoiceLyrics(lyrics);
+  const { optionsBySlot, getSelection, handleSelect, handleReset } = useChoiceLyrics(lyrics);
   const answers = lyrics.flatMap((line, lineIndex) =>
     line.items
-      .map((item, itemIndex) => ({ slotId: `${lineIndex}-${itemIndex}`, answer: item.answer }))
+      .map((item, itemIndex) => ({ slotId: `${lineIndex}-${itemIndex}`, answer: item.answer, syncKey: item.syncKey }))
       .filter((item) => item.answer),
   );
   useRegisterActivityResult(`${step}:${title}`, {
-    correct: answers.filter(({ slotId, answer }) => selections[slotId] === answer).length,
-    answered: answers.filter(({ slotId }) => Boolean(selections[slotId])).length,
+    correct: answers.filter(({ slotId, answer, syncKey }) => getSelection(slotId, syncKey) === answer).length,
+    answered: answers.filter(({ slotId, syncKey }) => Boolean(getSelection(slotId, syncKey))).length,
     total: answers.length,
   });
   return (
@@ -41,8 +41,8 @@ export default function ChoiceLyricsActivity({ step, title, description, lyrics,
                 {item.answer && <>
                   <ChoiceSlot
                     options={optionsBySlot[slotId] ?? item.options}
-                    selectedOption={selections[slotId]}
-                    onSelect={(option) => handleSelect(slotId, option)}
+                    selectedOption={getSelection(slotId, item.syncKey)}
+                    onSelect={(option) => handleSelect(slotId, option, item.syncKey)}
                   />{" "}
                 </>}
                 {item.after}{" "}

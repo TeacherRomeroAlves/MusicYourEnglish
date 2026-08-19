@@ -3,6 +3,7 @@ export interface ChoiceItem {
     answer: string;
     after: string;
     options: string[];
+    syncKey?: string;
 }
 
 export interface ChoiceLine {

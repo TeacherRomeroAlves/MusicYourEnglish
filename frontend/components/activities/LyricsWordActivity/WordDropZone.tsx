@@ -3,6 +3,7 @@ import LyricWordCard from "./LyricWordCard";
 interface WordDropZoneProps {
   slotId: string;
   match: string;
+  placedWordId: string | null;
   placedWord: string | null;
   isDragOver: boolean;
   isDraggingWord: (word: string) => boolean;
@@ -17,6 +18,7 @@ interface WordDropZoneProps {
 export default function WordDropZone({
   slotId,
   match,
+  placedWordId,
   placedWord,
   isDragOver,
   isDraggingWord,
@@ -58,8 +60,9 @@ export default function WordDropZone({
     >
       {placedWord ? (
         <LyricWordCard
+          itemId={placedWordId ?? placedWord}
           word={placedWord}
-          isDragging={isDraggingWord(placedWord)}
+          isDragging={isDraggingWord(placedWordId ?? placedWord)}
           onDragStart={onDragStart}
           onDragEnd={onDragEnd}
           onSelect={onSelectWord}
