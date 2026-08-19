@@ -18,17 +18,17 @@ export const happy = {
 
 export const happyOpening = {
   words: [
-    "Dear", "been", "keep", "When", "life", "have", "true", "live", "feel",
-    "Fear", "Loop", "Seen", "Here",
+    "dear", "been", "keep", "when", "life", "have", "true", "live", "feel",
+    "fear", "loop", "seen", "here",
   ].map((word) => ({ word })),
   lyrics: [
-    { parts: [{ before: "", answer: "Dear", after: "God, please, hear me out" }] },
+    { parts: [{ before: "", answer: "dear", after: "God, please, hear me out" }] },
     { parts: [{ before: "I know it's", answer: "been", after: "a couple years" }] },
     { parts: [{ before: "Since I've reached out and said hello", after: "" }] },
     { parts: [{ before: "I bet You're wondering", after: "" }] },
     { parts: [{ before: "Why I", answer: "keep", after: "" }] },
     { parts: [{ before: "Obsessing on and stressing all the little things", after: "" }] },
-    { parts: [{ before: "", answer: "When", after: "I should be" }] },
+    { parts: [{ before: "", answer: "when", after: "I should be" }] },
     { parts: [{ before: "Living", answer: "life", after: "and soaking up the memories" }] },
     { parts: [{ before: "I know I've been selfish, I", answer: "have", after: "" }] },
     { parts: [{ before: "No excuse to give you, it's", answer: "true", after: "" }] },
@@ -76,12 +76,12 @@ export const happyWordPresence = {
   lyrics: [
     {
       before: "Some family members",
-      option: { id: "family-that", word: "THAT", isPresent: false },
+      option: { id: "family-that", word: "that", isPresent: false },
       after: "I don't really connect with",
     },
     {
       before: "Some things",
-      option: { id: "things-that", word: "THAT", isPresent: false },
+      option: { id: "things-that", word: "that", isPresent: false },
       after: "I said I wish I would've not let slip",
     },
     {
@@ -92,7 +92,7 @@ export const happyWordPresence = {
     { before: "Some bridges burned, I'm not ready to rebuild yet" },
     {
       before: "Some insecurities",
-      option: { id: "insecurities-that", word: "THAT", isPresent: false },
+      option: { id: "insecurities-that", word: "that", isPresent: false },
       after: "I haven't dealt with, yes",
     },
     {
@@ -102,7 +102,7 @@ export const happyWordPresence = {
     },
     {
       before: "And the last to admit",
-      option: { id: "last-that", word: "THAT", isPresent: false },
+      option: { id: "last-that", word: "that", isPresent: false },
       after: "I need a hand to hold",
     },
     { before: "Losing hope, headed down a dangerous road" },

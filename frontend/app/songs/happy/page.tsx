@@ -117,7 +117,7 @@ export default function HappyPage() {
               <WordPresenceActivity
                 step="Stanza 4"
                 title="Fourth Stanza"
-                description="Activate the two THAT buttons only where you actually hear the word in the song."
+                description="Activate the two 'that' buttons only where you actually hear the word in the song."
                 lyrics={happyWordPresence.lyrics}
                 maximumSelections={2}
               />
