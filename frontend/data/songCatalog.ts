@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy";
   title: string;
   artist: string;
   level: UserLevel;
@@ -125,6 +125,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Emoji gaps", "Missing words", "Vocabulary"],
     coverImage: "/images/songs/hills-of-st-ann/cover.png",
     coverClass: "song-art--hills-of-st-ann",
+  },
+  {
+    slug: "happy",
+    title: "Happy",
+    artist: "NF",
+    level: "Intermediate+",
+    duration: "50 min",
+    topic: "Happiness and asking for help",
+    genre: "Hip-hop",
+    description: "Explore honest language about mental health, asking for help, and imagining a happier life.",
+    activities: ["Vocabulary", "Sentence order", "Relative clauses"],
+    coverImage: "/images/songs/happy/cover.png",
+    coverClass: "song-art--happy",
   },
 ];
 
