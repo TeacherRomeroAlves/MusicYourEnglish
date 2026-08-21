@@ -29,6 +29,14 @@ export const monsters = {
             word: "tunnel vision",
             meaning: "when you only think about one thing"
         },
+        {
+            word: "sucker",
+            meaning: "a person who is easily tricked or attracted to something"
+        },
+        {
+            word: "strung out",
+            meaning: "very tired, worried, or emotionally stressed"
+        },
     ]
 }
 
