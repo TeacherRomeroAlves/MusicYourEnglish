@@ -2,6 +2,7 @@ export interface TypingBlank {
     before: string;
     answer: string;
     after: string;
+    syncKey?: string;
 }
 
 export interface TypingLyricsActivityProps {
@@ -9,4 +10,6 @@ export interface TypingLyricsActivityProps {
     title: string;
     description?: string;
     lyrics: TypingBlank[];
+    wordBank?: string[];
+    wordBankLabel?: string;
 }

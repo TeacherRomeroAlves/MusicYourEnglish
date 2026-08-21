@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary";
   title: string;
   artist: string;
   level: UserLevel;
@@ -151,6 +151,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Days of the week", "Adjectives", "Colors"],
     coverImage: "/images/songs/friday-im-in-love/cover.jpg",
     coverClass: "song-art--friday-im-in-love",
+  },
+  {
+    slug: "ordinary",
+    title: "Ordinary",
+    artist: "Alex Warren",
+    level: "Pre-intermediate",
+    duration: "45 min",
+    topic: "Love and extraordinary connections",
+    genre: "Pop",
+    description: "Practice word formation and mixed verb forms while exploring a love that makes ordinary life feel special.",
+    activities: ["Emoji gaps", "Word formation", "Mixed verb forms"],
+    coverImage: "/images/songs/ordinary/cover.jpg",
+    coverClass: "song-art--ordinary",
   },
 ];
 

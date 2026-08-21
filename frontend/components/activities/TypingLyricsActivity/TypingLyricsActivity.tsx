@@ -5,12 +5,14 @@ import type { TypingLyricsActivityProps } from "./types";
 import { useTypingLyrics } from "@/hooks/useTypingLyrics";
 import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 
-export default function TypingLyricsActivity({ step, title, description, lyrics, }: TypingLyricsActivityProps) {
+export default function TypingLyricsActivity({ step, title, description, lyrics, wordBank, wordBankLabel = "Words in their base form", }: TypingLyricsActivityProps) {
   const { values, handleChange, handleReset } = useTypingLyrics();
-  const answerLines = lyrics.map((line, index) => ({ ...line, index })).filter((line) => line.answer);
+  const answerLines = lyrics
+    .map((line, index) => ({ ...line, valueKey: line.syncKey ?? String(index) }))
+    .filter((line) => line.answer);
   useRegisterActivityResult(`${step}:${title}`, {
-    correct: answerLines.filter(({ answer, index }) => (values[index] ?? "").trim().toLowerCase() === answer.toLowerCase()).length,
-    answered: answerLines.filter(({ index }) => Boolean((values[index] ?? "").trim())).length,
+    correct: answerLines.filter(({ answer, valueKey }) => (values[valueKey] ?? "").trim().toLowerCase() === answer.toLowerCase()).length,
+    answered: answerLines.filter(({ valueKey }) => Boolean((values[valueKey] ?? "").trim())).length,
     total: answerLines.length,
   });
   return (
@@ -27,6 +29,17 @@ export default function TypingLyricsActivity({ step, title, description, lyrics,
         )}
       </div>
 
+      {wordBank && wordBank.length > 0 && (
+        <div className="prompt-box typing-word-chart" aria-label={wordBankLabel}>
+          <p className="prompt-label">{wordBankLabel}</p>
+          <div className="pronoun-chart">
+            {wordBank.map((word) => (
+              <span className="pronoun-chip" key={word}>{word}</span>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div
         className="lyrics-card"
         aria-label={title}
@@ -41,8 +54,8 @@ export default function TypingLyricsActivity({ step, title, description, lyrics,
                 <>
                     <LyricInput
                       answer={line.answer}
-                      value={values[index] ?? ""}
-                      onChange={(value) => handleChange(index, value, line.answer.length)}
+                      value={values[line.syncKey ?? String(index)] ?? ""}
+                      onChange={(value) => handleChange(line.syncKey ?? String(index), value, line.answer.length)}
                     />{" "}
                 </>
             )}

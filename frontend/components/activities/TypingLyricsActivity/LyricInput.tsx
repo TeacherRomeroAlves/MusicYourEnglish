@@ -10,6 +10,8 @@ export default function LyricInput({ answer, value, onChange }: LyricInputProps)
         className="lyric-input"
         type="text"
         maxLength={answer.length}
+        aria-label={`Type the ${answer.length}-letter answer`}
+        style={{ width: `${Math.max(3, answer.length + 1)}ch` }}
         data-answer={answer}
         value={value}
         onChange={(event) => onChange(event.target.value)}
