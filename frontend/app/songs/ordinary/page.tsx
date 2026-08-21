@@ -32,7 +32,7 @@ export default function OrdinaryPage() {
         listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before starting the lyrics activities." embedUrl={ordinary.youtube.embedUrl} embedTitle={ordinary.youtube.title} />}
         listeningActivities={[
           { label: "First Stanza", content: <IconLyricsActivity step="Stanza 1" title="First Stanza" description="Click or drag each emoji into the correct lyric gap while you listen." icons={ordinaryFirstStanza.icons} lyrics={ordinaryFirstStanza.lyrics} /> },
-          { label: "Chorus", content: <TypingLyricsActivity step="Stanza 2" title="Chorus" description="Type the correct form of each word. Use the base forms in the chart to help you. The two 'found' gaps are synchronized." wordBank={ordinaryChorus.wordBank} lyrics={ordinaryChorus.lyrics} /> },
+          { label: "Chorus", content: <TypingLyricsActivity step="Stanza 2" title="Chorus" description="Type the correct form of each word. Use the base forms in the chart to help you." wordBank={ordinaryChorus.wordBank} lyrics={ordinaryChorus.lyrics} /> },
           { label: "Third Stanza", content: <ChoiceLyricsActivity step="Stanza 3" title="Third Stanza" description="Choose the correct option inside the lyrics while you listen." lyrics={ordinaryThirdStanza.lyrics} /> },
           { label: "Fourth Stanza", content: <ChoiceLyricsActivity step="Stanza 4" title="Fourth Stanza" description="Select the correct two-letter word in each line while you listen." lyrics={ordinaryFourthStanza.lyrics} /> },
         ]}
