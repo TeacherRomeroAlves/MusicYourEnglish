@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you";
   title: string;
   artist: string;
   level: UserLevel;
@@ -164,6 +164,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Emoji gaps", "Word formation", "Mixed verb forms"],
     coverImage: "/images/songs/ordinary/cover.jpg",
     coverClass: "song-art--ordinary",
+  },
+  {
+    slug: "nice-to-meet-you",
+    title: "Nice To Meet You",
+    artist: "Myles Smith",
+    level: "Beginner",
+    duration: "40 min",
+    topic: "Meeting people and enjoying the moment",
+    genre: "Folk pop",
+    description: "Practice simple words and expressions through a song about meeting someone new and dancing together.",
+    activities: ["Could", "Ain't", "Word formation"],
+    coverImage: "/images/songs/nice-to-meet-you/cover.jpg",
+    coverClass: "song-art--nice-to-meet-you",
   },
 ];
 

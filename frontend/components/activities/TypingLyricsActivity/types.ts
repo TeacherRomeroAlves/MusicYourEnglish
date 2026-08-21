@@ -12,4 +12,5 @@ export interface TypingLyricsActivityProps {
     lyrics: TypingBlank[];
     wordBank?: string[];
     wordBankLabel?: string;
+    allowedLetters?: string[];
 }

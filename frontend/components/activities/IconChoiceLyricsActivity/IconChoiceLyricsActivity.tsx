@@ -88,7 +88,7 @@ export default function IconChoiceLyricsActivity({
                     onDragOver={() => iconActivity.handleSlotDragOver(slotId)}
                     onDragLeave={() => iconActivity.handleSlotDragLeave(slotId)}
                     onDrop={() => iconActivity.handleDropOnSlot(slotId)}
-                    onSelectIcon={iconActivity.handleReturnToBank}
+                    onSelectIcon={(iconId) => iconActivity.handleReturnToBank(slotId, iconId)}
                   />
                 )}
                 {part.after}

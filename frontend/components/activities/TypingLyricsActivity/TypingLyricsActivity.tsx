@@ -5,7 +5,7 @@ import type { TypingLyricsActivityProps } from "./types";
 import { useTypingLyrics } from "@/hooks/useTypingLyrics";
 import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 
-export default function TypingLyricsActivity({ step, title, description, lyrics, wordBank, wordBankLabel = "Words in their base form", }: TypingLyricsActivityProps) {
+export default function TypingLyricsActivity({ step, title, description, lyrics, wordBank, wordBankLabel = "Words in their base form", allowedLetters, }: TypingLyricsActivityProps) {
   const { values, handleChange, handleReset } = useTypingLyrics();
   const answerLines = lyrics
     .map((line, index) => ({ ...line, valueKey: line.syncKey ?? String(index) }))
@@ -40,6 +40,17 @@ export default function TypingLyricsActivity({ step, title, description, lyrics,
         </div>
       )}
 
+      {allowedLetters && allowedLetters.length > 0 && (
+        <div className="prompt-box typing-word-chart" aria-label="Letters you can use">
+          <p className="prompt-label">Letters you can use</p>
+          <div className="letter-chart">
+            {allowedLetters.map((letter) => (
+              <span className="letter-chip" key={letter}>{letter}</span>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div
         className="lyrics-card"
         aria-label={title}
@@ -55,7 +66,7 @@ export default function TypingLyricsActivity({ step, title, description, lyrics,
                     <LyricInput
                       answer={line.answer}
                       value={values[line.syncKey ?? String(index)] ?? ""}
-                      onChange={(value) => handleChange(line.syncKey ?? String(index), value, line.answer.length)}
+                      onChange={(value) => handleChange(line.syncKey ?? String(index), value, line.answer.length, allowedLetters)}
                     />{" "}
                 </>
             )}

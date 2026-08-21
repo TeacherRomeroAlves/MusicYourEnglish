@@ -91,7 +91,7 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
                               onDragOver={() => handleSlotDragOver(buildSlotId(index, i))}
                               onDragLeave={() => handleSlotDragLeave(buildSlotId(index, i))}
                               onDrop={() => handleDropOnSlot(buildSlotId(index, i))}
-                              onSelectIcon={handleReturnToBank}
+                              onSelectIcon={(iconId) => handleReturnToBank(buildSlotId(index, i), iconId)}
                             />
                         )}
                         {part.after}

@@ -9,6 +9,7 @@ export interface LyricPart {
     before: string;
     match?: string;
     after: string;
+    syncKey?: string;
 }
 
 export interface LyricLine {
