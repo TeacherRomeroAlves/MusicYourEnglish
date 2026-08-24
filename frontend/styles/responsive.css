@@ -11,6 +11,9 @@
   .main-nav, .nav-actions { align-items: stretch; flex-direction: column; gap: 6px; }
   .main-nav a, .nav-login { padding: 12px 10px; text-align: left; }
   .nav-actions { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px; }
+  .nav-user { justify-content: space-between; padding: 0 10px; }
+  .nav-email-login { align-items: stretch; flex-direction: column; }
+  .nav-email-login input { width: 100%; box-sizing: border-box; }
   .home-hero { min-height: auto; padding: 78px 0 100px; grid-template-columns: 1fr; }
   .home-hero h1 { max-width: 700px; }
   .learning-player { width: min(100%, 560px); justify-self: center; transform: none; }

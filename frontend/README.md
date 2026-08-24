@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Email login with Supabase
+
+1. Copy `.env.example` to `.env.local` and add the Project URL and publishable key from the Supabase **Connect** dialog.
+2. In **Authentication → URL Configuration**, set the production Site URL to `https://music-your-english.vercel.app`.
+3. Add `http://localhost:3000/auth/confirm` and `https://music-your-english.vercel.app/auth/confirm` to the allowed Redirect URLs.
+4. Add the same two public environment variables to the Vercel project, then redeploy.
+5. Leave the default **Magic Link or OTP** email template unchanged. Supabase's default email service is suitable for testing; configure custom SMTP before relying on email delivery in production.
+
+Run `npm run dev`, open `http://localhost:3000`, and select **Log in**.

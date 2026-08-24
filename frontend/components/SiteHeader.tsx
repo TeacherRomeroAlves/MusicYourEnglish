@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import BrandMark from "./BrandMark";
+import AuthButton from "./AuthButton";
 
 const navigation = [
   { label: "Home", href: "/" },
@@ -45,9 +46,7 @@ export default function SiteHeader() {
             </a>
           </nav>
           <div className="nav-actions">
-            <button className="nav-login" type="button" disabled title="Log in is coming soon">
-              Log In
-            </button>
+            <AuthButton onNavigate={() => setIsOpen(false)} />
             <Link className="button button--primary button--compact" href="/songs" onClick={() => setIsOpen(false)}>
               Start exploring
             </Link>

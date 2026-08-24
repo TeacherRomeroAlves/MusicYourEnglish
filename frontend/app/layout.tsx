@@ -3,18 +3,18 @@ import { League_Spartan } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import "./globals.css";
-import "../styles/variables.css";
-import "../styles/layout.css";
-import "../styles/navigation.css";
-import "../styles/buttons.css";
-import "../styles/cards.css";
-import "../styles/activities.css";
-import "../styles/lesson.css";
-import "../styles/forms.css";
-import "../styles/reports.css";
-import "../styles/library.css";
-import "../styles/home.css";
-import "../styles/responsive.css";
+import "@/styles/variables.css";
+import "@/styles/layout.css";
+import "@/styles/navigation.css";
+import "@/styles/buttons.css";
+import "@/styles/cards.css";
+import "@/styles/activities.css";
+import "@/styles/lesson.css";
+import "@/styles/forms.css";
+import "@/styles/reports.css";
+import "@/styles/library.css";
+import "@/styles/home.css";
+import "@/styles/responsive.css";
 
 const leagueSpartan = League_Spartan({
   subsets: ["latin"],
