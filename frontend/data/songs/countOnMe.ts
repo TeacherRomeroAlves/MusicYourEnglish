@@ -215,3 +215,39 @@ export const countOnMeChoiceLyrics = {
       }
     ],
 };
+
+export const countOnMeFourthStanza = {
+    words: [
+      { word: "my" },
+      { word: "cry" },
+      { word: "goodbye" },
+      { word: "your" },
+      { word: "smile" },
+    ],
+
+    lyrics: [
+      {
+        parts: [
+          {
+            before: "You'll always have",
+            answer: "my",
+            after: "shoulder when you",
+          },
+          {
+            before: "",
+            answer: "cry",
+            after: "",
+          },
+        ],
+      },
+      {
+        parts: [
+          {
+            before: "I'll never let go, never say",
+            answer: "goodbye",
+            after: "",
+          },
+        ],
+      },
+    ],
+};

@@ -11,7 +11,7 @@ import HomeworkActivity from "@/components/activities/Homework/HomeworkActivity"
 import LessonProgress from "@/components/LessonProgress";
 import LessonSections from "@/components/LessonSections";
 import { getSongMeta } from "@/data/songCatalog";
-import { countOnMe, countOnMeFirstStanza, countOnMeChorus, countOnMeChoiceLyrics } from "@/data/songs/countOnMe";
+import { countOnMe, countOnMeFirstStanza, countOnMeChorus, countOnMeChoiceLyrics, countOnMeFourthStanza } from "@/data/songs/countOnMe";
 
 export default function CountOnMePage() {
   const song = getSongMeta("count-on-me");
@@ -50,6 +50,7 @@ export default function CountOnMePage() {
           { label: "First Stanza", content: <IconLyricsActivity step="Stanza 1" title="First Stanza" description="Drag each icon into the correct space while you listen." icons={countOnMeFirstStanza.icons} lyrics={countOnMeFirstStanza.lyrics} /> },
           { label: "Pre-Chorus And Chorus", content: <LyricsWordActivity step="Stanza 2" title="Pre-Chorus And Chorus" description="Drag the correct words into the lyrics while you listen. Some extra words are there to make it more challenging." words={countOnMeChorus.words} lyrics={countOnMeChorus.lyrics} /> },
           { label: "Next Stanza", content: <ChoiceLyricsActivity step="Stanza 3" title="Next Stanza" description="Listen carefully and click the correct option in each line." lyrics={countOnMeChoiceLyrics.lyrics} /> },
+          { label: "Fourth Stanza", content: <LyricsWordActivity step="Stanza 4" title="Fourth Stanza" description="Click a word to place it in the next gap, or drag it to a specific gap. Some words are extra." words={countOnMeFourthStanza.words} lyrics={countOnMeFourthStanza.lyrics} /> },
         ]}
         checkAnswers={<CheckAllActivity title="Check All Answers" description="When students finish the whole song, click below to check every activity at once." />}
         afterSong={<>
