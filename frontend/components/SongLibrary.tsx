@@ -5,13 +5,24 @@ import SongCard from "./SongCard";
 import { USER_LEVELS, type SongMeta } from "@/data/songCatalog";
 import { shuffleArray } from "@/lib/shuffleArray";
 
+const FILTER_GENRE_GROUPS: Record<string, string> = {
+  "Alternative rock": "Rock",
+  "Folk pop": "Pop",
+  "Pop punk": "Rock",
+};
+
+function getFilterGenre(genre: string) {
+  return FILTER_GENRE_GROUPS[genre] ?? genre;
+}
+
 export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
   const [query, setQuery] = useState("");
   const [level, setLevel] = useState("all");
   const [genre, setGenre] = useState("all");
   const [orderedSongs, setOrderedSongs] = useState(() => songs);
   const deferredQuery = useDeferredValue(query.trim().toLowerCase());
-  const genres = [...new Set(songs.map((song) => song.genre))];
+  const genres = [...new Set(songs.map((song) => getFilterGenre(song.genre)))]
+    .sort((first, second) => first.localeCompare(second));
 
   useEffect(() => {
     const timeout = window.setTimeout(() => setOrderedSongs(shuffleArray(songs)), 0);
@@ -22,7 +33,7 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
     const matchesQuery = !deferredQuery || [song.title, song.artist, song.topic]
       .some((value) => value.toLowerCase().includes(deferredQuery));
     const matchesLevel = level === "all" || song.level === level;
-    const matchesGenre = genre === "all" || song.genre === genre;
+    const matchesGenre = genre === "all" || getFilterGenre(song.genre) === genre;
     return matchesQuery && matchesLevel && matchesGenre;
   });
 
