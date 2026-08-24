@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold";
   title: string;
   artist: string;
   level: UserLevel;
@@ -190,6 +190,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Days of the week", "Be and have", "Emoji gaps"],
     coverImage: "/images/songs/waiting-for-love/cover.jpg",
     coverClass: "song-art--waiting-for-love",
+  },
+  {
+    slug: "cold",
+    title: "Cold",
+    artist: "BigXthaPlug feat. Post Malone",
+    level: "Pre-intermediate",
+    duration: "45 min",
+    topic: "Love, distance, and personal growth",
+    genre: "Country rap",
+    description: "Practice informal pronunciation and complete clauses through a song about emotional distance and learning to love.",
+    activities: ["-ing pronunciation", "Restricted letters", "Clause gaps"],
+    coverImage: "/images/songs/cold/cover.jpg",
+    coverClass: "song-art--cold",
   },
 ];
 
