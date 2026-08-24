@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love";
   title: string;
   artist: string;
   level: UserLevel;
@@ -177,6 +177,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Could", "Ain't", "Word formation"],
     coverImage: "/images/songs/nice-to-meet-you/cover.jpg",
     coverClass: "song-art--nice-to-meet-you",
+  },
+  {
+    slug: "waiting-for-love",
+    title: "Waiting For Love",
+    artist: "Avicii",
+    level: "Beginner",
+    duration: "40 min",
+    topic: "Love, hope, and perseverance",
+    genre: "Electronic dance music",
+    description: "Practice days of the week and simple verb forms through a hopeful song about waiting for love.",
+    activities: ["Days of the week", "Be and have", "Emoji gaps"],
+    coverImage: "/images/songs/waiting-for-love/cover.jpg",
+    coverClass: "song-art--waiting-for-love",
   },
 ];
 
