@@ -76,6 +76,10 @@
 .activity-carousel__side small { font-size: .67rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; writing-mode: vertical-rl; }
 .activity-carousel__mobile-nav { display: none; }
 .activity-carousel__slide { padding: 20px; }
+.activity-carousel__slide.is-entering-forward { animation: activity-slide-from-right 280ms cubic-bezier(.22,.8,.3,1) both; }
+.activity-carousel__slide.is-entering-backward { animation: activity-slide-from-left 280ms cubic-bezier(.22,.8,.3,1) both; }
+@keyframes activity-slide-from-right { from { opacity: .35; transform: translateX(34px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes activity-slide-from-left { from { opacity: .35; transform: translateX(-34px); } to { opacity: 1; transform: translateX(0); } }
 .activity-carousel__slide > .card { margin-bottom: 0; padding-top: 26px; }
 .activity-carousel__slide .section-heading .section-kicker, .activity-carousel__slide .section-heading h2 { display: none; }
 .activity-carousel__slide .section-heading .section-note { margin-top: 0; color: #574b56; }
@@ -99,4 +103,8 @@
   .activity-carousel__slide { padding: 8px; }
   .activity-carousel__slide > .card { padding-inline: 14px; }
   .lesson-group:last-child .lesson-group__scroll > .card:first-child .questions { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .activity-carousel__slide.is-entering-forward,
+  .activity-carousel__slide.is-entering-backward { animation: none; }
 }

@@ -17,6 +17,7 @@ interface LessonSectionsProps {
 }
 
 type SectionId = "before" | "listening" | "after";
+type SlideDirection = "forward" | "backward";
 
 const sectionDetails = {
   before: {
@@ -45,12 +46,14 @@ export default function LessonSections({
 }: LessonSectionsProps) {
   const [openSection, setOpenSection] = useState<SectionId | null>(null);
   const [activityIndex, setActivityIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState<SlideDirection | null>(null);
 
   const toggleSection = (section: SectionId) => {
     setOpenSection((current) => current === section ? null : section);
   };
 
   const moveActivity = (direction: -1 | 1) => {
+    setSlideDirection(direction === 1 ? "forward" : "backward");
     setActivityIndex((current) => (
       current + direction + listeningActivities.length
     ) % listeningActivities.length);
@@ -127,7 +130,7 @@ export default function LessonSections({
                 <div className="activity-carousel__slides" {...swipeNavigation}>
                   {listeningActivities.map((activity, index) => (
                     <div
-                      className="activity-carousel__slide"
+                      className={`activity-carousel__slide${index === activityIndex && slideDirection ? ` is-entering-${slideDirection}` : ""}`}
                       key={activity.label}
                       hidden={index !== activityIndex}
                       aria-hidden={index !== activityIndex}
