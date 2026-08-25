@@ -3,6 +3,8 @@ import Image from "next/image";
 import type { SongMeta } from "@/data/songCatalog";
 
 export default function SongCard({ song, compact = false }: { song: SongMeta; compact?: boolean }) {
+  const displayLevel = song.slug === "cold" ? "Pre-Int." : song.level;
+
   return (
     <article className={`song-card song-card--${song.slug}${compact ? " song-card--compact" : ""}`}>
       <Link
@@ -18,7 +20,7 @@ export default function SongCard({ song, compact = false }: { song: SongMeta; co
         />
       </Link>
       <div className="song-card__body">
-        <div className="song-card__meta"><span>{song.level} · {song.genre}</span></div>
+        <div className="song-card__meta"><span>{displayLevel} · {song.genre}</span></div>
         <h3>{song.title}</h3>
         <p className="song-card__artist">{song.artist}</p>
         <p className="song-card__topic">{song.topic}</p>
