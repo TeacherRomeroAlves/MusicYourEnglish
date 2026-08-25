@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war";
   title: string;
   artist: string;
   level: UserLevel;
@@ -216,6 +216,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Phrasal verbs", "Emoji gaps", "Vocabulary"],
     coverImage: "/images/songs/im-pretty/cover.jpg",
     coverClass: "song-art--im-pretty",
+  },
+  {
+    slug: "hero-of-war",
+    title: "Hero of War",
+    artist: "Rise Against",
+    level: "Intermediate+",
+    duration: "50 min",
+    topic: "War, responsibility, and disillusionment",
+    genre: "Punk rock",
+    description: "Practice past forms and storytelling while discussing how war can change a person's idea of heroism.",
+    activities: ["Simple past", "Storytelling", "Pronouns and adjectives"],
+    coverImage: "/images/songs/hero-of-war/cover.jpg",
+    coverClass: "song-art--hero-of-war",
   },
 ];
 
