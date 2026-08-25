@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty";
   title: string;
   artist: string;
   level: UserLevel;
@@ -203,6 +203,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["-ing pronunciation", "Restricted letters", "Clause gaps"],
     coverImage: "/images/songs/cold/cover.jpg",
     coverClass: "song-art--cold",
+  },
+  {
+    slug: "im-pretty",
+    title: "I'm Pretty",
+    artist: "KATSEYE",
+    level: "Beginner",
+    duration: "40 min",
+    topic: "Healing, confidence, and self-image",
+    genre: "Pop",
+    description: "Practice phrasal verbs and simple vocabulary through a song about heartbreak, healing, and hiding difficult feelings.",
+    activities: ["Phrasal verbs", "Emoji gaps", "Vocabulary"],
+    coverImage: "/images/songs/im-pretty/cover.jpg",
+    coverClass: "song-art--im-pretty",
   },
 ];
 
