@@ -1,6 +1,6 @@
 "use client";
 
-import { useDeferredValue, useEffect, useState } from "react";
+import { useDeferredValue, useEffect, useRef, useState } from "react";
 import SongCard from "./SongCard";
 import { USER_LEVELS, type SongMeta } from "@/data/songCatalog";
 import { shuffleArray } from "@/lib/shuffleArray";
@@ -15,6 +15,48 @@ const FILTER_GENRE_GROUPS: Record<string, string> = {
 
 function getFilterGenre(genre: string) {
   return FILTER_GENRE_GROUPS[genre] ?? genre;
+}
+
+interface SongRailProps {
+  title: string;
+  description: string;
+  songs: SongMeta[];
+  compact?: boolean;
+}
+
+function SongRail({ title, description, songs, compact = false }: SongRailProps) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const songSequence = songs.map((song) => song.slug).join("|");
+
+  useEffect(() => {
+    if (trackRef.current) trackRef.current.scrollLeft = 0;
+  }, [songSequence]);
+
+  const scroll = (direction: -1 | 1) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollBy({ left: direction * Math.max(track.clientWidth * 0.82, 260), behavior: "smooth" });
+  };
+
+  return (
+    <section className={`song-rail${compact ? " song-rail--compact" : ""}`} aria-label={title}>
+      <div className="song-rail__header">
+        <div>
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </div>
+        <div className="song-rail__controls" aria-label={`${title} carousel controls`}>
+          <button type="button" onClick={() => scroll(-1)} aria-label={`Scroll ${title} left`}>←</button>
+          <button type="button" onClick={() => scroll(1)} aria-label={`Scroll ${title} right`}>→</button>
+        </div>
+      </div>
+      <div className="song-rail__viewport">
+        <div className="song-rail__track" ref={trackRef} tabIndex={0}>
+          {songs.map((song) => <SongCard key={song.slug} song={song} compact={compact} />)}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
@@ -38,6 +80,16 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
     const matchesGenre = genre === "all" || getFilterGenre(song.genre) === genre;
     return matchesQuery && matchesLevel && matchesGenre;
   });
+  const hasActiveFilters = Boolean(query || level !== "all" || genre !== "all");
+  const loveSongs = orderedSongs.filter((song) =>
+    /love|relationship|friendship|dating|connection/i.test(`${song.topic} ${song.description}`),
+  );
+  const verbSongs = orderedSongs.filter((song) =>
+    song.activities.some((activity) => /verb|present|past|continuous|be and have|word formation/i.test(activity)),
+  );
+  const accessibleSongs = orderedSongs.filter((song) =>
+    song.level === "Beginner" || song.level === "Elementary",
+  );
 
   const clearFilters = () => {
     setQuery("");
@@ -78,14 +130,23 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
         <p id="catalogue-title">
           <strong>{filteredSongs.length}</strong> {filteredSongs.length === 1 ? "lesson" : "lessons"} available
         </p>
-        {(query || level !== "all" || genre !== "all") && (
+        {hasActiveFilters && (
           <button type="button" onClick={clearFilters}>Clear filters</button>
         )}
       </div>
 
       {filteredSongs.length ? (
-        <div className="library-grid">
-          {filteredSongs.map((song) => <SongCard key={song.slug} song={song} />)}
+        <div className="library-rails">
+          {hasActiveFilters ? (
+            <SongRail title="Search results" description="Lessons matching your current search and filters." songs={filteredSongs} />
+          ) : (
+            <>
+              <SongRail title="All lessons" description="Explore every song currently available in the library." songs={orderedSongs} />
+              <SongRail title="Songs to discuss love" description="Use music to talk about love, friendship, dating, and relationships." songs={loveSongs} compact />
+              <SongRail title="Songs with verb activities" description="Practice verb forms and tenses while listening in context." songs={verbSongs} compact />
+              <SongRail title="Beginner-friendly picks" description="A comfortable place to start with clear, guided activities." songs={accessibleSongs} compact />
+            </>
+          )}
         </div>
       ) : (
         <div className="library-empty">

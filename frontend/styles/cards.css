@@ -32,6 +32,7 @@
 .activity-badges span { padding: 6px 9px; border: 1px solid var(--line); border-radius: 7px; color: #aaa4b0; background: rgba(255,255,255,.025); font-size: .73rem; }
 .song-card .activity-badges { margin-bottom: 24px; }
 .song-card .button--card { margin-top: auto; }
+.song-card--compact { height: auto; }
 .question-box { padding: 20px; display: flex; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255,255,255,.035); }
 .question-box p { min-width: 0; margin: 0; flex: 1; line-height: 1.55; }
 .word-card, .drop-zone, .lyric-word-card, .order-card, .order-drop-zone { border: 1px solid var(--line); border-radius: 15px; background: var(--card-strong); }

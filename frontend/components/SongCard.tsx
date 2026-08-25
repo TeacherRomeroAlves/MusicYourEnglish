@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import type { SongMeta } from "@/data/songCatalog";
 
-export default function SongCard({ song }: { song: SongMeta }) {
+export default function SongCard({ song, compact = false }: { song: SongMeta; compact?: boolean }) {
   return (
-    <article className={`song-card song-card--${song.slug}`}>
+    <article className={`song-card song-card--${song.slug}${compact ? " song-card--compact" : ""}`}>
       <Link
         className="song-art"
         href={`/songs/${song.slug}`}
@@ -14,14 +14,14 @@ export default function SongCard({ song }: { song: SongMeta }) {
           src={song.coverImage}
           alt={`${song.title} by ${song.artist} cover artwork`}
           fill
-          sizes="(max-width: 620px) 100vw, (max-width: 900px) 50vw, 33vw"
+          sizes={compact ? "(max-width: 620px) 62vw, 230px" : "(max-width: 620px) 72vw, 280px"}
         />
       </Link>
       <div className="song-card__body">
         <div className="song-card__meta"><span>{song.level} · {song.genre}</span></div>
         <h3>{song.title}</h3>
         <p className="song-card__artist">{song.artist}</p>
-        <p>{song.topic}</p>
+        <p className="song-card__topic">{song.topic}</p>
         <div className="activity-badges" aria-label="Language focus">
           {song.activities.map((activity) => <span key={activity}>{activity}</span>)}
         </div>

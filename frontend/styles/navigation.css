@@ -46,3 +46,7 @@
 .footer-nav a { color: var(--muted); text-decoration: none; }
 .footer-nav a:hover { color: var(--vivid-pink); }
 .footer-bottom { min-height: 72px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 20px; color: #817b89; font-size: 0.88rem; }
+.footer-creators { text-align: center; }
+.footer-creators a { color: #d9d3dc; font-weight: 700; text-decoration: none; transition: color 180ms ease; }
+.footer-creators a:hover { color: var(--vivid-pink); }
+.footer-creators a:focus-visible { border-radius: 3px; outline: 2px solid var(--vivid-pink); outline-offset: 3px; }

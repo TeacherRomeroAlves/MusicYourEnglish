@@ -22,6 +22,16 @@ export default function SiteFooter() {
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Music Your English.</span>
+        <span className="footer-creators">
+          Created by{" "}
+          <a href="https://www.instagram.com/teacherromeroalves?igsi=MWJkNnM2OHV3amE2cA==" target="_blank" rel="noreferrer">
+            Teacher Romero Alves
+          </a>{" "}
+          and{" "}
+          <a href="https://www.instagram.com/teacherlaisqueiroz?igsi=MWJkdTdmNTZvNGJtaQ==" target="_blank" rel="noreferrer">
+            Teacher Lais Queiroz
+          </a>
+        </span>
         <span>Learn it. Hear it. Use it.</span>
       </div>
     </footer>
