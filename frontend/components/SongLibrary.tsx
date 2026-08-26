@@ -5,14 +5,14 @@ import SongCard from "./SongCard";
 import { USER_LEVELS, type SongMeta } from "@/data/songCatalog";
 import { shuffleArray } from "@/lib/shuffleArray";
 
-const FILTER_GENRE_GROUPS: Record<string, string> = {
-  "Alt. Rock": "Rock",
-  "Alternative rock": "Rock",
-  "Country rap": "Country",
-  "Folk pop": "Pop",
-  "Hip-hop": "Hiphop/Rap",
-  "Pop punk": "Rock",
-  "Punk rock": "Rock",
+const FILTER_GENRE_GROUPS: Record<string, string[]> = {
+  "Alt. Rock": ["Rock"],
+  "Alternative rock": ["Rock"],
+  "Country rap": ["Country", "Hiphop/Rap"],
+  "Folk pop": ["Pop"],
+  "Hip-hop": ["Hiphop/Rap"],
+  "Pop punk": ["Rock"],
+  "Punk rock": ["Rock"],
 };
 
 const DEEPER_TOPIC_SLUGS: SongMeta["slug"][] = [
@@ -22,8 +22,8 @@ const DEEPER_TOPIC_SLUGS: SongMeta["slug"][] = [
   "bad-life",
 ];
 
-function getFilterGenre(genre: string) {
-  return FILTER_GENRE_GROUPS[genre] ?? genre;
+function getFilterGenres(genre: string) {
+  return FILTER_GENRE_GROUPS[genre] ?? [genre];
 }
 
 interface SongRailProps {
@@ -74,7 +74,7 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
   const [genre, setGenre] = useState("all");
   const [orderedSongs, setOrderedSongs] = useState(() => songs);
   const deferredQuery = useDeferredValue(query.trim().toLowerCase());
-  const genres = [...new Set(songs.map((song) => getFilterGenre(song.genre)))]
+  const genres = [...new Set(songs.flatMap((song) => getFilterGenres(song.genre)))]
     .sort((first, second) => first.localeCompare(second));
 
   useEffect(() => {
@@ -86,7 +86,7 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
     const matchesQuery = !deferredQuery || [song.title, song.artist, song.topic]
       .some((value) => value.toLowerCase().includes(deferredQuery));
     const matchesLevel = level === "all" || song.level === level;
-    const matchesGenre = genre === "all" || getFilterGenre(song.genre) === genre;
+    const matchesGenre = genre === "all" || getFilterGenres(song.genre).includes(genre);
     return matchesQuery && matchesLevel && matchesGenre;
   });
   const hasActiveFilters = Boolean(query || level !== "all" || genre !== "all");
