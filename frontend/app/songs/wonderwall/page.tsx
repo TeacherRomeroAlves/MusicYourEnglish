@@ -102,7 +102,7 @@ export default function WonderwallPage() {
               <OrderLyricsActivity
                 step="Stanza 3"
                 title="Pre-Chorus / Chorus"
-                description="Place the sentences in the correct order. The notes in parentheses show the small changes you hear the second time."
+                description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another. The notes in parentheses show the changes you hear the second time."
                 items={wonderwallPreChorus.items}
               />
             ),

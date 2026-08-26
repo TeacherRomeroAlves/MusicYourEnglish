@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useSpeech } from "@/hooks/useSpeech";
-import { findFirstEmptySlot } from "@/lib/dragDropBank";
 import {
   createMatchingState,
   getMatchingResults,
@@ -23,6 +22,7 @@ const defaultFeedback: MatchingFeedback = {
 export function useMatchingActivity(words: MatchingWord[]) {
   const [state, setState] = useState(() => createMatchingState(words, false));
   const [draggedWord, setDraggedWord] = useState<string | null>(null);
+  const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [activeDropZone, setActiveDropZone] = useState<string | null>(null);
   const [isBankDragOver, setIsBankDragOver] = useState(false);
   const [feedback, setFeedback] = useState<MatchingFeedback>(defaultFeedback);
@@ -35,6 +35,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
 
   const handleDragStart = (word: string) => {
     setDraggedWord(word);
+    setSelectedWord(null);
   };
 
   const handleDragEnd = () => {
@@ -66,18 +67,24 @@ export function useMatchingActivity(words: MatchingWord[]) {
   const handleDropOnZone = (expectedWord: string) => {
     if (!draggedWord) return;
 
+    placeWordInZone(expectedWord, draggedWord);
+    handleDragEnd();
+  };
+
+  const placeWordInZone = (expectedWord: string, word: string) => {
+
     setState((previousState) => {
-      let nextBankSlots = removeWordFromBank(previousState.bankSlots, draggedWord);
-      let nextAnswers = removeWordFromAnswers(previousState.answers, draggedWord);
+      let nextBankSlots = removeWordFromBank(previousState.bankSlots, word);
+      let nextAnswers = removeWordFromAnswers(previousState.answers, word);
       const replacedWord = nextAnswers[expectedWord];
 
-      if (replacedWord && replacedWord !== draggedWord) {
+      if (replacedWord && replacedWord !== word) {
         nextBankSlots = placeWordInFirstEmptySlot(nextBankSlots, replacedWord);
       }
 
       nextAnswers = {
         ...nextAnswers,
-        [expectedWord]: draggedWord,
+        [expectedWord]: word,
       };
 
       return {
@@ -87,7 +94,17 @@ export function useMatchingActivity(words: MatchingWord[]) {
     });
 
     setFeedback(defaultFeedback);
-    handleDragEnd();
+  };
+
+  const handleSelectWord = (word: string) => {
+    setSelectedWord((current) => (current === word ? null : word));
+    setFeedback(defaultFeedback);
+  };
+
+  const handleSelectZone = (expectedWord: string) => {
+    if (!selectedWord) return;
+    placeWordInZone(expectedWord, selectedWord);
+    setSelectedWord(null);
   };
 
   const handleDropOnBank = () => {
@@ -116,25 +133,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
       answers: removeWordFromAnswers(previousState.answers, word),
     }));
     setDraggedWord(null);
-    setActiveDropZone(null);
-    setFeedback(defaultFeedback);
-  };
-
-  const handleAutoPlace = (word: string) => {
-    setState((previousState) => {
-      const orderedSlots = words.map((item) => item.word);
-      const nextSlot = findFirstEmptySlot(previousState.answers, orderedSlots);
-      if (!nextSlot) return previousState;
-
-      return {
-        bankSlots: removeWordFromBank(previousState.bankSlots, word),
-        answers: {
-          ...removeWordFromAnswers(previousState.answers, word),
-          [nextSlot]: word,
-        },
-      };
-    });
-    setDraggedWord(null);
+    setSelectedWord(null);
     setActiveDropZone(null);
     setFeedback(defaultFeedback);
   };
@@ -167,6 +166,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   const handleReset = () => {
     setState(createMatchingState(words, true));
     setDraggedWord(null);
+    setSelectedWord(null);
     setActiveDropZone(null);
     setIsBankDragOver(false);
     setFeedback({
@@ -190,6 +190,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
     bankSlots: state.bankSlots,
     answers: state.answers,
     draggedWord,
+    selectedWord,
     feedback,
     activeDropZone,
     isBankDragOver,
@@ -201,7 +202,8 @@ export function useMatchingActivity(words: MatchingWord[]) {
     handleBankDragOver,
     handleBankDragLeave,
     handleDropOnZone,
-    handleAutoPlace,
+    handleSelectWord,
+    handleSelectZone,
     handleDropOnBank,
     handleReturnToBank,
     handleCheck,

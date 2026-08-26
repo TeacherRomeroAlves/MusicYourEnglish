@@ -17,6 +17,7 @@
 .word-card:hover, .lyric-word-card:hover, .order-card:hover, .icon-card:hover { transform: translateY(-2px); border-color: rgba(224,154,198,.42); box-shadow: 0 12px 30px rgba(0,0,0,.28); }
 .word-card.dragging, .lyric-word-card.dragging, .icon-card.dragging { opacity: .48; }
 .word-card.is-selected, .lyric-word-card.is-selected, .icon-card.is-selected { border-color: #dc86bd; box-shadow: 0 0 0 3px rgba(130,13,75,.22); }
+.word-card.is-selected { border-color: #820d4b; background: linear-gradient(135deg, #820d4b, #7e0d82); color: #fff; box-shadow: 0 0 0 3px rgba(130,13,75,.2), 0 12px 24px rgba(59,7,100,.2); transform: translateY(-2px); }
 .drop-zone { min-height: 77px; padding: 13px; display: flex; align-items: center; justify-content: space-between; gap: 11px; transition: border-color 180ms ease, background 180ms ease; }
 .drop-zone.drag-over, .order-drop-zone.drag-over, .inline-drop-zone.drag-over, .word-drop-zone.drag-over { border-color: #df8dc0; background: rgba(130,13,75,.18); }
 .meaning-text { margin: 0; color: var(--soft-white); line-height: 1.5; }
@@ -39,6 +40,17 @@
 .order-card { padding: 8px 10px; color: white; text-align: left; font-size: .95rem; font-weight: 650; line-height: 1.35; cursor: pointer; transition: all 180ms ease; }
 .order-drop-zone { min-height: 46px; padding: 7px 8px; display: flex; align-items: center; gap: 8px; }
 .order-drop-zone .order-card { flex: 1; }
+.order-rearrange-list { display: grid; gap: 9px; margin-top: 24px; }
+.order-rearrange-list .order-card { width: 100%; display: flex; align-items: center; gap: 10px; }
+.order-card__handle { flex: 0 0 auto; color: #a94c82; font-size: 1.05rem; }
+.order-card.selected { border-color: #a60f65; background: #fff1f8; box-shadow: 0 0 0 3px rgba(166,15,101,.12); }
+.order-card.dragging { opacity: .48; }
+.partial-word { display: inline-flex; align-items: center; border-bottom: 2px solid rgba(130,13,75,.3); color: #4a1737; font-weight: 750; }
+.partial-word input { min-width: 0; padding: 2px 1px; border: 0; background: transparent; color: #820d4b; font: inherit; font-weight: 800; letter-spacing: .04em; outline: none; }
+.partial-word input::placeholder { color: #b0608f; opacity: .72; }
+.partial-word:focus-within { border-color: #ff4f99; }
+.partial-word.correct { border-color: #16734a; }
+.partial-word.incorrect { border-color: #b12c36; }
 .prompt-label { margin: 0 0 8px; color: #d993bd; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .prompt-text { margin: 0; line-height: 1.65; }
 .pronoun-chart { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }

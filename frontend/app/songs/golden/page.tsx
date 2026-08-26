@@ -50,7 +50,7 @@ export default function goldenPage() {
               listeningActivities={[
                 { label: "First Stanza", content: <IconLyricsActivity step="Stanza 1" title="First Stanza" description="Drag each icon into the correct space while you listen." icons={goldenFirstStanza.icons} lyrics={goldenFirstStanza.lyrics} /> },
                 { label: "Pre-Chorus", content: <ChoiceLyricsActivity step="Stanza 2" title="Pre-Chorus" description="Listen carefully and click the correct option in each line." lyrics={goldenChorus.lyrics} /> },
-                { label: "Chorus", content: <OrderLyricsActivity step="Stanza 3" title="Chorus" description="Click the lines in the correct order while you listen." items={goldenOrder.items} /> },
+                { label: "Chorus", content: <OrderLyricsActivity step="Stanza 3" title="Chorus" description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another." items={goldenOrder.items} /> },
                 { label: "Final Stanza", content: <TypingLyricsActivity step="Stanza 4" title="Final Stanza" description="Listen and type the missing words. Tip: every answer has 2 letters." lyrics={goldenFinalStanza.lyrics} /> },
               ]}
               checkAnswers={<CheckAllActivity title="Check All Answers" description="When students finish the whole song, click below to check every activity at once." />}

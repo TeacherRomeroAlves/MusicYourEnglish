@@ -12,6 +12,9 @@
   .main-nav a, .nav-login { padding: 12px 10px; text-align: left; }
   .nav-actions { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px; }
   .nav-user { justify-content: space-between; padding: 0 10px; }
+  .nav-auth { width: 100%; }
+  .nav-login-popover { width: 100%; position: static; margin-top: 4px; box-sizing: border-box; box-shadow: none; }
+  .nav-login-popover::before { display: none; }
   .nav-email-login { align-items: stretch; flex-direction: column; }
   .nav-email-login input { width: 100%; box-sizing: border-box; }
   .home-hero { min-height: auto; padding: 78px 0 100px; grid-template-columns: 1fr; }

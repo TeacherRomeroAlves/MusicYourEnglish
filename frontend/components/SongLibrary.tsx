@@ -6,6 +6,7 @@ import { USER_LEVELS, type SongMeta } from "@/data/songCatalog";
 import { shuffleArray } from "@/lib/shuffleArray";
 
 const FILTER_GENRE_GROUPS: Record<string, string> = {
+  "Alt. Rock": "Rock",
   "Alternative rock": "Rock",
   "Country rap": "Hiphop/Rap",
   "Folk pop": "Pop",
@@ -13,6 +14,13 @@ const FILTER_GENRE_GROUPS: Record<string, string> = {
   "Pop punk": "Rock",
   "Punk rock": "Rock",
 };
+
+const DEEPER_TOPIC_SLUGS: SongMeta["slug"][] = [
+  "manchild",
+  "the-man",
+  "hero-of-war",
+  "bad-life",
+];
 
 function getFilterGenre(genre: string) {
   return FILTER_GENRE_GROUPS[genre] ?? genre;
@@ -82,15 +90,15 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
     return matchesQuery && matchesLevel && matchesGenre;
   });
   const hasActiveFilters = Boolean(query || level !== "all" || genre !== "all");
-  const loveSongs = orderedSongs.filter((song) =>
-    /love|relationship|friendship|dating|connection/i.test(`${song.topic} ${song.description}`),
-  );
   const verbSongs = orderedSongs.filter((song) =>
-    song.activities.some((activity) => /verb|present|past|continuous|be and have|word formation/i.test(activity)),
+    song.activities.some((activity) => /verb|present|past|continuous|be and have|word formation|gerund|infinitive/i.test(activity)),
   );
   const accessibleSongs = orderedSongs.filter((song) =>
     song.level === "Beginner" || song.level === "Elementary",
   );
+  const deeperTopicSongs = DEEPER_TOPIC_SLUGS
+    .map((slug) => songs.find((song) => song.slug === slug))
+    .filter((song): song is SongMeta => Boolean(song));
 
   const clearFilters = () => {
     setQuery("");
@@ -143,9 +151,9 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
           ) : (
             <>
               <SongRail title="All lessons" description="Explore every song currently available in the library." songs={orderedSongs} />
-              <SongRail title="Songs to discuss love" description="Use music to talk about love, friendship, dating, and relationships." songs={loveSongs} compact />
               <SongRail title="Songs with verb activities" description="Practice verb forms and tenses while listening in context." songs={verbSongs} compact />
               <SongRail title="Beginner-friendly picks" description="A comfortable place to start with clear, guided activities." songs={accessibleSongs} compact />
+              <SongRail title="Deeper topics" description="Explore songs that open conversations about relationships, identity, conflict, and emotional health." songs={deeperTopicSongs} compact />
             </>
           )}
         </div>

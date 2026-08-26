@@ -19,6 +19,7 @@ export default function AuthButton({ onNavigate }: { onNavigate?: () => void }) 
     const authError = new URLSearchParams(window.location.search).get("authError");
     if (authError === "email") {
       setError("This login link is invalid or expired. Please request a new one.");
+      setShowForm(true);
       setLoading(false);
     }
 
@@ -92,15 +93,6 @@ export default function AuthButton({ onNavigate }: { onNavigate?: () => void }) 
     }
   }
 
-  if (error) {
-    return (
-      <div className="nav-login-error" role="alert">
-        <span>{error}</span>
-        <button className="nav-login" type="button" onClick={() => { setError(""); setShowForm(true); }}>Try again</button>
-      </div>
-    );
-  }
-
   if (user) {
     return (
       <div className="nav-user">
@@ -110,34 +102,64 @@ export default function AuthButton({ onNavigate }: { onNavigate?: () => void }) 
     );
   }
 
-  if (!showForm) {
-    return <button className="nav-login" type="button" onClick={() => setShowForm(true)} disabled={loading}>{loading ? "Loading…" : "Log in"}</button>;
-  }
-
   return (
-    <form className="nav-email-login" onSubmit={signIn}>
-      {sent ? (
-        <span className="nav-login-message">Check your email for the login link.</span>
-      ) : (
-        <>
-          <label className="sr-only" htmlFor="login-email">Email address</label>
-          <input
-            id="login-email"
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="you@example.com"
-            autoComplete="email"
-            required
-          />
-          <button className="button button--primary button--compact" type="submit" disabled={loading}>
-            {loading ? "Sending…" : "Email me a login link"}
-          </button>
-        </>
-      )}
-      <button className="nav-login nav-login--cancel" type="button" onClick={() => { setShowForm(false); setSent(false); setError(""); setLoading(false); }}>
-        {sent ? "Close" : "Cancel"}
+    <div
+      className="nav-auth"
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          setShowForm(false);
+          setSent(false);
+          setError("");
+        }
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          setShowForm(false);
+        }
+      }}
+    >
+      <button
+        className="nav-login"
+        type="button"
+        aria-expanded={showForm}
+        aria-controls="nav-login-popover"
+        onClick={() => setShowForm((current) => !current)}
+        disabled={loading && !showForm}
+      >
+        {loading && !showForm ? "Loading…" : "Log in"}
       </button>
-    </form>
+
+      {showForm && (
+        <div className="nav-login-popover" id="nav-login-popover">
+          <form className="nav-email-login" onSubmit={signIn}>
+            <p className="nav-login-popover__title">Log in with your email</p>
+            {error && <p className="nav-login-error" role="alert">{error}</p>}
+            {sent ? (
+              <span className="nav-login-message">Check your email for the login link.</span>
+            ) : (
+              <>
+                <label className="sr-only" htmlFor="login-email">Email address</label>
+                <input
+                  id="login-email"
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="you@example.com"
+                  autoComplete="email"
+                  autoFocus
+                  required
+                />
+                <button className="button button--primary button--compact" type="submit" disabled={loading}>
+                  {loading ? "Sending…" : "Email me a login link"}
+                </button>
+              </>
+            )}
+            <button className="nav-login nav-login--cancel" type="button" onClick={() => { setShowForm(false); setSent(false); setError(""); setLoading(false); }}>
+              {sent ? "Close" : "Cancel"}
+            </button>
+          </form>
+        </div>
+      )}
+    </div>
   );
 }

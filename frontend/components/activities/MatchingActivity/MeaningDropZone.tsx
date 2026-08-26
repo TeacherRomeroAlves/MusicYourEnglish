@@ -13,6 +13,7 @@ interface MeaningDropZoneProps {
   onDragOver: () => void;
   onDragLeave: () => void;
   onDrop: () => void;
+  onSelectZone: () => void;
   onSelectWord: (word: string) => void;
 }
 
@@ -27,6 +28,7 @@ export default function MeaningDropZone({
   onDragOver,
   onDragLeave,
   onDrop,
+  onSelectZone,
   onSelectWord,
 }: MeaningDropZoneProps) {
   const className = ["drop-zone", isDragOver ? "drag-over" : ""]
@@ -39,11 +41,11 @@ export default function MeaningDropZone({
       role="button"
       tabIndex={0}
       aria-label={`Place the selected word beside: ${meaning}`}
-      onClick={onDrop}
+      onClick={onSelectZone}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          onDrop();
+          onSelectZone();
         }
       }}
       onDragOver={(event) => {
@@ -63,6 +65,7 @@ export default function MeaningDropZone({
           word={placedWord}
           isPlaced
           isDragging={isDraggingWord(placedWord)}
+          isSelected={false}
           onDragStart={onDragStart}
           onDragEnd={onDragEnd}
           onSelect={onSelectWord}

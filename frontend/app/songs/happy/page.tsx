@@ -94,7 +94,7 @@ export default function HappyPage() {
               <OrderLyricsActivity
                 step="Stanza 2"
                 title="Chorus And Post-Chorus"
-                description="Click the lines in the order you hear them. The final three post-chorus lines only appear after the chorus is repeated for the second time."
+                description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another. The final three post-chorus lines appear after the second chorus."
                 items={happyChorus.items}
               />
             ),

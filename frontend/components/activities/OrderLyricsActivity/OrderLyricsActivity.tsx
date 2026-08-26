@@ -1,13 +1,12 @@
 "use client";
 
 import OrderCard from "./OrderCard";
-import OrderDropZone from "./OrderDropZone";
 import type { OrderLyricsActivityProps } from "./types";
 import { useOrderLyrics } from "@/hooks/useOrderLyrics";
 import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 
 export default function OrderLyricsActivity({ step, title, description, items, }: OrderLyricsActivityProps) {
-  const { bankItems, orderedItems, handleSelect, handleReset } = useOrderLyrics(items);
+  const { orderedItems, selectedId, draggedId, handleSelect, handleDragStart, handleDragEnd, handleDrop, handleReset } = useOrderLyrics(items);
   useRegisterActivityResult(`${step}:${title}`, {
     correct: orderedItems.filter((item, index) => item.text === items[index]?.text).length,
     answered: orderedItems.length,
@@ -27,30 +26,19 @@ export default function OrderLyricsActivity({ step, title, description, items, }
         )}
       </div>
 
-      <div className="order-layout">
-        <div className="order-bank">
-          {bankItems.map((item) => (
-            <OrderCard
-              key={item.id}
-              item={item}
-              onClick={() => handleSelect(item.id)}
-            />
-          ))}
-        </div>
-
-        <div className="order-list">
-          {items.map((_, index) => (
-            <OrderDropZone
-              key={index}
-              item={orderedItems[index]}
-              number={index + 1}
-              onClick={() => {
-                const item = orderedItems[index];
-                if (item) handleSelect(item.id);
-              }}
-            />
-          ))}
-        </div>
+      <div className="order-rearrange-list" aria-label="Scrambled lyric lines">
+        {orderedItems.map((item) => (
+          <OrderCard
+            key={item.id}
+            item={item}
+            selected={selectedId === item.id}
+            dragging={draggedId === item.id}
+            onClick={() => handleSelect(item.id)}
+            onDragStart={() => handleDragStart(item.id)}
+            onDragEnd={handleDragEnd}
+            onDrop={() => handleDrop(item.id)}
+          />
+        ))}
       </div>
 
       <div className="actions">

@@ -10,6 +10,7 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
       bankSlots,
       answers,
       draggedWord,
+      selectedWord,
       feedback,
       activeDropZone,
       handleDragStart,
@@ -19,7 +20,8 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
       handleBankDragOver,
       handleBankDragLeave,
       handleDropOnZone,
-      handleAutoPlace,
+      handleSelectWord,
+      handleSelectZone,
       handleDropOnBank,
       handleReturnToBank,
       handleCheck,
@@ -39,7 +41,7 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
           <h2>{title}</h2>
   
           <p className="section-note">
-            Click a word to place it in the next available meaning box, or drag it to the correct box. Use the speaker button to hear the word. Click a placed word to return it.
+            Click a word to select it, then click its meaning to match them. You can also drag the word to the correct meaning. Use Listen to hear the word. Click a placed word to return it.
           </p>
         </div>
   
@@ -66,9 +68,10 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
                   <MatchingWordCard
                     word={word}
                     isDragging={draggedWord === word}
+                    isSelected={selectedWord === word}
                     onDragStart={handleDragStart}
                     onDragEnd={handleDragEnd}
-                    onSelect={handleAutoPlace}
+                    onSelect={handleSelectWord}
                     onSpeak={handleSpeak}
                   />
                 ) : null}
@@ -90,6 +93,7 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
                 onDragOver={() => handleZoneDragOver(item.word)}
                 onDragLeave={() => handleZoneDragLeave(item.word)}
                 onDrop={() => handleDropOnZone(item.word)}
+                onSelectZone={() => handleSelectZone(item.word)}
                 onSelectWord={handleReturnToBank}
               />
             ))}

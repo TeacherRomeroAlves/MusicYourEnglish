@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man";
   title: string;
   artist: string;
   level: UserLevel;
@@ -107,7 +107,7 @@ export const songCatalog: SongMeta[] = [
     level: "Intermediate+",
     duration: "50 min",
     topic: "Mental health and resilience",
-    genre: "Alternative rock",
+    genre: "Alt. Rock",
     description: "Explore language about difficult emotions, resilience, and remembering that a bad day is not a bad life.",
     activities: ["Vocabulary", "Word order", "Idioms"],
     coverImage: "/images/songs/bad-life/cover.jpg",
@@ -185,7 +185,7 @@ export const songCatalog: SongMeta[] = [
     level: "Beginner",
     duration: "40 min",
     topic: "Love, hope, and perseverance",
-    genre: "Electronic dance music",
+    genre: "Eletronic music",
     description: "Practice days of the week and simple verb forms through a hopeful song about waiting for love.",
     activities: ["Days of the week", "Be and have", "Emoji gaps"],
     coverImage: "/images/songs/waiting-for-love/cover.jpg",
@@ -229,6 +229,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Simple past", "Storytelling", "Pronouns and adjectives"],
     coverImage: "/images/songs/hero-of-war/cover.jpg",
     coverClass: "song-art--hero-of-war",
+  },
+  {
+    slug: "the-man",
+    title: "The Man",
+    artist: "Taylor Swift",
+    level: "Pre-intermediate",
+    duration: "50 min",
+    topic: "Gender, sexism, and double standards",
+    genre: "Pop",
+    description: "Practice word completion, ordering, and verb patterns while discussing gender and unequal expectations.",
+    activities: ["Word completion", "Word order", "Gerunds and infinitives"],
+    coverImage: "/images/songs/the-man/cover.jpg",
+    coverClass: "song-art--the-man",
   },
 ];
 

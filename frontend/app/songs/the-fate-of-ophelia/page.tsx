@@ -107,7 +107,7 @@ export default function TheFateOfOpheliaPage() {
               <OrderLyricsActivity
                 step="Stanza 3"
                 title="Chorus"
-                description="Click the lines in the correct order. This chorus repeats later in the song."
+                description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another. This chorus repeats later in the song."
                 items={opheliaChorus.items}
               />
             ),
