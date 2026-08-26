@@ -1,12 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { SongMeta } from "@/data/songCatalog";
+import FavoriteButton from "@/components/learning/FavoriteButton";
 
 export default function SongCard({ song, compact = false }: { song: SongMeta; compact?: boolean }) {
   const displayLevel = song.slug === "cold" ? "Pre-Int." : song.level;
 
   return (
     <article className={`song-card song-card--${song.slug}${compact ? " song-card--compact" : ""}`}>
+      <FavoriteButton slug={song.slug} />
       <Link
         className="song-art"
         href={`/songs/${song.slug}`}

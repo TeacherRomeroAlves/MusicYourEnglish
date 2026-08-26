@@ -4,13 +4,14 @@ interface HomeworkFormProps {
     teacherName: string;
     writing: string;
     wordCount: number;
+    saveStatus?: string;
     onFieldChange: (field: "studentName" | "teacherName" | "writing", value: string) => void;
     onSavePdf: () => void;
     onShare: () => void;
 }
   
 export default function HomeworkForm({
-    prompt, studentName, teacherName, writing, wordCount,
+    prompt, studentName, teacherName, writing, wordCount, saveStatus,
     onFieldChange, onSavePdf, onShare,
 }: HomeworkFormProps) {
     return (
@@ -52,6 +53,8 @@ export default function HomeworkForm({
         <p className="word-count">
             Word count: {wordCount}
         </p>
+
+        {saveStatus && <p className="homework-save-status" aria-live="polite">{saveStatus}</p>}
 
         <div className="actions">
             <button

@@ -12,7 +12,7 @@ import OrderLyricsActivity from "@/components/activities/OrderLyricsActivity/Ord
 import PartialWordLyricsActivity from "@/components/activities/PartialWordLyricsActivity/PartialWordLyricsActivity";
 import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
 import { getSongMeta } from "@/data/songCatalog";
-import { theMan, theManChorus, theManFinalChorus, theManFourthStanza, theManOpeningStanzas, theManThirdStanza } from "@/data/songs/theMan";
+import { theMan, theManChorus, theManFourthStanza, theManOpeningStanzas, theManThirdStanza } from "@/data/songs/theMan";
 import { ChoiceLyricsProvider } from "@/hooks/useChoiceLyrics";
 import { InlineWordOrderProvider } from "@/hooks/useInlineWordOrder";
 
@@ -40,7 +40,6 @@ export default function TheManPage() {
               { label: "Chorus", content: <InlineWordOrderActivity step="Stanza 2" title="Chorus" description="Rearrange the highlighted words or sentence parts within each lyric line." lines={theManChorus.lines} /> },
               { label: "Third Stanza", content: <OrderLyricsActivity step="Stanza 3" title="Third Stanza" description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another." items={theManThirdStanza.items} /> },
               { label: "Fourth Stanza", content: <ChoiceLyricsActivity step="Stanza 4" title="Fourth Stanza" description="Choose between verb + -ing and to + base form while you listen." lyrics={theManFourthStanza.lyrics} /> },
-              { label: "Final Chorus", content: <InlineWordOrderActivity step="Stanza 5" title="Final Chorus" description="Rearrange the highlighted words or sentence parts within each lyric line." lines={theManFinalChorus.lines} /> },
             ]}
             checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
             afterSong={(

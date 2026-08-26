@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import type { User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
 
@@ -96,7 +97,7 @@ export default function AuthButton({ onNavigate }: { onNavigate?: () => void }) 
   if (user) {
     return (
       <div className="nav-user">
-        <span title={user.email}>{user.user_metadata.full_name ?? user.email}</span>
+        <Link className="nav-learning-link" href="/my-learning" onClick={onNavigate}>My Learning</Link>
         <button className="nav-login" type="button" onClick={signOut} disabled={loading}>Log out</button>
       </div>
     );
@@ -132,7 +133,8 @@ export default function AuthButton({ onNavigate }: { onNavigate?: () => void }) 
       {showForm && (
         <div className="nav-login-popover" id="nav-login-popover">
           <form className="nav-email-login" onSubmit={signIn}>
-            <p className="nav-login-popover__title">Log in with your email</p>
+            <p className="nav-login-popover__title">Save your learning</p>
+            <p className="nav-login-popover__benefit">Keep your progress, scores, favorites, and written homework.</p>
             {error && <p className="nav-login-error" role="alert">{error}</p>}
             {sent ? (
               <span className="nav-login-message">Check your email for the login link.</span>

@@ -1,4 +1,6 @@
 import Image from "next/image";
+import FavoriteButton from "@/components/learning/FavoriteButton";
+import { getSongMetaByTitle } from "@/data/songCatalog";
 
 interface LessonHeroProps {
     title: string;
@@ -11,6 +13,7 @@ interface LessonHeroProps {
 }
   
 export default function LessonHero({ title, artist, description, level, topic, coverImage, coverClass }: LessonHeroProps) {
+    const slug = getSongMetaByTitle(title)?.slug;
     return (
         <section className="lesson-hero">
           <div className={`lesson-cover ${coverClass}`}>
@@ -29,6 +32,7 @@ export default function LessonHero({ title, artist, description, level, topic, c
             <h1>{title}</h1>
             <p className="lesson-artist">{artist}</p>
             <p className="lesson-description">{description}</p>
+            {slug && <FavoriteButton slug={slug} variant="lesson" />}
             <dl className="lesson-meta">
               <div><dt>Level</dt><dd>{level}</dd></div>
               <div><dt>Topic</dt><dd>{topic}</dd></div>

@@ -31,6 +31,7 @@
 .nav-login-popover { width: min(320px, calc(100vw - 32px)); position: absolute; top: calc(100% + 16px); right: -16px; z-index: 70; padding: 18px; border: 1px solid rgba(255,255,255,.13); border-radius: 16px; background: rgba(23,19,31,.98); box-shadow: 0 22px 55px rgba(0,0,0,.46), 0 0 35px rgba(130,13,75,.14); backdrop-filter: blur(18px); }
 .nav-login-popover::before { content: ""; width: 12px; height: 12px; position: absolute; top: -7px; right: 28px; border-top: 1px solid rgba(255,255,255,.13); border-left: 1px solid rgba(255,255,255,.13); background: #17131f; transform: rotate(45deg); }
 .nav-login-popover__title { margin: 0 0 12px; color: var(--soft-white); font-size: .94rem; font-weight: 800; }
+.nav-login-popover__benefit { margin: -5px 0 12px; color: var(--muted); font-size: .78rem; line-height: 1.4; }
 .nav-email-login { display: grid; gap: 10px; }
 .nav-email-login input { width: 100%; min-height: 42px; padding: 0 12px; box-sizing: border-box; border: 1px solid var(--line); border-radius: 10px; background: #0f0c14; color: white; font: inherit; }
 .nav-email-login input:focus { border-color: var(--vivid-pink); outline: 2px solid rgba(226, 47, 139, .18); }

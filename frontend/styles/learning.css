@@ -1,0 +1,47 @@
+.favorite-button { position: absolute; z-index: 4; border: 1px solid rgba(255,255,255,.2); color: white; cursor: pointer; backdrop-filter: blur(12px); transition: transform 180ms ease, background 180ms ease, border-color 180ms ease; }
+.favorite-button--card { width: 42px; height: 42px; top: 14px; right: 14px; display: grid; place-items: center; border-radius: 50%; background: rgba(8,7,11,.7); font-size: 1.28rem; }
+.favorite-button--lesson { margin-top: 20px; padding: 9px 13px; display: inline-flex; align-items: center; gap: 7px; border-radius: 999px; background: rgba(255,255,255,.06); font: inherit; }
+.favorite-button:hover, .favorite-button.is-favorite { border-color: rgba(255,79,153,.75); background: #820d4b; transform: translateY(-2px); }
+.favorite-button:focus-visible { outline: 3px solid rgba(255,79,153,.6); outline-offset: 3px; }
+.favorite-button:disabled { opacity: .55; cursor: wait; }
+.learning-toast { min-width: 0; position: fixed; right: 22px; bottom: 22px; z-index: 100; margin: 0; padding: 11px 15px; border-radius: 11px; background: #f8edf4; color: #55113d; font-size: .88rem; font-weight: 750; box-shadow: 0 15px 40px rgba(0,0,0,.3); }
+.learning-toast:empty { display: none; }
+.homework-save-status { margin: -2px 0 3px; color: #7f2860; font-size: .84rem; font-weight: 700; }
+.nav-learning-link { color: var(--soft-white); font-size: .87rem; font-weight: 800; text-decoration: none; }
+.nav-learning-link:hover { color: var(--vivid-pink); }
+.song-card { position: relative; }
+.learning-page { width: min(var(--container), calc(100% - 40px)); margin: 0 auto; padding: 58px 0 110px; }
+.learning-hero { padding: clamp(34px,6vw,70px); display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; border: 1px solid var(--line); border-radius: 32px; background: radial-gradient(circle at 86% 8%, rgba(255,79,153,.16), transparent 30%), linear-gradient(145deg,#1c1320,#0e0c12); box-shadow: var(--shadow); }
+.learning-hero h1, .learning-signin h1 { max-width: 780px; font-size: clamp(2.8rem,5vw,5rem); }
+.learning-hero > div > p:last-child, .learning-signin > p { max-width: 680px; margin-top: 20px; color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
+.learning-stats { display: grid; grid-template-columns: repeat(3, minmax(110px,1fr)); gap: 10px; }
+.learning-stats div { min-height: 120px; padding: 18px; display: grid; align-content: center; border: 1px solid var(--line); border-radius: 17px; background: rgba(255,255,255,.04); }
+.learning-stats strong { color: var(--vivid-pink); font-size: 2rem; }
+.learning-stats span { margin-top: 5px; color: var(--muted); font-size: .82rem; line-height: 1.3; }
+.learning-section { margin-top: 58px; }
+.learning-section__heading { margin-bottom: 18px; display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+.learning-section__heading h2 { font-size: clamp(1.9rem,3vw,2.8rem); }
+.learning-section__heading > a { color: #efa8d1; font-weight: 750; }
+.learning-favorites { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 13px; }
+.learning-favorite-card { min-width: 0; padding: 11px; display: flex; align-items: center; gap: 13px; border: 1px solid var(--line); border-radius: 17px; background: #17131f; color: white; text-decoration: none; }
+.learning-favorite-card > span { width: 68px; aspect-ratio: 1; position: relative; flex: none; overflow: hidden; border-radius: 11px; }
+.learning-favorite-card img { object-fit: cover; }
+.learning-favorite-card div { min-width: 0; display: grid; gap: 4px; }
+.learning-favorite-card strong, .learning-favorite-card small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.learning-favorite-card small { color: var(--muted); }
+.learning-history { display: grid; gap: 11px; }
+.learning-history-card { padding: 14px; display: grid; grid-template-columns: 76px minmax(220px,1fr) auto auto; align-items: center; gap: 18px; border: 1px solid var(--line); border-radius: 18px; background: #17131f; }
+.learning-history-card > img { border-radius: 12px; object-fit: cover; }
+.learning-history-card h3 { font-size: 1.2rem; }
+.learning-history-card p { margin: 4px 0 0; color: var(--muted); font-size: .82rem; }
+.learning-progress { height: 7px; margin-top: 13px; position: relative; border-radius: 99px; background: rgba(255,255,255,.08); }
+.learning-progress > span { height: 100%; display: block; border-radius: inherit; background: linear-gradient(90deg,#820d4b,#ff4f99); }
+.learning-progress small { position: absolute; top: 10px; left: 0; color: #aaa4b0; }
+.learning-history-card__details { min-width: 115px; display: grid; gap: 4px; }
+.learning-history-card__details span { color: var(--muted); font-size: .8rem; }
+.learning-history-card .button { margin: 0; }
+.learning-empty { padding: 30px; border: 1px dashed var(--line); border-radius: 17px; color: var(--muted); text-align: center; }
+.learning-signin { max-width: 900px; margin: 40px auto; padding: clamp(38px,7vw,78px); border: 1px solid var(--line); border-radius: 32px; background: linear-gradient(145deg,#1d1422,#0d0b10); box-shadow: var(--shadow); }
+.learning-signin__auth { width: fit-content; margin-top: 28px; padding: 0 12px; border: 1px solid var(--line); border-radius: 12px; background: #17131f; }
+@media (max-width: 980px) { .learning-hero { grid-template-columns: 1fr; } .learning-favorites { grid-template-columns: repeat(2,minmax(0,1fr)); } .learning-history-card { grid-template-columns: 64px 1fr auto; } .learning-history-card > img { width: 64px; height: 64px; } .learning-history-card__details { grid-column: 2; } .learning-history-card .button { grid-column: 3; grid-row: 1 / span 2; } }
+@media (max-width: 620px) { .learning-page { width: calc(100% - 24px); padding-top: 28px; } .learning-hero { padding: 30px 22px; border-radius: 24px; } .learning-stats { grid-template-columns: 1fr; } .learning-stats div { min-height: 86px; } .learning-favorites { grid-template-columns: 1fr; } .learning-history-card { grid-template-columns: 58px 1fr; gap: 12px; } .learning-history-card > img { width: 58px; height: 58px; } .learning-history-card__details, .learning-history-card .button { grid-column: 1 / -1; grid-row: auto; } .learning-history-card .button { width: 100%; } .learning-toast { left: 12px; right: 12px; bottom: 12px; text-align: center; } }

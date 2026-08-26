@@ -72,6 +72,7 @@ export default function HomeworkActivity({ step, title, description, prompt, son
             teacherName={homework.teacherName}
             writing={homework.writing}
             wordCount={homework.wordCount}
+            saveStatus={homework.saveStatus}
             onFieldChange={homework.updateField}
             onSavePdf={homework.handleSavePdf}
             onShare={homework.handleShare}

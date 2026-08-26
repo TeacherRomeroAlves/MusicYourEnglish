@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { League_Spartan } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { FavoritesProvider } from "@/components/learning/FavoritesProvider";
+import LessonLearningTracker from "@/components/learning/LessonLearningTracker";
 import "./globals.css";
 import "@/styles/variables.css";
 import "@/styles/layout.css";
@@ -15,6 +17,7 @@ import "@/styles/reports.css";
 import "@/styles/library.css";
 import "@/styles/home.css";
 import "@/styles/responsive.css";
+import "@/styles/learning.css";
 
 const leagueSpartan = League_Spartan({
   subsets: ["latin"],
@@ -37,10 +40,13 @@ export default function RootLayout({
       className={leagueSpartan.variable}
     >
       <body>
-        <a className="skip-link" href="#main-content">Skip to content</a>
-        <SiteHeader />
-        <div id="main-content">{children}</div>
-        <SiteFooter />
+        <FavoritesProvider>
+          <a className="skip-link" href="#main-content">Skip to content</a>
+          <SiteHeader />
+          <LessonLearningTracker />
+          <div id="main-content">{children}</div>
+          <SiteFooter />
+        </FavoritesProvider>
       </body>
     </html>
   );

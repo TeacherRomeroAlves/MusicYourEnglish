@@ -63,7 +63,3 @@ export const theManFourthStanza = {
     { items: [{ before: "So it's okay that I'm mad", answer: "", after: "", options: [] }] },
   ],
 };
-
-export const theManFinalChorus = {
-  lines: theManChorus.lines.map((line) => ({ ...line, id: line.id.replace("chorus", "final") })),
-};
