@@ -92,7 +92,6 @@
   .footer-nav { gap: 14px 20px; }
   .footer-bottom { padding: 22px 0; align-items: flex-start; flex-direction: column; }
   .lesson-page { padding-top: 22px; }
-  .back-link { top: 78px; }
   .lesson-hero { padding: 16px; grid-template-columns: 1fr; gap: 24px; }
   .lesson-cover { min-height: 150px; }
   .lesson-hero__content { padding: 0 4px 8px; }

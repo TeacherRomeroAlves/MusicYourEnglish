@@ -41,7 +41,7 @@
 .nav-login-error { margin: 0; color: #ffd5e8; font-size: .78rem; line-height: 1.35; }
 .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
 .menu-toggle span { display: block; width: 18px; height: 2px; margin: 5px auto; background: white; }
-.back-link { position: sticky; top: 92px; z-index: 25; display: inline-flex; align-items: center; gap: 8px; margin: 4px 0 18px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(17, 16, 22, 0.88); backdrop-filter: blur(12px); color: var(--soft-white); font-size: 0.9rem; font-weight: 700; text-decoration: none; box-shadow: var(--shadow-soft); }
+.back-link { position: static; display: inline-flex; align-items: center; gap: 8px; margin: 4px 0 18px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(17, 16, 22, 0.88); color: var(--soft-white); font-size: 0.9rem; font-weight: 700; text-decoration: none; box-shadow: var(--shadow-soft); }
 .site-footer { margin-top: 80px; border-top: 1px solid var(--line); background: #09080c; }
 .footer-shell, .footer-bottom { width: min(var(--container), calc(100% - 40px)); margin: 0 auto; }
 .footer-shell { padding: 70px 0 52px; display: grid; grid-template-columns: minmax(280px, 1fr) auto; gap: 60px; }

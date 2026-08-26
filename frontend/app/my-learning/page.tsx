@@ -3,6 +3,7 @@ import Link from "next/link";
 import AuthButton from "@/components/AuthButton";
 import { songCatalog, type SongMeta } from "@/data/songCatalog";
 import { createClient } from "@/lib/supabase/server";
+import RestartLessonButton from "@/components/learning/RestartLessonButton";
 
 interface LearningRecord {
   song_slug: SongMeta["slug"];
@@ -46,7 +47,7 @@ export default async function MyLearningPage() {
     .map((record) => ({ record, song: songCatalog.find((song) => song.slug === record.song_slug) }))
     .filter((item): item is { record: LearningRecord; song: SongMeta } => Boolean(item.song));
   const completed = records.filter((record) => record.completed_at).length;
-  const scored = records.filter((record) => record.score_total);
+  const scored = records.filter((record) => record.progress_percent > 0 && record.score_total);
   const averageScore = scored.length
     ? Math.round(scored.reduce((sum, record) => sum + ((record.score_correct ?? 0) / (record.score_total || 1)) * 100, 0) / scored.length)
     : 0;
@@ -98,7 +99,10 @@ export default async function MyLearningPage() {
                   <strong>{record.score_total ? `${record.score_correct ?? 0} / ${record.score_total}` : "No score yet"}</strong>
                   <span>{record.homework_answer ? "Homework saved" : "No homework yet"}</span>
                 </div>
-                <Link className="button button--card" href={`/songs/${song.slug}`}>{record.completed_at ? "Review lesson" : "Continue"}</Link>
+                <div className="learning-history-card__actions">
+                  <Link className="button button--card" href={`/songs/${song.slug}`}>{record.completed_at ? "Review lesson" : "Continue"}</Link>
+                  <RestartLessonButton slug={song.slug} />
+                </div>
               </article>
             ))}
           </div>

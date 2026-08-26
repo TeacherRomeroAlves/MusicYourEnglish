@@ -26,13 +26,13 @@ export default function LessonHero({ title, artist, description, level, topic, c
               priority
             />
             <span className="lesson-cover__badge">Song lesson</span>
+            {slug && <FavoriteButton slug={slug} variant="lesson" />}
           </div>
           <div className="lesson-hero__content">
             <p className="eyebrow">Interactive song lesson</p>
             <h1>{title}</h1>
             <p className="lesson-artist">{artist}</p>
             <p className="lesson-description">{description}</p>
-            {slug && <FavoriteButton slug={slug} variant="lesson" />}
             <dl className="lesson-meta">
               <div><dt>Level</dt><dd>{level}</dd></div>
               <div><dt>Topic</dt><dd>{topic}</dd></div>
