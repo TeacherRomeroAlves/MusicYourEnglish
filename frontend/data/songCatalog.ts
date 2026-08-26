@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim";
   title: string;
   artist: string;
   level: UserLevel;
@@ -242,6 +242,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Word completion", "Word order", "Gerunds and infinitives"],
     coverImage: "/images/songs/the-man/cover.jpg",
     coverClass: "song-art--the-man",
+  },
+  {
+    slug: "swim",
+    title: "Swim",
+    artist: "BTS",
+    level: "Pre-intermediate",
+    duration: "45 min",
+    topic: "Resilience and moving forward",
+    genre: "K-pop",
+    description: "Practice adjectives and vivid expressions through a song about escaping difficulties and continuing to move forward.",
+    activities: ["Inline word order", "Emoji gaps", "Adjectives"],
+    coverImage: "/images/songs/swim/cover.jpg",
+    coverClass: "song-art--swim",
   },
 ];
 
