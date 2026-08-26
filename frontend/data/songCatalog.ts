@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip";
   title: string;
   artist: string;
   level: UserLevel;
@@ -268,6 +268,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Prepositions", "Incomplete words", "Emoji gaps"],
     coverImage: "/images/songs/nine-to-five/cover.jpg",
     coverClass: "song-art--nine-to-five",
+  },
+  {
+    slug: "gossip",
+    title: "GOSSIP",
+    artist: "Måneskin",
+    level: "Elementary",
+    duration: "40 min",
+    topic: "Fame, appearances, and gossip",
+    genre: "Rock",
+    description: "Practice idioms and descriptive language through a song about fame, appearances, and the pressure to fit in.",
+    activities: ["Idioms", "Emoji gaps", "Unscramble letters"],
+    coverImage: "/images/songs/gossip/cover.jpg",
+    coverClass: "song-art--gossip",
   },
 ];
 
