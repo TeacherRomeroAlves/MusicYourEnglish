@@ -195,7 +195,7 @@ export const songCatalog: SongMeta[] = [
     slug: "cold",
     title: "Cold",
     artist: "BigXthaPlug feat. Post Malone",
-    level: "Pre-intermediate",
+    level: "Intermediate+",
     duration: "45 min",
     topic: "Love, distance, and personal growth",
     genre: "Country rap",
