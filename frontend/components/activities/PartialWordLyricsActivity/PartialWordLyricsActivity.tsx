@@ -5,14 +5,14 @@ import { usePartialWordLyrics } from "@/hooks/usePartialWordLyrics";
 import type { PartialWordLyricsActivityProps } from "./types";
 
 export default function PartialWordLyricsActivity({ step, title, description, lyrics }: PartialWordLyricsActivityProps) {
-  const { values, handleChange, handleReset } = usePartialWordLyrics();
+  const { getValue, handleChange, handleReset } = usePartialWordLyrics();
   const answerLines = lyrics
     .map((line, index) => ({ ...line, valueKey: String(index) }))
     .filter((line) => line.answer);
 
   useRegisterActivityResult(`${step}:${title}`, {
-    correct: answerLines.filter((line) => (values[line.valueKey] ?? "").toLowerCase() === line.answer?.toLowerCase()).length,
-    answered: answerLines.filter((line) => Boolean((values[line.valueKey] ?? "").trim())).length,
+    correct: answerLines.filter((line) => getValue(line.valueKey, line.syncKey).toLowerCase() === line.answer?.toLowerCase()).length,
+    answered: answerLines.filter((line) => Boolean(getValue(line.valueKey, line.syncKey).trim())).length,
     total: answerLines.length,
   });
 
@@ -26,7 +26,7 @@ export default function PartialWordLyricsActivity({ step, title, description, ly
 
       <div className="lyrics-card" aria-label={title}>
         {lyrics.map((line, index) => {
-          const value = values[String(index)] ?? "";
+          const value = getValue(String(index), line.syncKey);
 
           return (
             <p className="lyric-line" key={index}>
@@ -41,7 +41,7 @@ export default function PartialWordLyricsActivity({ step, title, description, ly
                     placeholder={"-".repeat(line.answer.length)}
                     aria-label={`Complete the word beginning with ${line.prefix ?? "the letters shown"}`}
                     style={{ width: `${Math.max(3, line.answer.length + 1)}ch` }}
-                    onChange={(event) => handleChange(String(index), event.target.value, line.answer?.length ?? 0)}
+                    onChange={(event) => handleChange(String(index), event.target.value, line.answer?.length ?? 0, line.syncKey)}
                   />
                   <span>{line.suffix}</span>
                 </span>
@@ -53,7 +53,7 @@ export default function PartialWordLyricsActivity({ step, title, description, ly
       </div>
 
       <div className="actions">
-        <button className="action-btn secondary" type="button" onClick={handleReset}>Reset Section</button>
+        <button className="action-btn secondary" type="button" onClick={() => handleReset(lyrics.flatMap((line) => line.syncKey ?? []))}>Reset Section</button>
       </div>
     </section>
   );

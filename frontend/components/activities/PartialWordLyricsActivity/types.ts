@@ -4,6 +4,7 @@ export interface PartialWordLyricsLine {
   answer?: string;
   suffix?: string;
   after: string;
+  syncKey?: string;
 }
 
 export interface PartialWordLyricsActivityProps {

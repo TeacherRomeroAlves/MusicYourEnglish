@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five";
   title: string;
   artist: string;
   level: UserLevel;
@@ -255,6 +255,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Inline word order", "Emoji gaps", "Adjectives"],
     coverImage: "/images/songs/swim/cover.jpg",
     coverClass: "song-art--swim",
+  },
+  {
+    slug: "nine-to-five",
+    title: "9 to 5",
+    artist: "Dolly Parton",
+    level: "Elementary",
+    duration: "45 min",
+    topic: "Work, routine, and unfair treatment",
+    genre: "Country",
+    description: "Practice prepositions and everyday work vocabulary through a classic song about routine, ambition, and fairness.",
+    activities: ["Prepositions", "Incomplete words", "Emoji gaps"],
+    coverImage: "/images/songs/nine-to-five/cover.jpg",
+    coverClass: "song-art--nine-to-five",
   },
 ];
 

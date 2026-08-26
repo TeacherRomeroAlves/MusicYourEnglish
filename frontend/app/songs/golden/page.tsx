@@ -1,3 +1,4 @@
+import Image from "next/image";
 import LessonHero from "@/components/LessonHero";
 import BackLink from "@/components/BackLink";
 import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
@@ -55,6 +56,33 @@ export default function goldenPage() {
               ]}
               checkAnswers={<CheckAllActivity title="Check All Answers" description="When students finish the whole song, click below to check every activity at once." />}
               afterSong={<>
+                <aside className="cultural-note cultural-note--with-poster" aria-labelledby="golden-cultural-note">
+                  <Image
+                    className="cultural-note__poster"
+                    src="/images/cultural-notes/kpop-demon-hunters/poster.png"
+                    alt="KPop Demon Hunters movie poster"
+                    width={683}
+                    height={1024}
+                    sizes="(max-width: 580px) 100vw, 220px"
+                  />
+                  <div className="cultural-note__content">
+                    <p className="section-kicker">Cultural note</p>
+                    <h2 id="golden-cultural-note">Golden and KPop Demon Hunters</h2>
+                    <p>
+                      &quot;Golden&quot; is part of the animated movie <em>KPop Demon Hunters</em>.
+                      At the 98th Academy Awards, the movie won Best Animated Feature and
+                      &quot;Golden&quot; won Best Original Song.
+                    </p>
+                    <a
+                      className="button button--primary cultural-note__action"
+                      href="https://movieyourenglish.vercel.app/kpop-demon-hunters/index.html"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Practice English With The Movie
+                    </a>
+                  </div>
+                </aside>
                 <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Use these questions to finish the lesson with speaking practice." questions={["What does this song say about confidence?", "Why do people sometimes hide who they really are?", "What helps a person feel stronger?", "Can fears make us stronger? Why or why not?"]} />
                 <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write your homework answer, then save or share your report." prompt="Write about a time you felt stronger or more confident. Explain what happened and how you felt." songTitle="Golden" />
               </>}

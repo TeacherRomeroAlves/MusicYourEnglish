@@ -8,7 +8,7 @@ import { shuffleArray } from "@/lib/shuffleArray";
 const FILTER_GENRE_GROUPS: Record<string, string> = {
   "Alt. Rock": "Rock",
   "Alternative rock": "Rock",
-  "Country rap": "Hiphop/Rap",
+  "Country rap": "Country",
   "Folk pop": "Pop",
   "Hip-hop": "Hiphop/Rap",
   "Pop punk": "Rock",

@@ -1,5 +1,5 @@
-.report-grid { max-width: 760px; margin-top: 22px; display: grid; grid-template-columns: minmax(0, 1fr); }
-.homework-mode { max-width: 760px; margin-top: 18px; padding: 7px; display: flex; gap: 7px; border: 1px solid rgba(130,13,75,.16); border-radius: 15px; background: #f8f1f6; }
+.report-grid { width: 100%; margin-top: 22px; display: grid; grid-template-columns: minmax(0, 1fr); }
+.homework-mode { width: 100%; margin-top: 18px; padding: 7px; display: flex; gap: 7px; border: 1px solid rgba(130,13,75,.16); border-radius: 15px; background: #f8f1f6; }
 .homework-mode button { min-height: 44px; padding: 0 18px; flex: 1; border: 0; border-radius: 10px; background: transparent; color: #654f60; font-weight: 800; cursor: pointer; transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease; }
 .homework-mode button:hover { color: #820d4b; background: rgba(130,13,75,.07); }
 .homework-mode button.is-active { color: white; background: linear-gradient(135deg, #9a165e, #7e0d82); box-shadow: 0 8px 22px rgba(130,13,75,.22); }
