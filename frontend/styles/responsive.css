@@ -1,6 +1,7 @@
 @media (max-width: 1040px) {
   .nav-shell { width: min(100% - 28px, var(--container)); }
   .main-nav { gap: 16px; }
+  .nav-actions { gap: 10px; }
   .main-nav a { font-size: .86rem; }
   .home-hero { grid-template-columns: 1fr 420px; gap: 45px; }
 }

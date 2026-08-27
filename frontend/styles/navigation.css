@@ -50,6 +50,8 @@
 .footer-nav { display: grid; grid-template-columns: repeat(2, minmax(130px, 1fr)); gap: 16px 44px; align-content: start; }
 .footer-nav a { color: var(--muted); text-decoration: none; }
 .footer-nav a:hover { color: var(--vivid-pink); }
+.footer-nav .footer-feedback { grid-column: 1 / -1; justify-self: start; color: white; }
+.footer-nav .footer-feedback:hover { color: white; }
 .footer-bottom { min-height: 72px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 20px; color: #817b89; font-size: 0.88rem; }
 .footer-creators { text-align: center; }
 .footer-creators a { color: #d9d3dc; font-weight: 700; text-decoration: none; transition: color 180ms ease; }

@@ -47,6 +47,15 @@ export default function SiteHeader() {
           </nav>
           <div className="nav-actions">
             <AuthButton onNavigate={() => setIsOpen(false)} />
+            <a
+              className="button button--secondary button--compact"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeOPF6KSC_AeLO1EG7sn-_qZ8h7K2clnojW46OkE6YzMlPELw/viewform?usp=header"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setIsOpen(false)}
+            >
+              Send Feedback
+            </a>
             <Link className="button button--primary button--compact" href="/songs" onClick={() => setIsOpen(false)}>
               Start exploring
             </Link>
