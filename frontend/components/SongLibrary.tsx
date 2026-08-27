@@ -20,6 +20,7 @@ const DEEPER_TOPIC_SLUGS: SongMeta["slug"][] = [
   "the-man",
   "hero-of-war",
   "bad-life",
+  "nine-to-five",
 ];
 
 function getFilterGenres(genre: string) {
@@ -96,9 +97,9 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
   const accessibleSongs = orderedSongs.filter((song) =>
     song.level === "Beginner" || song.level === "Elementary",
   );
-  const deeperTopicSongs = DEEPER_TOPIC_SLUGS
-    .map((slug) => songs.find((song) => song.slug === slug))
-    .filter((song): song is SongMeta => Boolean(song));
+  const deeperTopicSongs = orderedSongs.filter((song) =>
+    DEEPER_TOPIC_SLUGS.includes(song.slug),
+  );
 
   const clearFilters = () => {
     setQuery("");
