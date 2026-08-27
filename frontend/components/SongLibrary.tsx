@@ -12,6 +12,7 @@ const FILTER_GENRE_GROUPS: Record<string, string[]> = {
   "Folk pop": ["Pop"],
   "Hip-hop": ["Hiphop/Rap"],
   "Pop punk": ["Rock"],
+  "Pop rap": ["Pop", "Hiphop/Rap"],
   "Punk rock": ["Rock"],
 };
 

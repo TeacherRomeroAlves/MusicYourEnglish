@@ -83,6 +83,9 @@
 .activity-carousel__side small { font-size: .67rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; writing-mode: vertical-rl; }
 .activity-carousel__mobile-nav { display: none; }
 .activity-carousel__slide { padding: 20px; }
+.activity-carousel__slide--chorus { background: linear-gradient(145deg, #eee3f7, #e4d5f1); }
+.activity-carousel__slide--chorus > .card { border-color: rgba(91, 30, 130, .3); background: linear-gradient(145deg, #fbf8ff, #f1e8f8); box-shadow: 0 16px 38px rgba(59, 7, 100, .14); }
+.activity-carousel__slide--chorus .lyrics-card { border-color: rgba(91, 30, 130, .25); background: #eee3f7; }
 .activity-carousel__slide.is-entering-forward { animation: activity-slide-from-right 280ms cubic-bezier(.22,.8,.3,1) both; }
 .activity-carousel__slide.is-entering-backward { animation: activity-slide-from-left 280ms cubic-bezier(.22,.8,.3,1) both; }
 @keyframes activity-slide-from-right { from { opacity: .35; transform: translateX(34px); } to { opacity: 1; transform: translateX(0); } }

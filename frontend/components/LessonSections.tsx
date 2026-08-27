@@ -130,7 +130,7 @@ export default function LessonSections({
                 <div className="activity-carousel__slides" {...swipeNavigation}>
                   {listeningActivities.map((activity, index) => (
                     <div
-                      className={`activity-carousel__slide${index === activityIndex && slideDirection ? ` is-entering-${slideDirection}` : ""}`}
+                      className={`activity-carousel__slide${activity.label.toLowerCase().includes("chorus") ? " activity-carousel__slide--chorus" : ""}${index === activityIndex && slideDirection ? ` is-entering-${slideDirection}` : ""}`}
                       key={activity.label}
                       hidden={index !== activityIndex}
                       aria-hidden={index !== activityIndex}

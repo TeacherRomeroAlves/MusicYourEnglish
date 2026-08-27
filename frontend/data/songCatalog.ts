@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire";
   title: string;
   artist: string;
   level: UserLevel;
@@ -281,6 +281,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Idioms", "Emoji gaps", "Unscramble letters"],
     coverImage: "/images/songs/gossip/cover.jpg",
     coverClass: "song-art--gossip",
+  },
+  {
+    slug: "billionaire",
+    title: "Billionaire",
+    artist: "Travie McCoy feat. Bruno Mars",
+    level: "Pre-intermediate",
+    duration: "45 min",
+    topic: "Money, dreams, and generosity",
+    genre: "Pop rap",
+    description: "Practice proper nouns and informal pronunciation while discussing wealth, dreams, and helping other people.",
+    activities: ["Proper nouns", "-ing pronunciation", "Emoji gaps"],
+    coverImage: "/images/songs/billionaire/cover.jpg",
+    coverClass: "song-art--billionaire",
   },
 ];
 
