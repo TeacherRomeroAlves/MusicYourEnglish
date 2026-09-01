@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { getActivityInstruction, type InstructionKind } from "@/lib/activityInstructions";
 
 interface WarmUpQuestionsProps {
     step: string;
@@ -20,17 +21,21 @@ export default function WarmUpQuestions({ step, title, description, questions, l
         itemIndex === index ? !completed : completed
       )));
     };
+    const normalizedStep = step.toLowerCase();
+    const instructionKind: InstructionKind = normalizedStep.includes("vocabulary")
+      ? "vocabulary-practice"
+      : normalizedStep.includes("wrap")
+        ? "wrap-up"
+        : "warm-up";
 
     return (
       <section className="card">
         <div className="section-heading">
           <p className="section-kicker">{step}</p>
           <h2>{title}</h2>
-          {description && (
           <p className="section-note">
-            {description}
+            {getActivityInstruction(description, instructionKind)}
           </p>
-          )}
         </div>
 
 

@@ -5,6 +5,7 @@ import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 import IconCard from "./IconCard";
 import InlineDropZone from "./InlineDropZone";
 import type { IconLyricsActivityProps } from "./types";
+import { getActivityInstruction } from "@/lib/activityInstructions";
 
 export default function IconLyricsActivity({ step, title, description, icons, lyrics }: IconLyricsActivityProps) {
     const {
@@ -44,7 +45,7 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
 
                 {description && (
                 <p className="section-note">
-                    {description}
+                    {getActivityInstruction(description)}
                 </p>
                 )}
             </div>

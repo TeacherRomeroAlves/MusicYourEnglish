@@ -3,6 +3,7 @@
 import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 import { useInlineWordOrder } from "@/hooks/useInlineWordOrder";
 import type { InlineWordOrderActivityProps } from "./types";
+import { getActivityInstruction } from "@/lib/activityInstructions";
 
 export default function InlineWordOrderActivity({
   step,
@@ -41,7 +42,7 @@ export default function InlineWordOrderActivity({
       <div className="section-heading">
         <p className="section-kicker">{step}</p>
         <h2>{title}</h2>
-        <p className="section-note">{description}</p>
+        <p className="section-note">{getActivityInstruction(description)}</p>
       </div>
 
       <div className="lyrics-card inline-order-lyrics" aria-label={title}>

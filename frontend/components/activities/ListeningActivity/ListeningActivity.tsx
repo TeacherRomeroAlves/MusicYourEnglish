@@ -1,4 +1,5 @@
 import { ListeningActivityProps } from "./types";
+import { getActivityInstruction } from "@/lib/activityInstructions";
 
 export default function ListeningActivity({ step, title, description, embedUrl, embedTitle, }: ListeningActivityProps) {
   const isYouTube = embedUrl.includes("youtube.com/embed/");
@@ -12,7 +13,7 @@ export default function ListeningActivity({ step, title, description, embedUrl, 
 
         {description && (
           <p className="section-note">
-            {description}
+            {getActivityInstruction(description, "listening")}
           </p>
         )}
       </div>

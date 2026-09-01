@@ -4,6 +4,7 @@ import LyricInput from "./LyricInput";
 import type { TypingLyricsActivityProps } from "./types";
 import { useTypingLyrics } from "@/hooks/useTypingLyrics";
 import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { getActivityInstruction } from "@/lib/activityInstructions";
 
 export default function TypingLyricsActivity({ step, title, description, lyrics, wordBank, wordBankLabel = "Words in their base form", allowedLetters, }: TypingLyricsActivityProps) {
   const { values, handleChange, handleReset } = useTypingLyrics();
@@ -24,7 +25,7 @@ export default function TypingLyricsActivity({ step, title, description, lyrics,
 
         {description && (
           <p className="section-note">
-            {description}
+            {getActivityInstruction(description)}
           </p>
         )}
       </div>

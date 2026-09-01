@@ -3,6 +3,7 @@
 import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 import { useMissingWords } from "@/hooks/useMissingWords";
 import type { MissingWordsActivityProps } from "./types";
+import { getActivityInstruction } from "@/lib/activityInstructions";
 
 export default function MissingWordsActivity({
   step,
@@ -26,7 +27,7 @@ export default function MissingWordsActivity({
       <div className="section-heading">
         <p className="section-kicker">{step}</p>
         <h2>{title}</h2>
-        <p className="section-note">{description}</p>
+        <p className="section-note">{getActivityInstruction(description)}</p>
       </div>
 
       <div className="lyrics-card missing-word-lyrics" aria-label={title}>

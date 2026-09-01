@@ -6,6 +6,7 @@ import ReportCard from "./ReportCard";
 import VoiceHomework from "./VoiceHomework";
 import { useHomework } from "@/hooks/useHomework";
 import { getSongMetaByTitle } from "@/data/songCatalog";
+import { getActivityInstruction } from "@/lib/activityInstructions";
 
 interface HomeworkActivityProps {
   step: string;
@@ -28,7 +29,7 @@ export default function HomeworkActivity({ step, title, description, prompt, son
 
         {description && (
           <p className="section-note">
-            {description}
+            {getActivityInstruction(description, "homework")}
           </p>
         )}
       </div>

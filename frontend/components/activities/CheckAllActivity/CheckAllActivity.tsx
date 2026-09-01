@@ -1,6 +1,7 @@
 "use client";
 
 import { useCheckAllAnswers } from "@/hooks/useActivityResults";
+import { getActivityInstruction } from "@/lib/activityInstructions";
 
 interface CheckAllActivityProps {
     title: string;
@@ -19,7 +20,7 @@ export default function CheckAllActivity({ title, description, buttonText = "Che
 
             {description && (
             <p className="section-note">
-                {description}
+                {getActivityInstruction(description, "check")}
             </p>
             )}
         </div>

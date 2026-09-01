@@ -6,6 +6,7 @@ import LyricWordCard from "./LyricWordCard";
 import WordDropZone from "./WordDropZone";
 import { Fragment } from "react/jsx-runtime";
 import type { LyricsWordActivityProps } from "./types";
+import { getActivityInstruction } from "@/lib/activityInstructions";
 
 export default function LyricsWordActivity({ step, title, description, words, lyrics, }: LyricsWordActivityProps) {
   const {
@@ -45,7 +46,7 @@ export default function LyricsWordActivity({ step, title, description, words, ly
 
         {description && (
           <p className="section-note">
-            {description}
+            {getActivityInstruction(description)}
           </p>
         )}
       </div>

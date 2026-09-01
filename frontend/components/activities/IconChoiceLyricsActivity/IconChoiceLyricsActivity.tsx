@@ -6,6 +6,7 @@ import InlineDropZone from "@/components/activities/IconLyricsActivity/InlineDro
 import { useRegisterActivityResult } from "@/hooks/useActivityResults";
 import { useChoiceLyrics } from "@/hooks/useChoiceLyrics";
 import { useIconLyrics } from "@/hooks/useIconLyrics";
+import { getActivityInstruction } from "@/lib/activityInstructions";
 import type { IconChoiceLyricsActivityProps } from "./types";
 
 export default function IconChoiceLyricsActivity({
@@ -44,7 +45,7 @@ export default function IconChoiceLyricsActivity({
       <div className="section-heading">
         <p className="section-kicker">{step}</p>
         <h2>{title}</h2>
-        <p className="section-note">{description}</p>
+        <p className="section-note">{getActivityInstruction(description)}</p>
       </div>
 
       <div

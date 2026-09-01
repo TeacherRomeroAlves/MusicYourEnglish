@@ -4,6 +4,7 @@ import OrderCard from "./OrderCard";
 import type { OrderLyricsActivityProps } from "./types";
 import { useOrderLyrics } from "@/hooks/useOrderLyrics";
 import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { getActivityInstruction } from "@/lib/activityInstructions";
 
 export default function OrderLyricsActivity({ step, title, description, items, }: OrderLyricsActivityProps) {
   const { orderedItems, selectedId, draggedId, handleSelect, handleDragStart, handleDragEnd, handleDrop, handleReset } = useOrderLyrics(items);
@@ -21,7 +22,7 @@ export default function OrderLyricsActivity({ step, title, description, items, }
 
         {description && (
           <p className="section-note">
-            {description}
+            {getActivityInstruction(description)}
           </p>
         )}
       </div>

@@ -6,6 +6,7 @@ import { Fragment } from "react";
 import type { PronounLyricsActivityProps } from "./types";
 import { buildPronounInputId, usePronounLyrics } from "@/hooks/usePronounLyrics";
 import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { getActivityInstruction } from "@/lib/activityInstructions";
 
 export default function PronounLyricsActivity({ step, title, description, pronouns, lyrics, }: PronounLyricsActivityProps) {
   const { getValue, results, handleChange, handleReset } = usePronounLyrics(lyrics);
@@ -19,7 +20,7 @@ export default function PronounLyricsActivity({ step, title, description, pronou
 
         {description && (
           <p className="section-note">
-            {description}
+            {getActivityInstruction(description)}
           </p>
         )}
       </div>

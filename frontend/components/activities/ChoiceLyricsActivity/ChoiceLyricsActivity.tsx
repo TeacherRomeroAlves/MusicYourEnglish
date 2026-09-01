@@ -4,6 +4,7 @@ import ChoiceSlot from "./ChoiceSlot";
 import type { ChoiceLyricsActivityProps } from "./types";
 import { useChoiceLyrics } from "@/hooks/useChoiceLyrics";
 import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { getActivityInstruction } from "@/lib/activityInstructions";
 
 export default function ChoiceLyricsActivity({ step, title, description, lyrics, }: ChoiceLyricsActivityProps) {
   const { optionsBySlot, getSelection, handleSelect, handleReset } = useChoiceLyrics(lyrics);
@@ -26,7 +27,7 @@ export default function ChoiceLyricsActivity({ step, title, description, lyrics,
 
         {description && (
           <p className="section-note">
-            {description}
+            {getActivityInstruction(description)}
           </p>
         )}
       </div>
