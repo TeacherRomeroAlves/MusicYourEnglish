@@ -38,9 +38,9 @@ export default function WaitingForLovePage() {
           )}
           listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before starting the lyrics activities." embedUrl={waitingForLove.youtube.embedUrl} embedTitle={waitingForLove.youtube.title} />}
           listeningActivities={[
-            { label: "First and Second Stanzas", content: <TypingLyricsActivity step="Stanza 1" title="First and Second Stanzas" description="Type the correct form of the verbs be or have. Use the chart to help you." wordBank={waitingForLoveFirstStanzas.wordBank} wordBankLabel="Verbs" lyrics={waitingForLoveFirstStanzas.lyrics} /> },
-            { label: "Chorus", content: <LyricsWordActivity step="Stanza 2" title="Chorus" description="Click a day to use the next gap, or drag it to a specific gap while you listen." words={waitingForLoveChorus.words} lyrics={waitingForLoveChorus.lyrics} /> },
-            { label: "Fourth Stanza", content: <IconLyricsActivity step="Stanza 3" title="Fourth Stanza" description="Click or drag each emoji into the correct lyric gap while you listen." icons={waitingForLoveFourthStanza.icons} lyrics={waitingForLoveFourthStanza.lyrics} /> },
+            { label: "Verse 1 And Pre-Chorus", content: <TypingLyricsActivity step="Activity 1" title="Verse 1 And Pre-Chorus" description="Type the correct form of the verbs be or have. Use the chart to help you." wordBank={waitingForLoveFirstStanzas.wordBank} wordBankLabel="Verbs" lyrics={waitingForLoveFirstStanzas.lyrics} /> },
+            { label: "Chorus", content: <LyricsWordActivity step="Activity 2" title="Chorus" description="Click a day to use the next gap, or drag it to a specific gap while you listen." words={waitingForLoveChorus.words} lyrics={waitingForLoveChorus.lyrics} /> },
+            { label: "Verse 2", content: <IconLyricsActivity step="Activity 3" title="Verse 2" description="Click or drag each emoji into the correct lyric gap while you listen." icons={waitingForLoveFourthStanza.icons} lyrics={waitingForLoveFourthStanza.lyrics} /> },
           ]}
           checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
           afterSong={(

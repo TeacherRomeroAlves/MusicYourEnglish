@@ -79,11 +79,11 @@ export default function TheFateOfOpheliaPage() {
         )}
         listeningActivities={[
           {
-            label: "First Stanza",
+            label: "Verse 1",
             content: (
               <ChoiceLyricsActivity
-                step="Stanza 1"
-                title="First Stanza"
+                step="Activity 1"
+                title="Verse 1"
                 description="Click on the two-letter word you hear."
                 lyrics={opheliaFirstStanza.lyrics}
               />
@@ -93,7 +93,7 @@ export default function TheFateOfOpheliaPage() {
             label: "Pre-Chorus",
             content: (
               <IconLyricsActivity
-                step="Stanza 2"
+                step="Activity 2"
                 title="Pre-Chorus"
                 description="Click an emoji to place it in the next space, or drag it into a space. This section repeats later in the song."
                 icons={opheliaPreChorus.icons}
@@ -105,7 +105,7 @@ export default function TheFateOfOpheliaPage() {
             label: "Chorus",
             content: (
               <OrderLyricsActivity
-                step="Stanza 3"
+                step="Activity 3"
                 title="Chorus"
                 description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another. This chorus repeats later in the song."
                 items={opheliaChorus.items}
@@ -113,22 +113,22 @@ export default function TheFateOfOpheliaPage() {
             ),
           },
           {
-            label: "Fourth Stanza",
+            label: "Verse 2",
             content: (
               <ChoiceLyricsActivity
-                step="Stanza 4"
-                title="Fourth Stanza"
+                step="Activity 4"
+                title="Verse 2"
                 description="Choose the correct verb form according to the song."
                 lyrics={opheliaFourthStanza.lyrics}
               />
             ),
           },
           {
-            label: "Fifth Stanza",
+            label: "Bridge",
             content: (
               <UnscrambleLyricsActivity
-                step="Stanza 5"
-                title="Fifth Stanza"
+                step="Activity 5"
+                title="Bridge"
                 description="Unscramble the letters shown in each space and type the correct word."
                 lyrics={opheliaFifthStanza.lyrics}
               />

@@ -36,10 +36,10 @@ export default function TheManPage() {
             )}
             listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before starting the lyrics activities." embedUrl={theMan.youtube.embedUrl} embedTitle={theMan.youtube.title} />}
             listeningActivities={[
-              { label: "First and Second Stanzas", content: <PartialWordLyricsActivity step="Stanza 1" title="First and Second Stanzas" description="Complete each word while you listen. The hyphens show how many letters are missing." lyrics={theManOpeningStanzas.lyrics} /> },
-              { label: "Chorus", content: <InlineWordOrderActivity step="Stanza 2" title="Chorus" description="Rearrange the highlighted words or sentence parts within each lyric line." lines={theManChorus.lines} /> },
-              { label: "Third Stanza", content: <OrderLyricsActivity step="Stanza 3" title="Third Stanza" description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another." items={theManThirdStanza.items} /> },
-              { label: "Fourth Stanza", content: <ChoiceLyricsActivity step="Stanza 4" title="Fourth Stanza" description="Choose between verb + -ing and to + base form while you listen." lyrics={theManFourthStanza.lyrics} /> },
+              { label: "Verse 1 And Pre-Chorus", content: <PartialWordLyricsActivity step="Activity 1" title="Verse 1 And Pre-Chorus" description="Complete each word while you listen. The hyphens show how many letters are missing." lyrics={theManOpeningStanzas.lyrics} /> },
+              { label: "Chorus", content: <InlineWordOrderActivity step="Activity 2" title="Chorus" description="Rearrange the highlighted words or sentence parts within each lyric line." lines={theManChorus.lines} /> },
+              { label: "Verse 2", content: <OrderLyricsActivity step="Activity 3" title="Verse 2" description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another." items={theManThirdStanza.items} /> },
+              { label: "Bridge", content: <ChoiceLyricsActivity step="Activity 4" title="Bridge" description="Choose between verb + -ing and to + base form while you listen." lyrics={theManFourthStanza.lyrics} /> },
             ]}
             checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
             afterSong={(

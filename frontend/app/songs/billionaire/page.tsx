@@ -33,9 +33,9 @@ export default function BillionairePage() {
           )}
           listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before starting the lyrics activities." embedUrl={billionaire.youtube.embedUrl} embedTitle={billionaire.youtube.title} />}
           listeningActivities={[
-            { label: "Chorus", content: <IconLyricsActivity step="Stanza 1" title="Chorus" description="Click or drag each emoji into the correct lyric gap while you listen." icons={billionaireChorus.icons} lyrics={billionaireChorus.lyrics} /> },
-            { label: "Third Stanza", content: <LyricsWordActivity step="Stanza 2" title="Third Stanza" description="Click a word to use the next gap, or drag it to a specific gap. Some words are extra." words={billionaireThirdStanza.words} lyrics={billionaireThirdStanza.lyrics} /> },
-            { label: "Sixth Stanza", content: <ChoiceLyricsActivity step="Stanza 3" title="Sixth Stanza" description="Select the word or expression you hear in each line." lyrics={billionaireSixthStanza.lyrics} /> },
+            { label: "Chorus", content: <IconLyricsActivity step="Activity 1" title="Chorus" description="Click or drag each emoji into the correct lyric gap while you listen." icons={billionaireChorus.icons} lyrics={billionaireChorus.lyrics} /> },
+            { label: "Verse 1", content: <LyricsWordActivity step="Activity 2" title="Verse 1" description="Click a word to use the next gap, or drag it to a specific gap. Some words are extra." words={billionaireThirdStanza.words} lyrics={billionaireThirdStanza.lyrics} /> },
+            { label: "Verse 2", content: <ChoiceLyricsActivity step="Activity 3" title="Verse 2" description="Select the word or expression you hear in each line." lyrics={billionaireSixthStanza.lyrics} /> },
           ]}
           checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
           afterSong={(

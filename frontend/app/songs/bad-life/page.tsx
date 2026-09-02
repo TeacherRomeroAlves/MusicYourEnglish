@@ -78,11 +78,11 @@ export default function BadLifePage() {
           )}
           listeningActivities={[
             {
-              label: "First And Second Stanza",
+              label: "Verse 1 And Pre-Chorus",
               content: (
                 <LyricsWordActivity
-                  step="Stanza 1"
-                  title="First And Second Stanza"
+                  step="Activity 1"
+                  title="Verse 1 And Pre-Chorus"
                   description="Place each word in the correct gap. Click a word to use the next gap, or drag it to a specific gap."
                   words={badLifeOpeningStanzas.words}
                   lyrics={badLifeOpeningStanzas.lyrics}
@@ -90,33 +90,33 @@ export default function BadLifePage() {
               ),
             },
             {
-              label: "First Chorus",
+              label: "Chorus",
               content: (
                 <InlineWordOrderActivity
-                  step="Stanza 2"
-                  title="First Chorus"
+                  step="Activity 2"
+                  title="Chorus"
                   description="The highlighted parts are scrambled. Drag one word onto another to swap them, or click two words to swap their positions."
                   lines={badLifeFirstChorus.lines}
                 />
               ),
             },
             {
-              label: "Fourth And Fifth Stanza",
+              label: "Verse 2 And Pre-Chorus",
               content: (
                 <UnscrambleLyricsActivity
-                  step="Stanza 3"
-                  title="Fourth And Fifth Stanza"
+                  step="Activity 3"
+                  title="Verse 2 And Pre-Chorus"
                   description="Unscramble the letters and type the correct adjective or adverb in each gap."
                   lyrics={badLifeLaterUnscramble.lyrics}
                 />
               ),
             },
             {
-              label: "Full Chorus",
+              label: "Final Chorus",
               content: (
                 <InlineWordOrderActivity
-                  step="Stanza 4"
-                  title="Full Chorus"
+                  step="Activity 4"
+                  title="Final Chorus"
                   description="Reorder the scrambled parts. Your answers from the first chorus are already synchronized here."
                   lines={badLifeFullChorus.lines}
                 />

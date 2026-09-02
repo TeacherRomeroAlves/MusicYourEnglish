@@ -32,9 +32,9 @@ export default function ImPrettyPage() {
           )}
           listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before starting the lyrics activities." embedUrl={imPretty.youtube.embedUrl} embedTitle={imPretty.youtube.title} />}
           listeningActivities={[
-            { label: "First Stanza", content: <IconLyricsActivity step="Stanza 1" title="First Stanza" description="Click or drag each emoji into the correct lyric gap while you listen." icons={imPrettyFirstStanza.icons} lyrics={imPrettyFirstStanza.lyrics} /> },
-            { label: "Chorus", content: <LyricsWordActivity step="Stanza 2" title="Chorus" description="Click a word to use the next gap, or drag it to a specific gap. Some words are extra." words={imPrettyChorus.words} lyrics={imPrettyChorus.lyrics} /> },
-            { label: "Fifth Stanza", content: <IconLyricsActivity step="Stanza 3" title="Fifth Stanza" description="Click or drag each emoji into the correct lyric gap. The repeated answers are synchronized with the first stanza." icons={imPrettyFifthStanza.icons} lyrics={imPrettyFifthStanza.lyrics} /> },
+            { label: "Verse 1 And Pre-Chorus", content: <IconLyricsActivity step="Activity 1" title="Verse 1 And Pre-Chorus" description="Click or drag each emoji into the correct lyric gap while you listen." icons={imPrettyFirstStanza.icons} lyrics={imPrettyFirstStanza.lyrics} /> },
+            { label: "Chorus", content: <LyricsWordActivity step="Activity 2" title="Chorus" description="Click a word to use the next gap, or drag it to a specific gap. Some words are extra." words={imPrettyChorus.words} lyrics={imPrettyChorus.lyrics} /> },
+            { label: "Verse 2 And Pre-Chorus", content: <IconLyricsActivity step="Activity 3" title="Verse 2 And Pre-Chorus" description="Click or drag each emoji into the correct lyric gap. The repeated answers are synchronized with Activity 1." icons={imPrettyFifthStanza.icons} lyrics={imPrettyFifthStanza.lyrics} /> },
           ]}
           checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
           afterSong={(

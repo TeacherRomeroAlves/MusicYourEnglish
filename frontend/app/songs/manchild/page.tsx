@@ -5,13 +5,14 @@ import LessonSections from "@/components/LessonSections";
 import CheckAllActivity from "@/components/activities/CheckAllActivity/CheckAllActivity";
 import ChoiceLyricsActivity from "@/components/activities/ChoiceLyricsActivity/ChoiceLyricsActivity";
 import HomeworkActivity from "@/components/activities/Homework/HomeworkActivity";
+import IconLyricsActivity from "@/components/activities/IconLyricsActivity/IconLyricsActivity";
 import ListeningActivity from "@/components/activities/ListeningActivity/ListeningActivity";
 import MatchingActivity from "@/components/activities/MatchingActivity/MatchingActivity";
 import MissingWordsActivity from "@/components/activities/MissingWordsActivity/MissingWordsActivity";
 import UnscrambleLyricsActivity from "@/components/activities/UnscrambleLyricsActivity/UnscrambleLyricsActivity";
 import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
 import { getSongMeta } from "@/data/songCatalog";
-import { manchild, manchildChorus, manchildFirstStanza, manchildMissingWords } from "@/data/songs/manchild";
+import { manchild, manchildChorus, manchildFirstStanza, manchildMissingWords, manchildSecondStanza } from "@/data/songs/manchild";
 
 export default function ManchildPage() {
   const song = getSongMeta("manchild");
@@ -68,11 +69,11 @@ export default function ManchildPage() {
         )}
         listeningActivities={[
           {
-            label: "First Stanza",
+            label: "Verse 1",
             content: (
               <ChoiceLyricsActivity
-                step="Stanza 1"
-                title="First Stanza"
+                step="Activity 1"
+                title="Verse 1"
                 description="Simple present or simple past? Listen and choose the correct option."
                 lyrics={manchildFirstStanza.lyrics}
               />
@@ -82,7 +83,7 @@ export default function ManchildPage() {
             label: "Chorus",
             content: (
               <UnscrambleLyricsActivity
-                step="Stanza 2"
+                step="Activity 2"
                 title="Chorus"
                 description="Listen, unscramble the letters, and type the correct word."
                 lyrics={manchildChorus.lyrics}
@@ -90,10 +91,22 @@ export default function ManchildPage() {
             ),
           },
           {
-            label: "Third Stanza",
+            label: "Verse 2",
+            content: (
+              <IconLyricsActivity
+                step="Activity 3"
+                title="Verse 2"
+                description="Click or drag each emoji into the correct lyric gap while you listen."
+                icons={manchildSecondStanza.icons}
+                lyrics={manchildSecondStanza.lyrics}
+              />
+            ),
+          },
+          {
+            label: "Bridge",
             content: (
               <MissingWordsActivity
-                step="Stanza 3"
+                step="Activity 4"
                 title="Which Word Is NOT In The Song?"
                 description="There are 8 words. Select the 4 words that are NOT part of the lyrics."
                 lyrics={manchildMissingWords.lyrics}

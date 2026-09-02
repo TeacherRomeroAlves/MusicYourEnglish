@@ -49,11 +49,11 @@ export default function monsterPage() {
               </>}
               listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before moving on to the next activity." embedUrl={monsters.spotify.embedUrl} embedTitle={monsters.spotify.title} />}
               listeningActivities={[
-                { label: "First Stanza", content: <PronounLyricsActivity step="Stanza 1" title="First Stanza" description="Complete the gaps using a pronoun. Use the chart to help you." pronouns={monstersPronouns.pronouns} lyrics={monstersPronouns.lyrics} /> },
-                { label: "Second Stanza", content: <IconLyricsActivity step="Stanza 2" title="Second Stanza" description="Drag each emoji into the correct space while you listen." icons={monstersSecondStanza.icons} lyrics={monstersSecondStanza.lyrics} /> },
-                { label: "Third Stanza", content: <PronounLyricsActivity step="Stanza 3" title="Third Stanza" description="Complete the gaps using pronouns. Matching blanks fill together." pronouns={monstersThirdStanza.pronouns} lyrics={monstersThirdStanza.lyrics} /> },
-                { label: "Fourth Stanza", content: <LyricsWordActivity step="Stanza 4" title="Fourth Stanza" description="Complete the sentences with the verbs in the present continuous form." words={monstersFourthStanza.words} lyrics={monstersFourthStanza.lyrics} /> },
-                { label: "Fifth Stanza", content: <ChoiceLyricsActivity step="Stanza 5" title="Fifth Stanza" description="Listen carefully and click the correct option in each line." lyrics={monstersFifthStanza.lyrics} /> },
+                { label: "Opening Chorus", content: <PronounLyricsActivity step="Activity 1" title="Opening Chorus" description="Complete the gaps using a pronoun. Use the chart to help you." pronouns={monstersPronouns.pronouns} lyrics={monstersPronouns.lyrics} /> },
+                { label: "Verse 1", content: <IconLyricsActivity step="Activity 2" title="Verse 1" description="Drag each emoji into the correct space while you listen." icons={monstersSecondStanza.icons} lyrics={monstersSecondStanza.lyrics} /> },
+                { label: "Full Chorus", content: <PronounLyricsActivity step="Activity 3" title="Full Chorus" description="Complete the gaps using pronouns. Matching blanks fill together." pronouns={monstersThirdStanza.pronouns} lyrics={monstersThirdStanza.lyrics} /> },
+                { label: "Verse 2", content: <LyricsWordActivity step="Activity 4" title="Verse 2" description="Complete the sentences with the verbs in the present continuous form." words={monstersFourthStanza.words} lyrics={monstersFourthStanza.lyrics} /> },
+                { label: "Bridge", content: <ChoiceLyricsActivity step="Activity 5" title="Bridge" description="Listen carefully and click the correct option in each line." lyrics={monstersFifthStanza.lyrics} /> },
               ]}
               checkAnswers={<CheckAllActivity title="Check All Answers" description="When students finish the whole song, click below to check every activity at once." />}
               afterSong={<>

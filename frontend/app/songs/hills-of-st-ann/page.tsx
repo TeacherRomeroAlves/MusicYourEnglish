@@ -77,11 +77,11 @@ export default function HillsOfStAnnPage() {
         )}
         listeningActivities={[
           {
-            label: "First Stanza",
+            label: "Verse 1",
             content: (
               <IconLyricsActivity
-                step="Stanza 1"
-                title="First Stanza"
+                step="Activity 1"
+                title="Verse 1"
                 description="Place the correct emoji in each gap. Click an emoji to use the next gap, or drag it to a specific gap."
                 icons={hillsFirstStanza.icons}
                 lyrics={hillsFirstStanza.lyrics}
@@ -89,21 +89,21 @@ export default function HillsOfStAnnPage() {
             ),
           },
           {
-            label: "Second Stanza",
+            label: "Chorus",
             content: (
               <ChoiceLyricsActivity
-                step="Stanza 2"
-                title="Second Stanza"
+                step="Activity 2"
+                title="Chorus"
                 description="Listen and choose the correct word according to the song."
                 lyrics={hillsSecondStanza.lyrics}
               />
             ),
           },
           {
-            label: "Third Stanza",
+            label: "Verse 2",
             content: (
               <MissingWordsActivity
-                step="Stanza 3"
+                step="Activity 3"
                 title="Which Words Are NOT In The Song?"
                 description="Select the 3 words or expressions shown inside the lyrics that are NOT actually in the song."
                 lyrics={hillsThirdStanza.lyrics}
@@ -112,11 +112,11 @@ export default function HillsOfStAnnPage() {
             ),
           },
           {
-            label: "Fourth Stanza",
+            label: "Outro",
             content: (
               <LyricsWordActivity
-                step="Stanza 4"
-                title="Fourth Stanza"
+                step="Activity 4"
+                title="Outro"
                 description="Place each word in the correct gap. Listen carefully to the sound."
                 words={hillsFourthStanza.words}
                 lyrics={hillsFourthStanza.lyrics}

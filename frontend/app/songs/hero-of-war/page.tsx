@@ -44,11 +44,11 @@ export default function HeroOfWarPage() {
           )}
           listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before starting the lyrics activities." embedUrl={heroOfWar.youtube.embedUrl} embedTitle={heroOfWar.youtube.title} />}
           listeningActivities={[
-            { label: "First Stanza", content: <IconLyricsActivity step="Stanza 1" title="First Stanza" description="Click or drag each emoji into the correct lyric gap while you listen." icons={heroOfWarFirstStanza.icons} lyrics={heroOfWarFirstStanza.lyrics} /> },
-            { label: "Chorus", content: <UnscrambleLyricsActivity step="Stanza 2" title="Chorus" description="Unscramble the letters shown in each gap and type the correct word." lyrics={heroOfWarChorus.lyrics} /> },
-            { label: "Third Stanza", content: <TypingLyricsActivity step="Stanza 3" title="Third Stanza" description="Type the correct past form of each verb. Use the base forms in the chart to help you. One verb is used twice." wordBank={heroOfWarThirdStanza.wordBank} wordBankLabel="Verbs in their base form" lyrics={heroOfWarThirdStanza.lyrics} /> },
-            { label: "Fifth Stanza", content: <ChoiceLyricsActivity step="Stanza 4" title="Fifth Stanza" description="Select the pronoun or adjective form you hear in the song." lyrics={heroOfWarFifthStanza.lyrics} /> },
-            { label: "Final Chorus", content: <InlineWordOrderActivity step="Stanza 5" title="Final Chorus" description="Rearrange the highlighted words or sentence parts within each lyric line." lines={heroOfWarFinalChorus.lines} /> },
+            { label: "Verse 1", content: <IconLyricsActivity step="Activity 1" title="Verse 1" description="Click or drag each emoji into the correct lyric gap while you listen." icons={heroOfWarFirstStanza.icons} lyrics={heroOfWarFirstStanza.lyrics} /> },
+            { label: "Chorus", content: <UnscrambleLyricsActivity step="Activity 2" title="Chorus" description="Unscramble the letters shown in each gap and type the correct word." lyrics={heroOfWarChorus.lyrics} /> },
+            { label: "Verse 2", content: <TypingLyricsActivity step="Activity 3" title="Verse 2" description="Type the correct past form of each verb. Use the base forms in the chart to help you. One verb is used twice." wordBank={heroOfWarThirdStanza.wordBank} wordBankLabel="Verbs in their base form" lyrics={heroOfWarThirdStanza.lyrics} /> },
+            { label: "Verse 3", content: <ChoiceLyricsActivity step="Activity 4" title="Verse 3" description="Select the pronoun or adjective form you hear in the song." lyrics={heroOfWarFifthStanza.lyrics} /> },
+            { label: "Final Chorus", content: <InlineWordOrderActivity step="Activity 5" title="Final Chorus" description="Rearrange the highlighted words or sentence parts within each lyric line." lines={heroOfWarFinalChorus.lines} /> },
           ]}
           checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
           afterSong={(

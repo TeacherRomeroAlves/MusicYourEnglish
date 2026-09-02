@@ -47,10 +47,10 @@ export default function CountOnMePage() {
         </>}
         listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before moving on to the next activity." embedUrl={countOnMe.spotify.embedUrl} embedTitle={countOnMe.spotify.title} />}
         listeningActivities={[
-          { label: "First Stanza", content: <IconLyricsActivity step="Stanza 1" title="First Stanza" description="Drag each icon into the correct space while you listen." icons={countOnMeFirstStanza.icons} lyrics={countOnMeFirstStanza.lyrics} /> },
-          { label: "Pre-Chorus And Chorus", content: <LyricsWordActivity step="Stanza 2" title="Pre-Chorus And Chorus" description="Drag the correct words into the lyrics while you listen. Some extra words are there to make it more challenging." words={countOnMeChorus.words} lyrics={countOnMeChorus.lyrics} /> },
-          { label: "Next Stanza", content: <ChoiceLyricsActivity step="Stanza 3" title="Next Stanza" description="Listen carefully and click the correct option in each line." lyrics={countOnMeChoiceLyrics.lyrics} /> },
-          { label: "Fourth Stanza", content: <LyricsWordActivity step="Stanza 4" title="Fourth Stanza" description="Click a word to place it in the next gap, or drag it to a specific gap. Some words are extra." words={countOnMeFourthStanza.words} lyrics={countOnMeFourthStanza.lyrics} /> },
+          { label: "Verse 1", content: <IconLyricsActivity step="Activity 1" title="Verse 1" description="Drag each icon into the correct space while you listen." icons={countOnMeFirstStanza.icons} lyrics={countOnMeFirstStanza.lyrics} /> },
+          { label: "Pre-Chorus And Chorus", content: <LyricsWordActivity step="Activity 2" title="Pre-Chorus And Chorus" description="Drag the correct words into the lyrics while you listen. Some extra words are there to make it more challenging." words={countOnMeChorus.words} lyrics={countOnMeChorus.lyrics} /> },
+          { label: "Verse 2", content: <ChoiceLyricsActivity step="Activity 3" title="Verse 2" description="Listen carefully and click the correct option in each line." lyrics={countOnMeChoiceLyrics.lyrics} /> },
+          { label: "Bridge", content: <LyricsWordActivity step="Activity 4" title="Bridge" description="Click a word to place it in the next gap, or drag it to a specific gap. Some words are extra." words={countOnMeFourthStanza.words} lyrics={countOnMeFourthStanza.lyrics} /> },
         ]}
         checkAnswers={<CheckAllActivity title="Check All Answers" description="When students finish the whole song, click below to check every activity at once." />}
         afterSong={<>

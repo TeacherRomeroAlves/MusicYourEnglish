@@ -80,34 +80,34 @@ export default function FridayImInLovePage() {
           )}
           listeningActivities={[
             {
-              label: "First Stanza",
+              label: "Opening Verses",
               content: (
                 <LyricsWordActivity
-                  step="Stanza 1"
-                  title="First Stanza"
-                  description="Place the days in the lyrics while you listen. Each day appears twice, and this stanza is repeated later in the song. Click a day to use the next gap, or drag it to a specific gap."
+                  step="Activity 1"
+                  title="Opening Verses"
+                  description="Place the days in the lyrics while you listen. Each day appears twice, and this section is repeated later in the song. Click a day to use the next gap, or drag it to a specific gap."
                   words={fridayFirstStanza.words}
                   lyrics={fridayFirstStanza.lyrics}
                 />
               ),
             },
             {
-              label: "Second Stanza",
+              label: "Pre-Chorus And Verse",
               content: (
                 <ChoiceLyricsActivity
-                  step="Stanza 2"
-                  title="Second Stanza"
+                  step="Activity 2"
+                  title="Pre-Chorus And Verse"
                   description="Click the correct option while you listen. The Saturday and Sunday answers are synchronized with the next activity."
                   lyrics={fridaySecondStanza.lyrics}
                 />
               ),
             },
             {
-              label: "Third Stanza",
+              label: "Verse And Pre-Chorus",
               content: (
                 <IconChoiceLyricsActivity
-                  step="Stanza 3"
-                  title="Third Stanza"
+                  step="Activity 3"
+                  title="Verse And Pre-Chorus"
                   description="Click or drag each emoji into the correct gap. Then complete the repeated Saturday and Sunday lines; those answers are synchronized with the previous activity."
                   icons={fridayThirdStanza.icons}
                   iconLyrics={fridayThirdStanza.iconLyrics}
@@ -116,11 +116,11 @@ export default function FridayImInLovePage() {
               ),
             },
             {
-              label: "Fourth Stanza",
+              label: "Bridge",
               content: (
                 <MissingWordsActivity
-                  step="Stanza 4"
-                  title="Fourth Stanza"
+                  step="Activity 4"
+                  title="Bridge"
                   description="Select the three adjectives that are shown here but are NOT actually sung."
                   lyrics={fridayFourthStanza.lyrics}
                   maximumSelections={3}

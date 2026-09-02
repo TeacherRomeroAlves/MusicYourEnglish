@@ -35,9 +35,9 @@ export default function RudePage() {
             )}
             listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before starting the lyrics activities." embedUrl={rude.youtube.embedUrl} embedTitle={rude.youtube.title} />}
             listeningActivities={[
-              { label: "First Stanza", content: <IconLyricsActivity step="Stanza 1" title="First Stanza" description="Click or drag each emoji into the correct lyric gap while you listen." icons={rudeFirstStanza.icons} lyrics={rudeFirstStanza.lyrics} /> },
-              { label: "Chorus", content: <InlineWordOrderActivity step="Stanza 2" title="Chorus" description="Rearrange the highlighted words or sentence parts within each lyric line." lines={rudeChorus.lines} /> },
-              { label: "Fourth Stanza", content: <WordPresenceActivity step="Stanza 3" title="Fourth Stanza" description="Activate a preposition only where it is actually sung. Select 3 words." lyrics={rudeFourthStanza.lyrics} maximumSelections={3} /> },
+              { label: "Verse 1", content: <IconLyricsActivity step="Activity 1" title="Verse 1" description="Click or drag each emoji into the correct lyric gap while you listen." icons={rudeFirstStanza.icons} lyrics={rudeFirstStanza.lyrics} /> },
+              { label: "Chorus", content: <InlineWordOrderActivity step="Activity 2" title="Chorus" description="Rearrange the highlighted words or sentence parts within each lyric line." lines={rudeChorus.lines} /> },
+              { label: "Verse 2", content: <WordPresenceActivity step="Activity 3" title="Verse 2" description="Activate a preposition only where it is actually sung. Select 3 words." lyrics={rudeFourthStanza.lyrics} maximumSelections={3} /> },
             ]}
             checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
             afterSong={(

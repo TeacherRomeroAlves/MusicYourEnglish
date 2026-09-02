@@ -49,10 +49,10 @@ export default function goldenPage() {
               </>}
               listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before moving on to the next activity." embedUrl={golden.spotify.embedUrl} embedTitle={golden.spotify.title} />}
               listeningActivities={[
-                { label: "First Stanza", content: <IconLyricsActivity step="Stanza 1" title="First Stanza" description="Drag each icon into the correct space while you listen." icons={goldenFirstStanza.icons} lyrics={goldenFirstStanza.lyrics} /> },
-                { label: "Pre-Chorus", content: <ChoiceLyricsActivity step="Stanza 2" title="Pre-Chorus" description="Listen carefully and click the correct option in each line." lyrics={goldenChorus.lyrics} /> },
-                { label: "Chorus", content: <OrderLyricsActivity step="Stanza 3" title="Chorus" description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another." items={goldenOrder.items} /> },
-                { label: "Final Stanza", content: <TypingLyricsActivity step="Stanza 4" title="Final Stanza" description="Listen and type the missing words. Tip: every answer has 2 letters." lyrics={goldenFinalStanza.lyrics} /> },
+                { label: "Verse 1", content: <IconLyricsActivity step="Activity 1" title="Verse 1" description="Drag each icon into the correct space while you listen." icons={goldenFirstStanza.icons} lyrics={goldenFirstStanza.lyrics} /> },
+                { label: "Pre-Chorus", content: <ChoiceLyricsActivity step="Activity 2" title="Pre-Chorus" description="Listen carefully and click the correct option in each line." lyrics={goldenChorus.lyrics} /> },
+                { label: "Chorus", content: <OrderLyricsActivity step="Activity 3" title="Chorus" description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another." items={goldenOrder.items} /> },
+                { label: "Verse 2 And Pre-Chorus", content: <TypingLyricsActivity step="Activity 4" title="Verse 2 And Pre-Chorus" description="Listen and type the missing words. Tip: every answer has 2 letters." lyrics={goldenFinalStanza.lyrics} /> },
               ]}
               checkAnswers={<CheckAllActivity title="Check All Answers" description="When students finish the whole song, click below to check every activity at once." />}
               afterSong={<>

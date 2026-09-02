@@ -77,11 +77,11 @@ export default function HappyPage() {
         )}
         listeningActivities={[
           {
-            label: "Initial Stanzas",
+            label: "Verse 1",
             content: (
               <LyricsWordActivity
-                step="Stanza 1"
-                title="Initial Stanzas"
+                step="Activity 1"
+                title="Verse 1"
                 description="Place the correct four-letter words in the gaps. Click a word to use the next gap, or drag it to a specific gap. Some words are extra."
                 words={happyOpening.words}
                 lyrics={happyOpening.lyrics}
@@ -92,7 +92,7 @@ export default function HappyPage() {
             label: "Chorus And Post-Chorus",
             content: (
               <OrderLyricsActivity
-                step="Stanza 2"
+                step="Activity 2"
                 title="Chorus And Post-Chorus"
                 description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another. The final three post-chorus lines appear after the second chorus."
                 items={happyChorus.items}
@@ -100,11 +100,11 @@ export default function HappyPage() {
             ),
           },
           {
-            label: "Third Stanza",
+            label: "Verse 2A",
             content: (
               <LyricsWordActivity
-                step="Stanza 3"
-                title="Third Stanza"
+                step="Activity 3"
+                title="Verse 2A"
                 description="Select the relative clause that completes each noun. Click a clause to use the next gap, or drag it to a specific gap."
                 words={happyRelativeClauses.words}
                 lyrics={happyRelativeClauses.lyrics}
@@ -112,11 +112,11 @@ export default function HappyPage() {
             ),
           },
           {
-            label: "Fourth Stanza",
+            label: "Verse 2B",
             content: (
               <WordPresenceActivity
-                step="Stanza 4"
-                title="Fourth Stanza"
+                step="Activity 4"
+                title="Verse 2B"
                 description="Activate the two 'that' buttons only where you actually hear the word in the song."
                 lyrics={happyWordPresence.lyrics}
                 maximumSelections={2}

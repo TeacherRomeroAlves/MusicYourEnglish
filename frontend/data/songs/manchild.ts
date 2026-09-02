@@ -40,6 +40,20 @@ export const manchildChorus = {
   ],
 };
 
+export const manchildSecondStanza = {
+  icons: [
+    { id: "dumb", symbol: "🤪", ariaLabel: "dumb" },
+    { id: "earth", symbol: "🌍", ariaLabel: "Earth" },
+    { id: "mom", symbol: "👩", ariaLabel: "mom" },
+  ],
+  lyrics: [
+    { parts: [{ before: "Why so sexy if so", match: "dumb", after: "?" }] },
+    { parts: [{ before: "And how survive the", match: "earth", after: "so long?" }] },
+    { parts: [{ before: "If I'm not there, it won't get done", match: "", after: "" }] },
+    { parts: [{ before: "I choose to blame your", match: "mom", after: "" }] },
+  ],
+};
+
 export const manchildMissingWords = {
   lyrics: [
     { parts: [

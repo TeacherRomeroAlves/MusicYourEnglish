@@ -30,9 +30,9 @@ export default function ColdPage() {
         )}
         listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before starting the lyrics activities." embedUrl={cold.youtube.embedUrl} embedTitle={cold.youtube.title} />}
         listeningActivities={[
-          { label: "Chorus", content: <TypingLyricsActivity step="Stanza 1" title="Chorus" description="Type the missing words using only the letters in the chart." allowedLetters={coldChorus.allowedLetters} lyrics={coldChorus.lyrics} /> },
-          { label: "Second Stanza", content: <LyricsWordActivity step="Stanza 2" title="Second Stanza" description="Click a word to use the next gap, or drag it to a specific gap while you listen." words={coldSecondStanza.words} lyrics={coldSecondStanza.lyrics} /> },
-          { label: "Fourth Stanza", content: <LyricsWordActivity step="Stanza 3" title="Fourth Stanza" description="Place each complete clause in the correct lyric gap. Click a clause to use the next gap, or drag it to a specific gap." words={coldFourthStanza.words} lyrics={coldFourthStanza.lyrics} /> },
+          { label: "Chorus", content: <TypingLyricsActivity step="Activity 1" title="Chorus" description="Type the missing words using only the letters in the chart." allowedLetters={coldChorus.allowedLetters} lyrics={coldChorus.lyrics} /> },
+          { label: "Verse 1", content: <LyricsWordActivity step="Activity 2" title="Verse 1" description="Click a word to use the next gap, or drag it to a specific gap while you listen." words={coldSecondStanza.words} lyrics={coldSecondStanza.lyrics} /> },
+          { label: "Verse 2", content: <LyricsWordActivity step="Activity 3" title="Verse 2" description="Place each complete clause in the correct lyric gap. Click a clause to use the next gap, or drag it to a specific gap." words={coldFourthStanza.words} lyrics={coldFourthStanza.lyrics} /> },
         ]}
         checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
         afterSong={(

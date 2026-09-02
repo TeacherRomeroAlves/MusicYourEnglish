@@ -73,11 +73,11 @@ export default function WonderwallPage() {
         )}
         listeningActivities={[
           {
-            label: "First Stanza",
+            label: "Verse 1",
             content: (
               <LyricsWordActivity
-                step="Stanza 1"
-                title="First Stanza"
+                step="Activity 1"
+                title="Verse 1"
                 description="Listen and choose the correct word. Click a word to place it in the next space, or drag it into a space."
                 words={wonderwallFirstStanza.words}
                 lyrics={wonderwallFirstStanza.lyrics}
@@ -85,11 +85,11 @@ export default function WonderwallPage() {
             ),
           },
           {
-            label: "Second Stanza",
+            label: "Verse 2",
             content: (
               <IconLyricsActivity
-                step="Stanza 2"
-                title="Second Stanza"
+                step="Activity 2"
+                title="Verse 2"
                 description="Choose the correct emoji to complete the lyrics."
                 icons={wonderwallSecondStanza.icons}
                 lyrics={wonderwallSecondStanza.lyrics}
@@ -97,11 +97,11 @@ export default function WonderwallPage() {
             ),
           },
           {
-            label: "Pre-Chorus / Chorus",
+            label: "Pre-Chorus And Chorus",
             content: (
               <OrderLyricsActivity
-                step="Stanza 3"
-                title="Pre-Chorus / Chorus"
+                step="Activity 3"
+                title="Pre-Chorus And Chorus"
                 description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another. The notes in parentheses show the changes you hear the second time."
                 items={wonderwallPreChorus.items}
               />

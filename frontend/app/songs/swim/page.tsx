@@ -36,10 +36,10 @@ export default function SwimPage() {
             )}
             listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before starting the lyrics activities." embedUrl={swim.youtube.embedUrl} embedTitle={swim.youtube.title} />}
             listeningActivities={[
-              { label: "Chorus", content: <InlineWordOrderActivity step="Stanza 1" title="Chorus" description="Rearrange the highlighted words or sentence parts within each lyric line." lines={swimChorus.lines} /> },
-              { label: "Initial Stanzas", content: <IconLyricsActivity step="Stanza 2" title="Initial Stanzas" description="Click or drag each emoji into the correct lyric gap while you listen." icons={swimInitialStanzas.icons} lyrics={swimInitialStanzas.lyrics} /> },
-              { label: "Middle Stanza", content: <LyricsWordActivity step="Stanza 3" title="Middle Stanza" description="Click or drag each adjective into the correct lyric gap. There are no extra words." words={swimMiddleStanza.words} lyrics={swimMiddleStanza.lyrics} /> },
-              { label: "Final Stanzas", content: <MissingWordsActivity step="Stanza 4" title="Final Stanzas" description="Select the 3 words shown inside the lyrics that are NOT actually sung." lyrics={swimFinalStanzas.lyrics} maximumSelections={3} /> },
+              { label: "Chorus", content: <InlineWordOrderActivity step="Activity 1" title="Chorus" description="Rearrange the highlighted words or sentence parts within each lyric line." lines={swimChorus.lines} /> },
+              { label: "Verse 1 And Pre-Chorus", content: <IconLyricsActivity step="Activity 2" title="Verse 1 And Pre-Chorus" description="Click or drag each emoji into the correct lyric gap while you listen." icons={swimInitialStanzas.icons} lyrics={swimInitialStanzas.lyrics} /> },
+              { label: "Verse 2 And Pre-Chorus", content: <LyricsWordActivity step="Activity 3" title="Verse 2 And Pre-Chorus" description="Click or drag each adjective into the correct lyric gap. There are no extra words." words={swimMiddleStanza.words} lyrics={swimMiddleStanza.lyrics} /> },
+              { label: "Bridge", content: <MissingWordsActivity step="Activity 4" title="Bridge" description="Select the 3 words shown inside the lyrics that are NOT actually sung." lyrics={swimFinalStanzas.lyrics} maximumSelections={3} /> },
             ]}
             checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
             afterSong={(

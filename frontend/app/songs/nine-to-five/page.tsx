@@ -37,10 +37,10 @@ export default function NineToFivePage() {
               )}
               listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before starting the lyrics activities." embedUrl={nineToFive.youtube.embedUrl} embedTitle={nineToFive.youtube.title} />}
               listeningActivities={[
-                { label: "First Stanza", content: <ChoiceLyricsActivity step="Stanza 1" title="First Stanza" description="Select the preposition you hear in the song." lyrics={nineToFiveFirstStanza.lyrics} /> },
-                { label: "First Chorus", content: <PartialWordLyricsActivity step="Stanza 2" title="First Chorus" description="Type the missing letters to complete each word while you listen." lyrics={nineToFiveFirstChorus.lyrics} /> },
-                { label: "Third Stanza", content: <IconLyricsActivity step="Stanza 3" title="Third Stanza" description="Click or drag each emoji into the correct lyric gap while you listen." icons={nineToFiveThirdStanza.icons} lyrics={nineToFiveThirdStanza.lyrics} /> },
-                { label: "Second Chorus", content: <PartialWordLyricsActivity step="Stanza 4" title="Second Chorus" description="Type the missing letters to complete each word while you listen." lyrics={nineToFiveSecondChorus.lyrics} /> },
+                { label: "Verse 1", content: <ChoiceLyricsActivity step="Activity 1" title="Verse 1" description="Select the preposition you hear in the song." lyrics={nineToFiveFirstStanza.lyrics} /> },
+                { label: "First Chorus", content: <PartialWordLyricsActivity step="Activity 2" title="First Chorus" description="Type the missing letters to complete each word while you listen." lyrics={nineToFiveFirstChorus.lyrics} /> },
+                { label: "Verse 2", content: <IconLyricsActivity step="Activity 3" title="Verse 2" description="Click or drag each emoji into the correct lyric gap while you listen." icons={nineToFiveThirdStanza.icons} lyrics={nineToFiveThirdStanza.lyrics} /> },
+                { label: "Second Chorus", content: <PartialWordLyricsActivity step="Activity 4" title="Second Chorus" description="Type the missing letters to complete each word while you listen." lyrics={nineToFiveSecondChorus.lyrics} /> },
               ]}
               checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
               afterSong={(
