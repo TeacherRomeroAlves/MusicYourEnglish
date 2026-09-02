@@ -37,6 +37,11 @@ const sectionDetails = {
   },
 } as const;
 
+function isChorusActivity(label: string) {
+  const normalizedLabel = label.toLowerCase();
+  return normalizedLabel.includes("chorus") && !normalizedLabel.endsWith("pre-chorus");
+}
+
 export default function LessonSections({
   beforeSong,
   listeningIntro,
@@ -47,6 +52,8 @@ export default function LessonSections({
   const [openSection, setOpenSection] = useState<SectionId | null>(null);
   const [activityIndex, setActivityIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState<SlideDirection | null>(null);
+  const chorusIndex = listeningActivities.findIndex((activity) => isChorusActivity(activity.label));
+  const isViewingChorus = isChorusActivity(listeningActivities[activityIndex]?.label ?? "");
 
   const toggleSection = (section: SectionId) => {
     setOpenSection((current) => current === section ? null : section);
@@ -57,6 +64,12 @@ export default function LessonSections({
     setActivityIndex((current) => (
       current + direction + listeningActivities.length
     ) % listeningActivities.length);
+  };
+
+  const goToChorus = () => {
+    if (chorusIndex < 0 || chorusIndex === activityIndex) return;
+    setSlideDirection(chorusIndex > activityIndex ? "forward" : "backward");
+    setActivityIndex(chorusIndex);
   };
 
   const renderMobileNavigation = (position: "top" | "bottom") => (
@@ -113,13 +126,21 @@ export default function LessonSections({
         <div id="lesson-group-listening" className="lesson-group__panel" hidden={openSection !== "listening"}>
           <div className="lesson-group__scroll">
             {listeningIntro}
-            <div className="activity-carousel" aria-label="Song stanza activities">
+            <div className="activity-carousel" aria-label="Song lyrics activities">
               <div className="activity-carousel__toolbar">
                 <div>
                   <span>Lyrics practice</span>
                   <strong>{listeningActivities[activityIndex]?.label}</strong>
                 </div>
-                <span className="activity-carousel__count" aria-live="polite">{activityIndex + 1} / {listeningActivities.length}</span>
+                <div className="activity-carousel__toolbar-actions">
+                  {chorusIndex >= 0 && !isViewingChorus && (
+                    <button className="activity-carousel__chorus-jump" type="button" onClick={goToChorus}>
+                      <span aria-hidden="true">↻</span>
+                      Go to Chorus
+                    </button>
+                  )}
+                  <span className="activity-carousel__count" aria-live="polite">{activityIndex + 1} / {listeningActivities.length}</span>
+                </div>
               </div>
               {renderMobileNavigation("top")}
               <div className="activity-carousel__stage">
@@ -130,7 +151,7 @@ export default function LessonSections({
                 <div className="activity-carousel__slides" {...swipeNavigation}>
                   {listeningActivities.map((activity, index) => (
                     <div
-                      className={`activity-carousel__slide${activity.label.toLowerCase().includes("chorus") ? " activity-carousel__slide--chorus" : ""}${index === activityIndex && slideDirection ? ` is-entering-${slideDirection}` : ""}`}
+                      className={`activity-carousel__slide${isChorusActivity(activity.label) ? " activity-carousel__slide--chorus" : ""}${index === activityIndex && slideDirection ? ` is-entering-${slideDirection}` : ""}`}
                       key={activity.label}
                       hidden={index !== activityIndex}
                       aria-hidden={index !== activityIndex}
