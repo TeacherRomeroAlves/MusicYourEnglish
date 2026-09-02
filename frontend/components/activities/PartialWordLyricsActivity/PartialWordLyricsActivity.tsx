@@ -1,9 +1,11 @@
 "use client";
 
-import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { useMistakeReview, useRegisterActivityResult } from "@/hooks/useActivityResults";
 import { usePartialWordLyrics } from "@/hooks/usePartialWordLyrics";
 import type { PartialWordLyricsActivityProps } from "./types";
 import { getActivityInstruction } from "@/lib/activityInstructions";
+import { buildActivityField } from "@/lib/activityResultsStore";
+import ReviewMarker from "@/components/activities/ReviewMarker";
 
 export default function PartialWordLyricsActivity({ step, title, description, lyrics }: PartialWordLyricsActivityProps) {
   const { getValue, handleChange, handleReset } = usePartialWordLyrics();
@@ -11,10 +13,13 @@ export default function PartialWordLyricsActivity({ step, title, description, ly
     .map((line, index) => ({ ...line, valueKey: String(index) }))
     .filter((line) => line.answer);
 
-  useRegisterActivityResult(`${step}:${title}`, {
+  const activityId = `${step}:${title}`;
+  const { getStatus } = useMistakeReview(activityId);
+  useRegisterActivityResult(activityId, {
     correct: answerLines.filter((line) => getValue(line.valueKey, line.syncKey).toLowerCase() === line.answer?.toLowerCase()).length,
     answered: answerLines.filter((line) => Boolean(getValue(line.valueKey, line.syncKey).trim())).length,
     total: answerLines.length,
+    fields: Object.fromEntries(answerLines.map((line) => [line.valueKey, buildActivityField(getValue(line.valueKey, line.syncKey), line.answer ?? "")])),
   });
 
   return (
@@ -33,6 +38,7 @@ export default function PartialWordLyricsActivity({ step, title, description, ly
             <p className="lyric-line" key={index}>
               {line.before}{" "}
               {line.answer && (
+                <ReviewMarker status={getStatus(String(index), value)}>
                 <span className="partial-word">
                   <span>{line.prefix}</span>
                   <input
@@ -46,6 +52,7 @@ export default function PartialWordLyricsActivity({ step, title, description, ly
                   />
                   <span>{line.suffix}</span>
                 </span>
+                </ReviewMarker>
               )}{" "}
               {line.after}
             </p>

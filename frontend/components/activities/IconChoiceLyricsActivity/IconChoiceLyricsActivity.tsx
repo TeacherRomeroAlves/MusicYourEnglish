@@ -3,11 +3,13 @@
 import ChoiceSlot from "@/components/activities/ChoiceLyricsActivity/ChoiceSlot";
 import IconCard from "@/components/activities/IconLyricsActivity/IconCard";
 import InlineDropZone from "@/components/activities/IconLyricsActivity/InlineDropZone";
-import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { useMistakeReview, useRegisterActivityResult } from "@/hooks/useActivityResults";
 import { useChoiceLyrics } from "@/hooks/useChoiceLyrics";
 import { useIconLyrics } from "@/hooks/useIconLyrics";
 import { getActivityInstruction } from "@/lib/activityInstructions";
 import type { IconChoiceLyricsActivityProps } from "./types";
+import { buildActivityField } from "@/lib/activityResultsStore";
+import ReviewMarker from "@/components/activities/ReviewMarker";
 
 export default function IconChoiceLyricsActivity({
   step,
@@ -30,7 +32,9 @@ export default function IconChoiceLyricsActivity({
       : []),
   );
 
-  useRegisterActivityResult(`${step}:${title}`, {
+  const activityId = `${step}:${title}`;
+  const { getStatus } = useMistakeReview(activityId);
+  useRegisterActivityResult(activityId, {
     correct:
       iconAnswers.filter(({ slotId, answer }) => iconActivity.placements[slotId] === answer).length +
       choiceAnswers.filter(({ slotId, answer, syncKey }) => choices.getSelection(slotId, syncKey) === answer).length,
@@ -38,6 +42,10 @@ export default function IconChoiceLyricsActivity({
       iconAnswers.filter(({ slotId }) => Boolean(iconActivity.placements[slotId])).length +
       choiceAnswers.filter(({ slotId, syncKey }) => Boolean(choices.getSelection(slotId, syncKey))).length,
     total: iconAnswers.length + choiceAnswers.length,
+    fields: Object.fromEntries([
+      ...iconAnswers.map(({ slotId, answer }) => [slotId, buildActivityField(iconActivity.placements[slotId] ?? "", answer)] as const),
+      ...choiceAnswers.map(({ slotId, answer, syncKey }) => [`choice-${slotId}`, buildActivityField(choices.getSelection(slotId, syncKey) ?? "", answer)] as const),
+    ]),
   });
 
   return (
@@ -78,6 +86,7 @@ export default function IconChoiceLyricsActivity({
               return <span key={slotId}>
                 {part.before}
                 {part.match && (
+                  <ReviewMarker status={getStatus(slotId, iconActivity.placements[slotId] ?? "")}>
                   <InlineDropZone
                     slotId={slotId}
                     match={part.match}
@@ -91,6 +100,7 @@ export default function IconChoiceLyricsActivity({
                     onDrop={() => iconActivity.handleDropOnSlot(slotId)}
                     onSelectIcon={(iconId) => iconActivity.handleReturnToBank(slotId, iconId)}
                   />
+                  </ReviewMarker>
                 )}
                 {part.after}
               </span>;
@@ -107,11 +117,13 @@ export default function IconChoiceLyricsActivity({
               return <span key={slotId}>
                 {item.before}{" "}
                 {item.answer && (
+                  <ReviewMarker status={getStatus(`choice-${slotId}`, choices.getSelection(slotId, item.syncKey) ?? "")}>
                   <ChoiceSlot
                     options={choices.optionsBySlot[slotId] ?? item.options}
                     selectedOption={choices.getSelection(slotId, item.syncKey)}
                     onSelect={(option) => choices.handleSelect(slotId, option, item.syncKey)}
                   />
+                  </ReviewMarker>
                 )}{" "}
                 {item.after}{" "}
               </span>;

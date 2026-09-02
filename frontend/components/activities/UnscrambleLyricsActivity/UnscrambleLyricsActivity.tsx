@@ -2,8 +2,10 @@
 
 import type { UnscrambleLyricsActivityProps } from "./types";
 import { useUnscrambleLyrics } from "@/hooks/useUnscrambleLyrics";
-import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { useMistakeReview, useRegisterActivityResult } from "@/hooks/useActivityResults";
 import { getActivityInstruction } from "@/lib/activityInstructions";
+import { buildActivityField } from "@/lib/activityResultsStore";
+import ReviewMarker from "@/components/activities/ReviewMarker";
 
 export default function UnscrambleLyricsActivity({
   step,
@@ -14,12 +16,17 @@ export default function UnscrambleLyricsActivity({
   const { values, handleChange, handleReset } = useUnscrambleLyrics();
   const answerLines = lyrics.filter((line) => line.answer);
 
-  useRegisterActivityResult(`${step}:${title}`, {
+  const activityId = `${step}:${title}`;
+  const { getStatus } = useMistakeReview(activityId);
+  useRegisterActivityResult(activityId, {
     correct: lyrics.filter((line, index) => line.answer && (
       (values[line.syncKey ?? String(index)] ?? "").trim().toLowerCase() === line.answer.toLowerCase()
     )).length,
     answered: lyrics.filter((line, index) => line.answer && Boolean((values[line.syncKey ?? String(index)] ?? "").trim())).length,
     total: answerLines.length,
+    fields: Object.fromEntries(lyrics.flatMap((line, index) => line.answer
+      ? [[String(index), buildActivityField(values[line.syncKey ?? String(index)] ?? "", line.answer)]]
+      : [])),
   });
 
   return (
@@ -34,7 +41,7 @@ export default function UnscrambleLyricsActivity({
         {lyrics.map((line, index) => (
           <p className="lyric-line" key={`${line.answer}-${index}`}>
             {line.before}{" "}
-            {line.answer && <input
+            {line.answer && <ReviewMarker status={getStatus(String(index), values[line.syncKey ?? String(index)] ?? "")}><input
               className="lyric-input unscramble-input"
               type="text"
               maxLength={line.answer.length}
@@ -45,7 +52,7 @@ export default function UnscrambleLyricsActivity({
               onChange={(event) => handleChange(line.syncKey ?? String(index), event.target.value, line.answer.length)}
               autoComplete="off"
               spellCheck={false}
-            />}{" "}
+            /></ReviewMarker>}{" "}
             {line.after}
           </p>
         ))}

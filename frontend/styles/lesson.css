@@ -93,6 +93,11 @@
 .activity-carousel__slide > .card { margin-bottom: 0; padding-top: 26px; }
 .activity-carousel__slide .section-heading .section-kicker, .activity-carousel__slide .section-heading h2 { display: none; }
 .activity-carousel__slide .section-heading .section-note { margin-top: 0; color: #574b56; }
+.answer-review { display: inline-flex; position: relative; flex-wrap: wrap; align-items: center; gap: 4px; margin-inline: 3px 6px; vertical-align: middle; border-radius: 10px; }
+.answer-review--block { width: 100%; display: flex; margin: 0 0 8px; }
+.answer-review.is-incorrect, .answer-review.is-unanswered { padding: 3px; outline: 2px solid #9f1239; outline-offset: 2px; background: #fff1f3; }
+.answer-review.is-unanswered { outline-style: dashed; background: #fff8e8; }
+.sr-only { width: 1px; height: 1px; padding: 0; position: absolute; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .lesson-group__check { margin-top: 24px; }
 .lesson-group:last-child .lesson-group__scroll > .card:first-child .questions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 960px) {

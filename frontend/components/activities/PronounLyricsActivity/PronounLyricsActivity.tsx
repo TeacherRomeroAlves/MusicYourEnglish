@@ -5,12 +5,22 @@ import LyricInput from "./LyricInput";
 import { Fragment } from "react";
 import type { PronounLyricsActivityProps } from "./types";
 import { buildPronounInputId, usePronounLyrics } from "@/hooks/usePronounLyrics";
-import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { useMistakeReview, useRegisterActivityResult } from "@/hooks/useActivityResults";
 import { getActivityInstruction } from "@/lib/activityInstructions";
+import { buildActivityField } from "@/lib/activityResultsStore";
+import ReviewMarker from "@/components/activities/ReviewMarker";
 
 export default function PronounLyricsActivity({ step, title, description, pronouns, lyrics, }: PronounLyricsActivityProps) {
   const { getValue, results, handleChange, handleReset } = usePronounLyrics(lyrics);
-  useRegisterActivityResult(`${step}:${title}`, results);
+  const activityId = `${step}:${title}`;
+  const { getStatus } = useMistakeReview(activityId);
+  const answerParts = lyrics.flatMap((line, lineIndex) => line.parts.flatMap((part, partIndex) => part.answer
+    ? [{ fieldId: buildPronounInputId(lineIndex, partIndex), answer: part.answer, syncKey: part.syncKey }]
+    : []));
+  useRegisterActivityResult(activityId, {
+    ...results,
+    fields: Object.fromEntries(answerParts.map(({ fieldId, answer, syncKey }) => [fieldId, buildActivityField(getValue(fieldId, syncKey), answer)])),
+  });
   return (
     <section className="card">
       <div className="section-heading">
@@ -37,6 +47,7 @@ export default function PronounLyricsActivity({ step, title, description, pronou
                   {part.before}
 
                   {part.answer && (
+                    <ReviewMarker status={getStatus(inputId, getValue(inputId, part.syncKey))}>
                     <LyricInput
                       answer={part.answer}
                       maxLength={part.maxLength}
@@ -49,6 +60,7 @@ export default function PronounLyricsActivity({ step, title, description, pronou
                         part.syncKey,
                       )}
                     />
+                    </ReviewMarker>
                   )}
 
                   {part.after}

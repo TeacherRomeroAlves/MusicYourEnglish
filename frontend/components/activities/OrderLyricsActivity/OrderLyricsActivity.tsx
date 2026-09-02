@@ -3,15 +3,20 @@
 import OrderCard from "./OrderCard";
 import type { OrderLyricsActivityProps } from "./types";
 import { useOrderLyrics } from "@/hooks/useOrderLyrics";
-import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { useMistakeReview, useRegisterActivityResult } from "@/hooks/useActivityResults";
 import { getActivityInstruction } from "@/lib/activityInstructions";
+import { buildActivityField } from "@/lib/activityResultsStore";
+import ReviewMarker from "@/components/activities/ReviewMarker";
 
 export default function OrderLyricsActivity({ step, title, description, items, }: OrderLyricsActivityProps) {
   const { orderedItems, selectedId, draggedId, handleSelect, handleDragStart, handleDragEnd, handleDrop, handleReset } = useOrderLyrics(items);
-  useRegisterActivityResult(`${step}:${title}`, {
+  const activityId = `${step}:${title}`;
+  const { getStatus } = useMistakeReview(activityId);
+  useRegisterActivityResult(activityId, {
     correct: orderedItems.filter((item, index) => item.text === items[index]?.text).length,
     answered: orderedItems.length,
     total: items.length,
+    fields: Object.fromEntries(orderedItems.map((item, index) => [item.id, buildActivityField(String(index), String(items.findIndex((expected) => expected.id === item.id)))])),
   });
   return (
     <section className="card">
@@ -29,8 +34,7 @@ export default function OrderLyricsActivity({ step, title, description, items, }
 
       <div className="order-rearrange-list" aria-label="Scrambled lyric lines">
         {orderedItems.map((item) => (
-          <OrderCard
-            key={item.id}
+          <ReviewMarker key={item.id} block status={getStatus(item.id, String(orderedItems.findIndex((ordered) => ordered.id === item.id)))}><OrderCard
             item={item}
             selected={selectedId === item.id}
             dragging={draggedId === item.id}
@@ -38,7 +42,7 @@ export default function OrderLyricsActivity({ step, title, description, items, }
             onDragStart={() => handleDragStart(item.id)}
             onDragEnd={handleDragEnd}
             onDrop={() => handleDrop(item.id)}
-          />
+          /></ReviewMarker>
         ))}
       </div>
 

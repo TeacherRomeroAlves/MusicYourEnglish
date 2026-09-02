@@ -1,9 +1,11 @@
 "use client";
 
-import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { useMistakeReview, useRegisterActivityResult } from "@/hooks/useActivityResults";
 import { useInlineWordOrder } from "@/hooks/useInlineWordOrder";
 import type { InlineWordOrderActivityProps } from "./types";
 import { getActivityInstruction } from "@/lib/activityInstructions";
+import { buildActivityField } from "@/lib/activityResultsStore";
+import ReviewMarker from "@/components/activities/ReviewMarker";
 
 export default function InlineWordOrderActivity({
   step,
@@ -31,10 +33,17 @@ export default function InlineWordOrderActivity({
     };
   });
 
-  useRegisterActivityResult(`${step}:${title}`, {
+  const activityId = `${step}:${title}`;
+  const { getStatus } = useMistakeReview(activityId);
+  useRegisterActivityResult(activityId, {
     correct: results.filter((result) => result.correct).length,
     answered: results.filter((result) => result.answered).length,
     total: interactiveLines.length,
+    fields: Object.fromEntries(interactiveLines.map((line) => {
+      const state = getState(line);
+      const value = state.words.join(" ");
+      return [line.id, state.touched ? buildActivityField(value, line.answer) : { status: "unanswered" as const, value }];
+    })),
   });
 
   return (
@@ -52,7 +61,7 @@ export default function InlineWordOrderActivity({
           return (
             <p className="lyric-line" key={line.id}>
               {line.before}{" "}
-              {line.answer && <span className="inline-order-sequence">
+              {line.answer && <ReviewMarker status={getStatus(line.id, state.words.join(" "))}><span className="inline-order-sequence">
                 {state.words.map((word, index) => (
                   <button
                     className={`inline-order-word${selected[key] === index ? " is-selected" : ""}${dragged?.key === key && dragged.index === index ? " is-dragging" : ""}`}
@@ -72,7 +81,7 @@ export default function InlineWordOrderActivity({
                     {word}
                   </button>
                 ))}
-              </span>}{" "}
+              </span></ReviewMarker>}{" "}
               {line.after}
             </p>
           );

@@ -10,7 +10,7 @@ interface CheckAllActivityProps {
 }
 
 export default function CheckAllActivity({ title, description, buttonText = "Check All Answers", }: CheckAllActivityProps) {
-    const { feedback, handleCheck } = useCheckAllAnswers();
+    const { feedback, needsReview, handleCheck, handleReview } = useCheckAllAnswers();
     return (
         <section className="card">
         <div className="section-heading">
@@ -33,6 +33,11 @@ export default function CheckAllActivity({ title, description, buttonText = "Che
             >
             {buttonText}
             </button>
+            {needsReview && (
+              <button className="action-btn secondary" type="button" onClick={handleReview}>
+                Review Mistakes
+              </button>
+            )}
         </div>
 
         <p

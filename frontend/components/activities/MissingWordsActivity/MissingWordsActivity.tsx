@@ -1,9 +1,11 @@
 "use client";
 
-import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { useMistakeReview, useRegisterActivityResult } from "@/hooks/useActivityResults";
 import { useMissingWords } from "@/hooks/useMissingWords";
 import type { MissingWordsActivityProps } from "./types";
 import { getActivityInstruction } from "@/lib/activityInstructions";
+import { buildActivityField } from "@/lib/activityResultsStore";
+import ReviewMarker from "@/components/activities/ReviewMarker";
 
 export default function MissingWordsActivity({
   step,
@@ -16,10 +18,16 @@ export default function MissingWordsActivity({
   const options = lyrics.flatMap((line) => line.parts.map((part) => part.option)).filter((option) => option.word);
   const correctSelections = options.filter((option) => option.isMissing && selectedWords.includes(option.word)).length;
 
-  useRegisterActivityResult(`${step}:${title}`, {
+  const activityId = `${step}:${title}`;
+  const { getStatus } = useMistakeReview(activityId);
+  useRegisterActivityResult(activityId, {
     correct: correctSelections,
     answered: selectedWords.length,
     total: maximumSelections,
+    fields: Object.fromEntries([
+      ...options.filter((option) => selectedWords.includes(option.word)).map((option) => [option.word, buildActivityField(option.word, option.isMissing ? option.word : "__not-selected__")] as const),
+      ...(selectedWords.length < maximumSelections ? [["__selection__", { status: "unanswered" as const, value: String(selectedWords.length) }] as const] : []),
+    ]),
   });
 
   return (
@@ -38,14 +46,14 @@ export default function MissingWordsActivity({
               return (
                 <span key={`${part.option.word}-${partIndex}`}>
                   {part.before}{" "}
-                  {part.option.word && <button
+                  {part.option.word && <ReviewMarker status={getStatus(part.option.word, isSelected ? part.option.word : "")}><button
                     className={`missing-word-option${isSelected ? " is-selected" : ""}`}
                     type="button"
                     aria-pressed={isSelected}
                     onClick={() => handleToggle(part.option.word)}
                   >
                     {part.option.word}
-                  </button>}{" "}
+                  </button></ReviewMarker>}{" "}
                   {part.after}{" "}
                 </span>
               );
@@ -53,9 +61,9 @@ export default function MissingWordsActivity({
           </p>
         ))}
       </div>
-      <p className="selection-count" aria-live="polite">
+      <ReviewMarker block status={getStatus("__selection__", String(selectedWords.length))}><p className="selection-count" aria-live="polite">
         Selected: {selectedWords.length} of {maximumSelections}
-      </p>
+      </p></ReviewMarker>
 
       <div className="actions">
         <button className="action-btn secondary" type="button" onClick={handleReset}>Reset Section</button>

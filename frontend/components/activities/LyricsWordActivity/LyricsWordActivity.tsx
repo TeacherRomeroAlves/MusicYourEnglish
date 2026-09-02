@@ -1,12 +1,14 @@
 "use client";
 
 import { useLyricsWord } from "@/hooks/useLyricsWord";
-import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { useMistakeReview, useRegisterActivityResult } from "@/hooks/useActivityResults";
 import LyricWordCard from "./LyricWordCard";
 import WordDropZone from "./WordDropZone";
 import { Fragment } from "react/jsx-runtime";
 import type { LyricsWordActivityProps } from "./types";
 import { getActivityInstruction } from "@/lib/activityInstructions";
+import { buildActivityField } from "@/lib/activityResultsStore";
+import ReviewMarker from "@/components/activities/ReviewMarker";
 
 export default function LyricsWordActivity({ step, title, description, words, lyrics, }: LyricsWordActivityProps) {
   const {
@@ -31,10 +33,13 @@ export default function LyricsWordActivity({ step, title, description, words, ly
       part.answer ? [{ slotId: buildSlotId(lineIndex, partIndex), answer: part.answer }] : [],
     ),
   );
-  useRegisterActivityResult(`${step}:${title}`, {
+  const activityId = `${step}:${title}`;
+  const { getStatus } = useMistakeReview(activityId);
+  useRegisterActivityResult(activityId, {
     correct: expectedSlots.filter(({ slotId, answer }) => getPlacedItem(slotId)?.word === answer).length,
     answered: expectedSlots.filter(({ slotId }) => Boolean(placements[slotId])).length,
     total: expectedSlots.length,
+    fields: Object.fromEntries(expectedSlots.map(({ slotId, answer }) => [slotId, buildActivityField(getPlacedItem(slotId)?.word ?? "", answer)])),
   });
 
   return (
@@ -85,6 +90,7 @@ export default function LyricsWordActivity({ step, title, description, words, ly
                   {part.before}
 
                   {part.answer && (
+                    <ReviewMarker status={getStatus(buildSlotId(index, i), getPlacedItem(buildSlotId(index, i))?.word ?? "")}>
                     <WordDropZone
                       slotId={buildSlotId(index, i)}
                       match={part.answer}
@@ -99,6 +105,7 @@ export default function LyricsWordActivity({ step, title, description, words, ly
                       onDrop={() => handleDropOnSlot(buildSlotId(index, i))}
                       onSelectWord={handleReturnToBank}
                     />
+                    </ReviewMarker>
                   )}
 
                   {part.after}

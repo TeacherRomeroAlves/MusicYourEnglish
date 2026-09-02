@@ -3,18 +3,23 @@
 import LyricInput from "./LyricInput";
 import type { TypingLyricsActivityProps } from "./types";
 import { useTypingLyrics } from "@/hooks/useTypingLyrics";
-import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { useMistakeReview, useRegisterActivityResult } from "@/hooks/useActivityResults";
 import { getActivityInstruction } from "@/lib/activityInstructions";
+import { buildActivityField } from "@/lib/activityResultsStore";
+import ReviewMarker from "@/components/activities/ReviewMarker";
 
 export default function TypingLyricsActivity({ step, title, description, lyrics, wordBank, wordBankLabel = "Words in their base form", allowedLetters, }: TypingLyricsActivityProps) {
   const { values, handleChange, handleReset } = useTypingLyrics();
   const answerLines = lyrics
-    .map((line, index) => ({ ...line, valueKey: line.syncKey ?? String(index) }))
+    .map((line, index) => ({ ...line, fieldId: String(index), valueKey: line.syncKey ?? String(index) }))
     .filter((line) => line.answer);
-  useRegisterActivityResult(`${step}:${title}`, {
+  const activityId = `${step}:${title}`;
+  const { getStatus } = useMistakeReview(activityId);
+  useRegisterActivityResult(activityId, {
     correct: answerLines.filter(({ answer, valueKey }) => (values[valueKey] ?? "").trim().toLowerCase() === answer.toLowerCase()).length,
     answered: answerLines.filter(({ valueKey }) => Boolean((values[valueKey] ?? "").trim())).length,
     total: answerLines.length,
+    fields: Object.fromEntries(answerLines.map(({ answer, fieldId, valueKey }) => [fieldId, buildActivityField(values[valueKey] ?? "", answer)])),
   });
   return (
     <section className="card">
@@ -64,11 +69,13 @@ export default function TypingLyricsActivity({ step, title, description, lyrics,
             {line.before}{" "}
             {line.answer && (
                 <>
+                  <ReviewMarker status={getStatus(String(index), values[line.syncKey ?? String(index)] ?? "")}>
                     <LyricInput
                       answer={line.answer}
                       value={values[line.syncKey ?? String(index)] ?? ""}
                       onChange={(value) => handleChange(line.syncKey ?? String(index), value, line.answer.length, allowedLetters)}
                     />{" "}
+                  </ReviewMarker>
                 </>
             )}
             {line.after}

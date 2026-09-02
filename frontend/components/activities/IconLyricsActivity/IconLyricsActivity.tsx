@@ -1,11 +1,13 @@
 "use client";
 
 import { useIconLyrics } from "@/hooks/useIconLyrics";
-import { useRegisterActivityResult } from "@/hooks/useActivityResults";
+import { useMistakeReview, useRegisterActivityResult } from "@/hooks/useActivityResults";
 import IconCard from "./IconCard";
 import InlineDropZone from "./InlineDropZone";
 import type { IconLyricsActivityProps } from "./types";
 import { getActivityInstruction } from "@/lib/activityInstructions";
+import { buildActivityField } from "@/lib/activityResultsStore";
+import ReviewMarker from "@/components/activities/ReviewMarker";
 
 export default function IconLyricsActivity({ step, title, description, icons, lyrics }: IconLyricsActivityProps) {
     const {
@@ -30,10 +32,13 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
       part.match ? [{ slotId: buildSlotId(lineIndex, partIndex), answer: part.match }] : [],
     ),
   );
-  useRegisterActivityResult(`${step}:${title}`, {
+  const activityId = `${step}:${title}`;
+  const { getStatus } = useMistakeReview(activityId);
+  useRegisterActivityResult(activityId, {
     correct: expectedSlots.filter(({ slotId, answer }) => placements[slotId] === answer).length,
     answered: expectedSlots.filter(({ slotId }) => Boolean(placements[slotId])).length,
     total: expectedSlots.length,
+    fields: Object.fromEntries(expectedSlots.map(({ slotId, answer }) => [slotId, buildActivityField(placements[slotId] ?? "", answer)])),
   });
 
     return (
@@ -81,6 +86,7 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
                         <span key={i}>
                         {part.before}
                         {part.match && (
+                          <ReviewMarker status={getStatus(buildSlotId(index, i), placements[buildSlotId(index, i)] ?? "")}>
                             <InlineDropZone
                               slotId={buildSlotId(index, i)}
                               match={part.match}
@@ -94,6 +100,7 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
                               onDrop={() => handleDropOnSlot(buildSlotId(index, i))}
                               onSelectIcon={(iconId) => handleReturnToBank(buildSlotId(index, i), iconId)}
                             />
+                          </ReviewMarker>
                         )}
                         {part.after}
                         </span>
