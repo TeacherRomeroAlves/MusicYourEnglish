@@ -6,9 +6,9 @@ import LibraryPreviewVisual from "@/components/LibraryPreviewVisual";
 
 const processSteps = [
   ["Choose a song", "Pick a lesson based on your level, interests, or favorite artist."],
-  ["Get ready", "Do the warm-up exercises and vocabulary activity."],
+  ["Get ready", "Answer the warm-up questions, explore key vocabulary, and discuss the new words before listening."],
   ["Listen actively", "Complete interactive activities while listening to the song."],
-  ["Use real English", "Learn vocabulary in context and practice speaking and writing."],
+  ["Use real English", "Discuss the song's meaning and message, share your opinion, and practice speaking and writing."],
   ["Track your progress", "Check your answers, view your score, and save your student report."],
 ];
 
@@ -99,7 +99,7 @@ export default function Home() {
         </div>
         <div className="process-grid">
           {processSteps.map(([title, text], index) => (
-            <article className="process-card" key={title}>
+            <article className="process-card" key={title} tabIndex={0}>
               <div className="process-icon" aria-hidden="true"><span>{index + 1}</span><i /></div>
               <h3>{title}</h3><p>{text}</p>
             </article>

@@ -151,8 +151,8 @@ export default function HillsOfStAnnPage() {
             />
             <HomeworkActivity
               step="Homework"
-              title="Writing And Student Report"
-              description="Write your answer, then save or share your one-page report."
+              title="Express Yourself"
+              description="Answer the prompt in writing or record yourself speaking."
               prompt="Describe your birthplace. Is it a special place to you? Why or why not?"
               songTitle="Hills of St. Ann"
             />

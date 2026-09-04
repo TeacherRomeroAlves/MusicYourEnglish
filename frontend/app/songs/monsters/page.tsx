@@ -58,7 +58,7 @@ export default function monsterPage() {
               checkAnswers={<CheckAllActivity title="Check All Answers" description="When students finish the whole song, click below to check every activity at once." />}
               afterSong={<>
                 <WarmUpQuestions step="Wrap-Up" title="Talk About The Song" description="Use these questions to finish the lesson with speaking practice." questions={["What feelings do you think the singer has in this song?", "Why do people sometimes go back to someone who hurts them?", "What can a person do when their thoughts feel too strong?", "Do you think this song is more about love, pain, or fear? Why?"]} />
-                <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write your homework answer, then save or share your report." prompt="Write about a time when your feelings were very strong. Explain what happened and how you felt." songTitle="Monsters" />
+                <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Write about a time when your feelings were very strong. Explain what happened and how you felt." songTitle="Monsters" />
               </>}
             />
         </main>

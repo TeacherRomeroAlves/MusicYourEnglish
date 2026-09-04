@@ -46,7 +46,7 @@ export default function WaitingForLovePage() {
           afterSong={(
             <>
               <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["Is the singer happy in the song? Why or why not?", "Are you waiting for love in your life?", "Does the singer still believe in love?", "Which day of the week feels best to you? Why?"]} />
-              <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="Is love important in your life? Why or why not?" songTitle="Waiting For Love" />
+              <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Is love important in your life? Why or why not?" songTitle="Waiting For Love" />
             </>
           )}
         />

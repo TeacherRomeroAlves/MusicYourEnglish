@@ -41,7 +41,7 @@ export default function BillionairePage() {
           afterSong={(
             <>
               <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["Does the singer only want money for himself?", "What would you buy if you were a billionaire?", "Who would you help if you had a lot of money?", "Can money make people happy? Why or why not?"]} />
-              <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="What would you do if you were a billionaire? Explain what you would buy and how you would help other people." songTitle="Billionaire" />
+              <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="What would you do if you were a billionaire? Explain what you would buy and how you would help other people." songTitle="Billionaire" />
             </>
           )}
         />

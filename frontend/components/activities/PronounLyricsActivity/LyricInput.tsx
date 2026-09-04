@@ -23,6 +23,7 @@ export default function LyricInput({
         data-answer={answer}
         data-sync-key={syncKey}
         aria-label={ariaLabel}
+        style={{ width: `calc(${Math.max(3, answer.length + 1)}ch + 1rem)` }}
         value={value}
         onChange={(event) => onChange(event.target.value)}
     />

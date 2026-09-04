@@ -40,7 +40,7 @@ export default function GossipPage() {
           afterSong={(
             <>
               <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["What does the song say about famous people?", "Can gossip hurt people? How?", "Do people sometimes pretend to be happy?", "Is being famous always good?"]} />
-              <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="Is gossip a problem? Explain how gossip can hurt people and what we can do to stop it." songTitle="GOSSIP" />
+              <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Is gossip a problem? Explain how gossip can hurt people and what we can do to stop it." songTitle="GOSSIP" />
             </>
           )}
         />

@@ -40,7 +40,7 @@ export default function StupidSongPage() {
         checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
         afterSong={<>
           <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["Are love songs stupid? Why or why not?", "How does love make the singer feel?", "Which image in the song describes love best?", "Have you ever wanted someone more than words could express?"]} />
-          <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="What is the best love song you have ever heard? Why is it special to you?" songTitle="stupid song" />
+          <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="What is the best love song you have ever heard? Why is it special to you?" songTitle="stupid song" />
         </>}
         />
       </InlineWordOrderProvider>

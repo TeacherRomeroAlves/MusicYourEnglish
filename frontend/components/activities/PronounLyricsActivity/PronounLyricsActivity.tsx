@@ -10,7 +10,7 @@ import { getActivityInstruction } from "@/lib/activityInstructions";
 import { buildActivityField } from "@/lib/activityResultsStore";
 import ReviewMarker from "@/components/activities/ReviewMarker";
 
-export default function PronounLyricsActivity({ step, title, description, pronouns, lyrics, }: PronounLyricsActivityProps) {
+export default function PronounLyricsActivity({ step, title, description, chartLabel, pronouns, lyrics, }: PronounLyricsActivityProps) {
   const { getValue, results, handleChange, handleReset } = usePronounLyrics(lyrics);
   const activityId = `${step}:${title}`;
   const { getStatus } = useMistakeReview(activityId);
@@ -35,7 +35,7 @@ export default function PronounLyricsActivity({ step, title, description, pronou
         )}
       </div>
 
-      <PronounChart pronouns={pronouns} />
+      <PronounChart pronouns={pronouns} label={chartLabel} />
 
       <div className="lyrics-card" aria-label={title}>
         {lyrics.map((line, index) => (

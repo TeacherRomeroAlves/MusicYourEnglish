@@ -54,7 +54,7 @@ export default function TheManPage() {
                   <a className="artist-quote__source" href="https://www.billboard.com/music/pop/taylor-swift-cover-story-outtakes-the-man-8546109/" target="_blank" rel="noreferrer">Source: Billboard</a>
                 </aside>
                 <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["What is the song's main message?", "Is sexism real in society today?", "Who is the Leo mentioned in the song?", "Why does she say, 'I would be the man'? Would that be true?", "Are successful women and men treated in the same way?", "Can a song help people notice sexism? How?"]} />
-                <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="Do you have an example of sexism in your life? Is it something normal in society nowadays?" songTitle="The Man" />
+                <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Do you have an example of sexism in your life? Is it something normal in society nowadays?" songTitle="The Man" />
               </>
             )}
           />

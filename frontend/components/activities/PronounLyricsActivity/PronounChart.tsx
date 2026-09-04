@@ -1,12 +1,13 @@
 interface PronounChartProps {
     pronouns: string[];
+    label?: string;
 }
   
-export default function PronounChart({ pronouns, }: PronounChartProps) {
+export default function PronounChart({ pronouns, label = "Subject pronouns" }: PronounChartProps) {
     return (
       <div className="prompt-box">
         <p className="prompt-label">
-          Subject pronouns
+          {label}
         </p>
   
         <div className="pronoun-chart">

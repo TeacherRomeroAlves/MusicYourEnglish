@@ -40,7 +40,7 @@ export default function NiceToMeetYouPage() {
           afterSong={(
             <>
               <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["Is the singer happy in the song? Why or why not?", "When do you use the expression 'nice to meet you'?", "Does the singer like to dance? Do you like it too?", "Do you enjoy your life?"]} />
-              <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="Is it easy for you to meet new people? Why or why not? Do you have a specific strategy for making new friends?" songTitle="Nice To Meet You" />
+              <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Is it easy for you to meet new people? Why or why not? Do you have a specific strategy for making new friends?" songTitle="Nice To Meet You" />
             </>
           )}
         />

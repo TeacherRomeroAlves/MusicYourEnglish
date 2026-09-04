@@ -40,7 +40,7 @@ export default function ImPrettyPage() {
           afterSong={(
             <>
               <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["Do you get sad sometimes? Do you put on a front or not?", "Do you think you are pretty?", "Is it easy to finish a relationship?", "What helps you feel better after heartbreak?"]} />
-              <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="Is it important to feel pretty? Why or why not?" songTitle="I'm Pretty" />
+              <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Is it important to feel pretty? Why or why not?" songTitle="I'm Pretty" />
             </>
           )}
         />

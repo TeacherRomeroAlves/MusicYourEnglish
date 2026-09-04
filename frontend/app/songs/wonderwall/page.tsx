@@ -130,8 +130,8 @@ export default function WonderwallPage() {
             />
             <HomeworkActivity
               step="Homework"
-              title="Writing And Student Report"
-              description="Write your answer, then save or share your one-page report."
+              title="Express Yourself"
+              description="Answer the prompt in writing or record yourself speaking."
               prompt="Write about a person who is very important to you. Explain who this person is and how they help you."
               songTitle="Wonderwall"
             />

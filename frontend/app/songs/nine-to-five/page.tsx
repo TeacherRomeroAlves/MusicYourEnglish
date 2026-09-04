@@ -46,7 +46,7 @@ export default function NineToFivePage() {
               afterSong={(
                 <>
                   <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["Is your boss out to get you sometimes?", "Is it easy to work from 9 to 5?", "Do you want a promotion at work?", "What can make a job better?"]} />
-                  <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="Do you like your job? Why or why not? Do you work a lot? Is your routine easy?" songTitle="9 to 5" />
+                  <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Do you like your job? Why or why not? Do you work a lot? Is your routine easy?" songTitle="9 to 5" />
                 </>
               )}
             />

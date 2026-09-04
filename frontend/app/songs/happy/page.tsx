@@ -146,8 +146,8 @@ export default function HappyPage() {
             />
             <HomeworkActivity
               step="Homework"
-              title="Writing And Student Report"
-              description="Write or record your answer, then save your work."
+              title="Express Yourself"
+              description="Answer the prompt in writing or record yourself speaking."
               prompt="Are you happy in life? Why or why not? What can you do to be even happier? Is it easy?"
               songTitle="Happy"
             />

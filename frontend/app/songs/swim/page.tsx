@@ -45,7 +45,7 @@ export default function SwimPage() {
             afterSong={(
               <>
                 <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["Does the singer want to escape from a difficult world?", "What does swimming represent in the song?", "Do you like swimming in the sea?", "What helps you continue when life is difficult?"]} />
-                <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="Are you a resilient person? Do you normally continue swimming in your life, or do you sometimes stop?" songTitle="Swim" />
+                <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Are you a resilient person? Do you normally continue swimming in your life, or do you sometimes stop?" songTitle="Swim" />
               </>
             )}
           />

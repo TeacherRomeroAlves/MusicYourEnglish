@@ -150,8 +150,8 @@ export default function FridayImInLovePage() {
               />
               <HomeworkActivity
                 step="Homework"
-                title="Writing And Student Report"
-                description="Write or record your answer, then save your work."
+                title="Express Yourself"
+                description="Answer the prompt in writing or record yourself speaking."
                 prompt="What is your favorite day of the week? Which day don't you like? Explain why."
                 songTitle="Friday I'm in Love"
               />

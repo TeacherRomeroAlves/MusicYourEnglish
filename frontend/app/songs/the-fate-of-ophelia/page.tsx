@@ -162,8 +162,8 @@ export default function TheFateOfOpheliaPage() {
             />
             <HomeworkActivity
               step="Homework"
-              title="Writing And Student Report"
-              description="Write your answer, then save or share your one-page report."
+              title="Express Yourself"
+              description="Answer the prompt in writing or record yourself speaking."
               prompt="Can one person save another person's heart from loneliness? Is this fate or hard work? Explain your opinion."
               songTitle="The Fate of Ophelia"
             />

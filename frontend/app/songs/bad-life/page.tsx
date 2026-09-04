@@ -145,8 +145,8 @@ export default function BadLifePage() {
               />
               <HomeworkActivity
                 step="Homework"
-                title="Writing And Student Report"
-                description="Write your answer, then save or share your one-page report."
+                title="Express Yourself"
+                description="Answer the prompt in writing or record yourself speaking."
                 prompt="Does a bad day mean a bad life? What can we do to stop one bad day from affecting the following days or weeks?"
                 songTitle="Bad Life"
               />

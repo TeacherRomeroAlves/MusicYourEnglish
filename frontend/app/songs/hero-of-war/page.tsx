@@ -54,7 +54,7 @@ export default function HeroOfWarPage() {
           afterSong={(
             <>
               <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["What was the singer's occupation in this song?", "Is it a shocking song? Why or why not?", "How do you see heroes of war?", "Why does the soldier change his idea of being a hero?", "Can people follow orders and still be responsible for their actions?", "What does the white flag mean at the end of the song?"]} />
-              <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="What is your opinion about wars? Are there real heroes in a war? Who decides that?" songTitle="Hero of War" />
+              <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="What is your opinion about wars? Are there real heroes in a war? Who decides that?" songTitle="Hero of War" />
             </>
           )}
           />

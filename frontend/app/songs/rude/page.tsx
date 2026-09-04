@@ -43,7 +43,7 @@ export default function RudePage() {
             afterSong={(
               <>
                 <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["Who is the singer talking to?", "Is it necessary to ask someone's family for permission to get married?", "Why does the father say no?", "What does the singer decide to do anyway?"]} />
-                <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="Are you married? If yes, describe the proposal. If not, how do you imagine a marriage proposal?" songTitle="Rude" />
+                <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Are you married? If yes, describe the proposal. If not, how do you imagine a marriage proposal?" songTitle="Rude" />
               </>
             )}
           />

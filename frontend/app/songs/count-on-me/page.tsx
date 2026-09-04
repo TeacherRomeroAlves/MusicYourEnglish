@@ -55,7 +55,7 @@ export default function CountOnMePage() {
         checkAnswers={<CheckAllActivity title="Check All Answers" description="When students finish the whole song, click below to check every activity at once." />}
         afterSong={<>
           <WarmUpQuestions step="Wrap-Up" title="Talk About The Song" description="Use these questions to finish the lesson with speaking practice." questions={["What makes someone a really good friend?", "Who is an important person in your life? Why?", "Is friendship more about helping, listening, or spending time together? Why?", "Have you ever helped a friend, or has a friend helped you?"]} />
-          <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write your homework answer, then save or share your report." prompt="Write about an important person in your life. Explain why this person is important and how they help you." songTitle="Count on Me" />
+          <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Write about an important person in your life. Explain why this person is important and how they help you." songTitle="Count on Me" />
         </>}
       />
     </main>

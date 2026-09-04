@@ -15,6 +15,7 @@ export interface PronounLyricsActivityProps {
     step: string;
     title: string;
     description?: string;
+    chartLabel?: string;
 
     pronouns: string[];
 

@@ -137,8 +137,8 @@ export default function ManchildPage() {
             />
             <HomeworkActivity
               step="Homework"
-              title="Writing And Student Report"
-              description="Write your answer, then save or share your one-page report."
+              title="Express Yourself"
+              description="Answer the prompt in writing or record yourself speaking."
               prompt="Is it easy to find a good man to date nowadays? Why or why not? Do you know any manchild?"
               songTitle="Manchild"
             />

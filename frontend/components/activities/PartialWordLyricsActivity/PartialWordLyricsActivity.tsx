@@ -47,7 +47,7 @@ export default function PartialWordLyricsActivity({ step, title, description, ly
                     maxLength={line.answer.length}
                     placeholder={"-".repeat(line.answer.length)}
                     aria-label={`Complete the word beginning with ${line.prefix ?? "the letters shown"}`}
-                    style={{ width: `${Math.max(3, line.answer.length + 1)}ch` }}
+                    style={{ width: `calc(${Math.max(3, line.answer.length + 1)}ch + .5rem)` }}
                     onChange={(event) => handleChange(String(index), event.target.value, line.answer?.length ?? 0, line.syncKey)}
                   />
                   <span>{line.suffix}</span>

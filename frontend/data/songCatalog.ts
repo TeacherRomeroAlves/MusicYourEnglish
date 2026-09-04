@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema";
   title: string;
   artist: string;
   level: UserLevel;
@@ -320,6 +320,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Present perfect", "Emoji gaps", "Verb tenses"],
     coverImage: "/images/songs/stupid-song/cover.png",
     coverClass: "song-art--stupid-song",
+  },
+  {
+    slug: "girl-from-ipanema",
+    title: "Girl from Ipanema",
+    artist: "Nat King Cole",
+    level: "Beginner",
+    duration: "35 min",
+    topic: "Admiration, Brazil, and bossa nova",
+    genre: "Bossa nova",
+    description: "Practice verbs, pronouns, and adjectives through an English-language version of a Brazilian bossa nova classic.",
+    activities: ["Verb forms", "Pronouns", "Adjectives"],
+    coverImage: "/images/songs/girl-from-ipanema/cover.jpg",
+    coverClass: "song-art--girl-from-ipanema",
   },
 ];
 

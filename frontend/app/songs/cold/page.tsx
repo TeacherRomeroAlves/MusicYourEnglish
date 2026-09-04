@@ -38,7 +38,7 @@ export default function ColdPage() {
         afterSong={(
           <>
             <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["Are you perf, or are you still learning?", "Why does the singer say that his heart is cold?", "Can love change a person?", "What can make a relationship better?"]} />
-            <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="Is love important in your life? Why or why not?" songTitle="Cold" />
+            <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Is love important in your life? Why or why not?" songTitle="Cold" />
           </>
         )}
       />

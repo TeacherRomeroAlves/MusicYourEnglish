@@ -40,7 +40,7 @@ export default function OrdinaryPage() {
         afterSong={(
           <>
             <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["Is the singer in love?", "Do you understand what he is feeling?", "What makes an ordinary day feel special?", "Can love change the way we see the world?"]} />
-            <HomeworkActivity step="Homework" title="Writing And Student Report" description="Write or record your answer, then save your work." prompt="Do you have someone who takes you out of the ordinary? Is it easy to find a person like that?" songTitle="Ordinary" />
+            <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Do you have someone who takes you out of the ordinary? Is it easy to find a person like that?" songTitle="Ordinary" />
           </>
         )}
       />
