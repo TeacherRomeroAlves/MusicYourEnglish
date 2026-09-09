@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child";
   title: string;
   artist: string;
   level: UserLevel;
@@ -333,6 +333,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Verb forms", "Pronouns", "Adjectives"],
     coverImage: "/images/songs/girl-from-ipanema/cover.jpg",
     coverClass: "song-art--girl-from-ipanema",
+  },
+  {
+    slug: "dont-you-worry-child",
+    title: "Don't You Worry Child",
+    artist: "Swedish House Mafia feat. John Martin",
+    level: "Elementary",
+    duration: "40 min",
+    topic: "Childhood, memories, and hope",
+    genre: "Eletronic music",
+    description: "Practice simple past and simple present forms through a song about childhood memories, heartbreak, and hope.",
+    activities: ["Simple past", "Simple present", "Emoji gaps"],
+    coverImage: "/images/songs/dont-you-worry-child/cover.jpg",
+    coverClass: "song-art--dont-you-worry-child",
   },
 ];
 
