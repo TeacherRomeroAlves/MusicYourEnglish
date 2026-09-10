@@ -32,14 +32,13 @@ export const youngAndDumbVerseOne = {
 };
 
 export const youngAndDumbChorus = {
-  wordBank: ["think", "have", "be", "know", "say", "last", "get", "live"],
+  wordBank: ["think", "have", "be", "know", "last", "get", "live"],
   lyrics: [
     { before: "I've been", answer: "thinking", after: "about that summer" },
     { before: "When we", answer: "had", after: "each other" },
     { before: "Back when we", answer: "were", after: "young and dumb" },
     { before: "And we", answer: "knew", after: "everything" },
-    { before: "We", answer: "said", after: "this would" },
-    { before: "", answer: "last", after: "forever" },
+    { before: "We said this would", answer: "last", after: "forever" },
     { before: "Can't", answer: "get", after: "any better" },
     { before: "Like when we were young and dumb", answer: "", after: "" },
     { before: "And we had everything", answer: "", after: "" },
@@ -52,8 +51,7 @@ export const youngAndDumbVerseTwo = {
   lyrics: [
     { before: "We're back again, now it's", answer: "twenty", scrambled: "ytwent", after: "years later" },
     { before: "Somehow, it feels like nothing has changed", answer: "", scrambled: "", after: "" },
-    { before: "I'm just a", answer: "kid", scrambled: "dik", after: ", still a pop-punk" },
-    { before: "", answer: "skater", scrambled: "retsak", after: "" },
+    { before: "I'm just a kid, still a pop-punk", answer: "skater", scrambled: "retsak", after: "" },
     { before: "They told me, ‘Get a", answer: "job", scrambled: "boj", after: ",’ but I said, ‘No way’" },
     { before: "Livin' like a rockstar", answer: "", scrambled: "", after: "" },
     { before: "Trashin' dressing rooms", answer: "", scrambled: "", after: "" },
