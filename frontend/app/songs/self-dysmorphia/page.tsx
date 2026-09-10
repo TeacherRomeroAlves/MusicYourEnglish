@@ -30,7 +30,7 @@ export default function SelfDysmorphiaPage() {
         listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before starting the lyrics activities." embedUrl={selfDysmorphia.spotify.embedUrl} embedTitle={selfDysmorphia.spotify.title} />}
         listeningActivities={[
           { label: "Verse 1", content: <PartialWordLyricsActivity step="Activity 1" title="Verse 1" description="Type the missing letters to complete each word." lyrics={selfDysmorphiaVerseOne.lyrics} /> },
-          { label: "Chorus", content: <LyricsWordActivity step="Activity 2" title="Chorus" description="Click or drag words into the correct lyric gaps. Five words are extra." words={selfDysmorphiaChorus.words} lyrics={selfDysmorphiaChorus.lyrics} /> },
+          { label: "Chorus", content: <LyricsWordActivity step="Activity 2" title="Chorus" description="Click or drag words into the correct lyric gaps. Four words are extra." words={selfDysmorphiaChorus.words} lyrics={selfDysmorphiaChorus.lyrics} /> },
           { label: "Verse 2", content: <WordPresenceActivity step="Activity 3" title="Verse 2" description="Activate the four words that are actually sung." lyrics={selfDysmorphiaVerseTwo.lyrics} maximumSelections={4} /> },
         ]}
         checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}

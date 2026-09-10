@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb";
   title: string;
   artist: string;
   level: UserLevel;
@@ -385,6 +385,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Superlatives", "Incomplete words", "Word presence"],
     coverImage: "/images/songs/self-dysmorphia/cover.jpg",
     coverClass: "song-art--self-dysmorphia",
+  },
+  {
+    slug: "young-and-dumb",
+    title: "Young & Dumb",
+    artist: "Avril Lavigne feat. Simple Plan",
+    level: "Pre-intermediate",
+    duration: "45 min",
+    topic: "Youth, nostalgia, and growing older",
+    genre: "Pop punk",
+    description: "Practice past forms and informal -ing pronunciation through a nostalgic pop-punk song about youth and growing older.",
+    activities: ["Simple past", "-ing pronunciation", "Verb forms"],
+    coverImage: "/images/songs/young-and-dumb/cover.jpg",
+    coverClass: "song-art--young-and-dumb",
   },
 ];
 

@@ -41,7 +41,6 @@ export const selfDysmorphiaChorus = {
     "misery",
     "scream",
     "remember",
-    "remember",
   ].map((word) => ({ word })),
   lyrics: [
     { parts: [{ before: "Don't be critical, I'm so", answer: "miserable", after: "" }] },
