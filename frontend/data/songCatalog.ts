@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia";
   title: string;
   artist: string;
   level: UserLevel;
@@ -372,6 +372,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Can", "Simple past", "Clause gaps"],
     coverImage: "/images/songs/flowers/cover.jpg",
     coverClass: "song-art--flowers",
+  },
+  {
+    slug: "self-dysmorphia",
+    title: "Self Dysmorphia",
+    artist: "Mckenna Grace",
+    level: "Intermediate+",
+    duration: "45 min",
+    topic: "Body image, confidence, and social media",
+    genre: "Pop",
+    description: "Explore superlatives and language about appearance while discussing body image, comparison, and social-media pressure.",
+    activities: ["Superlatives", "Incomplete words", "Word presence"],
+    coverImage: "/images/songs/self-dysmorphia/cover.jpg",
+    coverClass: "song-art--self-dysmorphia",
   },
 ];
 

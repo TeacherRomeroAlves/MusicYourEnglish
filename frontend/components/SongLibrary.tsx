@@ -22,6 +22,7 @@ const DEEPER_TOPIC_SLUGS: SongMeta["slug"][] = [
   "hero-of-war",
   "bad-life",
   "nine-to-five",
+  "self-dysmorphia",
 ];
 
 function getFilterGenres(genre: string) {

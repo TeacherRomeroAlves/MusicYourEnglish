@@ -34,8 +34,11 @@
 .song-rail__track:focus-visible { border-radius: 18px; outline: 2px solid rgba(255,79,153,.55); outline-offset: 4px; }
 .song-rail__track .song-card { scroll-snap-align: start; }
 .song-rail--compact .song-rail__track { grid-auto-columns: minmax(210px, 235px); }
-.song-rail--compact .song-card__body { min-height: 185px; padding: 18px; }
-.song-rail--compact .song-card h3 { margin-top: 12px; font-size: 1.4rem; }
+.song-rail--compact .song-card { height: auto; }
+.song-rail--compact .song-card__body { height: 265px; min-height: 265px; padding: 18px; }
+.song-rail--compact .song-card__meta { min-height: 2.4em; align-items: flex-start; line-height: 1.2; }
+.song-rail--compact .song-card h3 { min-height: 2.2em; margin-top: 12px; display: -webkit-box; overflow: hidden; font-size: 1.4rem; line-height: 1.1; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.song-rail--compact .song-card__artist { min-height: 2.8em; display: -webkit-box; overflow: hidden; line-height: 1.4; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 .song-rail--compact .song-card__topic { display: none; }
 .song-rail--compact .activity-badges { display: none; }
 .song-rail--compact .button--card { min-height: 42px; margin-top: auto; padding-block: 10px; }
