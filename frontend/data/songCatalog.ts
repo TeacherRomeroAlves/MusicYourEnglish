@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers";
   title: string;
   artist: string;
   level: UserLevel;
@@ -346,6 +346,32 @@ export const songCatalog: SongMeta[] = [
     activities: ["Simple past", "Simple present", "Emoji gaps"],
     coverImage: "/images/songs/dont-you-worry-child/cover.jpg",
     coverClass: "song-art--dont-you-worry-child",
+  },
+  {
+    slug: "stand-by-me",
+    title: "Stand by Me",
+    artist: "Ben E. King",
+    level: "Beginner",
+    duration: "40 min",
+    topic: "Friendship, loyalty, and support",
+    genre: "Soul/R&B",
+    description: "Practice simple verb forms and supportive expressions through a soul classic about remaining together during difficult times.",
+    activities: ["Verb forms", "Emoji gaps", "Vocabulary"],
+    coverImage: "/images/songs/stand-by-me/cover.jpg",
+    coverClass: "song-art--stand-by-me",
+  },
+  {
+    slug: "flowers",
+    title: "Flowers",
+    artist: "Miley Cyrus",
+    level: "Elementary",
+    duration: "40 min",
+    topic: "Breakups, independence, and self-love",
+    genre: "Pop",
+    description: "Practice can and simple past forms through a song about recovering from a breakup and learning to care for yourself.",
+    activities: ["Can", "Simple past", "Clause gaps"],
+    coverImage: "/images/songs/flowers/cover.jpg",
+    coverClass: "song-art--flowers",
   },
 ];
 
