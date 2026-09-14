@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit";
   title: string;
   artist: string;
   level: UserLevel;
@@ -398,6 +398,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Simple past", "-ing pronunciation", "Verb forms"],
     coverImage: "/images/songs/young-and-dumb/cover.jpg",
     coverClass: "song-art--young-and-dumb",
+  },
+  {
+    slug: "breaking-the-habit",
+    title: "Breaking the Habit",
+    artist: "Linkin Park",
+    level: "Pre-intermediate",
+    duration: "45 min",
+    topic: "Habits, inner conflict, and change",
+    genre: "Alternative rock",
+    description: "Practice verb forms and idioms through a powerful song about inner conflict, difficult patterns, and the decision to change.",
+    activities: ["Verb forms", "Do and does", "Idioms"],
+    coverImage: "/images/songs/breaking-the-habit/cover.webp",
+    coverClass: "song-art--breaking-the-habit",
   },
 ];
 
