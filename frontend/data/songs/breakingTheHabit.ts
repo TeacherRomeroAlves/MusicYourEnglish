@@ -31,7 +31,7 @@ export const breakingTheHabitChorus = {
     { items: [{ before: "'Cause inside, I", answer: "realize", after: "that I'm the one confused", options: ["realize", "realizing"] }] },
     { items: [{ before: "I don't", answer: "know", after: "what's worth fighting for or why I have to scream", options: ["know", "knowing"] }] },
     { items: [{ before: "I don't know why I instigate and say what I", answer: "don't", after: "mean", options: ["don't", "doesn't"] }] },
-    { items: [{ before: "Final chorus: But now I have some clarity to show you what I mean", answer: "", after: "", options: [] }] },
+    { note: true, items: [{ before: "(Final chorus: But now I have some clarity to show you what I mean)", answer: "", after: "", options: [] }] },
     { items: [{ before: "I don't know how I got this way, I know it's not alright", answer: "", after: "", options: [] }] },
     { items: [{ before: "So, I'm", answer: "breaking", after: "the habit", options: ["breaking", "break"] }] },
     { items: [{ before: "I'm breaking the habit tonight", answer: "", after: "", options: [] }] },

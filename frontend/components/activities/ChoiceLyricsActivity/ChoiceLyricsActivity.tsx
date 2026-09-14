@@ -39,7 +39,7 @@ export default function ChoiceLyricsActivity({ step, title, description, lyrics,
 
       <div className="lyrics-card choice-lyrics">
         {lyrics.map((line, index) => (
-          <p key={index} className="lyric-line">
+          <p key={index} className={`lyric-line${line.note ? " lyric-line--note" : ""}`}>
             {line.items.map((item, itemIndex) => {
               const slotId = `${index}-${itemIndex}`;
               return <span key={slotId}>

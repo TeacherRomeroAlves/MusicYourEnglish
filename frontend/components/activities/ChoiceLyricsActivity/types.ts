@@ -8,6 +8,7 @@ export interface ChoiceItem {
 
 export interface ChoiceLine {
     items: ChoiceItem[];
+    note?: boolean;
 }
 
 export interface ChoiceLyricsActivityProps {

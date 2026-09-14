@@ -37,7 +37,7 @@ export default function BreakingTheHabitPage() {
         listeningIntro={<ListeningActivity step="Listen" title="Listen To The Song" description="Listen to the song before starting the lyrics activities." embedUrl={breakingTheHabit.youtube.embedUrl} embedTitle={breakingTheHabit.youtube.title} />}
         listeningActivities={[
           { label: "Verse 1", content: <LyricsWordActivity step="Activity 1" title="Verse 1" description="Click or drag each word into the correct lyric gap. There are no extra words." words={breakingTheHabitVerseOne.words} lyrics={breakingTheHabitVerseOne.lyrics} /> },
-          { label: "Pre-Chorus And Chorus", content: <ChoiceLyricsActivity step="Activity 2" title="Pre-Chorus And Chorus" description="Choose the verb form you hear in each line." lyrics={breakingTheHabitChorus.lyrics} /> },
+          { label: "Pre-Chorus And Chorus", content: <ChoiceLyricsActivity step="Activity 2" title="Pre-Chorus And Chorus" description="Choose the verb form you hear in each line. The italic note shows how one line changes in the final chorus." lyrics={breakingTheHabitChorus.lyrics} /> },
           { label: "Verse 2", content: <UnscrambleLyricsActivity step="Activity 3" title="Verse 2" description="Unscramble the letters shown in each gap and type the correct word." lyrics={breakingTheHabitVerseTwo.lyrics} /> },
           { label: "Verse 3", content: <OrderLyricsActivity step="Activity 4" title="Verse 3" description="Put the lyric lines in order. Click two lines to swap them, or drag one line onto another." items={breakingTheHabitVerseThree.items} /> },
         ]}
