@@ -4,6 +4,7 @@ import { useState } from "react";
 import HomeworkForm from "./HomeworkForm";
 import ReportCard from "./ReportCard";
 import VoiceHomework from "./VoiceHomework";
+import SongStory from "./SongStory";
 import { useHomework } from "@/hooks/useHomework";
 import { getSongMetaByTitle } from "@/data/songCatalog";
 import { getActivityInstruction } from "@/lib/activityInstructions";
@@ -94,6 +95,7 @@ export default function HomeworkActivity({ step, title, description, prompt, son
           artist={song?.artist}
         />
       </div>
+      {song && <SongStory title={song.title} artist={song.artist} coverImage={song.coverImage} />}
     </section>
   );
 }
