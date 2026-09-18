@@ -5,7 +5,9 @@ import Link from "next/link";
 import type { User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
 
-export default function AuthButton({ onNavigate }: { onNavigate?: () => void }) {
+export default function AuthButton({ onNavigate, variant = "nav" }: { onNavigate?: () => void; variant?: "nav" | "library" }) {
+  const popoverId = `${variant}-login-popover`;
+  const emailId = `${variant}-login-email`;
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -95,6 +97,9 @@ export default function AuthButton({ onNavigate }: { onNavigate?: () => void }) 
   }
 
   if (user) {
+    if (variant === "library") {
+      return <Link className="button button--primary library-signup-card__button" href="/my-learning">Open My Learning</Link>;
+    }
     return (
       <div className="nav-user">
         <Link className="nav-learning-link" href="/my-learning" onClick={onNavigate}>My Learning</Link>
@@ -105,7 +110,7 @@ export default function AuthButton({ onNavigate }: { onNavigate?: () => void }) 
 
   return (
     <div
-      className="nav-auth"
+      className={`nav-auth${variant === "library" ? " nav-auth--library" : ""}`}
       onKeyDown={(event) => {
         if (event.key === "Escape") {
           setShowForm(false);
@@ -120,18 +125,18 @@ export default function AuthButton({ onNavigate }: { onNavigate?: () => void }) 
       }}
     >
       <button
-        className="nav-login"
+        className={variant === "library" ? "button button--primary library-signup-card__button" : "nav-login"}
         type="button"
         aria-expanded={showForm}
-        aria-controls="nav-login-popover"
+        aria-controls={popoverId}
         onClick={() => setShowForm((current) => !current)}
         disabled={loading && !showForm}
       >
-        {loading && !showForm ? "Loading…" : "Log in"}
+        {loading && !showForm ? "Loading…" : variant === "library" ? "Create your free profile" : "Log in"}
       </button>
 
       {showForm && (
-        <div className="nav-login-popover" id="nav-login-popover">
+        <div className="nav-login-popover" id={popoverId}>
           <form className="nav-email-login" onSubmit={signIn}>
             <p className="nav-login-popover__title">Save your learning</p>
             <p className="nav-login-popover__benefit">Keep your progress, scores, favorites, and written homework.</p>
@@ -140,9 +145,9 @@ export default function AuthButton({ onNavigate }: { onNavigate?: () => void }) 
               <span className="nav-login-message">Check your email for the login link.</span>
             ) : (
               <>
-                <label className="sr-only" htmlFor="login-email">Email address</label>
+                <label className="sr-only" htmlFor={emailId}>Email address</label>
                 <input
-                  id="login-email"
+                  id={emailId}
                   type="email"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}

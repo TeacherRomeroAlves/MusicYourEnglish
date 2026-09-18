@@ -2,6 +2,7 @@
 
 import { useDeferredValue, useEffect, useRef, useState } from "react";
 import SongCard from "./SongCard";
+import AuthButton from "./AuthButton";
 import { USER_LEVELS, type SongMeta } from "@/data/songCatalog";
 import { shuffleArray } from "@/lib/shuffleArray";
 
@@ -157,6 +158,22 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
               <SongRail title="Songs with verb activities" description="Practice verb forms and tenses while listening in context." songs={verbSongs} compact />
               <SongRail title="Beginner-friendly picks" description="A comfortable place to start with clear, guided activities." songs={accessibleSongs} compact />
               <SongRail title="Deeper topics" description="Explore songs that open conversations about relationships, identity, conflict, and emotional health." songs={deeperTopicSongs} compact />
+              <aside className="library-signup-card" aria-labelledby="library-signup-title">
+                <div className="library-signup-card__copy">
+                  <p className="library-signup-card__eyebrow">Your learning, in one place</p>
+                  <h2 id="library-signup-title">Keep the music going.</h2>
+                  <p>Sign in with an email link and come back to your lessons whenever you like.</p>
+                </div>
+                <ul className="library-signup-card__benefits">
+                  <li>Pick up where you left off</li>
+                  <li>See your lesson scores</li>
+                  <li>Keep favorite songs and written homework</li>
+                </ul>
+                <div className="library-signup-card__action">
+                  <AuthButton variant="library" />
+                  <span>No password needed</span>
+                </div>
+              </aside>
             </>
           )}
         </div>

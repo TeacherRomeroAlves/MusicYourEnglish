@@ -46,12 +46,27 @@
 .library-empty span { width: 72px; height: 72px; margin-bottom: 24px; border: 1px solid rgba(224,154,198,.25); border-radius: 50%; background: radial-gradient(circle, rgba(130,13,75,.36), transparent 65%); }
 .library-empty h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); }
 .library-empty p { margin: 12px 0 24px; color: var(--muted); }
+.library-signup-card { min-height: 220px; padding: clamp(24px, 4vw, 42px); display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(210px, .9fr) auto; align-items: center; gap: clamp(22px, 3vw, 48px); position: relative; border: 1px solid rgba(255, 142, 206, .3); border-radius: 28px; background: radial-gradient(circle at 95% 5%, rgba(255, 126, 184, .34), transparent 36%), linear-gradient(125deg, #361034, #79114f 55%, #a42470); box-shadow: 0 22px 55px rgba(70, 9, 60, .25); }
+.library-signup-card__eyebrow { margin: 0 0 10px; color: #ffc0e0; font-size: .72rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.library-signup-card h2 { font-size: clamp(1.9rem, 3vw, 3rem); letter-spacing: -.04em; }
+.library-signup-card__copy > p:last-child { max-width: 480px; margin: 12px 0 0; color: #f2dbea; line-height: 1.5; }
+.library-signup-card__benefits { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.library-signup-card__benefits li { display: flex; align-items: baseline; gap: 11px; color: #fff; font-weight: 650; line-height: 1.35; }
+.library-signup-card__benefits li::before { content: "✓"; color: #ffbbdd; font-weight: 900; }
+.library-signup-card__action { display: grid; justify-items: center; gap: 9px; }
+.library-signup-card__button { min-width: 210px; justify-content: center; white-space: nowrap; background: #fff; color: #6c124c; }
+.library-signup-card__button:hover { background: #ffe5f2; color: #6c124c; }
+.library-signup-card__action > span { color: #f4d6e8; font-size: .79rem; }
+.nav-auth--library .nav-login-popover { top: auto; bottom: calc(100% + 13px); right: 0; }
+.nav-auth--library .nav-login-popover::before { top: auto; bottom: -7px; border: 0; border-right: 1px solid rgba(255,255,255,.13); border-bottom: 1px solid rgba(255,255,255,.13); }
 @keyframes library-equalizer { to { transform: scaleY(.45); opacity: .58; } }
 @media (max-width: 900px) {
   .library-hero { grid-template-columns: 1fr 180px; gap: 30px; }
   .library-toolbar { grid-template-columns: 1fr 1fr; }
   .library-search { grid-column: 1 / -1; }
   .library-rails { gap: 40px; }
+  .library-signup-card { grid-template-columns: 1fr 1fr; }
+  .library-signup-card__action { grid-column: 1 / -1; justify-self: start; }
 }
 @media (max-width: 620px) {
   .library-page { width: calc(100% - 24px); padding-top: 26px; }
@@ -67,4 +82,9 @@
   .song-rail__viewport { margin-inline: -12px; padding-inline: 12px; }
   .song-rail__track { grid-auto-columns: minmax(226px, 72vw); gap: 12px; padding-bottom: 16px; }
   .song-rail--compact .song-rail__track { grid-auto-columns: minmax(205px, 64vw); }
+  .library-signup-card { grid-template-columns: 1fr; gap: 24px; border-radius: 22px; }
+  .library-signup-card__action { grid-column: auto; justify-self: stretch; justify-items: stretch; }
+  .library-signup-card__button { width: 100%; }
+  .nav-auth--library .nav-login-popover { right: auto; left: 0; }
+  .nav-auth--library .nav-login-popover::before { right: auto; left: 28px; }
 }
