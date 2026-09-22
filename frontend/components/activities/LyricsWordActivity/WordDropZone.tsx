@@ -29,7 +29,12 @@ export default function WordDropZone({
   onDrop,
   onSelectWord,
 }: WordDropZoneProps) {
-  const className = ["word-drop-zone", isDragOver ? "drag-over" : ""]
+  const wordCount = match.trim().split(/\s+/).length;
+  const className = [
+    "word-drop-zone",
+    wordCount >= 4 ? "word-drop-zone--sentence" : wordCount > 1 ? "word-drop-zone--phrase" : "",
+    isDragOver ? "drag-over" : "",
+  ]
     .filter(Boolean)
     .join(" ");
 

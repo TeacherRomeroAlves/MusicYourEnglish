@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import { useSwipeNavigation } from "@/hooks/useSwipeNavigation";
+import PrintLesson from "@/components/PrintLesson";
 
 interface ActivitySlide {
   label: string;
@@ -114,6 +115,7 @@ export default function LessonSections({
 
   return (
     <div className="lesson-groups">
+      <PrintLesson beforeSong={beforeSong} activities={listeningActivities} afterSong={afterSong} />
       <section className={`lesson-group${openSection === "before" ? " is-open" : ""}`}>
         {renderHeader("before")}
         <div id="lesson-group-before" className="lesson-group__panel" hidden={openSection !== "before"}>

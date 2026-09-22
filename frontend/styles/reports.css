@@ -25,6 +25,10 @@
 .voice-recorder__privacy { margin: 18px 0 0; color: #786a75; font-size: .86rem; }
 @keyframes recording-pulse { 50% { transform: scale(.78); opacity: .65; } }
 .report-export { display: none; }
+.lesson-print-export { display: none; }
+.lesson-print__button { position: absolute; top: 4px; right: 0; z-index: 3; display: inline-flex; align-items: center; gap: 7px; margin: 0; padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(17,16,22,.88); color: var(--soft-white); font: inherit; font-size: .9rem; font-weight: 700; cursor: pointer; box-shadow: var(--shadow-soft); }
+.lesson-print__button:hover { border-color: rgba(224,154,198,.5); background: #3a2032; color: #fff; }
+@media (max-width: 520px) { .lesson-print__button { position: static; width: fit-content; margin: -60px 0 18px auto; } }
 .report-card { overflow: hidden; border: 1px solid #ded3dc; border-radius: 24px; background: white; color: #211721; }
 .report-card__header { min-height: 210px; padding: 42px; display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; color: white; background: linear-gradient(135deg, #820d4b 0%, #7e0d82 55%, #3b0764 100%); }
 .report-title { display: flex; align-items: center; gap: 18px; }
@@ -51,7 +55,64 @@
 @media print {
   @page { size: A4; margin: 12mm; }
   html, body { width: 100%; height: auto !important; min-height: 0 !important; margin: 0 !important; overflow: visible !important; background: white !important; }
-  body > *:not(.report-export) { display: none !important; }
+  body:not(.lesson-printing) > *:not(.report-export) { display: none !important; }
+  body.lesson-printing > *:not(.lesson-print-export) { display: none !important; }
+  body.lesson-printing .lesson-print-export { display: block !important; color: #281d26; font: 9.5pt/1.45 Arial, sans-serif; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .lesson-print-export * { box-sizing: border-box; }
+  .lesson-print-export p, .lesson-print-export li, .lesson-print-export span { color: #281d26; }
+  .lesson-print__header { display: flex; align-items: center; gap: 14px; padding: 8px 10px; border: 1px solid #e1c5d6; border-bottom: 3px solid #820d4b; border-radius: 10px 10px 4px 4px; background: linear-gradient(110deg, #fff 55%, #f7e9f3); }
+  .lesson-print__header img { width: 19mm; height: 19mm; object-fit: cover; border: 2px solid #fff; border-radius: 7px; box-shadow: 0 2px 8px rgba(76,20,57,.16); }
+  .lesson-print__header span { color: #820d4b; font-size: 8pt; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; }
+  .lesson-print__header h1 { margin: 1px 0; font-size: 20pt; line-height: 1.1; }
+  .lesson-print__header p { margin: 0; }
+  .lesson-print__names { display: flex; justify-content: space-between; margin: 9px 2px; padding: 0 4px; }
+  .lesson-print__section { margin: 12px 0 0; }
+  .lesson-print__section h2 { margin: 0 0 7px; padding: 6px 10px; border-left: 5px solid #820d4b; border-radius: 4px 9px 9px 4px; background: linear-gradient(90deg, #f1dbe9, #faf3f8); color: #591039; font-size: 11.5pt; letter-spacing: .01em; }
+  .lesson-print__block { margin: 9px 0; break-inside: avoid; page-break-inside: avoid; }
+  .lesson-print__block h3 { width: fit-content; margin: 0 0 5px; padding: 3px 8px; border-radius: 999px; background: #f3e2ed; color: #760d4a; font-size: 10pt; }
+  .lesson-print__block ol { margin: 3px 0; padding-left: 22px; }
+  .lesson-print__block li { padding: 2px 0; }
+  .lesson-print__vocab { display: grid; grid-template-columns: 1fr 2fr; gap: 16px; padding: 7px 10px; border: 1px solid #ead8e3; border-radius: 9px; background: #fffafd; }
+  .lesson-print__instruction { margin: 2px 0 6px; color: #4d3444; font-size: 9.5pt; font-weight: 650; line-height: 1.45; }
+  .lesson-print__lyrics { padding: 7px 10px; border: 1px solid #dfc4d5; border-radius: 10px; background: #fffafd; }
+  .lesson-print__lyrics p { margin: 2px 0; white-space: pre-wrap; }
+  .lesson-print__activity .card { margin: 0 !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
+  .lesson-print__activity .card::before, .lesson-print__activity .section-kicker, .lesson-print__activity .section-heading { display: none !important; }
+  .lesson-print__paper-instruction { margin: 0 0 7px !important; padding: 5px 7px; border-left: 3px solid #a51c6a; border-radius: 0 7px 7px 0; background: #f8edf4; color: #402b38 !important; font-size: 9.5pt; font-weight: 700; line-height: 1.45; }
+  .lesson-print__paper-instruction::before { content: "Listen and complete the activity on paper."; }
+  .lesson-print__paper-instruction { font-size: 0; }
+  .lesson-print__paper-instruction::before { font-size: 9.5pt; }
+  .lesson-print__activity:has(.choice-lyrics) .lesson-print__paper-instruction::before { content: "Listen and circle the option you hear in each line."; }
+  .lesson-print__activity:has(.lyric-word-bank) .lesson-print__paper-instruction::before { content: "Listen and write each word or expression from the bank in the correct gap."; }
+  .lesson-print__activity:has(.icon-bank) .lesson-print__paper-instruction::before { content: "Listen and write or draw the matching emoji in each gap."; }
+  .lesson-print__activity:has(.typing-word-chart) .lesson-print__paper-instruction::before { content: "Listen and write the missing word in each gap. Use the reference box for help."; }
+  .lesson-print__activity:has(.unscramble-input) .lesson-print__paper-instruction::before { content: "Unscramble the letters and write the correct word in each gap."; }
+  .lesson-print__activity:has(.partial-word) .lesson-print__paper-instruction::before { content: "Listen and write the missing letters to complete each word."; }
+  .lesson-print__activity:has(.inline-order-lyrics) .lesson-print__paper-instruction::before { content: "Rewrite the highlighted words or sentence parts in the correct order."; }
+  .lesson-print__activity:has(.order-rearrange-list) .lesson-print__paper-instruction::before { content: "Number the lyric lines to put them in the correct order."; }
+  .lesson-print__activity:has(.missing-word-lyrics) .lesson-print__paper-instruction::before { content: "Listen and circle only the words requested in the instructions."; }
+  .lesson-print__activity:has(.pronoun-chart) .lesson-print__paper-instruction::before { content: "Listen and write the correct word from the reference box in each gap."; }
+  .lesson-print__activity .lyrics-card { margin: 5px 0 0 !important; padding: 5px 7px !important; border: 0 !important; background: transparent !important; box-shadow: none !important; }
+  .lesson-print__activity .lyric-line { margin: 2px 0 !important; color: #281d26 !important; font-size: 9pt !important; line-height: 1.35 !important; }
+  .lesson-print__activity .actions, .lesson-print__activity .feedback, .lesson-print__activity .review-marker__badge { display: none !important; }
+  .lesson-print__activity button, .lesson-print__activity input, .lesson-print__activity .drop-zone, .lesson-print__activity .word-card, .lesson-print__activity .icon-card { min-height: 0 !important; box-shadow: none !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .lesson-print__activity .word-bank, .lesson-print__activity .lyric-word-bank, .lesson-print__activity .icon-bank, .lesson-print__activity .pronoun-chart, .lesson-print__activity .letter-chart { margin: 5px 0 !important; padding: 6px !important; gap: 5px !important; border: 1px solid #dbc0d1 !important; border-radius: 9px !important; background: #f7e9f2 !important; }
+  .lesson-print__activity .word-card, .lesson-print__activity .lyric-word-card, .lesson-print__activity .order-card, .lesson-print__activity .choice-btn, .lesson-print__activity .pronoun-chip { padding: 4px 7px !important; border: 1px solid #9b3675 !important; border-radius: 7px !important; background: #ead1e1 !important; color: #511038 !important; font-size: 8.5pt !important; font-weight: 750 !important; }
+  .lesson-print__activity .icon-card { width: 32px !important; height: 32px !important; border: 1px solid #9b3675 !important; border-radius: 8px !important; background: #ead1e1 !important; }
+  .lesson-print__activity .icon-symbol { font-size: 16pt !important; }
+  .lesson-print__activity .dark-icon { width: 24px !important; height: 24px !important; border-radius: 6px !important; background: #6d1550 !important; }
+  .lesson-print__activity .inline-drop-zone, .lesson-print__activity .word-drop-zone, .lesson-print__activity .lyric-input, .lesson-print__activity .unscramble-input { border: 1.5px dashed #a95787 !important; border-radius: 7px !important; background: #fff !important; color: #521039 !important; }
+  .lesson-print__activity .word-drop-zone--phrase { min-width: 34mm !important; }
+  .lesson-print__activity .word-drop-zone--sentence { min-width: 62mm !important; min-height: 9mm !important; }
+  .lesson-print__activity .inline-order-word, .lesson-print__activity .missing-word-option, .lesson-print__activity .letter-chip { border: 1px solid #9b3675 !important; border-radius: 7px !important; background: #ead1e1 !important; color: #511038 !important; }
+  .lesson-print__bank { padding: 3px 6px; background: #f8f0f5; font-size: 8pt; }
+  .lesson-print__gap { color: #820d4b; letter-spacing: 1px; white-space: nowrap; }
+  .lesson-print__choice { color: #820d4b; font-weight: 700; }
+  .lesson-print__clue { margin-left: 5px; color: #795b6d; font-size: 7.5pt; }
+  .lesson-print__order-box { display: inline-block; width: 12px; height: 12px; margin-right: 7px; border: 1px solid #820d4b; vertical-align: middle; }
+  .lesson-print__section:last-of-type .lesson-print__block:last-child { margin-top: 12px; padding: 9px 11px; border: 1px solid #d9b9cd; border-radius: 11px; background: linear-gradient(135deg, #fffafd, #f8edf4); }
+  .lesson-print__writing { height: 56mm; border-radius: 6px; background: repeating-linear-gradient(to bottom, transparent 0, transparent 6.8mm, #cfaabd 7mm); }
+  .lesson-print__footer { margin-top: 10px; padding-top: 5px; border-top: 1px solid #dbc6d2; color: #820d4b; text-align: right; font-size: 8pt; }
   body .report-export {
     width: 100%;
     max-height: 273mm;

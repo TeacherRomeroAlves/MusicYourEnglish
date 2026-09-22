@@ -36,9 +36,9 @@
 .lesson-groups { display: grid; gap: 14px; margin-top: 22px; }
 .lesson-group { overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: #17131f; box-shadow: var(--shadow-soft); transition: border-color 220ms ease, box-shadow 220ms ease; }
 .lesson-group.is-open { border-color: rgba(224,154,198,.32); box-shadow: 0 24px 65px rgba(0,0,0,.34), 0 0 55px rgba(130,13,75,.08); }
-.lesson-group:nth-child(1) .lesson-group__trigger { background: linear-gradient(115deg, #820d4b, #5c0b55 58%, #3b0764); }
-.lesson-group:nth-child(2) .lesson-group__trigger { background: linear-gradient(115deg, #3b0764, #7e0d82 55%, #820d4b); }
-.lesson-group:nth-child(3) .lesson-group__trigger { background: linear-gradient(115deg, #820d4b, #6b0b72 55%, #3b0764); }
+.lesson-group:nth-of-type(1) .lesson-group__trigger { background: linear-gradient(115deg, #820d4b, #5c0b55 58%, #3b0764); }
+.lesson-group:nth-of-type(2) .lesson-group__trigger { background: linear-gradient(115deg, #3b0764, #7e0d82 55%, #820d4b); }
+.lesson-group:nth-of-type(3) .lesson-group__trigger { background: linear-gradient(115deg, #820d4b, #6b0b72 55%, #3b0764); }
 .lesson-group__trigger { width: 100%; min-height: 100px; padding: 22px 26px; display: grid; grid-template-columns: 48px 1fr 42px; gap: 18px; align-items: center; border: 0; color: white; text-align: left; cursor: pointer; transition: filter 180ms ease; }
 .lesson-group__trigger:hover { filter: brightness(1.12); }
 .lesson-group__trigger:focus-visible { outline: 3px solid rgba(224,154,198,.62); outline-offset: -3px; }
