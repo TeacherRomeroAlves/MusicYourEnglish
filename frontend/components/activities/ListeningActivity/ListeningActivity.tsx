@@ -3,6 +3,7 @@ import { getActivityInstruction } from "@/lib/activityInstructions";
 
 export default function ListeningActivity({ step, title, description, embedUrl, embedTitle, }: ListeningActivityProps) {
   const isYouTube = embedUrl.includes("youtube.com/embed/");
+  const isSpotify = embedUrl.includes("open.spotify.com/embed/");
 
   return (
     <section className="card">
@@ -17,6 +18,12 @@ export default function ListeningActivity({ step, title, description, embedUrl, 
           </p>
         )}
       </div>
+
+      {isSpotify && (
+        <p className="spotify-login-note">
+          <strong>Spotify note:</strong> To listen to the full song, you must be logged in to Spotify.
+        </p>
+      )}
 
       <div className={`video-frame ${isYouTube ? "youtube-frame" : "spotify-frame"}`}>
         <iframe

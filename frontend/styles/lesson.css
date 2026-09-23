@@ -31,6 +31,8 @@
 .artist-quote .artist-quote__source { display: inline-block; margin-top: 10px; color: #820d4b; font-size: .82rem; font-weight: 750; }
 .spotify-frame { padding: 8px; background: linear-gradient(145deg, rgba(130,13,75,.18), #09080c 38%); }
 .spotify-frame iframe { height: 352px; border-radius: 13px; }
+.spotify-login-note { width: fit-content; margin: 18px 0 10px; padding: 8px 11px; border: 1px solid rgba(130,13,75,.2); border-radius: 10px; background: #f4e5ef; color: #4f2940; font-size: .86rem; line-height: 1.45; }
+.spotify-login-note strong { color: #820d4b; }
 .youtube-frame { aspect-ratio: 16 / 9; background: linear-gradient(145deg, rgba(130,13,75,.2), #08070b 42%); }
 .youtube-frame iframe { height: 100%; }
 .lesson-groups { display: grid; gap: 14px; margin-top: 22px; }
