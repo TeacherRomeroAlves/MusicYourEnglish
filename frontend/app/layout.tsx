@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { League_Spartan } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { FavoritesProvider } from "@/components/learning/FavoritesProvider";
@@ -46,6 +47,7 @@ export default function RootLayout({
           <LessonLearningTracker />
           <div id="main-content">{children}</div>
           <SiteFooter />
+          <Analytics />
         </FavoritesProvider>
       </body>
     </html>
