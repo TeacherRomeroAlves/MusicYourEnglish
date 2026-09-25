@@ -4,6 +4,7 @@ export interface UnscrambleLyricsLine {
   scrambled: string;
   after: string;
   syncKey?: string;
+  continuePreviousLine?: boolean;
 }
 
 export interface UnscrambleLyricsActivityProps {

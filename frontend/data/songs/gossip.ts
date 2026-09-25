@@ -43,9 +43,9 @@ export const gossipOpeningStanzas = {
 export const gossipChorus = {
   lyrics: [
     { before: "So sip the gossip,", answer: "drink", scrambled: "knird", after: "'til you" },
-    { before: "", answer: "choke", scrambled: "ekohc", after: "" },
+    { before: "", answer: "choke", scrambled: "ekohc", after: "", continuePreviousLine: true },
     { before: "Sip the gossip,", answer: "burn", scrambled: "nrub", after: "down your" },
-    { before: "", answer: "throat", scrambled: "taorht", after: "" },
+    { before: "", answer: "throat", scrambled: "taorht", after: "", continuePreviousLine: true },
     { before: "You're not", answer: "iconic", scrambled: "cinoic", after: ", you are just like them all" },
     { before: "Don't", answer: "act", scrambled: "tca", after: "like you don't know" },
   ],

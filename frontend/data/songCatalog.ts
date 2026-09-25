@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero";
   title: string;
   artist: string;
   level: UserLevel;
@@ -411,6 +411,19 @@ export const songCatalog: SongMeta[] = [
     activities: ["Verb forms", "Do and does", "Idioms"],
     coverImage: "/images/songs/breaking-the-habit/cover.webp",
     coverClass: "song-art--breaking-the-habit",
+  },
+  {
+    slug: "patient-zero",
+    title: "Patient Zero",
+    artist: "Taylor Swift",
+    level: "Pre-intermediate",
+    duration: "50 min",
+    topic: "Warning signs, relationships, and emotional support",
+    genre: "Pop",
+    description: "Practice forms of the verb be, idioms, and listening detail through a song about recognizing harmful relationship patterns.",
+    activities: ["Verb to be", "Emoji gaps", "Idioms"],
+    coverImage: "/images/songs/patient-zero/cover.png",
+    coverClass: "song-art--patient-zero",
   },
 ];
 

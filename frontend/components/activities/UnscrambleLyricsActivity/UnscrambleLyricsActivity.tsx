@@ -15,6 +15,14 @@ export default function UnscrambleLyricsActivity({
 }: UnscrambleLyricsActivityProps) {
   const { values, handleChange, handleReset } = useUnscrambleLyrics();
   const answerLines = lyrics.filter((line) => line.answer);
+  const lyricRows = lyrics.reduce<Array<Array<{ line: (typeof lyrics)[number]; index: number }>>>((rows, line, index) => {
+    if (line.continuePreviousLine && rows.length > 0) {
+      rows[rows.length - 1].push({ line, index });
+    } else {
+      rows.push([{ line, index }]);
+    }
+    return rows;
+  }, []);
 
   const activityId = `${step}:${title}`;
   const { getStatus } = useMistakeReview(activityId);
@@ -38,22 +46,26 @@ export default function UnscrambleLyricsActivity({
       </div>
 
       <div className="lyrics-card" aria-label={title}>
-        {lyrics.map((line, index) => (
-          <p className="lyric-line" key={`${line.answer}-${index}`}>
-            {line.before}{" "}
-            {line.answer && <ReviewMarker status={getStatus(String(index), values[line.syncKey ?? String(index)] ?? "")}><input
-              className="lyric-input unscramble-input"
-              type="text"
-              maxLength={line.answer.length}
-              style={{ width: `${Math.max(112, line.scrambled.length * 12 + 32)}px` }}
-              placeholder={line.scrambled}
-              aria-label={`Unscramble ${line.scrambled}`}
-              value={values[line.syncKey ?? String(index)] ?? ""}
-              onChange={(event) => handleChange(line.syncKey ?? String(index), event.target.value, line.answer.length)}
-              autoComplete="off"
-              spellCheck={false}
-            /></ReviewMarker>}{" "}
-            {line.after}
+        {lyricRows.map((row, rowIndex) => (
+          <p className="lyric-line" key={`lyric-row-${rowIndex}`}>
+            {row.map(({ line, index }) => (
+              <span className="lyric-line__segment" key={`${line.answer}-${index}`}>
+                {line.before}{line.before && " "}
+                {line.answer && <ReviewMarker status={getStatus(String(index), values[line.syncKey ?? String(index)] ?? "")}><input
+                  className="lyric-input unscramble-input"
+                  type="text"
+                  maxLength={line.answer.length}
+                  style={{ width: `${Math.max(112, line.scrambled.length * 12 + 32)}px` }}
+                  placeholder={line.scrambled}
+                  aria-label={`Unscramble ${line.scrambled}`}
+                  value={values[line.syncKey ?? String(index)] ?? ""}
+                  onChange={(event) => handleChange(line.syncKey ?? String(index), event.target.value, line.answer.length)}
+                  autoComplete="off"
+                  spellCheck={false}
+                /></ReviewMarker>}{line.answer && line.after && " "}
+                {line.after}
+              </span>
+            ))}
           </p>
         ))}
       </div>
