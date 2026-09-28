@@ -21,7 +21,7 @@ export default function SongsPage() {
       </section>
       <aside className="library-feedback-card" aria-labelledby="library-feedback-title">
         <div className="library-feedback-card__copy">
-          <p className="library-feedback-card__eyebrow">Help shape Music Your English</p>
+          <p className="library-feedback-card__eyebrow">Do you like our platform?</p>
           <h2 id="library-feedback-title">Your feedback can make every lesson better.</h2>
           <p>We are still improving the platform. Tell us what works, what needs attention, or what you would love to see next. It takes less than two minutes.</p>
         </div>
