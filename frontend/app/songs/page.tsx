@@ -19,6 +19,21 @@ export default function SongsPage() {
           {Array.from({ length: 18 }, (_, index) => <i key={index} />)}
         </div>
       </section>
+      <aside className="library-feedback-card" aria-labelledby="library-feedback-title">
+        <div className="library-feedback-card__copy">
+          <p className="library-feedback-card__eyebrow">Help shape Music Your English</p>
+          <h2 id="library-feedback-title">Your feedback can make every lesson better.</h2>
+          <p>We are still improving the platform. Tell us what works, what needs attention, or what you would love to see next. It takes less than two minutes.</p>
+        </div>
+        <a
+          className="button library-feedback-card__button"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeOPF6KSC_AeLO1EG7sn-_qZ8h7K2clnojW46OkE6YzMlPELw/viewform?usp=header"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Share Your Feedback <span aria-hidden="true">↗</span>
+        </a>
+      </aside>
       <SongLibrary songs={songCatalog} />
     </main>
   );
