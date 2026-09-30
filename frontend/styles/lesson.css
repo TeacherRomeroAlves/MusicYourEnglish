@@ -19,6 +19,25 @@
 .lesson-progress__mobile { display: none; }
 .video-frame { margin-top: 24px; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 20px; background: #08070b; box-shadow: 0 24px 50px rgba(0,0,0,.34); }
 .video-frame iframe { display: block; width: 100%; border: 0; }
+.listening-card__topline { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.listening-card__topline .section-heading { min-width: 0; }
+.lesson-share-actions { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 8px; position: relative; flex: 0 0 auto; }
+.lesson-share-button { min-height: 36px; padding: 7px 11px; border: 1px solid rgba(76,35,67,.2); border-radius: 999px; background: #fff; color: #6b164f; font: inherit; font-size: .76rem; font-weight: 800; cursor: pointer; transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease; }
+.lesson-share-button:hover { transform: translateY(-1px); border-color: #8c1762; background: #81105d; color: #fff; }
+.lesson-share-button:focus-visible, .lesson-share-dialog__close:focus-visible, .lesson-share-dialog__copy:focus-visible { outline: 3px solid rgba(255,79,153,.55); outline-offset: 2px; }
+.lesson-share-button--qr { background: #f8eef5; }
+.lesson-share-status { position: absolute; top: calc(100% + 6px); right: 0; z-index: 2; padding: 5px 8px; border-radius: 7px; background: #3b1834; color: #fff; font-size: .72rem; font-weight: 700; white-space: nowrap; box-shadow: 0 8px 18px rgba(50,18,42,.18); }
+.lesson-share-dialog { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 24px; }
+.lesson-share-dialog__backdrop { position: absolute; inset: 0; border: 0; background: rgba(18,7,17,.72); backdrop-filter: blur(6px); cursor: default; }
+.lesson-share-dialog__panel { width: min(100%, 440px); padding: clamp(26px, 4vw, 42px); position: relative; z-index: 1; display: grid; justify-items: center; border: 1px solid rgba(255,255,255,.22); border-radius: 26px; background: linear-gradient(145deg, #fff, #f8edf5); color: #291b27; box-shadow: 0 32px 80px rgba(0,0,0,.38); text-align: center; }
+.lesson-share-dialog__close { position: absolute; top: 14px; right: 14px; min-height: 32px; padding: 5px 9px; border: 1px solid rgba(76,35,67,.2); border-radius: 999px; background: #fff; color: #6b164f; font: inherit; font-size: .72rem; font-weight: 800; cursor: pointer; }
+.lesson-share-dialog__eyebrow { margin: 0; color: #9d2169; font-size: .7rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+.lesson-share-dialog h2 { margin-top: 9px; font-size: clamp(1.6rem, 5vw, 2.35rem); }
+.lesson-share-dialog p:not(.lesson-share-dialog__eyebrow) { max-width: 320px; margin: 10px 0 0; color: #645463; line-height: 1.55; }
+.lesson-share-dialog__qr { margin: 24px 0 18px; padding: 13px; border: 1px solid rgba(76,35,67,.14); border-radius: 17px; background: #fff; }
+.lesson-share-dialog__qr svg { display: block; max-width: 100%; height: auto; }
+.lesson-share-dialog__copy { min-height: 42px; padding: 9px 16px; border: 1px solid #820d4b; border-radius: 999px; background: #820d4b; color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+.lesson-share-dialog__status { min-height: 1.2em; margin-top: 10px; color: #6b164f; font-size: .78rem; font-weight: 750; }
 .cultural-note { margin-bottom: 18px; padding: clamp(24px, 4vw, 34px); border: 1px solid rgba(76,35,67,.16); border-radius: var(--radius-md); background: linear-gradient(135deg, #f4faf7, #f8f0e4); color: #211721; box-shadow: var(--shadow-soft); }
 .cultural-note h2 { margin-top: 8px; color: #214b46; font-size: clamp(1.55rem, 3vw, 2.15rem); }
 .cultural-note > p:last-child { max-width: 850px; margin: 14px 0 0; color: #4f4a45; line-height: 1.65; }
@@ -123,6 +142,8 @@
   .lesson-group__trigger { min-height: 90px; padding: 18px; grid-template-columns: 34px 1fr 36px; gap: 10px; }
   .lesson-group__heading small { font-size: .78rem; }
   .lesson-group__scroll { padding: 14px; }
+  .listening-card__topline { display: grid; gap: 14px; }
+  .lesson-share-actions { justify-content: flex-start; }
   .activity-carousel__toolbar { padding: 14px; align-items: flex-end; }
   .activity-carousel__toolbar-actions { flex: 0 0 auto; }
   .activity-carousel__chorus-jump { min-height: 36px; padding: 7px 10px; font-size: .7rem; }

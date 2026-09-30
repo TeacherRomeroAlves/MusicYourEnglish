@@ -1,5 +1,6 @@
 import { ListeningActivityProps } from "./types";
 import { getActivityInstruction } from "@/lib/activityInstructions";
+import LessonShareActions from "./LessonShareActions";
 
 export default function ListeningActivity({ step, title, description, embedUrl, embedTitle, }: ListeningActivityProps) {
   const isYouTube = embedUrl.includes("youtube.com/embed/");
@@ -7,16 +8,19 @@ export default function ListeningActivity({ step, title, description, embedUrl, 
 
   return (
     <section className="card">
-      <div className="section-heading">
-        <p className="section-kicker">{step}</p>
+      <div className="listening-card__topline">
+        <div className="section-heading">
+          <p className="section-kicker">{step}</p>
 
-        <h2>{title}</h2>
+          <h2>{title}</h2>
 
-        {description && (
-          <p className="section-note">
-            {getActivityInstruction(description, "listening")}
-          </p>
-        )}
+          {description && (
+            <p className="section-note">
+              {getActivityInstruction(description, "listening")}
+            </p>
+          )}
+        </div>
+        <LessonShareActions />
       </div>
 
       {isSpotify && (
