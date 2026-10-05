@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { songCatalog } from "@/data/songCatalog";
+import { publicSongCatalog } from "@/data/songCatalog";
 import LibraryPreviewVisual from "@/components/LibraryPreviewVisual";
 
 const processSteps = [
@@ -89,7 +89,7 @@ export default function Home() {
           <p>Browse every available lesson in one place, then filter by English level or musical genre to find the right fit.</p>
           <Link className="button button--primary" href="/songs">Explore the song library</Link>
         </div>
-        <LibraryPreviewVisual songs={songCatalog} />
+        <LibraryPreviewVisual songs={publicSongCatalog} />
       </section>
 
       <section className="home-section process-section" id="how-it-works" aria-labelledby="process-title">

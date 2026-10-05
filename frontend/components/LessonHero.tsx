@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import FavoriteButton from "@/components/learning/FavoriteButton";
 import { getSongMetaByTitle } from "@/data/songCatalog";
 
@@ -10,9 +11,10 @@ interface LessonHeroProps {
     topic: string;
     coverImage: string;
     coverClass: string;
+    credit?: ReactNode;
 }
   
-export default function LessonHero({ title, artist, description, level, topic, coverImage, coverClass }: LessonHeroProps) {
+export default function LessonHero({ title, artist, description, level, topic, coverImage, coverClass, credit }: LessonHeroProps) {
     const slug = getSongMetaByTitle(title)?.slug;
     return (
         <section className="lesson-hero">
@@ -37,6 +39,7 @@ export default function LessonHero({ title, artist, description, level, topic, c
               <div><dt>Level</dt><dd>{level}</dd></div>
               <div><dt>Topic</dt><dd>{topic}</dd></div>
             </dl>
+            {credit && <p className="lesson-credit">{credit}</p>}
           </div>
         </section>
     );

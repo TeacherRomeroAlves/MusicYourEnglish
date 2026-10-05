@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb";
   title: string;
   artist: string;
   level: UserLevel;
@@ -19,6 +19,7 @@ export interface SongMeta {
   activities: string[];
   coverImage: string;
   coverClass: string;
+  isUnlisted?: boolean;
 }
 
 export const songCatalog: SongMeta[] = [
@@ -425,7 +426,23 @@ export const songCatalog: SongMeta[] = [
     coverImage: "/images/songs/patient-zero/cover.png",
     coverClass: "song-art--patient-zero",
   },
+  {
+    slug: "comfortably-numb",
+    title: "Comfortably Numb",
+    artist: "Pink Floyd",
+    level: "Pre-intermediate",
+    duration: "50 min",
+    topic: "Isolation, memory, and emotional numbness",
+    genre: "Progressive rock",
+    description: "Practice verbs, idioms, and forms of there is and there are through a classic song about pain, distance, and emotional numbness.",
+    activities: ["Verbs", "Idioms", "There to be"],
+    coverImage: "/images/songs/comfortably-numb/cover.jpg",
+    coverClass: "song-art--comfortably-numb",
+    isUnlisted: true,
+  },
 ];
+
+export const publicSongCatalog = songCatalog.filter((song) => !song.isUnlisted);
 
 export function getSongMeta(slug: SongMeta["slug"]) {
   const song = songCatalog.find((item) => item.slug === slug);

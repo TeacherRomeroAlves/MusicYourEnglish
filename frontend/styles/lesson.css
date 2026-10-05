@@ -11,6 +11,9 @@
 .lesson-meta div { display: grid; gap: 4px; }
 .lesson-meta dt { color: #8f8996; font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .lesson-meta dd { margin: 0; color: var(--soft-white); font-weight: 700; }
+.lesson-credit { margin: 22px 0 0; color: #bdb3c1; font-size: .82rem; line-height: 1.5; }
+.lesson-credit a { color: #efa7d3; font-weight: 750; text-decoration-color: rgba(239,167,211,.45); text-underline-offset: 3px; }
+.lesson-credit a:hover { color: #fff; }
 .lesson-progress { margin: 0 0 22px; padding: 18px 22px; border: 1px solid var(--line); border-radius: 18px; background: rgba(17,16,22,.86); box-shadow: var(--shadow-soft); }
 .lesson-progress ol { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); list-style: none; }
 .lesson-progress li { display: flex; align-items: center; gap: 9px; position: relative; color: #9e98a5; font-size: .78rem; }

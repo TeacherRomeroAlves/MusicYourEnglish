@@ -2,6 +2,8 @@ export interface LyricWordPart {
     before: string;
     answer?: string;
     after: string;
+    syncKey?: string;
+    includeInScore?: boolean;
 }
 
 export interface LyricWordLine {

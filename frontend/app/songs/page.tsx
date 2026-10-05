@@ -1,5 +1,5 @@
 import SongLibrary from "@/components/SongLibrary";
-import { songCatalog } from "@/data/songCatalog";
+import { publicSongCatalog } from "@/data/songCatalog";
 
 export const metadata = {
   title: "Song Library | Music Your English",
@@ -34,7 +34,7 @@ export default function SongsPage() {
           Share Your Feedback <span aria-hidden="true">↗</span>
         </a>
       </aside>
-      <SongLibrary songs={songCatalog} />
+      <SongLibrary songs={publicSongCatalog} />
     </main>
   );
 }
