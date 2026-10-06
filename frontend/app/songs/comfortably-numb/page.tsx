@@ -51,7 +51,7 @@ export default function ComfortablyNumbPage() {
               <h2 id="comfortably-numb-cultural-note">A landmark album: The Wall</h2>
               <p>Released in 1979, <em>The Wall</em> is Pink Floyd&apos;s double concept album about the fictional rock star Pink, who builds an emotional wall to protect himself from pain and isolation. In “Comfortably Numb,” a doctor gives Pink an injection so he can perform, and the two voices show different sides of his experience. The album became a major work of rock theatre, later inspiring huge stage productions and a film.</p>
             </aside>
-            <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["What is happening in this song?", "Who do you think are the speakers in the story?", "How do you feel when you listen to this song?", "Why do you think the song uses the image of a wall?"]} />
+            <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["What is happening in this song?", "Who do you think are the speakers in the story?", "How do you feel when you listen to this song?", "What medical words can you identify in the song?"]} />
             <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Is it comfortable being an adult? Do you feel numb sometimes?" songTitle="Comfortably Numb" />
           </>}
         />

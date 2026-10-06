@@ -79,7 +79,7 @@ export const songCatalog: SongMeta[] = [
     slug: "wonderwall",
     title: "Wonderwall",
     artist: "Oasis",
-    level: "Beginner",
+    level: "Elementary",
     duration: "35 min",
     topic: "Hope and relationships",
     genre: "Rock",

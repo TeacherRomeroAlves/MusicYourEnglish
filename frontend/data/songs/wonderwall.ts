@@ -8,6 +8,7 @@ export const wonderwall = {
     { word: "winding", meaning: "having many turns and curves" },
     { word: "backbeat", meaning: "a strong beat in music" },
     { word: "blinding", meaning: "so bright that it is hard to see" },
+    { word: "doubt", meaning: "a feeling that something may not be true or possible" },
     { word: "realize", meaning: "to understand something clearly" },
   ],
 };
