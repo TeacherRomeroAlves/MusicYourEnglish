@@ -18,6 +18,9 @@ export default function SiteFooter() {
           <a href="https://www.instagram.com/music.yourenglish/" target="_blank" rel="noreferrer">
             Instagram
           </a>
+          <a href="https://movieyourenglish.vercel.app/" target="_blank" rel="noopener noreferrer">
+            Movie Your English
+          </a>
           <a
             className="button button--secondary button--compact footer-feedback"
             href="https://docs.google.com/forms/d/e/1FAIpQLSeOPF6KSC_AeLO1EG7sn-_qZ8h7K2clnojW46OkE6YzMlPELw/viewform?usp=header"
