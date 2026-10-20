@@ -19,7 +19,11 @@ export default function OrderCard({ item, onClick, selected = false, dragging = 
       draggable
       aria-pressed={selected}
       onClick={onClick}
-      onDragStart={onDragStart}
+      onDragStart={(event) => {
+        event.dataTransfer.setData("text/plain", item.id);
+        event.dataTransfer.effectAllowed = "move";
+        onDragStart?.();
+      }}
       onDragEnd={onDragEnd}
       onDragOver={(event) => event.preventDefault()}
       onDrop={(event) => {

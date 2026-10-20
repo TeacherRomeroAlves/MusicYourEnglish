@@ -10,6 +10,7 @@ function createOrderState(items: OrderItem[], shouldShuffle = true) {
     orderedIds: shouldShuffle ? shuffleArray(itemIds) : itemIds,
     selectedId: null as string | null,
     draggedId: null as string | null,
+    insertionIndex: null as number | null,
   };
 }
 
@@ -37,15 +38,16 @@ export function useOrderLyrics(items: OrderItem[]) {
     });
   };
 
-  const handleDragStart = (itemId: string) => setState((current) => ({ ...current, draggedId: itemId }));
-  const handleDrop = (targetId: string) => {
+  const handleDragStart = (itemId: string) => setState((current) => ({ ...current, draggedId: itemId, selectedId: null, insertionIndex: null }));
+  const handleDrop = (insertionIndex: number) => {
     setState((current) => {
-      if (!current.draggedId || current.draggedId === targetId) return { ...current, draggedId: null };
-      const firstIndex = current.orderedIds.indexOf(current.draggedId);
-      const secondIndex = current.orderedIds.indexOf(targetId);
-      const orderedIds = [...current.orderedIds];
-      [orderedIds[firstIndex], orderedIds[secondIndex]] = [orderedIds[secondIndex], orderedIds[firstIndex]];
-      return { ...current, orderedIds, draggedId: null, selectedId: null };
+      if (!current.draggedId) return current;
+      const sourceIndex = current.orderedIds.indexOf(current.draggedId);
+      const orderedIds = current.orderedIds.filter((id) => id !== current.draggedId);
+      // The boundary is measured before removing the dragged line.
+      const targetIndex = insertionIndex > sourceIndex ? insertionIndex - 1 : insertionIndex;
+      orderedIds.splice(Math.max(0, Math.min(targetIndex, orderedIds.length)), 0, current.draggedId);
+      return { ...current, orderedIds, draggedId: null, selectedId: null, insertionIndex: null };
     });
   };
 
@@ -55,10 +57,12 @@ export function useOrderLyrics(items: OrderItem[]) {
     orderedItems: state.orderedIds.map((id) => itemMap[id]).filter(Boolean),
     selectedId: state.selectedId,
     draggedId: state.draggedId,
+    insertionIndex: state.insertionIndex,
+    handleDragOver: (insertionIndex: number | null) => setState((current) => current.insertionIndex === insertionIndex ? current : { ...current, insertionIndex }),
     handleSelect,
     handleDragStart,
     handleDrop,
-    handleDragEnd: () => setState((current) => ({ ...current, draggedId: null })),
+    handleDragEnd: () => setState((current) => ({ ...current, draggedId: null, insertionIndex: null })),
     handleReset: () => setState(createOrderState(items, true)),
   };
 }

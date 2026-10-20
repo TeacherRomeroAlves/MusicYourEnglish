@@ -23,6 +23,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   const [state, setState] = useState(() => createMatchingState(words, false));
   const [draggedWord, setDraggedWord] = useState<string | null>(null);
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
+  const [selectedDefinition, setSelectedDefinition] = useState<string | null>(null);
   const [activeDropZone, setActiveDropZone] = useState<string | null>(null);
   const [isBankDragOver, setIsBankDragOver] = useState(false);
   const [feedback, setFeedback] = useState<MatchingFeedback>(defaultFeedback);
@@ -35,6 +36,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   }, [words]);
 
   const handleDragStart = (word: string) => {
+    setSelectedDefinition(null);
     setDraggedWord(word);
     setSelectedWord(null);
   };
@@ -73,6 +75,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   };
 
   const placeWordInZone = (expectedWord: string, word: string) => {
+    setSelectedDefinition(null);
     setCheckedAnswers(null);
 
     setState((previousState) => {
@@ -99,12 +102,22 @@ export function useMatchingActivity(words: MatchingWord[]) {
   };
 
   const handleSelectWord = (word: string) => {
+    if (selectedDefinition && !state.answers[selectedDefinition]) {
+      placeWordInZone(selectedDefinition, word);
+      setSelectedWord(null);
+      return;
+    }
     setSelectedWord((current) => (current === word ? null : word));
     setFeedback(defaultFeedback);
   };
 
   const handleSelectZone = (expectedWord: string) => {
-    if (!selectedWord) return;
+    if (!selectedWord) {
+      if (!state.answers[expectedWord]) {
+        setSelectedDefinition((current) => current === expectedWord ? null : expectedWord);
+      }
+      return;
+    }
     placeWordInZone(expectedWord, selectedWord);
     setSelectedWord(null);
   };
@@ -128,6 +141,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   };
 
   const handleReturnToBank = (word: string) => {
+    setSelectedDefinition(null);
     setCheckedAnswers(null);
     setState((previousState) => ({
       bankSlots: placeWordInFirstEmptySlot(
@@ -169,6 +183,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   };
 
   const handleReset = () => {
+    setSelectedDefinition(null);
     setCheckedAnswers(null);
     setState(createMatchingState(words, true));
     setDraggedWord(null);
@@ -198,6 +213,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
     checkedAnswers,
     draggedWord,
     selectedWord,
+    selectedDefinition,
     feedback,
     activeDropZone,
     isBankDragOver,

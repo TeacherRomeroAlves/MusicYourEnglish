@@ -12,6 +12,7 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
       checkedAnswers,
       draggedWord,
       selectedWord,
+      selectedDefinition,
       feedback,
       activeDropZone,
       handleDragStart,
@@ -42,7 +43,7 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
           <h2>{title}</h2>
   
           <p className="section-note">
-            Click a word to select it, then click its meaning to match them. You can also drag the word to the correct meaning. Use Listen to hear the word. Click a placed word to return it.
+            Click a word, then its meaning. Or click an empty meaning box, then a word. You can also drag the word to the correct meaning. Use Listen to hear the word. Click a placed word to return it.
           </p>
         </div>
   
@@ -89,6 +90,7 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
                 placedWord={answers[item.word]}
                 result={checkedAnswers === null ? undefined : !checkedAnswers[item.word] ? "incomplete" : checkedAnswers[item.word] === item.word ? "correct" : "incorrect"}
                 isDragOver={activeDropZone === item.word}
+                isSelected={selectedDefinition === item.word}
                 isDraggingWord={(word) => draggedWord === word}
                 onDragStart={handleDragStart}
                 onDragEnd={handleDragEnd}
