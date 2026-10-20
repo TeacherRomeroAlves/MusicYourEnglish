@@ -5,11 +5,11 @@ export const theFateOfOphelia = {
   },
   vocabulary: [
     { word: "fate", meaning: "events that seem decided before they happen" },
-    { word: "hone", meaning: "to improve a skill through practice" },
-    { word: "pledge allegiance", meaning: "to promise loyalty to a person, group, or country" },
-    { word: "grave", meaning: "a place where a dead person is buried" },
+    { word: "hone", meaning: "to get better at something by practicing" },
+    { word: "pledge allegiance", meaning: "to promise to stay with and support a person, group, or country" },
+    { word: "grave", meaning: "a place in the ground where a dead person's body is put" },
     { word: "linger", meaning: "to stay longer than expected" },
-    { word: "venom", meaning: "a poisonous liquid made by some animals" },
+    { word: "venom", meaning: "poison that some animals put into your body when they bite or sting" },
   ],
 };
 

@@ -26,6 +26,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   const [activeDropZone, setActiveDropZone] = useState<string | null>(null);
   const [isBankDragOver, setIsBankDragOver] = useState(false);
   const [feedback, setFeedback] = useState<MatchingFeedback>(defaultFeedback);
+  const [checkedAnswers, setCheckedAnswers] = useState<Record<string, string | null> | null>(null);
   const { speak } = useSpeech();
 
   useEffect(() => {
@@ -72,6 +73,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   };
 
   const placeWordInZone = (expectedWord: string, word: string) => {
+    setCheckedAnswers(null);
 
     setState((previousState) => {
       let nextBankSlots = removeWordFromBank(previousState.bankSlots, word);
@@ -109,6 +111,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
 
   const handleDropOnBank = () => {
     if (!draggedWord) return;
+    setCheckedAnswers(null);
 
     setState((previousState) => {
       const nextAnswers = removeWordFromAnswers(previousState.answers, draggedWord);
@@ -125,6 +128,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   };
 
   const handleReturnToBank = (word: string) => {
+    setCheckedAnswers(null);
     setState((previousState) => ({
       bankSlots: placeWordInFirstEmptySlot(
         removeWordFromBank(previousState.bankSlots, word),
@@ -139,6 +143,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   };
 
   const handleCheck = () => {
+    setCheckedAnswers({ ...state.answers });
     const results = getMatchingResults(words, state.answers);
 
     if (results.placed < results.total) {
@@ -164,6 +169,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   };
 
   const handleReset = () => {
+    setCheckedAnswers(null);
     setState(createMatchingState(words, true));
     setDraggedWord(null);
     setSelectedWord(null);
@@ -189,6 +195,7 @@ export function useMatchingActivity(words: MatchingWord[]) {
   return {
     bankSlots: state.bankSlots,
     answers: state.answers,
+    checkedAnswers,
     draggedWord,
     selectedWord,
     feedback,

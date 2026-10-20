@@ -1,4 +1,5 @@
 import SongLibrary from "@/components/SongLibrary";
+import Image from "next/image";
 import { publicSongCatalog } from "@/data/songCatalog";
 
 export const metadata = {
@@ -32,6 +33,30 @@ export default function SongsPage() {
           rel="noreferrer"
         >
           Share Your Feedback <span aria-hidden="true">↗</span>
+        </a>
+      </aside>
+      <aside className="library-movie-card" aria-labelledby="library-movie-title">
+        <Image
+          className="library-movie-card__logo"
+          src="/images/movie-your-english-logo.png"
+          alt="Movie Your English logo"
+          width={104}
+          height={104}
+          sizes="(max-width: 620px) 72px, 104px"
+        />
+        <div className="library-movie-card__copy">
+          <p className="library-movie-card__eyebrow">Meet our sister platform</p>
+          <h2 id="library-movie-title">Love movies, too?</h2>
+          <p>Practice English with the movies you love. Explore interactive lessons on Movie Your English.</p>
+        </div>
+        <a
+          className="button library-movie-card__button"
+          href="https://movieyourenglish.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Explore Movie Your English (opens in a new tab)"
+        >
+          Explore Movie Your English <span aria-hidden="true">&#8599;</span>
         </a>
       </aside>
       <SongLibrary songs={publicSongCatalog} />

@@ -5,13 +5,13 @@ export const nineToFive = {
   },
   vocabulary: [
     { word: "tumble", meaning: "to fall or move quickly and without control" },
-    { word: "folks", meaning: "an informal word for people" },
+    { word: "folks", meaning: "another word for people, often used in friendly talk" },
     { word: "yawn", meaning: "to open your mouth when you are tired" },
-    { word: "9 to 5", meaning: "a job with regular daytime working hours" },
+    { word: "9 to 5", meaning: "a job where you usually work from nine in the morning to five in the afternoon" },
     { word: "barely", meaning: "only just; almost not" },
-    { word: "drive someone crazy", meaning: "to make someone very annoyed or upset" },
+    { word: "drive someone crazy", meaning: "to make someone very angry or upset" },
     { word: "shatter", meaning: "to break suddenly into many small pieces" },
-    { word: "ladder", meaning: "an object with steps used for climbing" },
+    { word: "ladder", meaning: "something with steps that you climb to reach a high place" },
   ],
 };
 

@@ -7,7 +7,7 @@ export const monsters = {
     vocabulary: [
         {
             word: "monster",
-            meaning: "a scary creature, or something that feels very frightening"
+            meaning: "a scary animal or being from a story; also something that makes you very afraid"
         },
         {
             word: "hide",
@@ -23,7 +23,7 @@ export const monsters = {
         },
         {
             word: "scars",
-            meaning: "marks left after an injury"
+            meaning: "marks on your skin that stay after a cut has healed"
         },
         {
             word: "tunnel vision",
@@ -31,11 +31,11 @@ export const monsters = {
         },
         {
             word: "sucker",
-            meaning: "a person who is easily tricked or attracted to something"
+            meaning: "someone who is easy to trick, or who finds it hard to say no to something"
         },
         {
             word: "strung out",
-            meaning: "very tired, worried, or emotionally stressed"
+            meaning: "very tired and worried, and finding it hard to relax"
         },
     ]
 }

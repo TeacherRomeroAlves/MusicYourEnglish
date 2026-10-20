@@ -5,13 +5,8 @@ interface WordDropZoneProps {
   match: string;
   placedWordId: string | null;
   placedWord: string | null;
-  isDragOver: boolean;
-  isDraggingWord: (word: string) => boolean;
-  onDragStart: (word: string) => void;
-  onDragEnd: () => void;
-  onDragOver: () => void;
-  onDragLeave: () => void;
-  onDrop: () => void;
+  isSelected: boolean;
+  onSelectSlot: () => void;
   onSelectWord: (word: string) => void;
 }
 
@@ -20,20 +15,15 @@ export default function WordDropZone({
   match,
   placedWordId,
   placedWord,
-  isDragOver,
-  isDraggingWord,
-  onDragStart,
-  onDragEnd,
-  onDragOver,
-  onDragLeave,
-  onDrop,
+  isSelected,
+  onSelectSlot,
   onSelectWord,
 }: WordDropZoneProps) {
   const wordCount = match.trim().split(/\s+/).length;
   const className = [
     "word-drop-zone",
     wordCount >= 4 ? "word-drop-zone--sentence" : wordCount > 1 ? "word-drop-zone--phrase" : "",
-    isDragOver ? "drag-over" : "",
+    isSelected ? "is-selected" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -46,30 +36,18 @@ export default function WordDropZone({
       role="button"
       tabIndex={0}
       aria-label={`Place the selected word in the ${match} blank`}
-      onClick={onDrop}
+      onClick={onSelectSlot}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          onDrop();
+          onSelectSlot();
         }
-      }}
-      onDragOver={(event) => {
-        event.preventDefault();
-        onDragOver();
-      }}
-      onDragLeave={onDragLeave}
-      onDrop={(event) => {
-        event.preventDefault();
-        onDrop();
       }}
     >
       {placedWord ? (
         <LyricWordCard
           itemId={placedWordId ?? placedWord}
           word={placedWord}
-          isDragging={isDraggingWord(placedWordId ?? placedWord)}
-          onDragStart={onDragStart}
-          onDragEnd={onDragEnd}
           onSelect={onSelectWord}
         />
       ) : null}

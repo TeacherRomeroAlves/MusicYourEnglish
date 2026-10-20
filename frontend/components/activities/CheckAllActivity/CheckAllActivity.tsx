@@ -35,7 +35,7 @@ export default function CheckAllActivity({ title, description, buttonText = "Che
             </button>
             {needsReview && (
               <button className="action-btn secondary" type="button" onClick={handleReview}>
-                Review Mistakes
+                Reveal Mistakes
               </button>
             )}
         </div>

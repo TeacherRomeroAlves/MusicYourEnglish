@@ -4,7 +4,9 @@ import MatchingWordCard from "./MatchingWordCard";
 
 interface MeaningDropZoneProps {
   meaning: string;
+  placeholderWord: string;
   placedWord: string | null;
+  result?: "correct" | "incorrect" | "incomplete";
   isDragOver: boolean;
   isDraggingWord: (word: string) => boolean;
   onDragStart: (word: string) => void;
@@ -19,7 +21,9 @@ interface MeaningDropZoneProps {
 
 export default function MeaningDropZone({
   meaning,
+  placeholderWord,
   placedWord,
+  result,
   isDragOver,
   isDraggingWord,
   onDragStart,
@@ -31,7 +35,7 @@ export default function MeaningDropZone({
   onSelectZone,
   onSelectWord,
 }: MeaningDropZoneProps) {
-  const className = ["drop-zone", isDragOver ? "drag-over" : ""]
+  const className = ["drop-zone", isDragOver ? "drag-over" : "", result ? `matching-result--${result}` : ""]
     .filter(Boolean)
     .join(" ");
 
@@ -40,7 +44,7 @@ export default function MeaningDropZone({
       className={className}
       role="button"
       tabIndex={0}
-      aria-label={`Place the selected word beside: ${meaning}`}
+      aria-label={`Place the selected word beside: ${meaning}${result ? `. Answer ${result}` : ""}`}
       onClick={onSelectZone}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
@@ -60,6 +64,11 @@ export default function MeaningDropZone({
     >
       <p className="meaning-text">{meaning}</p>
 
+      <div className="matching-answer-slot">
+        <div className="word-card placed-card matching-answer-placeholder" aria-hidden="true">
+          <span>{placeholderWord}</span>
+          <span className="speak-btn">Listen</span>
+        </div>
       {placedWord ? (
         <MatchingWordCard
           word={placedWord}
@@ -72,6 +81,7 @@ export default function MeaningDropZone({
           onSpeak={onSpeak}
         />
       ) : null}
+      </div>
     </div>
   );
 }

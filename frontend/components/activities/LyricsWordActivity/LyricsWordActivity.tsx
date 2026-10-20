@@ -14,18 +14,11 @@ import { useLyricsWordSync } from "@/hooks/useLyricsWordSync";
 export default function LyricsWordActivity({ step, title, description, words, lyrics, }: LyricsWordActivityProps) {
   const {
     bankItems,
-    draggedTokenId,
     activeSlotId,
-    placements,
     buildSlotId,
     getPlacedItem,
-    handleDragStart,
-    handleDragEnd,
-    handleSlotDragOver,
-    handleSlotDragLeave,
-    handleDropOnSlot,
-    handleAutoPlace,
-    handleDropOnBank,
+    handlePlaceInSlot,
+    handleSelectSlot,
     handleReturnToBank,
     handleReset,
   } = useLyricsWord(words, lyrics);
@@ -53,14 +46,13 @@ export default function LyricsWordActivity({ step, title, description, words, ly
     const slot = expectedSlots.find((item) => item.slotId === slotId);
     if (slot?.part.syncKey) lyricsWordSync?.clearValue(slot.part.syncKey, activityId);
   };
-  const handleSyncedDrop = (slotId: string) => {
-    if (draggedTokenId) synchronizePlacement(slotId, draggedTokenId);
-    handleDropOnSlot(slotId);
-  };
   const handleSyncedAutoPlace = (tokenId: string) => {
-    const nextSlot = expectedSlots.find(({ slotId }) => !getPlacedItem(slotId) && !getSyncedWord(slotId));
-    if (nextSlot) synchronizePlacement(nextSlot.slotId, tokenId);
-    handleAutoPlace(tokenId);
+    const nextSlot = activeSlotId && !getPlacedItem(activeSlotId) && !getSyncedWord(activeSlotId)
+      ? expectedSlots.find(({ slotId }) => slotId === activeSlotId)
+      : expectedSlots.find(({ slotId }) => !getPlacedItem(slotId) && !getSyncedWord(slotId));
+    if (!nextSlot) return;
+    synchronizePlacement(nextSlot.slotId, tokenId);
+    handlePlaceInSlot(nextSlot.slotId, tokenId);
   };
   const handleSyncedReturnToBank = (tokenId: string) => {
     const slot = expectedSlots.find(({ slotId }) => getPlacedItem(slotId)?.id === tokenId);
@@ -94,26 +86,12 @@ export default function LyricsWordActivity({ step, title, description, words, ly
         )}
       </div>
 
-      <div
-        className="lyric-word-bank"
-        aria-label={title}
-        onDragOver={(event) => {
-          event.preventDefault();
-        }}
-        onDrop={(event) => {
-          event.preventDefault();
-          handleDropOnBank();
-        }}
-        onClick={handleDropOnBank}
-      >
+      <div className="lyric-word-bank" aria-label={title}>
         {visibleBankItems.map((item) => (
           <LyricWordCard
             key={item.id}
             itemId={item.id}
             word={item.word}
-            isDragging={draggedTokenId === item.id}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
             onSelect={handleSyncedAutoPlace}
           />
         ))}
@@ -134,13 +112,11 @@ export default function LyricsWordActivity({ step, title, description, words, ly
                       match={part.answer}
                       placedWordId={getPlacedItem(buildSlotId(index, i))?.id ?? getSyncedWord(buildSlotId(index, i))?.word ?? null}
                       placedWord={getWordForSlot(buildSlotId(index, i)) ?? null}
-                      isDragOver={activeSlotId === buildSlotId(index, i)}
-                      isDraggingWord={(tokenId) => draggedTokenId === tokenId}
-                      onDragStart={handleDragStart}
-                      onDragEnd={handleDragEnd}
-                      onDragOver={() => handleSlotDragOver(buildSlotId(index, i))}
-                      onDragLeave={() => handleSlotDragLeave(buildSlotId(index, i))}
-                      onDrop={() => handleSyncedDrop(buildSlotId(index, i))}
+                      isSelected={activeSlotId === buildSlotId(index, i)}
+                      onSelectSlot={() => {
+                        const slotId = buildSlotId(index, i);
+                        if (!getSyncedWord(slotId)) handleSelectSlot(slotId);
+                      }}
                       onSelectWord={handleSyncedReturnToBank}
                     />
                     </ReviewMarker>
@@ -164,7 +140,7 @@ export default function LyricsWordActivity({ step, title, description, words, ly
           type="button"
           onClick={handleSyncedReset}
         >
-          Reset Section
+          Reset Verse
         </button>
       </div>
     </section>

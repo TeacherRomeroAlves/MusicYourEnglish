@@ -52,7 +52,7 @@ export default function OrderLyricsActivity({ step, title, description, items, }
           type="button"
           onClick={handleReset}
         >
-          Reset Section
+          Reset Verse
         </button>
       </div>
     </section>

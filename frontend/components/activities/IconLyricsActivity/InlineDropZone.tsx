@@ -5,13 +5,8 @@ interface InlineDropZoneProps {
   slotId: string;
   match: string;
   placedIcon: IconItem | null;
-  isDragOver: boolean;
-  isDraggingIcon: (iconId: string) => boolean;
-  onDragStart: (iconId: string) => void;
-  onDragEnd: () => void;
-  onDragOver: () => void;
-  onDragLeave: () => void;
-  onDrop: () => void;
+  isSelected: boolean;
+  onSelectSlot: () => void;
   onSelectIcon: (iconId: string) => void;
 }
 
@@ -19,16 +14,11 @@ export default function InlineDropZone({
   slotId,
   match,
   placedIcon,
-  isDragOver,
-  isDraggingIcon,
-  onDragStart,
-  onDragEnd,
-  onDragOver,
-  onDragLeave,
-  onDrop,
+  isSelected,
+  onSelectSlot,
   onSelectIcon,
 }: InlineDropZoneProps) {
-  const className = ["inline-drop-zone", isDragOver ? "drag-over" : ""]
+  const className = ["inline-drop-zone", isSelected ? "is-selected" : ""]
     .filter(Boolean)
     .join(" ");
 
@@ -40,29 +30,17 @@ export default function InlineDropZone({
       role="button"
       tabIndex={0}
       aria-label={`Place the selected icon in the ${match} blank`}
-      onClick={onDrop}
+      onClick={onSelectSlot}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          onDrop();
+          onSelectSlot();
         }
-      }}
-      onDragOver={(event) => {
-        event.preventDefault();
-        onDragOver();
-      }}
-      onDragLeave={onDragLeave}
-      onDrop={(event) => {
-        event.preventDefault();
-        onDrop();
       }}
     >
       {placedIcon ? (
         <IconCard
           icon={placedIcon}
-          isDragging={isDraggingIcon(placedIcon.id)}
-          onDragStart={onDragStart}
-          onDragEnd={onDragEnd}
           onSelect={onSelectIcon}
         />
       ) : null}

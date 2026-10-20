@@ -4,14 +4,14 @@ export const comfortablyNumb = {
     title: "Comfortably Numb by Pink Floyd on YouTube",
   },
   vocabulary: [
-    { word: "nod", meaning: "to move your head up and down to show yes or agreement" },
-    { word: "numb", meaning: "unable to feel pain, touch, or strong emotions" },
+    { word: "nod", meaning: "to move your head up and down to say yes or show you agree" },
+    { word: "numb", meaning: "not able to feel pain or touch, or not feeling happy or sad" },
     { word: "recede", meaning: "to move back or become less strong" },
-    { word: "pinprick", meaning: "a very small sharp pain, like a needle touching your skin" },
+    { word: "pinprick", meaning: "a small, sharp pain when a pin or needle goes into your skin" },
     { word: "come in waves", meaning: "to happen again and again, with stronger and weaker moments" },
     { word: "catch a glimpse", meaning: "to see something for a very short time" },
-    { word: "balloon", meaning: "a light rubber object filled with air" },
-    { word: "fever", meaning: "a high body temperature when you are ill" },
+    { word: "balloon", meaning: "a thin rubber bag you fill with air, often used at parties" },
+    { word: "fever", meaning: "when your body is hotter than normal because you are ill" },
   ],
 };
 

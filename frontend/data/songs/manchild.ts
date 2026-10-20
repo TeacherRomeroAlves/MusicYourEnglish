@@ -6,12 +6,12 @@ export const manchild = {
   vocabulary: [
     { word: "manchild", meaning: "an adult man who acts like a child" },
     { word: "self-care", meaning: "things you do to care for yourself" },
-    { word: "dumb", meaning: "not intelligent or sensible" },
+    { word: "dumb", meaning: "an unkind way to say not smart" },
     { word: "blame", meaning: "to say someone caused a problem" },
     { word: "incompetent", meaning: "not able to do something well" },
     { word: "swear", meaning: "to promise that something is true" },
-    { word: "outfit", meaning: "a set of clothes worn together" },
-    { word: "useless", meaning: "not helpful or effective" },
+    { word: "outfit", meaning: "the clothes you wear together" },
+    { word: "useless", meaning: "not able to help or do what is needed" },
   ],
 };
 

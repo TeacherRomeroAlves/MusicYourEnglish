@@ -77,21 +77,33 @@ export function useLyricsWord(words: LyricWordOption[], lyrics: LyricWordLine[])
     handleDragEnd();
   };
 
-  const handleAutoPlace = (tokenId: string) => {
+  const handlePlaceInSlot = (slotId: string, tokenId: string) => {
     setState((previousState) => {
-      const nextSlotId = findFirstEmptySlot(previousState.placements, orderedSlotIds);
-      if (!nextSlotId) return previousState;
+      let nextBankTokenIds = removeItemFromBank(previousState.bankTokenIds, tokenId);
+      const nextPlacements = removeItemFromPlacements(previousState.placements, tokenId);
+      const replacedTokenId = nextPlacements[slotId];
 
+      if (replacedTokenId && replacedTokenId !== tokenId) {
+        nextBankTokenIds = appendItemToBank(nextBankTokenIds, replacedTokenId);
+      }
       return {
-        bankTokenIds: removeItemFromBank(previousState.bankTokenIds, tokenId),
-        placements: {
-          ...removeItemFromPlacements(previousState.placements, tokenId),
-          [nextSlotId]: tokenId,
-        },
+        bankTokenIds: nextBankTokenIds,
+        placements: { ...nextPlacements, [slotId]: tokenId },
       };
     });
     setDraggedTokenId(null);
     setActiveSlotId(null);
+  };
+
+  const handleAutoPlace = (tokenId: string) => {
+    const nextSlotId = activeSlotId && !state.placements[activeSlotId]
+      ? activeSlotId
+      : findFirstEmptySlot(state.placements, orderedSlotIds);
+    if (nextSlotId) handlePlaceInSlot(nextSlotId, tokenId);
+  };
+
+  const handleSelectSlot = (slotId: string) => {
+    if (!state.placements[slotId]) setActiveSlotId(slotId);
   };
 
   const handleDropOnBank = () => {
@@ -144,6 +156,8 @@ export function useLyricsWord(words: LyricWordOption[], lyrics: LyricWordLine[])
     handleSlotDragLeave,
     handleDropOnSlot,
     handleAutoPlace,
+    handlePlaceInSlot,
+    handleSelectSlot,
     handleDropOnBank,
     handleReturnToBank,
     handleReset,

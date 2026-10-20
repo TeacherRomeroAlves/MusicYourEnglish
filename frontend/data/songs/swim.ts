@@ -6,11 +6,11 @@ export const swim = {
   vocabulary: [
     { word: "swim", meaning: "to move through water using your body" },
     { word: "dive", meaning: "to jump or move down into water" },
-    { word: "love me bad", meaning: "informal: love me very much or intensely" },
+    { word: "love me bad", meaning: "a way of saying love me very much in the song" },
     { word: "get cold feet", meaning: "to suddenly feel nervous and not want to do something" },
-    { word: "stunning", meaning: "very beautiful or impressive" },
-    { word: "goody-goody", meaning: "a person who always tries to behave perfectly" },
-    { word: "drip", meaning: "small drops of liquid; slang for a stylish look or clothes" },
+    { word: "stunning", meaning: "so beautiful or good that it surprises you" },
+    { word: "goody-goody", meaning: "an unkind name for someone who tries too hard to be good and follow every rule" },
+    { word: "drip", meaning: "small drops of liquid; also a word used in everyday talk for cool clothes or style" },
   ],
 };
 

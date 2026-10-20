@@ -12,18 +12,12 @@ import ReviewMarker from "@/components/activities/ReviewMarker";
 export default function IconLyricsActivity({ step, title, description, icons, lyrics }: IconLyricsActivityProps) {
     const {
       bankIcons,
-      draggedIconId,
       activeSlotId,
       placements,
       buildSlotId,
       getPlacedIcon,
-      handleDragStart,
-      handleDragEnd,
-      handleSlotDragOver,
-      handleSlotDragLeave,
-      handleDropOnSlot,
       handleAutoPlace,
-      handleDropOnBank,
+      handleSelectSlot,
       handleReturnToBank,
       handleReset,
   } = useIconLyrics(icons, lyrics);
@@ -55,25 +49,11 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
                 )}
             </div>
 
-            <div
-              className="icon-bank"
-              aria-label="Icon bank"
-              onDragOver={(event) => {
-                event.preventDefault();
-              }}
-              onDrop={(event) => {
-                event.preventDefault();
-                handleDropOnBank();
-              }}
-              onClick={handleDropOnBank}
-            >
+            <div className="icon-bank" aria-label="Icon bank">
                 {bankIcons.map((icon) => (
                 <IconCard
                   key={icon.id}
                   icon={icon}
-                  isDragging={draggedIconId === icon.id}
-                  onDragStart={handleDragStart}
-                  onDragEnd={handleDragEnd}
                   onSelect={handleAutoPlace}
                 />
                 ))}
@@ -91,13 +71,8 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
                               slotId={buildSlotId(index, i)}
                               match={part.match}
                               placedIcon={getPlacedIcon(buildSlotId(index, i))}
-                              isDragOver={activeSlotId === buildSlotId(index, i)}
-                              isDraggingIcon={(iconId) => draggedIconId === iconId}
-                              onDragStart={handleDragStart}
-                              onDragEnd={handleDragEnd}
-                              onDragOver={() => handleSlotDragOver(buildSlotId(index, i))}
-                              onDragLeave={() => handleSlotDragLeave(buildSlotId(index, i))}
-                              onDrop={() => handleDropOnSlot(buildSlotId(index, i))}
+                              isSelected={activeSlotId === buildSlotId(index, i)}
+                              onSelectSlot={() => handleSelectSlot(buildSlotId(index, i))}
                               onSelectIcon={(iconId) => handleReturnToBank(buildSlotId(index, i), iconId)}
                             />
                           </ReviewMarker>
@@ -111,7 +86,7 @@ export default function IconLyricsActivity({ step, title, description, icons, ly
 
             <div className="actions">
                 <button className="action-btn secondary" type="button" onClick={handleReset}>
-                Reset Stanza
+                Reset Verse
                 </button>
             </div>
         </section>

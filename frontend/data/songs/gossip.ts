@@ -4,14 +4,14 @@ export const gossip = {
     title: "GOSSIP by Måneskin on YouTube",
   },
   vocabulary: [
-    { word: "sip", meaning: "to drink a small amount slowly" },
-    { word: "gossip", meaning: "talk about other people's private lives" },
-    { word: "choke", meaning: "to have trouble breathing because something blocks your throat" },
+    { word: "sip", meaning: "to drink slowly, a little at a time" },
+    { word: "gossip", meaning: "talk about other people's lives, often about things that may not be true" },
+    { word: "choke", meaning: "to be unable to breathe because something is stuck in your throat" },
     { word: "gloomy", meaning: "sad and without much hope" },
-    { word: "under the rug", meaning: "hidden so people do not see or discuss a problem" },
+    { word: "under the rug", meaning: "hidden so people do not see or talk about a problem" },
     { word: "surface", meaning: "the outside or top part of something" },
-    { word: "iconic", meaning: "very famous and easy to recognize" },
-    { word: "throat", meaning: "the part inside your neck used for breathing and swallowing" },
+    { word: "iconic", meaning: "very famous, with a look or style many people know" },
+    { word: "throat", meaning: "the part inside your neck where food, drink, and air pass" },
   ],
 };
 

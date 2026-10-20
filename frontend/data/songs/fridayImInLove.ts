@@ -5,13 +5,13 @@ export const fridayImInLove = {
   },
   vocabulary: [
     { word: "days of the week", meaning: "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday" },
-    { word: "fall apart", meaning: "to break or become emotionally upset" },
+    { word: "fall apart", meaning: "to break into pieces or feel very sad" },
     { word: "instead", meaning: "in place of something else" },
-    { word: "dress up", meaning: "to wear special or formal clothes" },
-    { word: "frown", meaning: "an unhappy expression on your face" },
-    { word: "sleek", meaning: "smooth, neat, and stylish" },
-    { word: "shriek", meaning: "a short, loud, high sound" },
-    { word: "gorgeous", meaning: "very beautiful or attractive" },
+    { word: "dress up", meaning: "to wear nice clothes for a special day or event" },
+    { word: "frown", meaning: "a look on your face that shows you are unhappy or angry" },
+    { word: "sleek", meaning: "smooth and looking good, with nothing out of place" },
+    { word: "shriek", meaning: "a loud, high cry" },
+    { word: "gorgeous", meaning: "very beautiful" },
   ],
 };
 

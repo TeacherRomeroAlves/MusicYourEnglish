@@ -4,12 +4,12 @@ export const waitingForLove = {
     title: "Waiting For Love by Avicii on YouTube",
   },
   vocabulary: [
-    { word: "will", meaning: "a strong wish or decision to do something" },
-    { word: "obstacle", meaning: "something that makes progress difficult" },
-    { word: "tyrant", meaning: "a cruel leader who has too much power" },
-    { word: "miracle", meaning: "a wonderful event that seems impossible" },
+    { word: "will", meaning: "a strong wish to do something and keep trying" },
+    { word: "obstacle", meaning: "something that stops you or makes it hard to do something" },
+    { word: "tyrant", meaning: "a leader who has too much power and treats people badly" },
+    { word: "miracle", meaning: "something very good that happens but seems impossible" },
     { word: "days of the week", meaning: "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday" },
-    { word: "cynical", meaning: "believing that people are usually selfish or dishonest" },
+    { word: "cynical", meaning: "thinking people only care about themselves and cannot be trusted" },
     { word: "irreplaceable", meaning: "so special that nothing else can take its place" },
   ],
 };

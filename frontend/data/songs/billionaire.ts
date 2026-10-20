@@ -4,13 +4,13 @@ export const billionaire = {
     title: "Billionaire by Travie McCoy featuring Bruno Mars on YouTube",
   },
   vocabulary: [
-    { word: "FEMA", meaning: "a US agency that helps people after disasters" },
-    { word: "so f* bad", meaning: "very much; an informal and strong expression" },
-    { word: "Katrina", meaning: "a powerful hurricane that hit the US in 2005" },
+    { word: "FEMA", meaning: "a part of the US government that helps people after events like big storms or floods" },
+    { word: "so f* bad", meaning: "very much; a strong way to say it that includes a rude word" },
+    { word: "Katrina", meaning: "a very strong storm that hit the US in 2005" },
     { word: "Santa Claus", meaning: "the character who gives presents at Christmas" },
-    { word: "Oprah", meaning: "a famous American TV host and businesswoman" },
+    { word: "Oprah", meaning: "a famous American woman who presents TV shows and runs businesses" },
     { word: "Forbes", meaning: "a magazine known for stories and lists about money and business" },
-    { word: "tax bracket", meaning: "a group that shows how much tax a person pays based on income" },
+    { word: "tax bracket", meaning: "a group based on how much money you earn, used to decide the tax rate on that money" },
     { word: "take a crack at something", meaning: "to try to do something" },
   ],
 };

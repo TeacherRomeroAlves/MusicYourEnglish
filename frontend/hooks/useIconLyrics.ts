@@ -128,7 +128,9 @@ export function useIconLyrics(icons: IconItem[], lyrics: LyricLine[]) {
   };
 
   const handleAutoPlace = (iconId: string) => {
-    const nextSlotId = findFirstEmptySlot(placements, orderedSlotIds);
+    const nextSlotId = activeSlotId && !placements[activeSlotId]
+      ? activeSlotId
+      : findFirstEmptySlot(placements, orderedSlotIds);
     if (!nextSlotId) return;
     const syncKey = syncKeyBySlot[nextSlotId];
     if (syncKey && context) context.setSharedPlacement(syncKey, iconId);
@@ -143,6 +145,10 @@ export function useIconLyrics(icons: IconItem[], lyrics: LyricLine[]) {
     });
     setDraggedIconId(null);
     setActiveSlotId(null);
+  };
+
+  const handleSelectSlot = (slotId: string) => {
+    if (!placements[slotId]) setActiveSlotId(slotId);
   };
 
   const handleDropOnBank = () => {
@@ -203,6 +209,7 @@ export function useIconLyrics(icons: IconItem[], lyrics: LyricLine[]) {
     handleSlotDragLeave,
     handleDropOnSlot,
     handleAutoPlace,
+    handleSelectSlot,
     handleDropOnBank,
     handleReturnToBank,
     handleReset,

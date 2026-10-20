@@ -56,23 +56,11 @@ export default function IconChoiceLyricsActivity({
         <p className="section-note">{getActivityInstruction(description)}</p>
       </div>
 
-      <div
-        className="icon-bank"
-        aria-label="Icon bank"
-        onDragOver={(event) => event.preventDefault()}
-        onDrop={(event) => {
-          event.preventDefault();
-          iconActivity.handleDropOnBank();
-        }}
-        onClick={iconActivity.handleDropOnBank}
-      >
+      <div className="icon-bank" aria-label="Icon bank">
         {iconActivity.bankIcons.map((icon) => (
           <IconCard
             key={icon.id}
             icon={icon}
-            isDragging={iconActivity.draggedIconId === icon.id}
-            onDragStart={iconActivity.handleDragStart}
-            onDragEnd={iconActivity.handleDragEnd}
             onSelect={iconActivity.handleAutoPlace}
           />
         ))}
@@ -91,13 +79,8 @@ export default function IconChoiceLyricsActivity({
                     slotId={slotId}
                     match={part.match}
                     placedIcon={iconActivity.getPlacedIcon(slotId)}
-                    isDragOver={iconActivity.activeSlotId === slotId}
-                    isDraggingIcon={(iconId) => iconActivity.draggedIconId === iconId}
-                    onDragStart={iconActivity.handleDragStart}
-                    onDragEnd={iconActivity.handleDragEnd}
-                    onDragOver={() => iconActivity.handleSlotDragOver(slotId)}
-                    onDragLeave={() => iconActivity.handleSlotDragLeave(slotId)}
-                    onDrop={() => iconActivity.handleDropOnSlot(slotId)}
+                    isSelected={iconActivity.activeSlotId === slotId}
+                    onSelectSlot={() => iconActivity.handleSelectSlot(slotId)}
                     onSelectIcon={(iconId) => iconActivity.handleReturnToBank(slotId, iconId)}
                   />
                   </ReviewMarker>
@@ -141,7 +124,7 @@ export default function IconChoiceLyricsActivity({
             choices.handleReset();
           }}
         >
-          Reset Section
+          Reset Verse
         </button>
       </div>
     </section>

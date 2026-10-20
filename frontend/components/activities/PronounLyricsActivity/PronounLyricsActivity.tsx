@@ -81,7 +81,7 @@ export default function PronounLyricsActivity({ step, title, description, chartL
           type="button"
           onClick={handleReset}
         >
-          Reset Section
+          Reset Verse
         </button>
       </div>
     </section>

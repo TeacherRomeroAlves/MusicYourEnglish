@@ -4,14 +4,14 @@ export const standByMe = {
     title: "Stand by Me by Ben E. King on Spotify",
   },
   vocabulary: [
-    { word: "stand by someone", meaning: "to stay with and support someone during a difficult time" },
-    { word: "afraid", meaning: "feeling fear or worry" },
+    { word: "stand by someone", meaning: "to stay with someone and help them when life is hard" },
+    { word: "afraid", meaning: "feeling scared that something bad may happen" },
     { word: "tumble", meaning: "to fall suddenly or quickly" },
     { word: "crumble", meaning: "to break into many small pieces" },
     { word: "shed a tear", meaning: "to cry or let a tear fall from your eye" },
-    { word: "as long as", meaning: "only if something continues to happen or be true" },
-    { word: "out of sight", meaning: "in a place where someone or something cannot be seen" },
-    { word: "darling", meaning: "a loving name for someone who is very important to you" },
+    { word: "as long as", meaning: "only if; for example, I feel safe if you stay with me" },
+    { word: "out of sight", meaning: "too far away or hidden, so you cannot see it" },
+    { word: "darling", meaning: "a name you call someone you love" },
   ],
 };
 

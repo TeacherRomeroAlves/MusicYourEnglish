@@ -6,8 +6,8 @@ export const niceToMeetYou = {
   vocabulary: [
     { word: "crowd", meaning: "a large group of people in one place" },
     { word: "lonely", meaning: "sad because you are alone" },
-    { word: "slip by", meaning: "to pass quickly or without being noticed" },
-    { word: "ain't", meaning: "an informal form of am not, is not, are not, has not, or have not" },
+    { word: "slip by", meaning: "to pass quickly, often before you notice" },
+    { word: "ain't", meaning: "a way of saying am not, is not, are not, has not, or have not in songs and everyday talk" },
     { word: "feet", meaning: "the parts of your body that you stand on" },
     { word: "worries", meaning: "problems or thoughts that make you nervous" },
   ],

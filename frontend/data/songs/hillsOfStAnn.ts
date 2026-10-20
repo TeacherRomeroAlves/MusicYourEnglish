@@ -5,14 +5,14 @@ export const hillsOfStAnn = {
   },
   vocabulary: [
     { word: "mist", meaning: "small drops of water in the air" },
-    { word: "hills", meaning: "high areas of land, smaller than mountains" },
-    { word: "breeze", meaning: "a light and gentle wind" },
+    { word: "hills", meaning: "high parts of the land, smaller than mountains" },
+    { word: "breeze", meaning: "a soft wind that is not strong" },
     { word: "roots", meaning: "the parts of a plant under the ground" },
     { word: "Jah", meaning: "a name for God in Rastafari culture" },
-    { word: "Zion", meaning: "a peaceful and spiritual promised place" },
+    { word: "Zion", meaning: "a place of peace and freedom in Rastafari belief" },
     { word: "Inna", meaning: "in or inside, in Jamaican English" },
-    { word: "drum", meaning: "a musical instrument you hit with your hands or sticks" },
-    { word: "mountain span", meaning: "a long area covered by mountains" },
+    { word: "drum", meaning: "something you hit with your hands or sticks to make music" },
+    { word: "mountain span", meaning: "mountains that go across a large area" },
   ],
 };
 

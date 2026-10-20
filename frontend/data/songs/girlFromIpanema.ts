@@ -4,13 +4,13 @@ export const girlFromIpanema = {
     title: "The Girl from Ipanema by Nat King Cole on Spotify",
   },
   vocabulary: [
-    { word: "Ipanema", meaning: "a neighborhood and beach area in Rio de Janeiro, Brazil" },
+    { word: "Ipanema", meaning: "a part of Rio de Janeiro in Brazil, famous for its beach" },
     { word: "samba", meaning: "a Brazilian style of music and dance" },
     { word: "tan", meaning: "having skin made darker by the sun" },
     { word: "sway", meaning: "to move slowly from side to side" },
-    { word: "gladly", meaning: "happily and willingly" },
+    { word: "gladly", meaning: "happily, because you want to do something" },
     { word: "sea", meaning: "a large area of salt water" },
-    { word: "straight ahead", meaning: "directly forward" },
+    { word: "straight ahead", meaning: "in front of you, without turning left or right" },
   ],
 };
 

@@ -4,14 +4,14 @@ export const patientZero = {
     title: "Patient Zero by Taylor Swift on YouTube",
   },
   vocabulary: [
-    { word: "halo", meaning: "a circle of light shown above the head of a holy person" },
-    { word: "toxins", meaning: "poisonous substances that can make people sick" },
-    { word: "be sick of something", meaning: "to be tired or annoyed by something" },
-    { word: "patient zero", meaning: "the first known person to have or spread a disease" },
-    { word: "I got you", meaning: "an informal way to say I understand or I will support you" },
+    { word: "halo", meaning: "a circle of light above a person's head in pictures of angels and other holy people" },
+    { word: "toxins", meaning: "poisons that can make you sick" },
+    { word: "be sick of something", meaning: "to feel you have had too much of something and want it to stop" },
+    { word: "patient zero", meaning: "the first person known to have a disease in a group" },
+    { word: "I got you", meaning: "a way of saying I understand you or I am here to help you" },
     { word: "burst", meaning: "to enter, open, or break suddenly and with force" },
-    { word: "reeling", meaning: "feeling shocked, confused, or emotionally unsteady" },
-    { word: "social climb", meaning: "an attempt to gain status by connecting with important people" },
+    { word: "reeling", meaning: "feeling so shocked or confused that it is hard to think clearly" },
+    { word: "social climb", meaning: "trying to become more important by getting to know rich or powerful people" },
   ],
 };
 

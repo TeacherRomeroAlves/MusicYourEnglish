@@ -5,7 +5,7 @@ export const wonderwall = {
   },
   vocabulary: [
     { word: "wonderwall", meaning: "a person who is very important to you" },
-    { word: "winding", meaning: "having many turns and curves" },
+    { word: "winding", meaning: "turning left and right many times, not straight" },
     { word: "backbeat", meaning: "a strong beat in music" },
     { word: "blinding", meaning: "so bright that it is hard to see" },
     { word: "doubt", meaning: "a feeling that something may not be true or possible" },

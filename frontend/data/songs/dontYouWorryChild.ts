@@ -5,13 +5,13 @@ export const dontYouWorryChild = {
   },
   vocabulary: [
     { word: "worry", meaning: "to feel nervous or afraid about a problem" },
-    { word: "heaven", meaning: "a peaceful place where some people believe good souls go after death" },
+    { word: "heaven", meaning: "a happy place where some people believe you go after you die" },
     { word: "throne", meaning: "a special chair used by a king or queen" },
     { word: "now and then", meaning: "sometimes, but not very often" },
     { word: "rule", meaning: "to control or lead a country or group" },
-    { word: "hill", meaning: "an area of land that is higher than the land around it" },
-    { word: "heartbreak", meaning: "great sadness caused by the end of a relationship" },
-    { word: "out of sight", meaning: "in a place where someone or something cannot be seen" },
+    { word: "hill", meaning: "a high part of the land, smaller than a mountain" },
+    { word: "heartbreak", meaning: "feeling very sad, often because a love relationship has ended" },
+    { word: "out of sight", meaning: "too far away or hidden, so you cannot see it" },
   ],
 };
 

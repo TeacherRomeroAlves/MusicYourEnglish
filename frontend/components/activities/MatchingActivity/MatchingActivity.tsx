@@ -9,6 +9,7 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
     const {
       bankSlots,
       answers,
+      checkedAnswers,
       draggedWord,
       selectedWord,
       feedback,
@@ -84,7 +85,9 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
               <MeaningDropZone
                 key={item.word}
                 meaning={item.meaning}
+                placeholderWord={words.reduce((longest, entry) => entry.word.length > longest.length ? entry.word : longest, "")}
                 placedWord={answers[item.word]}
+                result={checkedAnswers === null ? undefined : !checkedAnswers[item.word] ? "incomplete" : checkedAnswers[item.word] === item.word ? "correct" : "incorrect"}
                 isDragOver={activeDropZone === item.word}
                 isDraggingWord={(word) => draggedWord === word}
                 onDragStart={handleDragStart}

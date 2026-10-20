@@ -66,7 +66,7 @@ export default function MissingWordsActivity({
       </p></ReviewMarker>
 
       <div className="actions">
-        <button className="action-btn secondary" type="button" onClick={handleReset}>Reset Section</button>
+        <button className="action-btn secondary" type="button" onClick={handleReset}>Reset Verse</button>
       </div>
     </section>
   );

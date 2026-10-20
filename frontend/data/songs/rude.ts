@@ -4,13 +4,13 @@ export const rude = {
     title: "Rude by MAGIC! on YouTube",
   },
   vocabulary: [
-    { word: "daughter", meaning: "a person's female child" },
-    { word: "old-fashioned", meaning: "following ideas or styles from the past" },
-    { word: "rude", meaning: "not polite or respectful" },
-    { word: "tough luck", meaning: "an informal way to say that someone's bad situation will not change" },
-    { word: "blessing", meaning: "approval or support for a person or plan" },
+    { word: "daughter", meaning: "someone's child who is a girl or woman" },
+    { word: "old-fashioned", meaning: "having ideas or styles from the past" },
+    { word: "rude", meaning: "not polite; speaking or acting in an unkind way" },
+    { word: "tough luck", meaning: "a way to say too bad, often without feeling sorry for someone" },
+    { word: "blessing", meaning: "saying yes to someone's plan and wishing them well" },
     { word: "jet", meaning: "a very fast airplane" },
-    { word: "gotta", meaning: "an informal spoken form of 'have got to' or 'have to'" },
+    { word: "gotta", meaning: "a way of saying have got to or have to in songs and everyday talk" },
   ],
 };
 

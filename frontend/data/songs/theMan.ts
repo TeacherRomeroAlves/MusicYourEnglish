@@ -4,14 +4,14 @@ export const theMan = {
     title: "The Man by Taylor Swift on YouTube",
   },
   vocabulary: [
-    { word: "play the field", meaning: "to date different people without choosing one serious relationship" },
+    { word: "play the field", meaning: "to date different people instead of having one serious relationship" },
     { word: "fearless", meaning: "not afraid" },
     { word: "alpha type", meaning: "a confident person who likes to lead" },
-    { word: "come at someone", meaning: "to criticize, challenge, or attack someone" },
+    { word: "come at someone", meaning: "to say angry things to someone or try to hurt them" },
     { word: "hustle", meaning: "to work very hard to become successful" },
-    { word: "be sick of something", meaning: "to be tired or annoyed by something" },
-    { word: "brag", meaning: "to talk too proudly about yourself or your success" },
-    { word: "baller", meaning: "an informal word for a rich, successful, and confident person" },
+    { word: "be sick of something", meaning: "to feel you have had too much of something and want it to stop" },
+    { word: "brag", meaning: "to talk about yourself or what you have done as if you are better than other people" },
+    { word: "baller", meaning: "a word used in everyday talk for someone who has lots of money and lives well" },
   ],
 };
 

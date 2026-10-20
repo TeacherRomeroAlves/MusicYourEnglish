@@ -4,14 +4,14 @@ export const breakingTheHabit = {
     title: "Breaking the Habit by Linkin Park on YouTube",
   },
   vocabulary: [
-    { word: "wound", meaning: "an injury or a deep emotional hurt" },
-    { word: "pick someone apart", meaning: "to criticize someone in great detail" },
-    { word: "unless", meaning: "except if something happens" },
-    { word: "assume", meaning: "to believe something is true without proof" },
-    { word: "mean", meaning: "to intend to express a particular idea" },
+    { word: "wound", meaning: "a cut or other damage to your body; also a deep feeling of sadness or pain" },
+    { word: "pick someone apart", meaning: "to keep pointing out everything you think is wrong with someone" },
+    { word: "unless", meaning: "if something does not happen; for example, I will go unless it rains" },
+    { word: "assume", meaning: "to think something is true without knowing for sure" },
+    { word: "mean", meaning: "to want to say or show a certain idea" },
     { word: "clutch", meaning: "to hold something very tightly" },
-    { word: "at fault", meaning: "responsible for a problem or mistake" },
-    { word: "habit", meaning: "something you do regularly, often without thinking" },
+    { word: "at fault", meaning: "having caused a problem or made a mistake" },
+    { word: "habit", meaning: "something you do often, sometimes without thinking" },
   ],
 };
 

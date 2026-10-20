@@ -4,13 +4,13 @@ export const flowers = {
     title: "Flowers by Miley Cyrus on Spotify",
   },
   vocabulary: [
-    { word: "myself", meaning: "the same person as me, used when I do something for me" },
-    { word: "cherry red", meaning: "a bright, deep red color like a cherry" },
-    { word: "remorse", meaning: "a strong feeling of sadness about something wrong you did" },
+    { word: "myself", meaning: "me, when I do something for me or to me" },
+    { word: "cherry red", meaning: "a bright red color like a cherry" },
+    { word: "remorse", meaning: "feeling very sorry because you did something wrong" },
     { word: "regret", meaning: "to feel sorry about something you did or did not do" },
     { word: "forgive", meaning: "to stop feeling angry with someone for something they did" },
-    { word: "sand", meaning: "very small grains of rock found on beaches" },
-    { word: "kinda", meaning: "an informal way to say kind of or a little" },
+    { word: "sand", meaning: "the very small pieces of rock you find on a beach" },
+    { word: "kinda", meaning: "a way of saying kind of or a little in songs and everyday talk" },
     { word: "nails", meaning: "the hard parts at the ends of your fingers and toes" },
   ],
 };

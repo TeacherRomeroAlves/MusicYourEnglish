@@ -66,7 +66,7 @@ export default function ChoiceLyricsActivity({ step, title, description, lyrics,
           type="button"
           onClick={handleReset}
         >
-          Reset Section
+          Reset Verse
         </button>
       </div>
     </section>

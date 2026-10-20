@@ -1,13 +1,13 @@
 export const stupidSong = {
   youtube: { embedUrl: "https://www.youtube.com/embed/Rt9tW3cMLhI", title: "stupid song by Olivia Rodrigo on YouTube" },
   vocabulary: [
-    { word: "come undone", meaning: "to lose control or begin to fall apart" },
+    { word: "come undone", meaning: "to become loose or break apart; also to lose control of your feelings" },
     { word: "blue", meaning: "sad or unhappy" },
-    { word: "blunt", meaning: "a cigar containing cannabis" },
+    { word: "blunt", meaning: "a cigar filled with the drug cannabis, also called marijuana" },
     { word: "aflame", meaning: "burning or on fire" },
-    { word: "spark", meaning: "a tiny piece of fire or the start of a strong feeling" },
+    { word: "spark", meaning: "a very small piece of fire, or the start of a strong feeling" },
     { word: "boulevard", meaning: "a wide street, often with trees" },
-    { word: "wax", meaning: "a soft material that melts when heated" },
+    { word: "wax", meaning: "the material used to make candles, which becomes liquid when hot" },
     { word: "skip", meaning: "to choose not to do something" },
   ],
 };

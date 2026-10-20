@@ -72,7 +72,7 @@ export default function UnscrambleLyricsActivity({
 
       <div className="actions">
         <button className="action-btn secondary" type="button" onClick={handleReset}>
-          Reset Section
+          Reset Verse
         </button>
       </div>
     </section>

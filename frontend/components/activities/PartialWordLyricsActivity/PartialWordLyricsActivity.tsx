@@ -61,7 +61,7 @@ export default function PartialWordLyricsActivity({ step, title, description, ly
       </div>
 
       <div className="actions">
-        <button className="action-btn secondary" type="button" onClick={() => handleReset(lyrics.flatMap((line) => line.syncKey ?? []))}>Reset Section</button>
+        <button className="action-btn secondary" type="button" onClick={() => handleReset(lyrics.flatMap((line) => line.syncKey ?? []))}>Reset Verse</button>
       </div>
     </section>
   );

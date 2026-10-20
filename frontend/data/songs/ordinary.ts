@@ -7,7 +7,7 @@ export const ordinary = {
     { word: "mundane", meaning: "ordinary and not very exciting" },
     { word: "ordinary", meaning: "normal or not special" },
     { word: "water down", meaning: "to make something weaker" },
-    { word: "ecstasy", meaning: "a feeling of extreme happiness" },
+    { word: "ecstasy", meaning: "a very strong feeling of happiness" },
     { word: "shatter", meaning: "to break suddenly into many pieces" },
     { word: "jealous", meaning: "unhappy because someone has something you want" },
     { word: "dead and buried", meaning: "completely finished and in the past" },

@@ -4,13 +4,13 @@ export const imPretty = {
     title: "I'm Pretty by KATSEYE on YouTube",
   },
   vocabulary: [
-    { word: "back to square one", meaning: "back to the beginning after a plan fails" },
-    { word: "brush", meaning: "a tool with small hairs used for hair, makeup, or painting" },
-    { word: "makeup", meaning: "products used to add color or change the look of the face" },
-    { word: "pretty sure", meaning: "almost certain about something" },
-    { word: "pretty", meaning: "attractive or beautiful" },
+    { word: "back to square one", meaning: "having to start again because something did not work" },
+    { word: "brush", meaning: "a thing with many small hairs, used on your hair or face or to paint" },
+    { word: "makeup", meaning: "things you put on your face to add color or change how it looks" },
+    { word: "pretty sure", meaning: "almost sure, but not completely" },
+    { word: "pretty", meaning: "nice to look at; beautiful" },
     { word: "put on a front", meaning: "to hide your real feelings from other people" },
-    { word: "show off", meaning: "to proudly show something you can do or have" },
+    { word: "show off", meaning: "to show what you have or can do so people think you are great" },
   ],
 };
 

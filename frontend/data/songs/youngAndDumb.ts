@@ -4,13 +4,13 @@ export const youngAndDumb = {
     title: "Young & Dumb by Avril Lavigne featuring Simple Plan on YouTube",
   },
   vocabulary: [
-    { word: "no way", meaning: "an informal expression used to refuse something or show surprise" },
-    { word: "Fender", meaning: "a famous company that makes guitars and other musical equipment" },
-    { word: "dumb", meaning: "informal: not intelligent or showing poor judgment" },
+    { word: "no way", meaning: "a strong way to say no, or to show you are very surprised" },
+    { word: "Fender", meaning: "a famous company that makes guitars and other things for playing music" },
+    { word: "dumb", meaning: "not smart, or doing things without thinking carefully" },
     { word: "trash a place", meaning: "to make a place very dirty or damage it badly" },
-    { word: "last", meaning: "to continue for a period of time" },
+    { word: "last", meaning: "to keep happening or stay the same for some time" },
     { word: "tank top", meaning: "a shirt with no sleeves" },
-    { word: "necktie", meaning: "a long piece of cloth worn around the neck with a formal shirt" },
+    { word: "necktie", meaning: "a long, thin piece of cloth you wear around your neck with a shirt" },
     { word: "eyeliner", meaning: "makeup used to draw a line around the eyes" },
   ],
 };
