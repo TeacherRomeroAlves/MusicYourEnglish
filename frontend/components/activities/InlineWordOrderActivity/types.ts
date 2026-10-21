@@ -5,6 +5,7 @@ export interface InlineWordOrderLine {
   after: string;
   syncKey?: string;
   includeInScore?: boolean;
+  note?: boolean;
 }
 
 export interface InlineWordOrderActivityProps {

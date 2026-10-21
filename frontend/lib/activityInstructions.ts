@@ -10,6 +10,8 @@ const FIXED_INSTRUCTIONS: Partial<Record<InstructionKind, string>> = {
 };
 
 const REPLACEMENTS: Array<[RegExp, string]> = [
+  [/drag one word onto another to swap them/gi, "drag a word between the others to move it into place"],
+  [/drag one word onto another/gi, "drag a word between the others to move it into place"],
   [/drag one line onto another/gi, "drag a line between the others to move it into place"],
   [/Click or drag (.+?) into the correct lyric gaps?(?=\.|,)/gi, "Click a gap, then click $1 to place it. Or click $1 to use the next available gap"],
   [/Drag each (?:icon|emoji) into the correct (?:space|gap) while you listen\./i, "Click a gap, then click an emoji to place it. Or click an emoji to use the next available gap while you listen."],

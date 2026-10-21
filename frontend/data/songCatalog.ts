@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip";
   title: string;
   artist: string;
   level: UserLevel;
@@ -23,6 +23,19 @@ export interface SongMeta {
 }
 
 export const songCatalog: SongMeta[] = [
+  {
+    slug: "rip",
+    title: "R.I.P.",
+    artist: "Motionless in White ft. Skylar Grey",
+    level: "Pre-intermediate",
+    duration: "45 min",
+    topic: "Love, loss, and relationships",
+    genre: "Metal",
+    description: "Practice if, would, and verbs through a song about love, loss, and the fear of being apart.",
+    activities: ["If", "Would", "Verbs", "Inline word order", "Word-bank gaps", "Incomplete words", "Sentence order"],
+    coverImage: "/images/songs/rip/cover.jpg",
+    coverClass: "song-art--rip",
+  },
   {
     slug: "count-on-me",
     title: "Count on Me",

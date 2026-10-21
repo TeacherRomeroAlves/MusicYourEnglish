@@ -7,6 +7,15 @@ import { getActivityInstruction } from "@/lib/activityInstructions";
 import { buildActivityField } from "@/lib/activityResultsStore";
 import ReviewMarker from "@/components/activities/ReviewMarker";
 
+function getInsertionIndex(sequence: HTMLElement, pointerX: number, pointerY: number) {
+  const words = Array.from(sequence.querySelectorAll<HTMLButtonElement>(".inline-order-word"));
+  const index = words.findIndex((word) => {
+    const bounds = word.getBoundingClientRect();
+    return pointerY < bounds.top || (pointerY <= bounds.bottom && pointerX < bounds.left + bounds.width / 2);
+  });
+  return index === -1 ? words.length : index;
+}
+
 export default function InlineWordOrderActivity({
   step,
   title,
@@ -17,9 +26,12 @@ export default function InlineWordOrderActivity({
     getState,
     selected,
     dragged,
+    insertion,
     handleSelect,
     handleDragStart,
     handleDragEnd,
+    handleDragOver,
+    handleDragLeave,
     handleDrop,
     handleReset,
   } = useInlineWordOrder(lines);
@@ -59,24 +71,39 @@ export default function InlineWordOrderActivity({
           const key = line.syncKey ?? line.id;
           const state = getState(line);
           return (
-            <p className="lyric-line" key={line.id}>
+            <p className={`lyric-line${line.note ? " lyric-line--note" : ""}`} key={line.id}>
               {line.before}{" "}
-              {line.answer && <ReviewMarker status={getStatus(line.id, state.words.join(" "))}><span className="inline-order-sequence">
+              {line.answer && <ReviewMarker status={getStatus(line.id, state.words.join(" "))}><span
+                className="inline-order-sequence"
+                onDragOver={(event) => {
+                  if (dragged?.key !== key) return;
+                  event.preventDefault();
+                  event.dataTransfer.dropEffect = "move";
+                  handleDragOver(line.id, getInsertionIndex(event.currentTarget, event.clientX, event.clientY));
+                }}
+                onDragLeave={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) handleDragLeave();
+                }}
+                onDrop={(event) => {
+                  if (dragged?.key !== key) return;
+                  event.preventDefault();
+                  handleDrop(key, getInsertionIndex(event.currentTarget, event.clientX, event.clientY));
+                }}
+              >
                 {state.words.map((word, index) => (
                   <button
-                    className={`inline-order-word${selected[key] === index ? " is-selected" : ""}${dragged?.key === key && dragged.index === index ? " is-dragging" : ""}`}
+                    className={`inline-order-word${selected[key] === index ? " is-selected" : ""}${dragged?.key === key && dragged.index === index ? " is-dragging" : ""}${insertion?.lineId === line.id && insertion.index === index ? " inline-order-word--insert-before" : ""}${insertion?.lineId === line.id && insertion.index === state.words.length && index === state.words.length - 1 ? " inline-order-word--insert-after" : ""}`}
                     key={`${word}-${index}`}
                     type="button"
                     draggable
                     aria-pressed={selected[key] === index}
                     onClick={() => handleSelect(key, index)}
-                    onDragStart={() => handleDragStart(key, index)}
-                    onDragEnd={handleDragEnd}
-                    onDragOver={(event) => event.preventDefault()}
-                    onDrop={(event) => {
-                      event.preventDefault();
-                      handleDrop(key, index);
+                    onDragStart={(event) => {
+                      event.dataTransfer.setData("text/plain", word);
+                      event.dataTransfer.effectAllowed = "move";
+                      handleDragStart(key, index);
                     }}
+                    onDragEnd={handleDragEnd}
                   >
                     {word}
                   </button>

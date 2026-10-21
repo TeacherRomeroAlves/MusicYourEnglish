@@ -13,6 +13,7 @@ interface InlineWordOrderContextValue {
   orders: Record<string, OrderState>;
   initialize: (key: string, answer: string) => void;
   swapWords: (key: string, firstIndex: number, secondIndex: number) => void;
+  insertWord: (key: string, sourceIndex: number, boundaryIndex: number) => void;
   reset: (keys: Array<{ key: string; answer: string }>) => void;
 }
 
@@ -54,6 +55,19 @@ export function InlineWordOrderProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  const insertWord = (key: string, sourceIndex: number, boundaryIndex: number) => {
+    setOrders((current) => {
+      const item = current[key];
+      if (!item || sourceIndex < 0 || sourceIndex >= item.words.length) return current;
+      const targetIndex = boundaryIndex > sourceIndex ? boundaryIndex - 1 : boundaryIndex;
+      if (targetIndex === sourceIndex) return current;
+      const words = [...item.words];
+      const [word] = words.splice(sourceIndex, 1);
+      words.splice(Math.max(0, Math.min(targetIndex, words.length)), 0, word);
+      return { ...current, [key]: { words, touched: true } };
+    });
+  };
+
   const reset = (items: Array<{ key: string; answer: string }>) => {
     setOrders((current) => {
       const next = { ...current };
@@ -65,7 +79,7 @@ export function InlineWordOrderProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <InlineWordOrderContext.Provider value={{ orders, initialize, swapWords, reset }}>
+    <InlineWordOrderContext.Provider value={{ orders, initialize, swapWords, insertWord, reset }}>
       {children}
     </InlineWordOrderContext.Provider>
   );
@@ -77,6 +91,7 @@ export function useInlineWordOrder(lines: InlineWordOrderLine[]) {
 
   const [selected, setSelected] = useState<Record<string, number | null>>({});
   const [dragged, setDragged] = useState<{ key: string; index: number } | null>(null);
+  const [insertion, setInsertion] = useState<{ lineId: string; index: number } | null>(null);
 
   useEffect(() => {
     const timeout = window.setTimeout(() => {
@@ -96,8 +111,10 @@ export function useInlineWordOrder(lines: InlineWordOrderLine[]) {
   };
 
   const handleDrop = (key: string, index: number) => {
-    if (dragged?.key === key) context.swapWords(key, dragged.index, index);
+    if (dragged?.key === key) context.insertWord(key, dragged.index, index);
     setDragged(null);
+    setInsertion(null);
+    setSelected({});
   };
 
   const handleReset = () => {
@@ -108,6 +125,7 @@ export function useInlineWordOrder(lines: InlineWordOrderLine[]) {
     context.reset(uniqueItems);
     setSelected({});
     setDragged(null);
+    setInsertion(null);
   };
 
   return {
@@ -117,9 +135,19 @@ export function useInlineWordOrder(lines: InlineWordOrderLine[]) {
     },
     selected,
     dragged,
+    insertion,
+    handleDragOver: (lineId: string, index: number) => setInsertion((current) => current?.lineId === lineId && current.index === index ? current : { lineId, index }),
+    handleDragLeave: () => setInsertion(null),
     handleSelect,
-    handleDragStart: (key: string, index: number) => setDragged({ key, index }),
-    handleDragEnd: () => setDragged(null),
+    handleDragStart: (key: string, index: number) => {
+      setSelected({});
+      setInsertion(null);
+      setDragged({ key, index });
+    },
+    handleDragEnd: () => {
+      setDragged(null);
+      setInsertion(null);
+    },
     handleDrop,
     handleReset,
   };
