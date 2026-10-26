@@ -8,7 +8,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip";
+  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip" | "no-stress-just-vibes" | "all-i-want-for-christmas-is-you";
   title: string;
   artist: string;
   level: UserLevel;
@@ -23,6 +23,32 @@ export interface SongMeta {
 }
 
 export const songCatalog: SongMeta[] = [
+  {
+    slug: "all-i-want-for-christmas-is-you",
+    title: "All I Want for Christmas Is You",
+    artist: "Mariah Carey",
+    level: "Elementary",
+    duration: "40 min",
+    topic: "Christmas, love, and wishes",
+    genre: "Pop",
+    description: "Practice verbs and Christmas vocabulary through a holiday classic about wanting love more than presents.",
+    activities: ["Verbs", "Christmas vocabulary", "Unscramble letters", "Emoji gaps", "-ing verbs"],
+    coverImage: "/images/songs/all-i-want-for-christmas-is-you/cover.jpg",
+    coverClass: "song-art--all-i-want-for-christmas-is-you",
+  },
+  {
+    slug: "no-stress-just-vibes",
+    title: "No Stress, Just Vibes",
+    artist: "AI IRIE FM",
+    level: "Beginner",
+    duration: "40 min",
+    topic: "Relaxing, simple living, and positive feelings",
+    genre: "Reggae",
+    description: "Practice no, adjectives, and everyday words with a relaxing reggae song made with AI.",
+    activities: ["No", "Adjectives", "Emoji gaps", "Unscramble letters", "Word-bank gaps", "Clause-bank gaps"],
+    coverImage: "/images/songs/no-stress-just-vibes/cover.jpg",
+    coverClass: "song-art--no-stress-just-vibes",
+  },
   {
     slug: "rip",
     title: "R.I.P.",
