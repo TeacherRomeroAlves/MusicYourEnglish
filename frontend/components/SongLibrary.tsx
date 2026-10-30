@@ -10,6 +10,7 @@ const FILTER_GENRE_GROUPS: Record<string, string[]> = {
   "Alt. Rock": ["Rock"],
   "Alternative rock": ["Rock"],
   "Country rap": ["Country", "Hiphop/Rap"],
+  "Electronic / Pop-rock": ["Eletronic music", "Pop", "Rock"],
   "Folk pop": ["Pop"],
   "Hip-hop": ["Hiphop/Rap"],
   "Pop punk": ["Rock"],

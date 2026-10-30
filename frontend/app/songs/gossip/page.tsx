@@ -39,7 +39,7 @@ export default function GossipPage() {
           checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
           afterSong={(
             <>
-              <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["What does the song say about famous people?", "Can gossip hurt people? How?", "Do people sometimes pretend to be happy?", "Is being famous always good?"]} />
+              <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Discuss these questions after listening to the song." layout="two-column" questions={["Do you believe in the American Dream?", "Can gossip hurt people? How?", "Do people sometimes pretend to be happy?", "Are you different from other people?"]} />
               <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Is gossip a problem? Explain how gossip can hurt people and what we can do to stop it." songTitle="GOSSIP" />
             </>
           )}
