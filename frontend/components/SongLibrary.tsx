@@ -5,18 +5,18 @@ import SongCard from "./SongCard";
 import AuthButton from "./AuthButton";
 import { USER_LEVELS, type SongMeta } from "@/data/songCatalog";
 import { shuffleArray } from "@/lib/shuffleArray";
+import { GRAMMAR_TOPICS, LANGUAGE_FOCUSES, ACTIVITY_TYPES } from "@/data/lessonTaxonomy";
+import { EMPTY_SONG_FILTERS, getFilterGenres, hasVerbPractice, matchesSongFilters, type SongFilters } from "@/lib/songFilters";
 
-const FILTER_GENRE_GROUPS: Record<string, string[]> = {
-  "Alt. Rock": ["Rock"],
-  "Alternative rock": ["Rock"],
-  "Country rap": ["Country", "Hiphop/Rap"],
-  "Electronic / Pop-rock": ["Eletronic music", "Pop", "Rock"],
-  "Folk pop": ["Pop"],
-  "Hip-hop": ["Hiphop/Rap"],
-  "Pop punk": ["Rock"],
-  "Pop rap": ["Pop", "Hiphop/Rap"],
-  "Punk rock": ["Rock"],
-};
+const MORE_FILTER_GROUPS = [
+  { key: "grammar", field: "grammar", label: "Grammar", options: GRAMMAR_TOPICS, help: "Verb forms and sentence patterns" },
+  { key: "languageFocus", field: "languageFocus", label: "Language Focus", options: LANGUAGE_FOCUSES, help: "Words, expressions, and pronunciation" },
+  { key: "activityType", field: "activityTypes", label: "Activity Type", options: ACTIVITY_TYPES, help: "How students complete the lyrics" },
+] as const;
+
+const FILTER_LABELS = {
+  level: "Level", genre: "Genre", grammar: "Grammar", languageFocus: "Language focus", activityType: "Activity type",
+} as const;
 
 const DEEPER_TOPIC_SLUGS: SongMeta["slug"][] = [
   "manchild",
@@ -26,10 +26,6 @@ const DEEPER_TOPIC_SLUGS: SongMeta["slug"][] = [
   "nine-to-five",
   "self-dysmorphia",
 ];
-
-function getFilterGenres(genre: string) {
-  return FILTER_GENRE_GROUPS[genre] ?? [genre];
-}
 
 interface SongRailProps {
   title: string;
@@ -74,11 +70,10 @@ function SongRail({ title, description, songs, compact = false }: SongRailProps)
 }
 
 export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
-  const [query, setQuery] = useState("");
-  const [level, setLevel] = useState("all");
-  const [genre, setGenre] = useState("all");
+  const [filters, setFilters] = useState<SongFilters>(EMPTY_SONG_FILTERS);
+  const [showMoreFilters, setShowMoreFilters] = useState(false);
   const [orderedSongs, setOrderedSongs] = useState(() => songs);
-  const deferredQuery = useDeferredValue(query.trim().toLowerCase());
+  const deferredQuery = useDeferredValue(filters.query);
   const genres = [...new Set(songs.flatMap((song) => getFilterGenres(song.genre)))]
     .sort((first, second) => first.localeCompare(second));
 
@@ -87,17 +82,12 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
     return () => window.clearTimeout(timeout);
   }, [songs]);
 
-  const filteredSongs = orderedSongs.filter((song) => {
-    const matchesQuery = !deferredQuery || [song.title, song.artist, song.topic]
-      .some((value) => value.toLowerCase().includes(deferredQuery));
-    const matchesLevel = level === "all" || song.level === level;
-    const matchesGenre = genre === "all" || getFilterGenres(song.genre).includes(genre);
-    return matchesQuery && matchesLevel && matchesGenre;
-  });
-  const hasActiveFilters = Boolean(query || level !== "all" || genre !== "all");
-  const verbSongs = orderedSongs.filter((song) =>
-    song.activities.some((activity) => /verb|present|past|continuous|be and have|word formation|gerund|infinitive/i.test(activity)),
-  );
+  const filteredSongs = orderedSongs.filter((song) => matchesSongFilters(song, { ...filters, query: deferredQuery }));
+  const activeFilters = (Object.keys(FILTER_LABELS) as Array<keyof typeof FILTER_LABELS>)
+    .filter((key) => filters[key] !== "all");
+  const hasActiveFilters = Boolean(filters.query.trim() || activeFilters.length);
+  const moreFilterCount = MORE_FILTER_GROUPS.filter((group) => filters[group.key] !== "all").length;
+  const verbSongs = orderedSongs.filter(hasVerbPractice);
   const accessibleSongs = orderedSongs.filter((song) =>
     song.level === "Beginner" || song.level === "Elementary",
   );
@@ -106,9 +96,11 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
   );
 
   const clearFilters = () => {
-    setQuery("");
-    setLevel("all");
-    setGenre("all");
+    setFilters(EMPTY_SONG_FILTERS);
+  };
+
+  const updateFilter = (key: keyof SongFilters, value: string) => {
+    setFilters((current) => ({ ...current, [key]: value }));
   };
 
   return (
@@ -119,26 +111,53 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
           <input
             id="song-search"
             type="search"
-            value={query}
-            placeholder="Song, artist, or topic"
-            onChange={(event) => setQuery(event.target.value)}
+            value={filters.query}
+            placeholder="Song, artist, topic, or learning focus"
+            onChange={(event) => updateFilter("query", event.target.value)}
           />
         </div>
         <div className="filter-field">
           <label htmlFor="level-filter">Level</label>
-          <select id="level-filter" value={level} onChange={(event) => setLevel(event.target.value)}>
+          <select id="level-filter" value={filters.level} onChange={(event) => updateFilter("level", event.target.value)}>
             <option value="all">All levels</option>
             {USER_LEVELS.map((option) => <option key={option} value={option}>{option}</option>)}
           </select>
         </div>
         <div className="filter-field">
           <label htmlFor="genre-filter">Genre</label>
-          <select id="genre-filter" value={genre} onChange={(event) => setGenre(event.target.value)}>
+          <select id="genre-filter" value={filters.genre} onChange={(event) => updateFilter("genre", event.target.value)}>
             <option value="all">All genres</option>
             {genres.map((option) => <option key={option} value={option}>{option}</option>)}
           </select>
         </div>
+        <div className="library-filter-toggle-row">
+          <button className="library-filter-toggle" type="button" aria-expanded={showMoreFilters} aria-controls="library-more-filters" onClick={() => setShowMoreFilters((current) => !current)}>
+            More Filters {moreFilterCount > 0 && <span className="library-filter-count">{moreFilterCount}</span>}
+            <span aria-hidden="true">{showMoreFilters ? "-" : "+"}</span>
+          </button>
+          <p>Find the grammar, language focus, or activity you need.</p>
+        </div>
+        <div className="library-more-filters" id="library-more-filters" hidden={!showMoreFilters}>
+          {MORE_FILTER_GROUPS.map((group) => (
+            <div className="filter-field" key={group.key}>
+              <label htmlFor={`filter-${group.key}`}>{group.label}</label>
+              <select id={`filter-${group.key}`} value={filters[group.key]} onChange={(event) => updateFilter(group.key, event.target.value)} aria-describedby={`filter-${group.key}-help`}>
+                <option value="all">{group.key === "grammar" ? "Any grammar" : group.key === "languageFocus" ? "Any language focus" : "Any activity type"}</option>
+                {group.options.filter((option) => songs.some((song) => song.learning[group.field].some((tag) => tag === option))).map((option) => <option key={option} value={option}>{option}</option>)}
+              </select>
+              <small id={`filter-${group.key}-help`}>{group.help}</small>
+            </div>
+          ))}
+        </div>
       </div>
+
+      {activeFilters.length > 0 && <ul className="library-active-filters" aria-label="Active filters">
+        {activeFilters.map((key) => <li key={key}>
+          <button type="button" onClick={() => updateFilter(key, "all")} aria-label={`Remove ${FILTER_LABELS[key]} filter: ${filters[key]}`}>
+            <span>{FILTER_LABELS[key]}: <strong>{filters[key]}</strong></span><span aria-hidden="true">&times;</span>
+          </button>
+        </li>)}
+      </ul>}
 
       <div className="catalogue-status" aria-live="polite">
         <p id="catalogue-title">
@@ -182,7 +201,7 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
         <div className="library-empty">
           <span aria-hidden="true" />
           <h2>No lessons match those filters.</h2>
-          <p>Try another level, genre, or search term.</p>
+          <p>Try removing a filter or choosing another learning focus, level, or genre.</p>
           <button className="button button--secondary" type="button" onClick={clearFilters}>Show all songs</button>
         </div>
       )}
