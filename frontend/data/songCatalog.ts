@@ -10,7 +10,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip" | "no-stress-just-vibes" | "all-i-want-for-christmas-is-you" | "flower-in-a-hurricane";
+  slug: "do-the-math" | "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip" | "no-stress-just-vibes" | "all-i-want-for-christmas-is-you" | "flower-in-a-hurricane";
   title: string;
   artist: string;
   level: UserLevel;
@@ -25,6 +25,19 @@ export interface SongMeta {
 }
 
 export const songCatalog: SongMeta[] = [
+  {
+    slug: "do-the-math",
+    title: "Do the Math",
+    artist: "Dove Cameron",
+    level: "Pre-intermediate",
+    duration: "40 min",
+    topic: "Relationships, blame, and healing",
+    genre: "Pop",
+    description: "Practice verbs, nouns, and idioms through a song about relationships and noticing repeated problems.",
+    learning: SONG_LEARNING_TAGS["do-the-math"],
+    coverImage: "/images/songs/do-the-math/cover.jpg",
+    coverClass: "song-art--do-the-math",
+  },
   {
     slug: "flower-in-a-hurricane",
     title: "Flower in a Hurricane (from GTA VI)",

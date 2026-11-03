@@ -11,7 +11,7 @@ export const GRAMMAR_TOPICS = [
 export const LANGUAGE_FOCUSES = [
   "Idioms", "Phrasal verbs", "Adjectives", "Adverbs", "Everyday expressions",
   "Informal English", "Pronunciation", "Word formation", "Proper nouns",
-  "Days of the week", "Colors", "Numbers", "Only", "Storytelling",
+  "Days of the week", "Colors", "Numbers", "Only", "Storytelling", "Nouns",
 ] as const;
 
 export const ACTIVITY_TYPES = [
@@ -29,6 +29,10 @@ export interface LessonLearningTags {
 // Describe the language actually practised, rather than every form in the lyrics.
 // Keeping this exhaustive makes a tag review part of adding each new lesson.
 export const SONG_LEARNING_TAGS = {
+  "do-the-math": {
+    grammar: ["Simple past", "Simple present"], languageFocus: ["Idioms", "Nouns"],
+    activityTypes: ["Word-bank gaps", "Typed gaps", "Word completion"],
+  },
   "flower-in-a-hurricane": {
     grammar: ["Simple present", "Comparisons"], languageFocus: ["Only", "Idioms"],
     activityTypes: ["Emoji gaps", "Multiple choice", "Phrase-bank gaps"],
