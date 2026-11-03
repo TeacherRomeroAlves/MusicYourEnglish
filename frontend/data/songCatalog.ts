@@ -505,7 +505,6 @@ export const songCatalog: SongMeta[] = [
     learning: SONG_LEARNING_TAGS["comfortably-numb"],
     coverImage: "/images/songs/comfortably-numb/cover.jpg",
     coverClass: "song-art--comfortably-numb",
-    isUnlisted: true,
   },
 ];
 
