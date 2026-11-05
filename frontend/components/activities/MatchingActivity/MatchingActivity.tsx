@@ -4,6 +4,7 @@ import { useMatchingActivity } from "@/hooks/useMatchingActivity";
 import { MatchingActivityProps } from "./types";
 import MatchingWordCard from "./MatchingWordCard";
 import MeaningDropZone from "./MeaningDropZone";
+import Image from "next/image";
 
 export default function MatchingActivity({ step, title, words, }: MatchingActivityProps) {
     const {
@@ -37,6 +38,7 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
 
     return (
       <section className="card">
+        <div className="matching-heading">
         <div className="section-heading">
           <p className="section-kicker">{step}</p>
   
@@ -45,6 +47,15 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
           <p className="section-note">
             Click a word, then its meaning. Or click an empty meaning box, then a word. You can also drag the word to the correct meaning. Use Listen to hear the word. Click a placed word to return it.
           </p>
+        </div>
+        <a className="dictionary-card" href="https://dictionary.cambridge.org/dictionary/english/" target="_blank" rel="noopener noreferrer" aria-label="Look up words in Cambridge Dictionary (opens in a new tab)">
+          <Image src="/images/cambridge-dictionary-logo.jpeg" alt="Cambridge Dictionary logo" width={54} height={54} />
+          <span>
+            <small>Definitions &amp; pronunciation</small>
+            <strong>Cambridge Dictionary <span aria-hidden="true">&rarr;</span></strong>
+            <span>Don&apos;t know a word? Check it here.</span>
+          </span>
+        </a>
         </div>
   
         <div className="activity-layout">
