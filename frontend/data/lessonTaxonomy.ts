@@ -5,7 +5,7 @@ export const GRAMMAR_TOPICS = [
   "Present perfect continuous", "Future forms", "Verb be", "There is / There are",
   "Can", "Could", "Would", "Conditionals", "Gerunds and infinitives",
   "Prepositions", "Pronouns", "Possessive adjectives", "Relative clauses",
-  "Superlatives", "Comparisons", "Negatives with no",
+  "Superlatives", "Comparisons", "Negatives with no", "Auxiliary verbs", "Contractions",
 ] as const;
 
 export const LANGUAGE_FOCUSES = [
@@ -29,6 +29,10 @@ export interface LessonLearningTags {
 // Describe the language actually practised, rather than every form in the lyrics.
 // Keeping this exhaustive makes a tag review part of adding each new lesson.
 export const SONG_LEARNING_TAGS = {
+  "by-any-means": {
+    grammar: ["Contractions", "Auxiliary verbs", "Can"], languageFocus: ["Informal English", "Phrasal verbs"],
+    activityTypes: ["Word ordering", "Typed gaps", "Phrase-bank gaps"],
+  },
   "do-the-math": {
     grammar: ["Simple past", "Simple present"], languageFocus: ["Idioms", "Nouns"],
     activityTypes: ["Word-bank gaps", "Typed gaps", "Word completion"],

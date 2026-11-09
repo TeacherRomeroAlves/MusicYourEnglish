@@ -3,6 +3,7 @@ export interface TypingBlank {
     answer: string;
     after: string;
     syncKey?: string;
+    continuePreviousLine?: boolean;
 }
 
 export interface TypingLyricsActivityProps {

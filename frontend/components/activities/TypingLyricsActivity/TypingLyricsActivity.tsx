@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import LyricInput from "./LyricInput";
 import type { TypingLyricsActivityProps } from "./types";
 import { useTypingLyrics } from "@/hooks/useTypingLyrics";
@@ -10,9 +11,13 @@ import ReviewMarker from "@/components/activities/ReviewMarker";
 
 export default function TypingLyricsActivity({ step, title, description, lyrics, wordBank, wordBankLabel = "Words in their base form", allowedLetters, }: TypingLyricsActivityProps) {
   const { values, handleChange, handleReset } = useTypingLyrics();
-  const answerLines = lyrics
-    .map((line, index) => ({ ...line, fieldId: String(index), valueKey: line.syncKey ?? String(index) }))
-    .filter((line) => line.answer);
+  const parts = lyrics.map((line, index) => ({ ...line, fieldId: String(index), valueKey: line.syncKey ?? String(index) }));
+  const answerLines = parts.filter((line) => line.answer);
+  const rows: (typeof parts)[] = [];
+  for (const part of parts) {
+    if (part.continuePreviousLine && rows.length) rows[rows.length - 1].push(part);
+    else rows.push([part]);
+  }
   const activityId = `${step}:${title}`;
   const { getStatus } = useMistakeReview(activityId);
   useRegisterActivityResult(activityId, {
@@ -61,24 +66,24 @@ export default function TypingLyricsActivity({ step, title, description, lyrics,
         className="lyrics-card"
         aria-label={title}
       >
-        {lyrics.map((line, index) => (
-          <p
-            key={index}
-            className="lyric-line"
-          >
-            {line.before}{" "}
-            {line.answer && (
-                <>
-                  <ReviewMarker status={getStatus(String(index), values[line.syncKey ?? String(index)] ?? "")}>
+        {rows.map((row) => (
+          <p key={row[0].fieldId} className="lyric-line">
+            {row.map(({ before, answer, after, fieldId, valueKey }, index) => (
+              <Fragment key={fieldId}>
+                {index > 0 && " "}
+                {before}{before && " "}
+                {answer && (
+                  <ReviewMarker status={getStatus(fieldId, values[valueKey] ?? "")}>
                     <LyricInput
-                      answer={line.answer}
-                      value={values[line.syncKey ?? String(index)] ?? ""}
-                      onChange={(value) => handleChange(line.syncKey ?? String(index), value, line.answer.length, allowedLetters)}
+                      answer={answer}
+                      value={values[valueKey] ?? ""}
+                      onChange={(value) => handleChange(valueKey, value, answer.length, allowedLetters)}
                     />{" "}
                   </ReviewMarker>
-                </>
-            )}
-            {line.after}
+                )}
+                {after}
+              </Fragment>
+            ))}
           </p>
         ))}
       </div>
