@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 import { publicSongCatalog } from "@/data/songCatalog";
 import LibraryPreviewVisual from "@/components/LibraryPreviewVisual";
+import LessonUsageCounter from "@/components/LessonUsageCounter";
 
 const processSteps = [
   ["Choose a song", "Pick a lesson based on your level, interests, or favorite artist."],
@@ -142,6 +143,7 @@ export default function Home() {
         <h2 id="cta-title">Your next English lesson is already playing.</h2>
         <p>Choose a song and discover how much English you can learn from the music you love.</p>
         <Link className="button button--light" href="/songs">Explore Songs</Link>
+        <LessonUsageCounter />
         <a className="teacher-link" href="#for-teachers">Are you a teacher? Discover classroom-ready lessons.</a>
       </section>
     </main>

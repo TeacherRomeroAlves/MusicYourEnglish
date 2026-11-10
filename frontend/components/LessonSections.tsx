@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from "react";
 import { useSwipeNavigation } from "@/hooks/useSwipeNavigation";
 import PrintLesson from "@/components/PrintLesson";
+import { recordLessonUse } from "@/lib/supabase/lessonUsage";
 
 interface ActivitySlide {
   label: string;
@@ -41,6 +42,25 @@ const sectionDetails = {
 function isChorusActivity(label: string) {
   const normalizedLabel = label.toLowerCase();
   return normalizedLabel.includes("chorus") && !normalizedLabel.endsWith("pre-chorus");
+}
+
+function trackActivityInteraction(event: { type: string; target: EventTarget; nativeEvent: Event; key?: string }) {
+  if (!event.nativeEvent.isTrusted || !(event.target instanceof Element)) return;
+  const target = event.target;
+  if (!target.closest(".questions, .activity-layout, .activity-carousel__slide, .report-section")) return;
+  if (target.closest("[hidden], a, .actions, .speak-btn, :disabled")) return;
+
+  const isAnswer = target.matches(".lyric-input, textarea");
+  const control = target.closest("button, [role='button'], [role='checkbox']");
+  const isHomework = Boolean(target.closest(".report-section"));
+  const isActivationKey = (event.key === "Enter" || event.key === " ") && control?.matches("[role='button']:not(button)");
+  if (
+    (event.type === "input" && isAnswer) ||
+    (event.type === "drop" && !isHomework) ||
+    (!isHomework && control && (event.type === "click" || isActivationKey))
+  ) {
+    void recordLessonUse(window.location.pathname);
+  }
 }
 
 export default function LessonSections({
@@ -114,7 +134,7 @@ export default function LessonSections({
   };
 
   return (
-    <div className="lesson-groups">
+    <div className="lesson-groups" onClickCapture={trackActivityInteraction} onInputCapture={trackActivityInteraction} onKeyDownCapture={trackActivityInteraction} onDropCapture={trackActivityInteraction}>
       <PrintLesson beforeSong={beforeSong} activities={listeningActivities} afterSong={afterSong} />
       <section className={`lesson-group${openSection === "before" ? " is-open" : ""}`}>
         {renderHeader("before")}

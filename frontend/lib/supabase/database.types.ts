@@ -1,6 +1,18 @@
 export type Database = {
   public: {
     Tables: {
+      lesson_usage_events: {
+        Row: { token: string };
+        Insert: { token: string };
+        Update: never;
+        Relationships: [];
+      };
+      lesson_usage_total: {
+        Row: { singleton: boolean; total: number };
+        Insert: never;
+        Update: never;
+        Relationships: [];
+      };
       user_song_learning: {
         Row: {
           completed_at: string | null;
