@@ -19,6 +19,10 @@ const FILTER_LABELS = {
 } as const;
 
 const DEEPER_TOPIC_SLUGS: SongMeta["slug"][] = [
+  "by-any-means",
+  "happy",
+  "billionaire",
+  "do-the-math",
   "manchild",
   "the-man",
   "hero-of-war",
