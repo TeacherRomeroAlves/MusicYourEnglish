@@ -10,7 +10,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "by-any-means" | "help" | "be-like-that" | "do-the-math" | "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip" | "no-stress-just-vibes" | "all-i-want-for-christmas-is-you" | "flower-in-a-hurricane";
+  slug: "the-fox" | "by-any-means" | "help" | "be-like-that" | "do-the-math" | "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip" | "no-stress-just-vibes" | "all-i-want-for-christmas-is-you" | "flower-in-a-hurricane";
   title: string;
   artist: string;
   level: UserLevel;
@@ -25,6 +25,19 @@ export interface SongMeta {
 }
 
 export const songCatalog: SongMeta[] = [
+  {
+    slug: "the-fox",
+    title: "The Fox",
+    artist: "Ylvis",
+    level: "Beginner",
+    duration: "40 min",
+    topic: "Animals, sounds, and describing appearance",
+    genre: "Electronic",
+    description: "Practice animal names, sound words, and the simple present with a funny song about a fox.",
+    learning: SONG_LEARNING_TAGS["the-fox"],
+    coverImage: "/images/songs/the-fox/cover.png",
+    coverClass: "song-art--the-fox",
+  },
   {
     slug: "by-any-means",
     title: "By Any Means",
