@@ -4,14 +4,14 @@ export const GRAMMAR_TOPICS = [
   "Simple present", "Simple past", "Present continuous", "Present perfect",
   "Present perfect continuous", "Future forms", "Verb be", "There is / There are",
   "Can", "Could", "Would", "Conditionals", "Gerunds and infinitives",
-  "Prepositions", "Pronouns", "Possessive adjectives", "Relative clauses",
+  "Prepositions", "Pronouns", "Indefinite pronouns", "Possessive adjectives", "Relative clauses",
   "Superlatives", "Comparisons", "Negatives with no", "Auxiliary verbs", "Contractions",
 ] as const;
 
 export const LANGUAGE_FOCUSES = [
   "Idioms", "Phrasal verbs", "Adjectives", "Adverbs", "Everyday expressions",
   "Informal English", "Pronunciation", "Word formation", "Proper nouns",
-  "Days of the week", "Colors", "Numbers", "Only", "Storytelling", "Nouns",
+  "Days of the week", "Colors", "Numbers", "Only", "Storytelling", "Nouns", "Basic verbs",
 ] as const;
 
 export const ACTIVITY_TYPES = [
@@ -32,6 +32,14 @@ export const SONG_LEARNING_TAGS = {
   "by-any-means": {
     grammar: ["Contractions", "Auxiliary verbs", "Can"], languageFocus: ["Informal English", "Phrasal verbs"],
     activityTypes: ["Word ordering", "Typed gaps", "Phrase-bank gaps"],
+  },
+  help: {
+    grammar: ["Indefinite pronouns", "Can"], languageFocus: ["Basic verbs", "Everyday expressions"],
+    activityTypes: ["Multiple choice", "Word-bank gaps", "Unscramble letters"],
+  },
+  "be-like-that": {
+    grammar: ["Conditionals", "Would"], languageFocus: ["Adjectives", "Idioms"],
+    activityTypes: ["Word-bank gaps", "Sentence ordering", "Emoji gaps"],
   },
   "do-the-math": {
     grammar: ["Simple past", "Simple present"], languageFocus: ["Idioms", "Nouns"],

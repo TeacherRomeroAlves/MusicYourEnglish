@@ -83,6 +83,9 @@
 .partial-word.incorrect { border-color: #b12c36; }
 .prompt-label { margin: 0 0 8px; color: #d993bd; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .prompt-text { margin: 0; line-height: 1.65; }
+@media screen {
+  .report-section .prompt-text { font-size: 1.2em; font-weight: 700; }
+}
 .pronoun-chart { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
 .pronoun-chip { min-width: 44px; padding: 8px 11px; display: inline-flex; justify-content: center; border: 1px solid rgba(224,154,198,.22); border-radius: 9px; background: rgba(130,13,75,.14); color: #ebbcda; font-weight: 750; }
 .letter-chart { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 7px; margin-top: 14px; }

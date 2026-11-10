@@ -5,7 +5,6 @@ import type { OrderLyricsActivityProps } from "./types";
 import { useOrderLyrics } from "@/hooks/useOrderLyrics";
 import { useMistakeReview, useRegisterActivityResult } from "@/hooks/useActivityResults";
 import { getActivityInstruction } from "@/lib/activityInstructions";
-import { buildActivityField } from "@/lib/activityResultsStore";
 import ReviewMarker from "@/components/activities/ReviewMarker";
 
 function getInsertionIndex(list: HTMLElement, pointerY: number) {
@@ -17,15 +16,19 @@ function getInsertionIndex(list: HTMLElement, pointerY: number) {
   return index === -1 ? rows.length : index;
 }
 
-export default function OrderLyricsActivity({ step, title, description, items, }: OrderLyricsActivityProps) {
+export default function OrderLyricsActivity({ step, title, description, items, notes }: OrderLyricsActivityProps) {
   const { orderedItems, selectedId, draggedId, insertionIndex, handleSelect, handleDragStart, handleDragOver, handleDragEnd, handleDrop, handleReset } = useOrderLyrics(items);
   const activityId = `${step}:${title}`;
   const { getStatus } = useMistakeReview(activityId);
+  const correctPositions = orderedItems.map((item, index) => item.text === items[index]?.text);
   useRegisterActivityResult(activityId, {
-    correct: orderedItems.filter((item, index) => item.text === items[index]?.text).length,
+    correct: correctPositions.filter(Boolean).length,
     answered: orderedItems.length,
     total: items.length,
-    fields: Object.fromEntries(orderedItems.map((item, index) => [item.id, buildActivityField(String(index), String(items.findIndex((expected) => expected.id === item.id)))])),
+    fields: Object.fromEntries(orderedItems.map((item, index) => [
+      item.id,
+      { status: correctPositions[index] ? "correct" : "incorrect", value: String(index) },
+    ])),
   });
   return (
     <section className="card">
@@ -72,6 +75,13 @@ export default function OrderLyricsActivity({ step, title, description, items, }
           </div>
         ))}
       </div>
+
+      {notes?.length ? (
+        <div className="prompt-box">
+          <p className="prompt-label">Chorus endings (not part of the activity)</p>
+          {notes.map((note) => <p key={note}><em>{note}</em></p>)}
+        </div>
+      ) : null}
 
       <div className="actions">
         <button

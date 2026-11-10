@@ -51,7 +51,7 @@ export default function MatchingActivity({ step, title, words, }: MatchingActivi
         <a className="dictionary-card" href="https://dictionary.cambridge.org/dictionary/english/" target="_blank" rel="noopener noreferrer" aria-label="Look up words in Cambridge Dictionary (opens in a new tab)">
           <Image src="/images/cambridge-dictionary-logo.jpeg" alt="Cambridge Dictionary logo" width={54} height={54} />
           <span>
-            <small>Definitions &amp; pronunciation</small>
+            <small>Do you need help?</small>
             <strong>Cambridge Dictionary <span aria-hidden="true">&rarr;</span></strong>
             <span>Don&apos;t know a word? Check it here.</span>
           </span>

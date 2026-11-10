@@ -8,4 +8,5 @@ export interface OrderLyricsActivityProps {
     title: string;
     description?: string;
     items: OrderItem[];
+    notes?: readonly string[];
 }

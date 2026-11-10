@@ -10,7 +10,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "by-any-means" | "do-the-math" | "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip" | "no-stress-just-vibes" | "all-i-want-for-christmas-is-you" | "flower-in-a-hurricane";
+  slug: "by-any-means" | "help" | "be-like-that" | "do-the-math" | "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip" | "no-stress-just-vibes" | "all-i-want-for-christmas-is-you" | "flower-in-a-hurricane";
   title: string;
   artist: string;
   level: UserLevel;
@@ -37,6 +37,32 @@ export const songCatalog: SongMeta[] = [
     learning: SONG_LEARNING_TAGS["by-any-means"],
     coverImage: "/images/songs/by-any-means/cover.jpg",
     coverClass: "song-art--by-any-means",
+  },
+  {
+    slug: "help",
+    title: "Help!",
+    artist: "The Beatles",
+    level: "Beginner",
+    duration: "35 min",
+    topic: "Asking for help and supporting others",
+    genre: "Rock",
+    description: "Practice basic verbs and words like somebody and anybody with a song about asking for help.",
+    learning: SONG_LEARNING_TAGS.help,
+    coverImage: "/images/songs/help/cover.webp",
+    coverClass: "song-art--help",
+  },
+  {
+    slug: "be-like-that",
+    title: "Be Like That",
+    artist: "3 Doors Down",
+    level: "Pre-intermediate",
+    duration: "40 min",
+    topic: "Dreams, empathy, and everyday life",
+    genre: "Rock",
+    description: "Practice conditionals, would, and adjectives with a rock song about the lives people dream of living.",
+    learning: SONG_LEARNING_TAGS["be-like-that"],
+    coverImage: "/images/songs/be-like-that/cover.jpg",
+    coverClass: "song-art--be-like-that",
   },
   {
     slug: "do-the-math",
