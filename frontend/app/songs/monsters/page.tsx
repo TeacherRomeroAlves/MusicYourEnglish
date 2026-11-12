@@ -15,6 +15,10 @@ import { getSongMeta } from "@/data/songCatalog";
 
 import { monsters, monstersPronouns, monstersSecondStanza, monstersThirdStanza, monstersFourthStanza, monstersFifthStanza } from "@/data/songs/monsters";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("monsters");
+
 export default function monsterPage() {
     const song = getSongMeta("monsters");
     return (

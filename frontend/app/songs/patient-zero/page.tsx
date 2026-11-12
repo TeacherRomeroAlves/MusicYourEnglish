@@ -14,6 +14,10 @@ import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
 import { getSongMeta } from "@/data/songCatalog";
 import { patientZero, patientZeroChorus, patientZeroOutro, patientZeroVerseOne, patientZeroVerseThree, patientZeroVerseTwo } from "@/data/songs/patientZero";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("patient-zero");
+
 export default function PatientZeroPage() {
   const song = getSongMeta("patient-zero");
 

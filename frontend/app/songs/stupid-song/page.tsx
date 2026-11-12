@@ -15,6 +15,10 @@ import { getSongMeta } from "@/data/songCatalog";
 import { stupidSong, stupidSongBridge, stupidSongChorusPartOne, stupidSongChorusPartTwo, stupidSongVerseOne, stupidSongVerseTwo } from "@/data/songs/stupidSong";
 import { InlineWordOrderProvider } from "@/hooks/useInlineWordOrder";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("stupid-song");
+
 export default function StupidSongPage() {
   const song = getSongMeta("stupid-song");
   return (

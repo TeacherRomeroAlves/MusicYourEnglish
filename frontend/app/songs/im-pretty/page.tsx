@@ -13,6 +13,10 @@ import { getSongMeta } from "@/data/songCatalog";
 import { imPretty, imPrettyChorus, imPrettyFifthStanza, imPrettyFirstStanza } from "@/data/songs/imPretty";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("im-pretty");
+
 export default function ImPrettyPage() {
   const song = getSongMeta("im-pretty");
 

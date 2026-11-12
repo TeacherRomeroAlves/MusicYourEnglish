@@ -14,10 +14,9 @@ import { getSongMeta } from "@/data/songCatalog";
 import { flowerInAHurricane, flowerInAHurricaneChorus, flowerInAHurricaneVersesOneAndTwo, flowerInAHurricaneVerseThree } from "@/data/songs/flowerInAHurricane";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
-export const metadata = {
-  title: "Flower in a Hurricane - Justice | Music Your English",
-  description: "Practice only, like, and the simple present with an Elementary English lesson based on Flower in a Hurricane from GTA VI.",
-};
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("flower-in-a-hurricane");
 
 export default function FlowerInAHurricanePage() {
   const song = getSongMeta("flower-in-a-hurricane");

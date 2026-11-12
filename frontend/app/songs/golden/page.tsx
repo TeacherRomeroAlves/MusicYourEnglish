@@ -15,6 +15,10 @@ import LessonSections from "@/components/LessonSections";
 import { getSongMeta } from "@/data/songCatalog";
 import { golden, goldenFirstStanza, goldenChorus, goldenOrder, goldenFinalStanza } from "@/data/songs/golden";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("golden");
+
 export default function goldenPage() {
     const song = getSongMeta("golden");
     return (

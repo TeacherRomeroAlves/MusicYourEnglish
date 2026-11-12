@@ -12,6 +12,10 @@ import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
 import { getSongMeta } from "@/data/songCatalog";
 import { cold, coldChorus, coldFourthStanza, coldSecondStanza } from "@/data/songs/cold";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("cold");
+
 export default function ColdPage() {
   const song = getSongMeta("cold");
 

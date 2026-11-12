@@ -16,6 +16,10 @@ import { theMan, theManChorus, theManFourthStanza, theManOpeningStanzas, theManT
 import { ChoiceLyricsProvider } from "@/hooks/useChoiceLyrics";
 import { InlineWordOrderProvider } from "@/hooks/useInlineWordOrder";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("the-man");
+
 export default function TheManPage() {
   const song = getSongMeta("the-man");
 

@@ -13,6 +13,10 @@ import { getSongMeta } from "@/data/songCatalog";
 import { standByMe, standByMeVerseOne, standByMeVerseTwo } from "@/data/songs/standByMe";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("stand-by-me");
+
 export default function StandByMePage() {
   const song = getSongMeta("stand-by-me");
 

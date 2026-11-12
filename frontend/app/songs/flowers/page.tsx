@@ -14,6 +14,10 @@ import { getSongMeta } from "@/data/songCatalog";
 import { flowers, flowersChorus, flowersVerseOneAndPreChorus, flowersVerseTwoAndPreChorus } from "@/data/songs/flowers";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("flowers");
+
 export default function FlowersPage() {
   const song = getSongMeta("flowers");
 

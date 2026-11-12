@@ -14,10 +14,9 @@ import { getSongMeta } from "@/data/songCatalog";
 import { cleanVocabulary, cleanIcons, cleanVerseOne, cleanChorus, cleanVerseTwo } from "@/data/songs/clean";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
-export const metadata = {
-  title: "Clean - Hillsong UNITED | Music Your English",
-  description: "Practice will and pronouns in a Beginner English lesson about forgiveness and faith.",
-};
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("clean");
 
 export default function CleanPage() {
   const song = getSongMeta("clean");

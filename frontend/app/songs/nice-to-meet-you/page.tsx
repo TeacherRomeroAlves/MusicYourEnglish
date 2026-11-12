@@ -13,6 +13,10 @@ import { getSongMeta } from "@/data/songCatalog";
 import { niceToMeetYou, niceToMeetYouChorus, niceToMeetYouFirstStanza, niceToMeetYouThirdStanza } from "@/data/songs/niceToMeetYou";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("nice-to-meet-you");
+
 export default function NiceToMeetYouPage() {
   const song = getSongMeta("nice-to-meet-you");
 

@@ -14,10 +14,9 @@ import OrderLyricsActivity from "@/components/activities/OrderLyricsActivity/Ord
 import { beLikeThatVocabulary, beLikeThatVerseOne, beLikeThatChorus, beLikeThatVerseTwo } from "@/data/songs/beLikeThat";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
-export const metadata = {
-  title: "Be Like That - 3 Doors Down | Music Your English",
-  description: "Practice conditionals, would, and adjectives in this Pre-intermediate English lesson.",
-};
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("be-like-that");
 
 export default function BeLikeThatPage() {
   const song = getSongMeta("be-like-that");

@@ -19,6 +19,10 @@ import {
 } from "@/data/songs/waitingForLove";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("waiting-for-love");
+
 export default function WaitingForLovePage() {
   const song = getSongMeta("waiting-for-love");
 

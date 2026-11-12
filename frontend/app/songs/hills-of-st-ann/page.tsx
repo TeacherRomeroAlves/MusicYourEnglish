@@ -20,6 +20,10 @@ import {
   hillsThirdStanza,
 } from "@/data/songs/hillsOfStAnn";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("hills-of-st-ann");
+
 export default function HillsOfStAnnPage() {
   const song = getSongMeta("hills-of-st-ann");
 

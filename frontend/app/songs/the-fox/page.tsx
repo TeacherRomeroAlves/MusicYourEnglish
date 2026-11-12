@@ -14,10 +14,9 @@ import { getSongMeta } from "@/data/songCatalog";
 import { theFoxVocabulary, theFoxIcons, theFoxVerseOne, theFoxVerseTwo, theFoxVerseThree } from "@/data/songs/theFox";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
-export const metadata = {
-  title: "The Fox - Ylvis | Music Your English",
-  description: "Practice animal names, sound words, and the simple present in this Beginner English lesson.",
-};
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("the-fox");
 
 export default function TheFoxPage() {
   const song = getSongMeta("the-fox");

@@ -18,6 +18,10 @@ import {
   wonderwallSecondStanza,
 } from "@/data/songs/wonderwall";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("wonderwall");
+
 export default function WonderwallPage() {
   const song = getSongMeta("wonderwall");
 

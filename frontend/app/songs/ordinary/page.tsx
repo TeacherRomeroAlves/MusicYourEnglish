@@ -13,6 +13,10 @@ import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
 import { getSongMeta } from "@/data/songCatalog";
 import { ordinary, ordinaryChorus, ordinaryFirstStanza, ordinaryFourthStanza, ordinaryThirdStanza } from "@/data/songs/ordinary";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("ordinary");
+
 export default function OrdinaryPage() {
   const song = getSongMeta("ordinary");
 

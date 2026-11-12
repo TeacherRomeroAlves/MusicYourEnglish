@@ -13,6 +13,10 @@ import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
 import { getSongMeta } from "@/data/songCatalog";
 import { youngAndDumb, youngAndDumbChorus, youngAndDumbVerseOne, youngAndDumbVerseTwo } from "@/data/songs/youngAndDumb";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("young-and-dumb");
+
 export default function YoungAndDumbPage() {
   const song = getSongMeta("young-and-dumb");
 

@@ -13,6 +13,10 @@ import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
 import { getSongMeta } from "@/data/songCatalog";
 import { doTheMath, doTheMathOpening, doTheMathChorus, doTheMathLaterVerses } from "@/data/songs/doTheMath";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("do-the-math");
+
 export default function DoTheMathPage() {
   const song = getSongMeta("do-the-math");
   return (

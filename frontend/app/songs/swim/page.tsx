@@ -16,6 +16,10 @@ import { swim, swimChorus, swimFinalStanzas, swimInitialStanzas, swimMiddleStanz
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 import { InlineWordOrderProvider } from "@/hooks/useInlineWordOrder";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("swim");
+
 export default function SwimPage() {
   const song = getSongMeta("swim");
 

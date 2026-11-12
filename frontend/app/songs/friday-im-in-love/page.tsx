@@ -21,6 +21,10 @@ import {
 } from "@/data/songs/fridayImInLove";
 import { ChoiceLyricsProvider } from "@/hooks/useChoiceLyrics";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("friday-im-in-love");
+
 export default function FridayImInLovePage() {
   const song = getSongMeta("friday-im-in-love");
 

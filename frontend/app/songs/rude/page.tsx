@@ -15,6 +15,10 @@ import { rude, rudeChorus, rudeFirstStanza, rudeFourthStanza } from "@/data/song
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 import { InlineWordOrderProvider } from "@/hooks/useInlineWordOrder";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("rude");
+
 export default function RudePage() {
   const song = getSongMeta("rude");
 

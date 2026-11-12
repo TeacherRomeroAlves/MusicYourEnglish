@@ -24,6 +24,10 @@ import {
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 import { InlineWordOrderProvider } from "@/hooks/useInlineWordOrder";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("hero-of-war");
+
 export default function HeroOfWarPage() {
   const song = getSongMeta("hero-of-war");
 

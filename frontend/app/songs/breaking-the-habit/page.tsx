@@ -20,6 +20,10 @@ import {
   breakingTheHabitVerseTwo,
 } from "@/data/songs/breakingTheHabit";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("breaking-the-habit");
+
 export default function BreakingTheHabitPage() {
   const song = getSongMeta("breaking-the-habit");
 

@@ -13,6 +13,10 @@ import LessonSections from "@/components/LessonSections";
 import { getSongMeta } from "@/data/songCatalog";
 import { countOnMe, countOnMeFirstStanza, countOnMeChorus, countOnMeChoiceLyrics, countOnMeFourthStanza } from "@/data/songs/countOnMe";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("count-on-me");
+
 export default function CountOnMePage() {
   const song = getSongMeta("count-on-me");
   return (

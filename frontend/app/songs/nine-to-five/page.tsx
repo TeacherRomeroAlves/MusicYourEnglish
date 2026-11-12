@@ -16,6 +16,10 @@ import { ChoiceLyricsProvider } from "@/hooks/useChoiceLyrics";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 import { PartialWordLyricsProvider } from "@/hooks/usePartialWordLyrics";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("nine-to-five");
+
 export default function NineToFivePage() {
   const song = getSongMeta("nine-to-five");
 

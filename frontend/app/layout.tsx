@@ -26,6 +26,7 @@ const leagueSpartan = League_Spartan({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://musicyourenglish.com"),
   title: "Music Your English | Learn English Through Songs",
   description: "Interactive English lessons built around songs you love.",
 };

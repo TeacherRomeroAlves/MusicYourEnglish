@@ -13,6 +13,10 @@ import WordPresenceActivity from "@/components/activities/WordPresenceActivity/W
 import { getSongMeta } from "@/data/songCatalog";
 import { selfDysmorphia, selfDysmorphiaChorus, selfDysmorphiaVerseOne, selfDysmorphiaVerseTwo } from "@/data/songs/selfDysmorphia";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("self-dysmorphia");
+
 export default function SelfDysmorphiaPage() {
   const song = getSongMeta("self-dysmorphia");
 

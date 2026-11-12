@@ -13,10 +13,9 @@ import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
 import { getSongMeta } from "@/data/songCatalog";
 import { helpVocabulary, helpOpening, helpChorus, helpVerseTwo } from "@/data/songs/help";
 
-export const metadata = {
-  title: "Help! - The Beatles | Music Your English",
-  description: "Practice basic verbs and indefinite pronouns in this Beginner English lesson.",
-};
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("help");
 
 export default function HelpPage() {
   const song = getSongMeta("help");

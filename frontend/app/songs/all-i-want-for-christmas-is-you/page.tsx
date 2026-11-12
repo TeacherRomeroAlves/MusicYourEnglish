@@ -14,10 +14,9 @@ import { getSongMeta } from "@/data/songCatalog";
 import { allIWantForChristmasIsYou, christmasOpeningVersesAndChorus, christmasVerseTwoAndChorus, christmasBridgeAndFinalVerse } from "@/data/songs/allIWantForChristmasIsYou";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
-export const metadata = {
-  title: "All I Want for Christmas Is You - Mariah Carey | Music Your English",
-  description: "Practice verbs and Christmas vocabulary with an Elementary English lesson based on Mariah Carey's holiday classic.",
-};
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("all-i-want-for-christmas-is-you");
 
 export default function AllIWantForChristmasIsYouPage() {
   const song = getSongMeta("all-i-want-for-christmas-is-you");

@@ -14,6 +14,10 @@ import { getSongMeta } from "@/data/songCatalog";
 import { dontYouWorryChild, dontYouWorryChildChorus, dontYouWorryChildVerseOne, dontYouWorryChildVerseTwo } from "@/data/songs/dontYouWorryChild";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("dont-you-worry-child");
+
 export default function DontYouWorryChildPage() {
   const song = getSongMeta("dont-you-worry-child");
 

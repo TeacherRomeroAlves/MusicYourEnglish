@@ -14,6 +14,10 @@ import { getSongMeta } from "@/data/songCatalog";
 import { billionaire, billionaireChorus, billionaireSixthStanza, billionaireThirdStanza } from "@/data/songs/billionaire";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("billionaire");
+
 export default function BillionairePage() {
   const song = getSongMeta("billionaire");
 

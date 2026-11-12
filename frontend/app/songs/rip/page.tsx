@@ -15,10 +15,9 @@ import { getSongMeta } from "@/data/songCatalog";
 import { rip, ripChorus, ripOutro, ripVerseOne, ripVerseTwo } from "@/data/songs/rip";
 import { InlineWordOrderProvider } from "@/hooks/useInlineWordOrder";
 
-export const metadata = {
-  title: "R.I.P. - Motionless in White ft. Skylar Grey | Music Your English",
-  description: "Practice if, would, and verbs with this Pre-intermediate English lesson based on R.I.P.",
-};
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("rip");
 
 export default function RipPage() {
   const song = getSongMeta("rip");

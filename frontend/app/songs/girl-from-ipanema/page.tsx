@@ -12,6 +12,10 @@ import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
 import { getSongMeta } from "@/data/songCatalog";
 import { girlFromIpanema, girlFromIpanemaBridgeAndFinalVerse, girlFromIpanemaOpeningVerses } from "@/data/songs/girlFromIpanema";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("girl-from-ipanema");
+
 export default function GirlFromIpanemaPage() {
   const song = getSongMeta("girl-from-ipanema");
 

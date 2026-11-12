@@ -14,10 +14,9 @@ import { getSongMeta } from "@/data/songCatalog";
 import { noStressJustVibes, noStressJustVibesChorus, noStressJustVibesOpeningVerses, noStressJustVibesMiddleVerses, noStressJustVibesClosingVerses } from "@/data/songs/noStressJustVibes";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
-export const metadata = {
-  title: "No Stress, Just Vibes - AI IRIE FM | Music Your English",
-  description: "Practice no, adjectives, and everyday words with a Beginner reggae lesson based on No Stress, Just Vibes.",
-};
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("no-stress-just-vibes");
 
 export default function NoStressJustVibesPage() {
   const song = getSongMeta("no-stress-just-vibes");

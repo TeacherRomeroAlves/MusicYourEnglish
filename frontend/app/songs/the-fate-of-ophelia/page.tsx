@@ -21,6 +21,10 @@ import {
   theFateOfOphelia,
 } from "@/data/songs/theFateOfOphelia";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("the-fate-of-ophelia");
+
 export default function TheFateOfOpheliaPage() {
   const song = getSongMeta("the-fate-of-ophelia");
 

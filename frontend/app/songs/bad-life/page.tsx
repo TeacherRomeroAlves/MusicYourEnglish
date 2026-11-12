@@ -20,6 +20,10 @@ import {
 } from "@/data/songs/badLife";
 import { InlineWordOrderProvider } from "@/hooks/useInlineWordOrder";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("bad-life");
+
 export default function BadLifePage() {
   const song = getSongMeta("bad-life");
 

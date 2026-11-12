@@ -13,6 +13,10 @@ import { getSongMeta } from "@/data/songCatalog";
 import { gossip, gossipChorus, gossipLaterStanzas, gossipOpeningStanzas } from "@/data/songs/gossip";
 import { IconLyricsProvider } from "@/hooks/useIconLyrics";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("gossip");
+
 export default function GossipPage() {
   const song = getSongMeta("gossip");
 

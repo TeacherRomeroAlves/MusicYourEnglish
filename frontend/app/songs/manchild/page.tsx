@@ -14,6 +14,10 @@ import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
 import { getSongMeta } from "@/data/songCatalog";
 import { manchild, manchildChorus, manchildFirstStanza, manchildMissingWords, manchildSecondStanza } from "@/data/songs/manchild";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("manchild");
+
 export default function ManchildPage() {
   const song = getSongMeta("manchild");
 

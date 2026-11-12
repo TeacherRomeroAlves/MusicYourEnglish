@@ -19,6 +19,10 @@ import {
   happyWordPresence,
 } from "@/data/songs/happy";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("happy");
+
 export default function HappyPage() {
   const song = getSongMeta("happy");
 

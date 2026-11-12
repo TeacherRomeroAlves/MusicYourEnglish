@@ -14,10 +14,9 @@ import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
 import { getSongMeta } from "@/data/songCatalog";
 import { byAnyMeansVocabulary, byAnyMeansVerseOne, byAnyMeansChorus, byAnyMeansLetters, byAnyMeansVerseTwo, byAnyMeansClauses } from "@/data/songs/byAnyMeans";
 
-export const metadata = {
-  title: "By Any Means - David Kushner ft. The Isley Brothers | Music Your English",
-  description: "Practice contractions and auxiliary verbs in this Intermediate+ English lesson.",
-};
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("by-any-means");
 
 export default function ByAnyMeansPage() {
   const song = getSongMeta("by-any-means");

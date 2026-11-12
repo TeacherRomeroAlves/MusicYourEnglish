@@ -13,6 +13,10 @@ import { getSongMeta } from "@/data/songCatalog";
 import { comfortablyNumb, comfortablyNumbChorusOne, comfortablyNumbChorusTwo, comfortablyNumbVerseOne, comfortablyNumbVerseThree } from "@/data/songs/comfortablyNumb";
 import { LyricsWordSyncProvider } from "@/hooks/useLyricsWordSync";
 
+import { getSongMetadata } from "@/lib/songMetadata";
+
+export const metadata = getSongMetadata("comfortably-numb");
+
 export default function ComfortablyNumbPage() {
   const song = getSongMeta("comfortably-numb");
 
