@@ -29,6 +29,10 @@ export interface LessonLearningTags {
 // Describe the language actually practised, rather than every form in the lyrics.
 // Keeping this exhaustive makes a tag review part of adding each new lesson.
 export const SONG_LEARNING_TAGS = {
+  clean: {
+    grammar: ["Future forms", "Pronouns", "Possessive adjectives"], languageFocus: ["Phrasal verbs", "Everyday expressions"],
+    activityTypes: ["Emoji gaps", "Word-bank gaps", "Multiple choice"],
+  },
   "the-fox": {
     grammar: ["Simple present", "Future forms"], languageFocus: ["Animals", "Onomatopoeia", "Adjectives"],
     activityTypes: ["Emoji gaps", "Word-bank gaps", "Multiple choice"],
