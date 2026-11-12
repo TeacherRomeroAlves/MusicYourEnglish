@@ -5,6 +5,7 @@ import SongCard from "./SongCard";
 import AuthButton from "./AuthButton";
 import { USER_LEVELS, type SongMeta } from "@/data/songCatalog";
 import { shuffleArray } from "@/lib/shuffleArray";
+import { SONG_SORT_OPTIONS, sortSongs, type SongSortOrder } from "@/lib/songSorting";
 import { GRAMMAR_TOPICS, LANGUAGE_FOCUSES, ACTIVITY_TYPES } from "@/data/lessonTaxonomy";
 import { EMPTY_SONG_FILTERS, getFilterGenres, hasVerbPractice, matchesSongFilters, type SongFilters } from "@/lib/songFilters";
 
@@ -77,6 +78,7 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
   const [filters, setFilters] = useState<SongFilters>(EMPTY_SONG_FILTERS);
   const [showMoreFilters, setShowMoreFilters] = useState(false);
   const [orderedSongs, setOrderedSongs] = useState(() => songs);
+  const [sortOrder, setSortOrder] = useState<SongSortOrder>("random");
   const deferredQuery = useDeferredValue(filters.query);
   const genres = [...new Set(songs.flatMap((song) => getFilterGenres(song.genre)))]
     .sort((first, second) => first.localeCompare(second));
@@ -86,16 +88,17 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
     return () => window.clearTimeout(timeout);
   }, [songs]);
 
-  const filteredSongs = orderedSongs.filter((song) => matchesSongFilters(song, { ...filters, query: deferredQuery }));
+  const sortedSongs = sortSongs(orderedSongs, sortOrder);
+  const filteredSongs = sortedSongs.filter((song) => matchesSongFilters(song, { ...filters, query: deferredQuery }));
   const activeFilters = (Object.keys(FILTER_LABELS) as Array<keyof typeof FILTER_LABELS>)
     .filter((key) => filters[key] !== "all");
   const hasActiveFilters = Boolean(filters.query.trim() || activeFilters.length);
   const moreFilterCount = MORE_FILTER_GROUPS.filter((group) => filters[group.key] !== "all").length;
-  const verbSongs = orderedSongs.filter(hasVerbPractice);
-  const accessibleSongs = orderedSongs.filter((song) =>
+  const verbSongs = sortedSongs.filter(hasVerbPractice);
+  const accessibleSongs = sortedSongs.filter((song) =>
     song.level === "Beginner" || song.level === "Elementary",
   );
-  const deeperTopicSongs = orderedSongs.filter((song) =>
+  const deeperTopicSongs = sortedSongs.filter((song) =>
     DEEPER_TOPIC_SLUGS.includes(song.slug),
   );
 
@@ -133,6 +136,12 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
             <option value="all">All genres</option>
             {genres.map((option) => <option key={option} value={option}>{option}</option>)}
           </select>
+        </div>
+        <div className="filter-field library-order-field">
+            <label htmlFor="song-order">Order by</label>
+            <select id="song-order" value={sortOrder} onChange={(event) => setSortOrder(event.target.value as SongSortOrder)}>
+              {SONG_SORT_OPTIONS.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
+            </select>
         </div>
         <div className="library-filter-toggle-row">
           <button className="library-filter-toggle" type="button" aria-expanded={showMoreFilters} aria-controls="library-more-filters" onClick={() => setShowMoreFilters((current) => !current)}>
@@ -178,7 +187,7 @@ export default function SongLibrary({ songs }: { songs: SongMeta[] }) {
             <SongRail title="Search results" description="Lessons matching your current search and filters." songs={filteredSongs} />
           ) : (
             <>
-              <SongRail title="All lessons" description="Explore every song currently available in the library." songs={orderedSongs} />
+              <SongRail title="All lessons" description="Explore every song currently available in the library." songs={sortedSongs} />
               <SongRail title="Songs with verb activities" description="Practice verb forms and tenses while listening in context." songs={verbSongs} compact />
               <SongRail title="Beginner-friendly picks" description="A comfortable place to start with clear, guided activities." songs={accessibleSongs} compact />
               <SongRail title="Deeper topics" description="Explore songs that open conversations about relationships, identity, conflict, and emotional health." songs={deeperTopicSongs} compact />
