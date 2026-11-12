@@ -4,6 +4,7 @@ import type { SongMeta } from "./songCatalog";
 // null means an unconfirmed release year; these sort last in both directions.
 // Maintain this exhaustive list when adding lessons.
 export const SONG_SORT_METADATA = {
+  "she-is-a-carioca": { addedAt: "2026-11-12T19:51:15Z", releaseYear: 1965 },
   "clean": { addedAt: "2026-11-12T10:04:08-03:00", releaseYear: 2019 },
   "the-fox": { addedAt: "2026-11-10T15:39:01-03:00", releaseYear: 2013 },
   "by-any-means": { addedAt: "2026-11-09T18:30:05-03:00", releaseYear: 2026 },

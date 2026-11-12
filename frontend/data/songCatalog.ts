@@ -10,7 +10,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "clean" | "the-fox" | "by-any-means" | "help" | "be-like-that" | "do-the-math" | "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip" | "no-stress-just-vibes" | "all-i-want-for-christmas-is-you" | "flower-in-a-hurricane";
+  slug: "she-is-a-carioca" | "clean" | "the-fox" | "by-any-means" | "help" | "be-like-that" | "do-the-math" | "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip" | "no-stress-just-vibes" | "all-i-want-for-christmas-is-you" | "flower-in-a-hurricane";
   title: string;
   artist: string;
   level: UserLevel;
@@ -25,6 +25,19 @@ export interface SongMeta {
 }
 
 export const songCatalog: SongMeta[] = [
+  {
+    slug: "she-is-a-carioca",
+    title: "She Is a Carioca",
+    artist: "Tom Jobim",
+    level: "Beginner",
+    duration: "30 min",
+    topic: "Love, admiration, and Rio de Janeiro",
+    genre: "Bossa nova",
+    description: "Practice pronouns and the simple present with a gentle bossa nova song about a woman from Rio de Janeiro.",
+    learning: SONG_LEARNING_TAGS["she-is-a-carioca"],
+    coverImage: "/images/songs/she-is-a-carioca/cover.png",
+    coverClass: "song-art--she-is-a-carioca",
+  },
   {
     slug: "clean",
     title: "Clean",

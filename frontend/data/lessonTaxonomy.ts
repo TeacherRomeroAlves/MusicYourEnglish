@@ -29,6 +29,10 @@ export interface LessonLearningTags {
 // Describe the language actually practised, rather than every form in the lyrics.
 // Keeping this exhaustive makes a tag review part of adding each new lesson.
 export const SONG_LEARNING_TAGS = {
+  "she-is-a-carioca": {
+    grammar: ["Pronouns", "Simple present"], languageFocus: ["Everyday expressions"],
+    activityTypes: ["Multiple choice", "Emoji gaps"],
+  },
   clean: {
     grammar: ["Future forms", "Pronouns", "Possessive adjectives"], languageFocus: ["Phrasal verbs", "Everyday expressions"],
     activityTypes: ["Emoji gaps", "Word-bank gaps", "Multiple choice"],
