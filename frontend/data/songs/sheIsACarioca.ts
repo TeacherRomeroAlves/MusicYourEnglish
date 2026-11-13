@@ -23,7 +23,7 @@ export const sheIsACariocaVerseOne = [
 export const sheIsACariocaIcons = [
   { id: "love", symbol: "❤️", ariaLabel: "love" },
   { id: "lips", symbol: "👄", ariaLabel: "lips" },
-  { id: "kisses", symbol: "💋", ariaLabel: "kisses" },
+  { id: "kisses", symbol: "😘", ariaLabel: "kisses" },
   { id: "smiles", symbol: "😊", ariaLabel: "smiles" },
   { id: "world", symbol: "🌍", ariaLabel: "world" },
 ];
