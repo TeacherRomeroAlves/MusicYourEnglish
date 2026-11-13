@@ -29,6 +29,10 @@ export interface LessonLearningTags {
 // Describe the language actually practised, rather than every form in the lyrics.
 // Keeping this exhaustive makes a tag review part of adding each new lesson.
 export const SONG_LEARNING_TAGS = {
+  "pack-it-up": {
+    grammar: ["Pronouns", "Simple present", "Verb be"], languageFocus: ["Phrasal verbs", "Everyday expressions"],
+    activityTypes: ["Multiple choice", "Sentence ordering", "Emoji gaps"],
+  },
   "she-is-a-carioca": {
     grammar: ["Pronouns", "Simple present"], languageFocus: ["Everyday expressions"],
     activityTypes: ["Multiple choice", "Emoji gaps"],

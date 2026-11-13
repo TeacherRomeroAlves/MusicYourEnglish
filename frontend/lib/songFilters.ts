@@ -15,6 +15,7 @@ export const EMPTY_SONG_FILTERS: SongFilters = {
 };
 
 const GENRE_GROUPS: Record<string, string[]> = {
+  "Indie pop rock": ["Pop", "Rock"],
   "Gospel / Acoustic Pop": ["Gospel", "Acoustic Pop", "Pop"],
   "Alt. Rock": ["Rock"],
   "Alternative rock": ["Rock"],
