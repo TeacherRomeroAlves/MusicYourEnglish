@@ -29,6 +29,11 @@ export interface LessonLearningTags {
 // Describe the language actually practised, rather than every form in the lyrics.
 // Keeping this exhaustive makes a tag review part of adding each new lesson.
 export const SONG_LEARNING_TAGS = {
+  "i-knew-it-i-knew-you": {
+    grammar: ["Present perfect", "Simple past", "Gerunds and infinitives"],
+    languageFocus: ["Everyday expressions", "Idioms", "Nouns"],
+    activityTypes: ["Word-bank gaps", "Word completion", "Emoji gaps"],
+  },
   "pack-it-up": {
     grammar: ["Pronouns", "Simple present", "Verb be"], languageFocus: ["Phrasal verbs", "Everyday expressions"],
     activityTypes: ["Multiple choice", "Sentence ordering", "Emoji gaps"],
