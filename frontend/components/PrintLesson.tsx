@@ -5,6 +5,7 @@ import { Children, isValidElement, useEffect, useState, type ReactNode } from "r
 import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import { songCatalog } from "@/data/songCatalog";
+import { getMovieLessonDescription } from "@/components/MovieLessonCard";
 
 interface PrintLessonProps {
   beforeSong: ReactNode;
@@ -39,10 +40,25 @@ function collectBlocks(node: ReactNode): PrintableBlock[] {
     if (typeof props.prompt === "string" && typeof props.songTitle === "string") {
       return [{ kind: "homework" as const, prompt: props.prompt }];
     }
+    if (typeof props.movieTitle === "string" && typeof props.poster === "string" && typeof props.href === "string") {
+      return [{
+        kind: "note" as const,
+        title: `Practice with ${props.movieTitle}, too`,
+        content: getMovieLessonDescription(props.movieTitle, typeof props.note === "string" ? props.note : undefined),
+      }];
+    }
     if (child.type === "aside" && String((child.props as { className?: string }).className).includes("cultural-note")) {
-      const children = Children.toArray((child.props as { children?: ReactNode }).children);
+      const children: ReactNode[] = [];
+      const collectNoteElements = (node: ReactNode): void => Children.forEach(node, (item) => {
+        if (!isValidElement(item)) return;
+        children.push(item);
+        collectNoteElements((item.props as { children?: ReactNode }).children);
+      });
+      collectNoteElements((child.props as { children?: ReactNode }).children);
       const heading = children.find((item) => isValidElement(item) && item.type === "h2");
-      const content = children.filter((item) => isValidElement(item) && (item.type === "p" || item.type === "blockquote"));
+      const content = children.filter((item) => isValidElement(item) &&
+        (item.type === "p" || item.type === "blockquote") &&
+        !(String((item.props as { className?: string }).className).includes("section-kicker")));
       return [{ kind: "note" as const, title: heading ? plainText(heading) : "Cultural note", content: content.map(plainText).join(" ") }];
     }
     return collectBlocks((child.props as { children?: ReactNode }).children);

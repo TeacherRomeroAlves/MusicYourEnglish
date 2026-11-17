@@ -8,7 +8,7 @@ import IconLyricsActivity from "@/components/activities/IconLyricsActivity/IconL
 import ListeningActivity from "@/components/activities/ListeningActivity/ListeningActivity";
 import LyricsWordActivity from "@/components/activities/LyricsWordActivity/LyricsWordActivity";
 import PartialWordLyricsActivity from "@/components/activities/PartialWordLyricsActivity/PartialWordLyricsActivity";
-import Image from "next/image";
+import MovieLessonCard from "@/components/MovieLessonCard";
 import MatchingActivity from "@/components/activities/MatchingActivity/MatchingActivity";
 import WarmUpQuestions from "@/components/activities/WarmUp/WarmUp";
 import { getSongMeta } from "@/data/songCatalog";
@@ -47,15 +47,14 @@ export default function IKnewItIKnewYouPage() {
           ]}
           checkAnswers={<CheckAllActivity title="Check All Answers" description="When you finish the song activities, check all your answers at once." />}
           afterSong={<>
-            <aside className="cultural-note cultural-note--with-poster" aria-labelledby="i-knew-movie-title">
-              <Image className="cultural-note__poster" src="/images/cultural-notes/toy-story-5/poster.webp" alt="Toy Story 5 movie poster" width={300} height={450} />
-              <div className="cultural-note__content">
-                <p className="section-kicker">Keep learning with movies</p>
-                <h2 id="i-knew-movie-title">Practice with Toy Story 5, too</h2>
-                <p>Enjoyed learning with this song? Visit our sister project, Movie Your English, to practice English with Toy Story 5. Explore the movie lesson and keep learning with familiar characters.</p>
-                <a className="button button--primary cultural-note__action" href="https://movieyourenglish.vercel.app/toy-story-5/index.html" target="_blank" rel="noopener noreferrer">Explore Toy Story 5 on Movie Your English</a>
-              </div>
-            </aside>
+            <MovieLessonCard
+              id="i-knew-movie-title"
+              movieTitle="Toy Story 5"
+              poster="/images/cultural-notes/toy-story-5/poster.webp"
+              posterWidth={300}
+              posterHeight={450}
+              href="https://movieyourenglish.vercel.app/toy-story-5/index.html"
+            />
             <WarmUpQuestions step="Wrap-up" title="Talk About The Song" layout="two-column" questions={[
               "What makes you cry rivers?",
               'Do you think "love can bring things back to life"?',
