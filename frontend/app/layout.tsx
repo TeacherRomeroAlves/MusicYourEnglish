@@ -19,6 +19,7 @@ import "@/styles/library.css";
 import "@/styles/home.css";
 import "@/styles/responsive.css";
 import "@/styles/learning.css";
+import "@/styles/lessonHelp.css";
 
 const leagueSpartan = League_Spartan({
   subsets: ["latin"],
