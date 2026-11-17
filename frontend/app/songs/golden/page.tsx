@@ -69,7 +69,7 @@ export default function goldenPage() {
                   href="https://movieyourenglish.vercel.app/kpop-demon-hunters/index.html"
                   note={'"Golden" is part of the animated movie KPop Demon Hunters. At the 98th Academy Awards, the movie won Best Animated Feature and "Golden" won Best Original Song.'}
                 />
-                <WarmUpQuestions step="Wrap-up" title="Talk About The Song" description="Use these questions to finish the lesson with speaking practice." questions={["What does this song say about confidence?", "Why do people sometimes hide who they really are?", "What helps a person feel stronger?", "Can fears make us stronger? Why or why not?"]} />
+                <WarmUpQuestions step="Wrap-up" title="Talk About The Song" layout="two-column" description="Use these questions to finish the lesson with speaking practice." questions={["What does this song say about confidence?", "Why do people sometimes hide who they really are?", "What helps a person feel stronger?", "Can fears make us stronger? Why or why not?"]} />
                 <HomeworkActivity step="Homework" title="Express Yourself" description="Answer the prompt in writing or record yourself speaking." prompt="Write about a time you felt stronger or more confident. Explain what happened and how you felt." songTitle="Golden" />
               </>}
             />
