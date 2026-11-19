@@ -11,6 +11,23 @@ export function normalizeHelpText(text: string) {
 // Initial locally stored translations: Help!, Stand by Me, She Is a Carioca,
 // and common activity instructions. No student text is sent to a service.
 export const HELP_TRANSLATIONS: readonly (readonly [string, string, string])[] = [
+  ["Do you like The Beatles?", "Você gosta dos Beatles?", "¿Te gustan los Beatles?"],
+  ["Do you know this song?", "Você conhece esta música?", "¿Conoces esta canción?"],
+  ["Have you ever watched Toy Story?", "Você já assistiu a Toy Story?", "¿Has visto Toy Story alguna vez?"],
+  ["Do you like Taylor Swift?", "Você gosta da Taylor Swift?", "¿Te gusta Taylor Swift?"],
+  ["a word you say when you meet someone", "uma palavra que você diz quando encontra alguém", "una palabra que dices cuando te encuentras con alguien"],
+  ["a word you say when you leave someone", "uma palavra que você diz quando se despede de alguém", "una palabra que dices cuando te despides de alguien"],
+  ["far above the ground", "muito acima do chão", "muy por encima del suelo"],
+  ["near the ground; not high", "perto do chão; não alto", "cerca del suelo; no alto"],
+  ["I do not have the answer", "Eu não tenho a resposta", "No tengo la respuesta"],
+  ['When do you say "Hello"?', 'Quando você diz "Hello" (olá)?', '¿Cuándo dices "Hello" (hola)?'],
+  ['When do you say "Goodbye"?', 'Quando você diz "Goodbye" (tchau)?', '¿Cuándo dices "Goodbye" (adiós)?'],
+  ["Do you know the capital of England, or don't you know?", "Você sabe qual é a capital da Inglaterra ou não sabe?", "¿Sabes cuál es la capital de Inglaterra o no lo sabes?"],
+  ['Why do people say "Goodbye" and "Hello"?', 'Por que as pessoas dizem "Goodbye" (tchau) e "Hello" (olá)?', '¿Por qué la gente dice "Goodbye" (adiós) y "Hello" (hola)?'],
+  ["Can you name some opposite words in the song?", "Você consegue dizer algumas palavras de sentido contrário na música?", "¿Puedes decir algunas palabras de significado contrario de la canción?"],
+  ["Do you like the song?", "Você gosta da música?", "¿Te gusta la canción?"],
+  ['Write a short message to your favorite singer. Include "Hello" and "Goodbye" in the message.', 'Escreva uma mensagem curta para seu cantor ou sua cantora favorita. Inclua "Hello" e "Goodbye" na mensagem.', 'Escribe un mensaje corto a tu cantante favorito o favorita. Incluye "Hello" y "Goodbye" en el mensaje.'],
+  ["Click a gap, then click a clause to place it. Or click a clause to use the next available gap.", "Clique em uma lacuna e depois em uma frase para colocá-la ali. Ou clique em uma frase para preencher a próxima lacuna disponível.", "Haz clic en un hueco y después en una frase para colocarla ahí. O haz clic en una frase para completar el siguiente hueco disponible."],
   [
     "Do you know The Beatles?",
     "Você conhece os Beatles?",
