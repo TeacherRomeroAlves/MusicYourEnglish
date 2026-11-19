@@ -5,14 +5,14 @@ export const GRAMMAR_TOPICS = [
   "Present perfect continuous", "Future forms", "Verb be", "There is / There are",
   "Can", "Could", "Would", "Conditionals", "Gerunds and infinitives",
   "Prepositions", "Pronouns", "Indefinite pronouns", "Possessive adjectives", "Relative clauses",
-  "Superlatives", "Comparisons", "Negatives with no", "Auxiliary verbs", "Contractions",
+  "Superlatives", "Comparisons", "Negatives with no", "Auxiliary verbs", "Contractions", "Wish", "Going to",
 ] as const;
 
 export const LANGUAGE_FOCUSES = [
   "Idioms", "Phrasal verbs", "Adjectives", "Adverbs", "Everyday expressions", "Animals", "Onomatopoeia",
   "Informal English", "Pronunciation", "Word formation", "Proper nouns",
   "Days of the week", "Colors", "Numbers", "Only", "Storytelling", "Nouns", "Basic verbs",
-  "Greetings", "Antonyms", "Why",
+  "Greetings", "Antonyms", "Why", "Maybe",
 ] as const;
 
 export const ACTIVITY_TYPES = [
@@ -30,6 +30,16 @@ export interface LessonLearningTags {
 // Describe the language actually practised, rather than every form in the lyrics.
 // Keeping this exhaustive makes a tag review part of adding each new lesson.
 export const SONG_LEARNING_TAGS = {
+  "im-gonna-live-till-i-die": {
+    grammar: ["Going to", "Future forms", "Contractions"],
+    languageFocus: ["Basic verbs", "Everyday expressions", "Idioms"],
+    activityTypes: ["Word-bank gaps", "Emoji gaps"],
+  },
+  maybe: {
+    grammar: ["Conditionals", "Wish"],
+    languageFocus: ["Maybe", "Idioms", "Phrasal verbs", "Pronunciation"],
+    activityTypes: ["Emoji gaps", "Unscramble letters", "Typed gaps", "Multiple choice"],
+  },
   "hello-goodbye": {
     grammar: ["Simple present", "Pronouns"],
     languageFocus: ["Greetings", "Antonyms", "Why"],

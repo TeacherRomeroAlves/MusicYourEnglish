@@ -10,7 +10,7 @@ export const USER_LEVELS = [
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export interface SongMeta {
-  slug: "hello-goodbye" | "i-knew-it-i-knew-you" | "pack-it-up" | "she-is-a-carioca" | "clean" | "the-fox" | "by-any-means" | "help" | "be-like-that" | "do-the-math" | "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip" | "no-stress-just-vibes" | "all-i-want-for-christmas-is-you" | "flower-in-a-hurricane";
+  slug: "im-gonna-live-till-i-die" | "maybe" | "hello-goodbye" | "i-knew-it-i-knew-you" | "pack-it-up" | "she-is-a-carioca" | "clean" | "the-fox" | "by-any-means" | "help" | "be-like-that" | "do-the-math" | "count-on-me" | "golden" | "monsters" | "the-fate-of-ophelia" | "wonderwall" | "manchild" | "bad-life" | "hills-of-st-ann" | "happy" | "friday-im-in-love" | "ordinary" | "nice-to-meet-you" | "waiting-for-love" | "cold" | "im-pretty" | "hero-of-war" | "the-man" | "swim" | "nine-to-five" | "gossip" | "billionaire" | "rude" | "stupid-song" | "girl-from-ipanema" | "dont-you-worry-child" | "stand-by-me" | "flowers" | "self-dysmorphia" | "young-and-dumb" | "breaking-the-habit" | "patient-zero" | "comfortably-numb" | "rip" | "no-stress-just-vibes" | "all-i-want-for-christmas-is-you" | "flower-in-a-hurricane";
   title: string;
   artist: string;
   level: UserLevel;
@@ -25,6 +25,32 @@ export interface SongMeta {
 }
 
 export const songCatalog: SongMeta[] = [
+  {
+    slug: "im-gonna-live-till-i-die",
+    title: "I'm Gonna Live Till I Die",
+    artist: "Frank Sinatra",
+    level: "Elementary",
+    duration: "30 min",
+    topic: "Enjoying life, future plans, and feelings",
+    genre: "Jazz",
+    description: "Practise going to, action verbs, and everyday expressions with an upbeat song about enjoying life.",
+    learning: SONG_LEARNING_TAGS["im-gonna-live-till-i-die"],
+    coverImage: "/images/songs/im-gonna-live-till-i-die/cover.jpg",
+    coverClass: "song-art--im-gonna-live-till-i-die",
+  },
+  {
+    slug: "maybe",
+    title: "Maybe",
+    artist: "MGK ft. Bring Me The Horizon",
+    level: "Intermediate+",
+    duration: "45 min",
+    topic: "Regret, difficult relationships, and letting go",
+    genre: "Rock",
+    description: "Practise conditionals, wishes, and expressions of regret through a rock song about difficult relationships and letting go.",
+    learning: SONG_LEARNING_TAGS.maybe,
+    coverImage: "/images/songs/maybe/cover.jpg",
+    coverClass: "song-art--maybe",
+  },
   {
     slug: "hello-goodbye",
     title: "Hello, Goodbye",

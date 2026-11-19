@@ -15,6 +15,10 @@ export const EMPTY_SONG_FILTERS: SongFilters = {
 };
 
 const GENRE_GROUPS: Record<string, string[]> = {
+  "Jazz": ["Jazz, Soul & R&B"],
+  "Soul": ["Jazz, Soul & R&B"],
+  "R&B": ["Jazz, Soul & R&B"],
+  "Soul/R&B": ["Jazz, Soul & R&B"],
   "Metal": ["Rock"],
   "Acoustic Pop": ["Pop"],
   "Acoustic pop": ["Pop"],
