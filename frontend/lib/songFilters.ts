@@ -15,8 +15,10 @@ export const EMPTY_SONG_FILTERS: SongFilters = {
 };
 
 const GENRE_GROUPS: Record<string, string[]> = {
+  "Acoustic Pop": ["Pop"],
+  "Acoustic pop": ["Pop"],
   "Indie pop rock": ["Pop", "Rock"],
-  "Gospel / Acoustic Pop": ["Gospel", "Acoustic Pop", "Pop"],
+  "Gospel / Acoustic Pop": ["Gospel", "Pop"],
   "Alt. Rock": ["Rock"],
   "Alternative rock": ["Rock"],
   "Country rap": ["Country", "Hiphop/Rap"],
@@ -27,6 +29,8 @@ const GENRE_GROUPS: Record<string, string[]> = {
   "Pop punk": ["Rock"],
   "Pop rap": ["Pop", "Hiphop/Rap"],
   "Punk rock": ["Rock"],
+  "Progressive rock": ["Rock"],
+  "Progressive Rock": ["Rock"],
 };
 
 export function getFilterGenres(genre: string) {
